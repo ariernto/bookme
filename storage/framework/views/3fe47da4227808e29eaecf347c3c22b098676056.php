@@ -1,4 +1,4 @@
-<?php ($location_search_style = setting_item('space_location_search_style')); ?>
+<?php ($location_search_style = setting_item('event_location_search_style')); ?>
 
 <div class="form-group">
     <i class="field-icon fa icofont-map"></i>
@@ -32,10 +32,10 @@
         $traverse($list_location);
         ?>
         <div class="smart-search">
-            <input type="text" class="smart-search-location parent_text form-control" <?php echo e(( empty(setting_item("space_location_search_style")) or setting_item("space_location_search_style") == "normal" ) ? "readonly" : ""); ?> placeholder="<?php echo e(__("Where are you going?")); ?>" value="<?php echo e($location_name); ?>" data-onLoad="<?php echo e(__("Loading...")); ?>"
+            <input type="text" class="smart-search-location parent_text form-control" <?php echo e(( empty(setting_item("event_location_search_style")) or setting_item("event_location_search_style") == "normal" ) ? "readonly" : ""); ?> placeholder="<?php echo e(__("Where are you going?")); ?>" value="<?php echo e($location_name); ?>" data-onLoad="<?php echo e(__("Loading...")); ?>"
                    data-default="<?php echo e(json_encode($list_json)); ?>">
             <input type="hidden" class="child_id" name="location_id" value="<?php echo e(Request::query('location_id')); ?>">
         </div>
             <?php endif; ?>
     </div>
-</div><?php /**PATH D:\Web\Laravel\newpro\package\modules/Space/Views/frontend/layouts/search/fields/location.blade.php ENDPATH**/ ?>
+</div><?php /**PATH D:\Web\Laravel\newpro\package\modules/Event/Views/frontend/layouts/search/fields/location.blade.php ENDPATH**/ ?>
