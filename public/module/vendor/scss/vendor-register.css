@@ -1,0 +1,14 @@
+.bravo-vendor-form-register .bravo-video-popup {
+  display: inline-block;
+  position: relative; }
+  .bravo-vendor-form-register .bravo-video-popup .play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    opacity: 0.7; }
+  .bravo-vendor-form-register .bravo-video-popup:hover .play-icon {
+    opacity: 1; }
+
+/*# sourceMappingURL=vendor-register.css.map */

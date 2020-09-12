@@ -1,0 +1,81 @@
+.profile-summary {
+  border: 1px solid #e4e4e4;
+  padding: 24px; }
+  @media (max-width: 992px) {
+    .profile-summary {
+      margin-bottom: 40px; } }
+  .profile-summary .profile-avatar {
+    text-align: center;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center; }
+    .profile-summary .profile-avatar img {
+      border: 1px solid #d8d8d8;
+      max-width: 116px;
+      border-radius: 50%; }
+    .profile-summary .profile-avatar .avatar-text {
+      width: 116px;
+      height: 116px;
+      border-radius: 50%;
+      font-size: 57px;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #1a2b47;
+      color: #fff; }
+  .profile-summary .display-name {
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center; }
+  .profile-summary .profile-since {
+    text-align: center; }
+  .profile-summary .meta-info {
+    padding: 0px;
+    margin: 0px;
+    list-style: none; }
+    .profile-summary .meta-info.style1 li {
+      position: relative;
+      padding-left: 12px; }
+      .profile-summary .meta-info.style1 li:before {
+        content: "\f105";
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        position: absolute;
+        top: 2px;
+        left: 0px; }
+      .profile-summary .meta-info.style1 li .label {
+        font-weight: 600; }
+    .profile-summary .meta-info.style2 li {
+      align-items: center;
+      display: flex;
+      font-size: 16px; }
+      .profile-summary .meta-info.style2 li i {
+        font-size: 24px;
+        margin-right: 7px; }
+      .profile-summary .meta-info.style2 li.is_vendor i {
+        color: #fa5636; }
+      .profile-summary .meta-info.style2 li.review_count i {
+        color: #5191fa; }
+
+.page-profile-content {
+  padding: 70px 0px; }
+  @media (max-width: 768px) {
+    .page-profile-content {
+      padding: 40px 0px; } }
+
+.bravo_wrap .bravo-profile-list-services {
+  margin-bottom: 50px; }
+  .bravo_wrap .bravo-profile-list-services .bravo-list-space {
+    margin-bottom: 20px; }
+.bravo_wrap .page-template-content .bravo-list-space .title {
+  font-weight: 400; }
+.bravo_wrap .page-template-content .bravo-list-space .owl-nav .owl-next,
+.bravo_wrap .page-template-content .bravo-list-space .owl-nav .owl-prev {
+  border: 1px solid black; }
+
+/*# sourceMappingURL=profile.css.map */

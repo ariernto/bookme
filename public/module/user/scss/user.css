@@ -1,0 +1,894 @@
+.bravo_wrap .bravo_user_profile {
+  background: #f5f7f9;
+  padding: 0 100px;
+  color: #1A2B48; }
+  @media (max-width: 1440px) {
+    .bravo_wrap .bravo_user_profile {
+      padding: 0; } }
+  .bravo_wrap .bravo_user_profile .bravo-more-menu-user {
+    position: absolute;
+    right: 0px;
+    z-index: 1;
+    padding: 7px 8px 3px;
+    color: #fff;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    display: none;
+    cursor: pointer; }
+    .bravo_wrap .bravo_user_profile .bravo-more-menu-user i {
+      font-size: 24px; }
+    @media (max-width: 990px) {
+      .bravo_wrap .bravo_user_profile .bravo-more-menu-user {
+        display: block; } }
+  @media (max-width: 990px) {
+    .bravo_wrap .bravo_user_profile > .container-fluid > .row-eq-height > .col-md-9 {
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+      max-width: 100%; } }
+  .bravo_wrap .bravo_user_profile > .container-fluid > .row-eq-height > .col-md-3 {
+    background: #1a2b47;
+    color: #fff;
+    min-height: 700px; }
+    .bravo_wrap .bravo_user_profile > .container-fluid > .row-eq-height > .col-md-3:after {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 100%;
+      background-color: #1A2B47;
+      top: 0;
+      min-height: 100%;
+      display: block;
+      left: -200%; }
+    @media (max-width: 990px) {
+      .bravo_wrap .bravo_user_profile > .container-fluid > .row-eq-height > .col-md-3 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        z-index: 99;
+        max-width: 250px;
+        transform: translate(-100%, 0);
+        transition: all 0.3s; }
+        .bravo_wrap .bravo_user_profile > .container-fluid > .row-eq-height > .col-md-3.active {
+          transform: translate(0); } }
+  .bravo_wrap .bravo_user_profile .user-profile-avatar {
+    border-bottom: 1px solid #243553;
+    padding-top: 25px;
+    margin-bottom: 20px;
+    background: #1A2B47 !important;
+    padding-bottom: 25px; }
+    @media (max-width: 990px) {
+      .bravo_wrap .bravo_user_profile .user-profile-avatar {
+        padding-top: 35px; } }
+    .bravo_wrap .bravo_user_profile .user-profile-avatar:before, .bravo_wrap .bravo_user_profile .user-profile-avatar:after {
+      content: "";
+      display: table;
+      clear: both; }
+    .bravo_wrap .bravo_user_profile .user-profile-avatar .avatar-new {
+      width: 50px;
+      float: left;
+      margin-right: 15px; }
+      .bravo_wrap .bravo_user_profile .user-profile-avatar .avatar-new img {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px; }
+      .bravo_wrap .bravo_user_profile .user-profile-avatar .avatar-new .avatar-text {
+        background: #656c77;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        display: block;
+        text-align: center;
+        padding-top: 4px;
+        position: relative;
+        font-size: 25px;
+        top: 0; }
+    .bravo_wrap .bravo_user_profile .user-profile-avatar .info-new {
+      padding-top: 7px;
+      float: left; }
+      .bravo_wrap .bravo_user_profile .user-profile-avatar .info-new h5 {
+        color: #fff;
+        margin-bottom: 0;
+        font-size: 16px; }
+      .bravo_wrap .bravo_user_profile .user-profile-avatar .info-new p {
+        margin-bottom: 5px;
+        line-height: 15px;
+        font-size: 10px; }
+  .bravo_wrap .bravo_user_profile .sidebar-user .bravo-close-menu-user {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 34px;
+    line-height: 30px; }
+    @media (max-width: 990px) {
+      .bravo_wrap .bravo_user_profile .sidebar-user .bravo-close-menu-user {
+        display: block; } }
+  .bravo_wrap .bravo_user_profile .sidebar-user .logo {
+    border-bottom: 1px solid #243553;
+    padding: 25px 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    @media (max-width: 990px) {
+      .bravo_wrap .bravo_user_profile .sidebar-user .logo {
+        display: none; } }
+    .bravo_wrap .bravo_user_profile .sidebar-user .logo .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+    .bravo_wrap .bravo_user_profile .sidebar-user .logo .avatar-text {
+      background: #656c77;
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      text-align: center;
+      position: relative;
+      font-size: 34px;
+      top: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+  .bravo_wrap .bravo_user_profile .sidebar-menu {
+    border-bottom: solid 1px #243553;
+    padding-bottom: 20px;
+    margin-bottom: 20px; }
+    .bravo_wrap .bravo_user_profile .sidebar-menu ul {
+      list-style: none;
+      margin: 0;
+      padding: 0; }
+      .bravo_wrap .bravo_user_profile .sidebar-menu ul li {
+        border: 0;
+        display: block;
+        margin: 0;
+        padding: 0;
+        position: relative; }
+        .bravo_wrap .bravo_user_profile .sidebar-menu ul li.active > a, .bravo_wrap .bravo_user_profile .sidebar-menu ul li:hover > a {
+          color: #5191FA; }
+          .bravo_wrap .bravo_user_profile .sidebar-menu ul li.active > a i, .bravo_wrap .bravo_user_profile .sidebar-menu ul li:hover > a i {
+            color: #5191FA; }
+        .bravo_wrap .bravo_user_profile .sidebar-menu ul li a {
+          border: 0;
+          display: block;
+          font-size: 14px;
+          font-weight: 300;
+          margin: 0;
+          position: relative;
+          text-decoration: none;
+          padding-top: 12px;
+          padding-bottom: 12px;
+          color: #fff;
+          transition: all 0.3s; }
+          .bravo_wrap .bravo_user_profile .sidebar-menu ul li a i {
+            font-size: 16px;
+            margin-right: 5px;
+            text-shadow: none;
+            color: #fff; }
+        .bravo_wrap .bravo_user_profile .sidebar-menu ul li .caret {
+          position: absolute;
+          right: 0;
+          top: 15px;
+          width: 30px;
+          height: 30px;
+          text-align: center; }
+          .bravo_wrap .bravo_user_profile .sidebar-menu ul li .caret:after {
+            font-family: "FontAwesome";
+            font-weight: 900;
+            content: "\f104";
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            background: 0 0;
+            color: #FFF;
+            font-size: 14px;
+            cursor: pointer; }
+        .bravo_wrap .bravo_user_profile .sidebar-menu ul li .children {
+          display: none;
+          transition: all 0.3s; }
+        .bravo_wrap .bravo_user_profile .sidebar-menu ul li.active_child .children {
+          display: block; }
+        .bravo_wrap .bravo_user_profile .sidebar-menu ul li.active_child .caret:after {
+          content: "\f107"; }
+    .bravo_wrap .bravo_user_profile .sidebar-menu .children {
+      margin-left: 25px; }
+  .bravo_wrap .bravo_user_profile .logout a {
+    border: 0;
+    display: block;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 0;
+    position: relative;
+    text-decoration: none;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    color: #fff; }
+    .bravo_wrap .bravo_user_profile .logout a i {
+      font-size: 16px;
+      margin-right: 5px;
+      text-shadow: none;
+      color: #fff; }
+  .bravo_wrap .bravo_user_profile .user-form-settings {
+    height: 100%;
+    padding: 15px 10px; }
+    @media (max-width: 1024px) {
+      .bravo_wrap .bravo_user_profile .user-form-settings {
+        padding: 15px 0; } }
+    .bravo_wrap .bravo_user_profile .user-form-settings .breadcrumb-page-bar {
+      background: #1a2b47;
+      display: table;
+      position: relative;
+      width: 100%;
+      color: #fff; }
+      .bravo_wrap .bravo_user_profile .user-form-settings .breadcrumb-page-bar .page-breadcrumb {
+        display: inline-block;
+        float: left;
+        list-style: none;
+        margin: 0;
+        padding: 8px; }
+        .bravo_wrap .bravo_user_profile .user-form-settings .breadcrumb-page-bar .page-breadcrumb > li {
+          display: inline-block; }
+          .bravo_wrap .bravo_user_profile .user-form-settings .breadcrumb-page-bar .page-breadcrumb > li a {
+            color: #fff; }
+    .bravo_wrap .bravo_user_profile .user-form-settings .title-bar {
+      display: block;
+      padding: 20px 0;
+      margin: 0 0 15px;
+      border-bottom: 1px solid #ccc;
+      position: relative; }
+      @media (max-width: 990px) {
+        .bravo_wrap .bravo_user_profile .user-form-settings .title-bar {
+          padding: 15px 0;
+          font-size: 24px; } }
+      @media (max-width: 766px) {
+        .bravo_wrap .bravo_user_profile .user-form-settings .title-bar {
+          font-size: 18px; } }
+      .bravo_wrap .bravo_user_profile .user-form-settings .title-bar .btn-change-password {
+        font-size: 14px;
+        padding: 7px 12px;
+        background: #1a2b47;
+        color: #fff;
+        font-weight: normal;
+        position: relative;
+        top: 0;
+        text-decoration: none;
+        transition: all 0.3s;
+        float: right; }
+        .bravo_wrap .bravo_user_profile .user-form-settings .title-bar .btn-change-password:hover {
+          border-radius: 5px; }
+        @media (max-width: 766px) {
+          .bravo_wrap .bravo_user_profile .user-form-settings .title-bar .btn-change-password {
+            top: -5px; } }
+    .bravo_wrap .bravo_user_profile .user-form-settings .form-title {
+      font-size: 17px;
+      margin-bottom: 10px; }
+      @media (max-width: 766px) {
+        .bravo_wrap .bravo_user_profile .user-form-settings .form-title {
+          font-size: 16px; } }
+    .bravo_wrap .bravo_user_profile .user-form-settings .alert ul {
+      margin-left: 20px; }
+    .bravo_wrap .bravo_user_profile .user-form-settings .upload-btn-wrapper .btn-file {
+      position: relative;
+      overflow: hidden; }
+    .bravo_wrap .bravo_user_profile .user-form-settings .upload-btn-wrapper .btn-file input[type=file] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      min-width: 100%;
+      min-height: 100%;
+      font-size: 100px;
+      text-align: right;
+      filter: alpha(opacity=0);
+      opacity: 0;
+      outline: none;
+      background: white;
+      cursor: inherit;
+      display: block; }
+    .bravo_wrap .bravo_user_profile .user-form-settings .upload-btn-wrapper .image-demo {
+      max-width: 200px;
+      margin-top: 15px; }
+    .bravo_wrap .bravo_user_profile .user-form-settings .upload-btn-wrapper .btn-file {
+      border: solid 1px #ccc;
+      font-size: 13px;
+      padding: 7px 20px;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      margin-right: -1px; }
+    .bravo_wrap .bravo_user_profile .user-form-settings .upload-btn-wrapper .text-view {
+      background-color: #e9ecef;
+      cursor: text;
+      padding: 10px; }
+  .bravo_wrap .bravo_user_profile .no-border-bottom {
+    border-bottom: none !important;
+    margin-bottom: 0 !important; }
+  .bravo_wrap .bravo_user_profile .form-add-service .nav-tabs {
+    background: #1a2b47;
+    padding: 15px 10px; }
+    .bravo_wrap .bravo_user_profile .form-add-service .nav-tabs a {
+      margin: 0 15px;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+      position: relative; }
+      @media (max-width: 766px) {
+        .bravo_wrap .bravo_user_profile .form-add-service .nav-tabs a {
+          border-bottom: solid 1px transparent;
+          width: 100%;
+          margin-bottom: 10px; }
+          .bravo_wrap .bravo_user_profile .form-add-service .nav-tabs a:last-child {
+            margin-bottom: 0; } }
+      .bravo_wrap .bravo_user_profile .form-add-service .nav-tabs a.active:before {
+        content: "";
+        position: absolute;
+        bottom: -25px;
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 20px solid #fff;
+        left: 0;
+        right: 0;
+        margin: auto; }
+        @media (max-width: 766px) {
+          .bravo_wrap .bravo_user_profile .form-add-service .nav-tabs a.active:before {
+            display: none; } }
+      @media (max-width: 766px) {
+        .bravo_wrap .bravo_user_profile .form-add-service .nav-tabs a.active {
+          border-bottom: solid 1px #fff; } }
+  .bravo_wrap .bravo_user_profile .form-add-service .tab-content {
+    padding: 30px;
+    background: #fff;
+    margin-bottom: 30px; }
+    @media (max-width: 990px) {
+      .bravo_wrap .bravo_user_profile .form-add-service .tab-content {
+        padding: 15px; } }
+    .bravo_wrap .bravo_user_profile .form-add-service .tab-content .panel .panel-title {
+      text-transform: uppercase;
+      font-size: 16px;
+      margin-bottom: 15px; }
+    .bravo_wrap .bravo_user_profile .form-add-service .tab-content .panel .panel-body .panel-body-title {
+      font-size: 14px; }
+    .bravo_wrap .bravo_user_profile .form-add-service .tab-content input.form-control, .bravo_wrap .bravo_user_profile .form-add-service .tab-content select.form-control {
+      padding: 0 15px; }
+      @media (max-width: 766px) {
+        .bravo_wrap .bravo_user_profile .form-add-service .tab-content input.form-control, .bravo_wrap .bravo_user_profile .form-add-service .tab-content select.form-control {
+          padding: 0 10px;
+          min-width: 60px; } }
+    @media (max-width: 766px) {
+      .bravo_wrap .bravo_user_profile .form-add-service .tab-content .table-responsive input.form-control, .bravo_wrap .bravo_user_profile .form-add-service .tab-content .table-responsive select.form-control {
+        padding: 0; } }
+  .bravo_wrap .bravo_user_profile .form-add-service .form-group-item .btn-remove-item {
+    padding: 5px 9px;
+    border-radius: 5px; }
+  .bravo_wrap .bravo_user_profile .form-add-service .form-group-item .g-items {
+    margin-bottom: 20px; }
+    .bravo_wrap .bravo_user_profile .form-add-service .form-group-item .g-items .item {
+      border: solid 1px #c4cdd5;
+      border-top: 0px;
+      padding: 0px 15px; }
+      .bravo_wrap .bravo_user_profile .form-add-service .form-group-item .g-items .item .form-control {
+        margin-bottom: 10px; }
+        .bravo_wrap .bravo_user_profile .form-add-service .form-group-item .g-items .item .form-control:last-child {
+          margin-bottom: 0px; }
+      .bravo_wrap .bravo_user_profile .form-add-service .form-group-item .g-items .item > .row > div {
+        padding: 10px;
+        border-right: 1px solid #c4cdd5; }
+        .bravo_wrap .bravo_user_profile .form-add-service .form-group-item .g-items .item > .row > div:last-child {
+          border-right: 0px; }
+  .bravo_wrap .bravo_user_profile .form-add-service .form-group-item .g-more {
+    display: none; }
+  .bravo_wrap .bravo_user_profile .form-add-service .form-group-item label {
+    display: block;
+    min-height: 20px; }
+  .bravo_wrap .bravo_user_profile .form-add-service .form-group-item .g-items-header {
+    font-weight: bold;
+    border: solid 1px #c4cdd5;
+    padding: 10px;
+    text-align: center; }
+    @media (max-width: 766px) {
+      .bravo_wrap .bravo_user_profile .form-add-service .form-group-item .g-items-header {
+        text-align: left; } }
+  .bravo_wrap .bravo_user_profile .bravo-list-item .topbar-search .text {
+    font-size: 24px;
+    color: #1A2B48;
+    font-weight: normal;
+    margin: 0; }
+  .bravo_wrap .bravo_user_profile .bravo-list-item .list-item {
+    margin-top: 15px; }
+    .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .col-md-12:last-child .item-tour-list {
+      margin-bottom: 0; }
+    .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list {
+      border: 1px solid #dfdfdf;
+      border-radius: 3px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 30px; }
+      .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .col-md-3 {
+        max-height: 180px;
+        overflow: hidden; }
+      .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list a {
+        text-decoration: none;
+        transition: all 0.3s; }
+      .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .sale_info {
+        position: absolute;
+        width: 80px;
+        height: 48px;
+        transform: rotate(45deg);
+        right: -15px;
+        top: -13px;
+        line-height: 65px;
+        text-align: center;
+        color: #fff;
+        font-size: 15px;
+        z-index: 8;
+        background-color: #cc0033; }
+      .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .featured {
+        position: absolute;
+        top: 5px;
+        left: 20px;
+        font-size: 13px;
+        color: #FFFFFF;
+        font-weight: 500;
+        z-index: 8;
+        background: #19A1E5;
+        border-radius: 0 3px 3px 0;
+        padding: 6px 10px; }
+      .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .thumb-image {
+        overflow: hidden;
+        height: 170px;
+        background: #ccc; }
+        @media (max-width: 1280px) {
+          .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .thumb-image {
+            overflow: hidden;
+            min-height: 130px;
+            display: flex;
+            align-items: center;
+            padding: 10px; } }
+        .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .thumb-image a img {
+          transition: all 0.3s;
+          max-width: 100%; }
+        .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .thumb-image a:hover img {
+          transform: scale(1.1); }
+      .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .location {
+        font-size: 13px;
+        color: #5E6D77;
+        padding-bottom: 10px; }
+        @media (max-width: 766px) {
+          .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .location {
+            padding: 5px 15px; } }
+        .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .location i {
+          position: relative;
+          font-size: 16px; }
+      .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .category {
+        font-size: 13px;
+        color: #5E6D77; }
+        @media (max-width: 766px) {
+          .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .category {
+            padding: 5px 15px; } }
+        .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .category .fa {
+          color: #687882;
+          opacity: 0.6; }
+      .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .item-title {
+        padding: 15px 0 10px 0;
+        font-size: 16px;
+        line-height: 22px; }
+        @media (max-width: 766px) {
+          .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .item-title {
+            padding: 15px 15px 10px 15px; } }
+        .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .item-title a {
+          color: #1A2B50; }
+      .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .g-price {
+        padding-top: 15px; }
+        @media (max-width: 766px) {
+          .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .g-price {
+            padding: 0 15px 5px; } }
+        .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .g-price .prefix {
+          color: #5E6D77;
+          display: inline-block; }
+          .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .g-price .prefix i {
+            font-size: 16px;
+            color: #ffc107; }
+        .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .g-price .price {
+          position: relative;
+          display: inline-block;
+          margin-top: 15px; }
+          @media (max-width: 766px) {
+            .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .g-price .price {
+              margin-top: 0; } }
+          .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .g-price .price .text-price {
+            font-size: 18px;
+            color: #1A2B48;
+            font-weight: 500; }
+          .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .g-price .price .onsale {
+            position: absolute;
+            right: 0;
+            top: -15px;
+            text-decoration: line-through;
+            font-size: 14px;
+            color: #cc0033 !important;
+            font-weight: 400; }
+      .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .control-action {
+        margin-top: 5px; }
+        @media (max-width: 766px) {
+          .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .control-action {
+            padding: 0 15px 15px; } }
+        .bravo_wrap .bravo_user_profile .bravo-list-item .list-item .item-tour-list .control-action .btn {
+          padding: 5px 10px;
+          font-size: 12px;
+          color: #fff;
+          border-radius: 5px;
+          width: 50px;
+          margin: 0 2px; }
+  .bravo_wrap .bravo_user_profile .booking-history-manager {
+    padding: 32px 31px;
+    background: #FFF; }
+    @media (max-width: 1024px) {
+      .bravo_wrap .bravo_user_profile .booking-history-manager {
+        padding: 15px; } }
+    .bravo_wrap .bravo_user_profile .booking-history-manager .nav-tabs .nav-link {
+      padding: 8px 5px; }
+    .bravo_wrap .bravo_user_profile .booking-history-manager .tabbable .booking-history-type {
+      text-align: center; }
+      .bravo_wrap .bravo_user_profile .booking-history-manager .tabbable .booking-history-type i {
+        display: block;
+        font-size: 25px;
+        color: #626262;
+        margin-bottom: 2px; }
+      .bravo_wrap .bravo_user_profile .booking-history-manager .tabbable .booking-history-type small {
+        line-height: 1em;
+        display: block; }
+    .bravo_wrap .bravo_user_profile .booking-history-manager .tabbable .ht-nav-tabs {
+      border: none;
+      margin-bottom: 37px; }
+      @media (max-width: 990px) {
+        .bravo_wrap .bravo_user_profile .booking-history-manager .tabbable .ht-nav-tabs {
+          margin-bottom: 15px; } }
+      .bravo_wrap .bravo_user_profile .booking-history-manager .tabbable .ht-nav-tabs li {
+        margin-right: 30px; }
+        @media (max-width: 1024px) {
+          .bravo_wrap .bravo_user_profile .booking-history-manager .tabbable .ht-nav-tabs li {
+            margin-right: 10px; } }
+        @media (max-width: 360px) {
+          .bravo_wrap .bravo_user_profile .booking-history-manager .tabbable .ht-nav-tabs li {
+            width: 100%; } }
+        .bravo_wrap .bravo_user_profile .booking-history-manager .tabbable .ht-nav-tabs li a {
+          text-transform: uppercase;
+          border: none;
+          font-size: 14px;
+          color: #1A2B48;
+          font-weight: 600;
+          text-decoration: none;
+          padding: 10px 5px;
+          width: 100%;
+          display: block; }
+        .bravo_wrap .bravo_user_profile .booking-history-manager .tabbable .ht-nav-tabs li.active a {
+          color: #5191FA;
+          border-bottom: 3px solid #5191FA; }
+    .bravo_wrap .bravo_user_profile .booking-history-manager .btn-info-booking {
+      color: #FFF;
+      width: 80px;
+      padding: 2px 0;
+      font-size: 13px; }
+      .bravo_wrap .bravo_user_profile .booking-history-manager .btn-info-booking .fa {
+        margin-right: 5px; }
+    .bravo_wrap .bravo_user_profile .booking-history-manager .modal .modal-footer {
+      border: none;
+      padding: 20px 0 0 0; }
+      @media (max-width: 766px) {
+        .bravo_wrap .bravo_user_profile .booking-history-manager .modal .modal-footer {
+          padding: 10px 0; } }
+    .bravo_wrap .bravo_user_profile .booking-history-manager .booking-review .booking-review-title {
+      display: none; }
+    .bravo_wrap .bravo_user_profile .booking-history-manager .booking-review .booking-review-content .review-section {
+      padding: 0;
+      border-bottom: 1px solid #EAEEF3; }
+      .bravo_wrap .bravo_user_profile .booking-history-manager .booking-review .booking-review-content .review-section:last-child {
+        border-bottom: 0px; }
+      .bravo_wrap .bravo_user_profile .booking-history-manager .booking-review .booking-review-content .review-section .service-info {
+        display: none !important; }
+    .bravo_wrap .bravo_user_profile .booking-history-manager .booking-review .booking-review-content .service-info .service-name a {
+      color: #1A2B48;
+      font-size: 16px;
+      line-height: 25px;
+      font-weight: 500; }
+      .bravo_wrap .bravo_user_profile .booking-history-manager .booking-review .booking-review-content .service-info .service-name a:hover {
+        text-decoration: none; }
+    .bravo_wrap .bravo_user_profile .booking-history-manager .booking-review .booking-review-content .service-info .address {
+      color: #5E6D77;
+      margin-bottom: 0px; }
+    .bravo_wrap .bravo_user_profile .booking-history-manager .booking-review .booking-review-content .review-list {
+      margin: 0px;
+      padding: 0px;
+      list-style: none; }
+      .bravo_wrap .bravo_user_profile .booking-history-manager .booking-review .booking-review-content .review-list li {
+        margin-bottom: 13px;
+        display: flex;
+        justify-content: space-between; }
+        .bravo_wrap .bravo_user_profile .booking-history-manager .booking-review .booking-review-content .review-list li .val {
+          color: #5E6D77; }
+        .bravo_wrap .bravo_user_profile .booking-history-manager .booking-review .booking-review-content .review-list li:last-child {
+          margin-bottom: 0px; }
+        .bravo_wrap .bravo_user_profile .booking-history-manager .booking-review .booking-review-content .review-list li.no-flex {
+          display: block; }
+        .bravo_wrap .bravo_user_profile .booking-history-manager .booking-review .booking-review-content .review-list li ul {
+          padding-left: 15px; }
+        .bravo_wrap .bravo_user_profile .booking-history-manager .booking-review .booking-review-content .review-list li.final-total {
+          border-top: 1px solid #EAEEF3;
+          padding-top: 10px;
+          font-size: 19px; }
+          .bravo_wrap .bravo_user_profile .booking-history-manager .booking-review .booking-review-content .review-list li.final-total .label {
+            font-weight: 500; }
+          .bravo_wrap .bravo_user_profile .booking-history-manager .booking-review .booking-review-content .review-list li.final-total .val {
+            font-weight: 500;
+            color: #3490dc; }
+    .bravo_wrap .bravo_user_profile .booking-history-manager .booking-review .booking-review-content .review-section ul {
+      margin: 0px;
+      padding: 0px;
+      list-style: none; }
+      .bravo_wrap .bravo_user_profile .booking-history-manager .booking-review .booking-review-content .review-section ul li {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #DAE1E7; }
+        .bravo_wrap .bravo_user_profile .booking-history-manager .booking-review .booking-review-content .review-section ul li .val {
+          color: #5E6D77; }
+        .bravo_wrap .bravo_user_profile .booking-history-manager .booking-review .booking-review-content .review-section ul li:last-child {
+          margin-bottom: 0px; }
+        .bravo_wrap .bravo_user_profile .booking-history-manager .booking-review .booking-review-content .review-section ul li.no-flex {
+          display: block; }
+        .bravo_wrap .bravo_user_profile .booking-history-manager .booking-review .booking-review-content .review-section ul li ul {
+          padding-left: 15px; }
+    .bravo_wrap .bravo_user_profile .booking-history-manager .more-booking-review .booking-review {
+      padding: 10px 0; }
+      .bravo_wrap .bravo_user_profile .booking-history-manager .more-booking-review .booking-review .booking-review-content .review-section {
+        border: none; }
+        .bravo_wrap .bravo_user_profile .booking-history-manager .more-booking-review .booking-review .booking-review-content .review-section:first-child {
+          display: none; }
+        .bravo_wrap .bravo_user_profile .booking-history-manager .more-booking-review .booking-review .booking-review-content .review-section .final-total {
+          border: none; }
+      .bravo_wrap .bravo_user_profile .booking-history-manager .more-booking-review .booking-review .booking-review-content .no-flex ul li:last-child {
+        border: none;
+        padding-bottom: 0; }
+      .bravo_wrap .bravo_user_profile .booking-history-manager .more-booking-review .booking-review .total-review {
+        padding-top: 10px; }
+  .bravo_wrap .bravo_user_profile .bravo-pagination {
+    margin-bottom: 20px; }
+    .bravo_wrap .bravo_user_profile .bravo-pagination:before, .bravo_wrap .bravo_user_profile .bravo-pagination:after {
+      content: "";
+      display: table;
+      clear: both; }
+    .bravo_wrap .bravo_user_profile .bravo-pagination .count-string {
+      float: left; }
+    .bravo_wrap .bravo_user_profile .bravo-pagination ul.pagination {
+      float: right; }
+      .bravo_wrap .bravo_user_profile .bravo-pagination ul.pagination .page-item:last-child {
+        margin-right: 0; }
+  .bravo_wrap .bravo_user_profile .bravo-user-dashboard .dashboard-price-info .dashboard-item {
+    padding: 21px 32px;
+    background-color: #FFFFFF;
+    min-height: 154px;
+    position: relative;
+    height: 100%; }
+    @media (max-width: 990px) {
+      .bravo_wrap .bravo_user_profile .bravo-user-dashboard .dashboard-price-info .dashboard-item {
+        padding: 15px 0;
+        min-height: auto; } }
+    .bravo_wrap .bravo_user_profile .bravo-user-dashboard .dashboard-price-info .dashboard-item .wrap-box {
+      text-align: center; }
+      .bravo_wrap .bravo_user_profile .bravo-user-dashboard .dashboard-price-info .dashboard-item .wrap-box .title {
+        color: #1A2B48;
+        letter-spacing: 0;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 600;
+        text-align: center; }
+      .bravo_wrap .bravo_user_profile .bravo-user-dashboard .dashboard-price-info .dashboard-item .wrap-box .number {
+        color: #1A2B48;
+        letter-spacing: 0;
+        font-size: 36px;
+        text-align: center; }
+        @media (max-width: 990px) {
+          .bravo_wrap .bravo_user_profile .bravo-user-dashboard .dashboard-price-info .dashboard-item .wrap-box .number {
+            font-size: 28px; } }
+  .bravo_wrap .bravo_user_profile .bravo-user-chart {
+    padding: 21px 32px;
+    background-color: #FFFFFF;
+    min-height: 154px;
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 15px; }
+    @media (max-width: 990px) {
+      .bravo_wrap .bravo_user_profile .bravo-user-chart {
+        padding: 15px;
+        margin-top: 15px; } }
+    .bravo_wrap .bravo_user_profile .bravo-user-chart .chart-title {
+      font-weight: 600;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-bottom: 20px;
+      position: relative;
+      line-height: 35px; }
+      .bravo_wrap .bravo_user_profile .bravo-user-chart .chart-title .action-control {
+        position: absolute;
+        right: 0px;
+        top: 0;
+        text-decoration: none;
+        transition: all 0.3s; }
+        @media (max-width: 766px) {
+          .bravo_wrap .bravo_user_profile .bravo-user-chart .chart-title .action-control {
+            position: relative; } }
+        .bravo_wrap .bravo_user_profile .bravo-user-chart .chart-title .action-control .form-control {
+          border-radius: 5px; }
+        .bravo_wrap .bravo_user_profile .bravo-user-chart .chart-title .action-control #reportrange {
+          background: #fff;
+          cursor: pointer;
+          padding: 0px 15px;
+          border: 1px solid #ccc;
+          font-weight: normal; }
+          .bravo_wrap .bravo_user_profile .bravo-user-chart .chart-title .action-control #reportrange .fa {
+            margin-left: 5px; }
+    .bravo_wrap .bravo_user_profile .bravo-user-chart .bravo-user-render-chart {
+      height: 200px; }
+  .bravo_wrap .bravo_user_profile .form-group {
+    position: relative; }
+    .bravo_wrap .bravo_user_profile .form-group .input-icon {
+      position: absolute;
+      bottom: 2px;
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      display: block;
+      left: 1px;
+      text-align: center;
+      color: #b3b3b3;
+      -webkit-transition: .3s;
+      -moz-transition: .3s;
+      -o-transition: .3s;
+      -ms-transition: .3s;
+      transition: .3s;
+      z-index: 1; }
+    .bravo_wrap .bravo_user_profile .form-group .d-none.has-ckeditor {
+      display: block !important;
+      width: 100%;
+      border: solid 1px #DAE1E7; }
+  .bravo_wrap .bravo_user_profile input.form-control {
+    height: 35px;
+    padding: 0 15px 0 30px;
+    border-radius: 0; }
+  .bravo_wrap .bravo_user_profile textarea.form-control {
+    padding: 5px;
+    border-radius: 0; }
+  .bravo_wrap .bravo_user_profile .btn {
+    border-radius: 0;
+    transition: all 0.3s; }
+    .bravo_wrap .bravo_user_profile .btn:hover {
+      border-radius: 5px; }
+  .bravo_wrap .bravo_user_profile .btn-primary {
+    background: #1a2b47;
+    color: #fff; }
+  .bravo_wrap .bravo_user_profile .dungdt-upload-box {
+    max-width: 350px; }
+    .bravo_wrap .bravo_user_profile .dungdt-upload-box .upload-box {
+      background: #fafbfc;
+      text-align: center;
+      border: 1px solid rgba(195, 207, 216, 0.3);
+      padding: 30px 20px;
+      transition: all 0.2s; }
+      .bravo_wrap .bravo_user_profile .dungdt-upload-box .upload-box svg {
+        width: 120px;
+        height: 100px;
+        margin-bottom: 15px; }
+      .bravo_wrap .bravo_user_profile .dungdt-upload-box .upload-box:hover {
+        border: 1px solid #c3cfd8; }
+    .bravo_wrap .bravo_user_profile .dungdt-upload-box .attach-demo {
+      background: #fafbfc;
+      text-align: center;
+      border: 1px solid rgba(195, 207, 216, 0.3);
+      transition: all 0.2s;
+      cursor: pointer;
+      overflow: hidden;
+      position: relative; }
+      .bravo_wrap .bravo_user_profile .dungdt-upload-box .attach-demo img {
+        max-width: 100%; }
+    .bravo_wrap .bravo_user_profile .dungdt-upload-box .upload-actions, .bravo_wrap .bravo_user_profile .dungdt-upload-box .attach-demo {
+      display: none; }
+    .bravo_wrap .bravo_user_profile .dungdt-upload-box.active .upload-actions {
+      display: flex; }
+    .bravo_wrap .bravo_user_profile .dungdt-upload-box.active .upload-box {
+      display: none; }
+    .bravo_wrap .bravo_user_profile .dungdt-upload-box.active .attach-demo {
+      display: block;
+      padding: 20px; }
+  .bravo_wrap .bravo_user_profile .dungdt-upload-multiple .attach-demo {
+    margin: 0px -7px;
+    flex-wrap: wrap; }
+    .bravo_wrap .bravo_user_profile .dungdt-upload-multiple .attach-demo .image-item {
+      flex: 0 0 20%;
+      margin-bottom: 10px;
+      padding: 0px 7px;
+      border-radius: 3px;
+      height: 160px;
+      overflow: hidden;
+      position: relative; }
+      .bravo_wrap .bravo_user_profile .dungdt-upload-multiple .attach-demo .image-item .delete {
+        display: none;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer; }
+      .bravo_wrap .bravo_user_profile .dungdt-upload-multiple .attach-demo .image-item:hover .delete {
+        display: block; }
+      .bravo_wrap .bravo_user_profile .dungdt-upload-multiple .attach-demo .image-item .inner {
+        border: 1px solid rgba(195, 207, 216, 0.3);
+        background: #fafbfc; }
+  .bravo_wrap .bravo_user_profile .control-map-group {
+    position: relative; }
+    .bravo_wrap .bravo_user_profile .control-map-group #map_content {
+      margin-right: 270px;
+      height: 300px; }
+      @media (max-width: 766px) {
+        .bravo_wrap .bravo_user_profile .control-map-group #map_content {
+          margin-right: 0; } }
+    .bravo_wrap .bravo_user_profile .control-map-group .g-control {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 250px;
+      border: solid 1px #cccc;
+      padding: 15px 15px 5px; }
+      @media (max-width: 766px) {
+        .bravo_wrap .bravo_user_profile .control-map-group .g-control {
+          position: relative;
+          width: 100%; } }
+      .bravo_wrap .bravo_user_profile .control-map-group .g-control label {
+        min-width: 75px;
+        display: inline-block; }
+  .bravo_wrap .bravo_user_profile .badge {
+    font-size: 12px;
+    text-transform: capitalize;
+    min-width: 50px;
+    display: inline-block; }
+    .bravo_wrap .bravo_user_profile .badge.badge-publish {
+      color: #fff;
+      background-color: #28a745; }
+    .bravo_wrap .bravo_user_profile .badge.badge-approved {
+      color: #fff;
+      background-color: #28a745; }
+    .bravo_wrap .bravo_user_profile .badge.badge-pending {
+      color: #212529;
+      background-color: #ffc107; }
+    .bravo_wrap .bravo_user_profile .badge.badge-spam {
+      color: #fff;
+      background-color: #dc3545; }
+    .bravo_wrap .bravo_user_profile .badge.badge-trash {
+      color: #fff;
+      background-color: #6c757d; }
+    .bravo_wrap .bravo_user_profile .badge.badge-draft {
+      color: #fff;
+      background-color: #6c757d; }
+
+@media (max-width: 766px) {
+  #cdn-browser-modal .modal-content {
+    padding: 5px 15px 15px !important; } }
+@media (max-width: 766px) {
+  #cdn-browser-modal .cdn-browser .files-nav {
+    padding: 10px 0; }
+    #cdn-browser-modal .cdn-browser .files-nav .col-left.d-flex.align-items-center {
+      display: none !important; } }
+
+@media (max-width: 766px) {
+  .modal .modal-title {
+    font-size: 18px !important; } }
+@media (max-width: 766px) {
+  .modal .modal-content {
+    padding: 15px; } }
+
+/*# sourceMappingURL=user.css.map */

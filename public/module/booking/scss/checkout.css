@@ -1,0 +1,207 @@
+.bravo-booking-page .form-title {
+    margin: 0;
+    color: #1A2B48;
+    font-size: 24px;
+    font-weight: 500;
+    border-bottom: 2px solid #DAE1E7;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.bravo-booking-page .form-group {
+    margin-bottom: 30px;
+}
+
+.bravo-booking-page .form-section {
+    margin-bottom: 30px;
+}
+
+.bravo-booking-page .form-section .form-section-title {
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+.bravo-booking-page .form-actions .btn {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.booking-review .booking-review-title {
+    color: #1A2B48;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.booking-review .booking-review-content {
+    margin-bottom: 30px;
+    border: 1px solid #D7DCE3;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+.booking-review .booking-review-content .review-section {
+    padding: 30px;
+    border-bottom: 1px solid #EAEEF3;
+}
+
+.booking-review .booking-review-content .review-section:last-child {
+    border-bottom: 0px;
+}
+
+.booking-review .booking-review-content .service-info .service-name a {
+    color: #1A2B48;
+    font-size: 16px;
+    line-height: 25px;
+    font-weight: 500;
+}
+
+.booking-review .booking-review-content .service-info .service-name a:hover {
+    text-decoration: none;
+}
+
+.booking-review .booking-review-content .service-info .address {
+    color: #5E6D77;
+    margin-bottom: 0px;
+}
+
+.booking-review .booking-review-content .review-list {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+.booking-review .booking-review-content .review-list li {
+    margin-bottom: 13px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.booking-review .booking-review-content .review-list li .val {
+    color: #5E6D77;
+}
+
+.booking-review .booking-review-content .review-list li:last-child {
+    margin-bottom: 0px;
+}
+
+.booking-review .booking-review-content .review-list li.no-flex {
+    display: block;
+}
+
+.booking-review .booking-review-content .review-list li ul {
+    padding-left: 15px;
+}
+
+.booking-review .booking-review-content .review-list li.final-total {
+    border-top: 1px solid #EAEEF3;
+    padding-top: 10px;
+    font-size: 19px;
+}
+
+.booking-review .booking-review-content .review-list li.final-total .label {
+    font-weight: 500;
+}
+
+.booking-review .booking-review-content .review-list li.final-total .val {
+    font-weight: 500;
+    color: #3490dc;
+}
+
+.booking-review .booking-review-content .info-form > ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+.booking-review .booking-review-content .info-form > ul li {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #DAE1E7;
+}
+
+.booking-review .booking-review-content .info-form > ul li:last-child {
+    border-bottom: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+.booking-review .booking-review-content .info-form > ul li .val {
+    color: #5E6D77;
+}
+
+.booking-review .booking-review-content .info-form > ul li:last-child {
+    margin-bottom: 0px;
+}
+
+.booking-review .booking-review-content .info-form > ul li.no-flex {
+    display: block;
+}
+
+.booking-review .booking-review-content .info-form > ul li ul {
+    padding-left: 15px;
+}
+
+.gateways-table .card-header h4 {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.gateways-table .card-header h2 {
+    padding: 0px;
+    margin: 0px;
+}
+
+.gateways-table .card-header label {
+    margin: 0px;
+}
+
+.booking-success-notice {
+    margin-bottom: 100px;
+}
+
+.booking-success-notice .notice-success {
+    margin-left: 20px;
+}
+
+.booking-success-notice .notice-success .line1 {
+    margin-bottom: 0px;
+    font-size: 24px;
+    color: #00001E;
+    line-height: 35px;
+}
+
+.booking-success-notice .notice-success .line1 span {
+    color: #1A2B48;
+    font-weight: 600;
+}
+
+.booking-success-notice .notice-success .line2 {
+    font-size: 16px;
+    color: #5E6D77;
+    margin-bottom: 0px;
+}
+
+.booking-success-notice .booking-info-detail {
+    margin: 0px;
+    padding: 0px;
+    border-left: 3px solid #5191FA;
+    padding-left: 30px;
+}
+
+.booking-success-notice .booking-info-detail li {
+    list-style: none;
+    font-size: 16px;
+    color: #818181;
+    padding: 2px 0;
+}
+
+.booking-success-notice .booking-info-detail li span {
+    font-weight: 500;
+    color: #000000;
+}
+
+/*# sourceMappingURL=checkout.css.map */
