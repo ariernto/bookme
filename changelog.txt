@@ -1,0 +1,354 @@
+Version 190 - Dec 05th -2020
+ 
+	+ UPDATE:
+		- Add Slider for Banner All services
+		- Add Notification feature.
+		- Update new Live chat plugin
+		- Add option that allows adjusting Map layout to Left/Right
+		- Add option Enable/Disable Verify Email when register and booking
+		- Add nearby point of interest for Hotel/Space..
+		- Add the Media management
+		- Update the Bulk Action > Delete for Verification list
+		- Add option allows admin to disable Verification feature
+		- Add option that allows exporting User list in the Dashboard 
+		- Update the slug for User profile, vendor need to input the username for changing vendor url
+		- Update slider style for services block on homepage
+		- Update image option for all attributes
+		- Update the Booking Report for Vendor profile
+		- Add option to disable Wallet System
+		- Add option that allows vendor to add fees type for Services
+		- Add option allow to Disable Commission for each vendor
++ FIXED:
+		- Validate the duplicate phone while registration
+		- Payout issues on the Checkout page
+		- Fixed the Translation issues(verify config, text banner, missed words.. )
+		- Fixed HTML character code in the service name
+		- Updated the days converting in Duration for Tour and Event
+		- Fixed the "Verify issue" when logging in with social account" issue
+		- Fixed the redirect "View all" issue on the vendor profile page 
+		- Fixed the registration issue on Page Register
+		- Fixed Menu icons on mobile
+		- Fixed some Router missed
+		- Fixed issue the vendor role can view all Draft posts 
+		- Fixed the calculation in the Booking Form
+
+
+
+[HOTFIX]Version 182 - Oct 21th -2020
+	+ FIXED BUGS: After checkout, bug can't able to redirect to the Confirm page
+	+ GMap API is not saved for Space 
+	
+	
+[HOTFIX]Version 181 - Oct 20th -2020
+	+ FIXED BUGS:
+		- Fixed SQL issue affter installation
+		- Error booking without confirm email
+		- Can't able to modify language in the Admin account
+		- The text "Tour" for each Map Layout
+
+Version 180 - Oct 17th -2020
++ UPDATE: 
+	- Update core to Laravel 7.0
+	- Mobile API settings
+	- Wallet features
+	- Send email whenever having changed Booking Status
+    - Create a trash folder  for recovery of the deleted item
+	- Disabled the editing tools for images
+	- Update confirms link for Email verify
+	- Add some missing tags(h1, h2,h3..) that support for SEO
+	- Google API for searching/inputting data
+	- Pricing field is updated for inputting the decimal
+	- Booking fee field is updated for inputting the decimal
+	- Update select  layout search result for all module
+	- Update Sort feature for search result 
+	- "Booking  in advance" feature some days for Hotel/Space
+	- "Minimum booking days" feature for Hotel/Space
+	- "iCal" allows syncing the block/available day 
+	- Hide the "Description field" in creating Tour
+	- Add other languages for the search field 
+	- Add option allow to input the number item per page
+
+ + FIXED BUGS:
+ 	- Fixed the needy Pay amount on the Checkout Page
+	- Security issue, that related to xxs issue.
+	- Fix CSRF Problems for some page: profile,...
+	- Text Block in the Template cant show the HTML code
+	- Add iCal for Room on the Vendor Dashboard
+	- Fixed slugs issue when changing the service name
+	- Accepted cookies but the notify bar always open
+	- The Calendar on the detail page is called 2 times
+	- Verify the Avatar, refuse the file that is not image
+	- Event thumbnail is missing some CSS style
+	- Fixed some backend page can access without login
+	- Fixed the Event search field in the "Search all service" block
+	- Pagination issues in Page-admin 
+
+ 
+
+
+1.7.0 - May 29 - 2020
+[UPDATE]
+	- Add Event module(Print invoice - QR code, Booking form/Enquiry form, Interested number..)
+	- Add source code editor for Text Block
+	- Add the field search by name on the search form
+	- Add option allows changing the start date to Monday
+	- Auto verify phone number (send secret code to customer)
+	- Add field text to change the search tab-title on the homepage
+	- Add option allows calculating the Extra Service by the person and by a person per day for Hotel
+	- Add Buyer fee by percent(%)
+	- Add an option to calculate the price of deposit = deposit amount + buyer fee
+	- Add language option for payment method
+	- Add option allows guest can do a booking
+	- Add Enquiry form for the booking form
+	- Show OpenHour on the Tour detail
+	- Convert time Duration to number days, ex: 74h=3d2h
+	- Add option to set Term&Condition page for Register Vendor form 
+	- Update map search Fields for Tour
+	- Add a contact form to Block-template
+	- Update User Info in the Admin Dashboard corresponding to the User Profile in the front-end
+	- Update video field on Becoming vendor section, if not input the video link, shows the normal image
+	- Add option allows hiding Hotel Attribute
+	- Update select number instead of +/-
+	- Allow Admin + author can preview the Service while it's draft
+	- "Call to Action block" Add option allows changing the Background
+	- Banner for the homepage - Add option allows removing the search form
+	- Add button Become Vendor role on the Customer panel to upgrade automatically
+	- Add option allows searching by Original Text/Translated Text
+	- Update: prevent Admin/vendor can do book their service  
+	- Update image for user when logging in with fb
+	- Add field phone number for register form
+	- Add config: Email Register for Vendor
+
+
+[FIXED]
+	- Bug: Smart search: "Can't read property lenght.."
+	- Admin can't see the Verified data
+	- Bug: the date is disabled but still bookable via link: seine?start=2020-03-31&end=2020-03-31
+	- Change the for rent Car by day insteads of by night
+	- Remove the language code /en in the main language
+	- Fix Date format d/m/Y => bug Availability table of each service
+
+
+1.6.1 - March 23 -2020
+
+	[FIXBUG] The date is disabled but still do the booking 
+	[UPDATE] Add image for Term
+
+1.6.0 - March 17 - 2020
+[UPDATE]
+	- Form Register Vendor: add Phone number field
+	- Video in Rgister vendor page is turned off without pressing to "X" button
+	- Update iCal in front-end
+	- Update the Required text in Translation Tools
+	- Update the Featured item is on the Top of Search
+	- Update users are not allowed to leave a review after the vendor mark the booking status
+	- Parent locations are order alphabetically on search form.
+	- Update search booking report by ID
+	- Trash a review but the trask list is blank
+	- Add Smart search to Location in Vendor Dashboar
+	- Add Header script field in the Advance Settings
+	- Add Bulk Delete the User Role, Verify manage, Vendor Request
+	- Remove the Upload settings
+	- Add Vendor name to the Booking Detail
+	- Add Cookie Agrrement bar
+	- Add Verify email option to the Email Settings
+	- Add Extra service for Hotel-room, Car, Space
+	- Add icon for Term-attribute of Tour
+	- Add new currency:  GEL - Georgian Lari
+	- Add Deposit feture
+	- Add detai Price for Checkout page and Booking detail
+	- Add RTL 
+[FIXBUG]
+	- The Sub-language: after inputing content on the sub-language -> all the Extra Price is losted
+	- Tag of News: Cant remove the tag out of the News
+	- Filter Price: is not updated price follow the sub-currency
+	- Blocked vendor but tour under blocked user still live
+	- A Draft location is in the List Location  
+	- Trip Ideas on location is showing the image width 150px
+	- Add option allows Print the Booking Detail 
+	- Booking status for Space: Full book, Block, Available
+	- Space Availability is calculated by day
+	- Hotel Availability is calculated by night
+	- Review manage error when disable a default module
+	- Social login takes the fake email address
+	- Fixed adding font-family issues
+
+
+1.5.1 - January 15 - 2020
+	+ Fix Bug:
+		- [BUG] Input content in the Second-Language => Extra_serivce error
+		- [BUG] Filter price isn't updated price when select other currency
+		- [BUG] Share a Service in the in second language the Featured image doesn't show in the post!
+		- [BUG] Paypal gateway - if choose to Return to the website/Cancel (Booking) his reservation is validated
+		- [BUG] Cant disable multi-Currency 
+		- [BUG] The switch of the currency not appear in Mobile .
+		- [BUG] Some text is missing in language file
+		- [BUG] The second Language for Room title is not updated
+		- [BUG] Update Language status from Draft to Publish, but can't add that language into menu Multi-language
+		- [BUG] Disable Default module => Review Manager is bug
+		- [BUG] Fix issues can't upload SVG image type
+		- [BUG] Service is deleted => Report Booking + Booking History from User account is bugged
+		- [BUG] List Location: Delete Parent Location => Hide the child-Location but Front-end still shows Child-location
+		- [BUG] Multi-currency: Tour Fees is updated wrong 
+		- [BUG] Service Single Video: Cant turn off if dont click to the "X" button
+		- [BUG] Custom CSS code is built wrong
+		- [BUG] Favicon still haven't  updated cho Admin backend 
+
+	+ Update Features
+		- [UPDATE] Multi-Language for Calendar
+		- [UPDATE] iCal Synchronize
+		- [UPDATE] Add new Import/Export a Template 
+		- [UPDATE] Add currency: Burundian Franc (BIF), AMD (Armenian dram), Uzbekistan сум, Kenyan Shilling-KES
+		- [UPDATE] Allows input Decimal to Price by Person(VD: 350.89$/ adult)
+		- [UPDATE] With Vendor Role, I want to duplicate the Tour, Space 
+		- [UPDATE] Square of Room Size + Square of Space is limited to 127,can't input the 128 or larger
+		- [UPDATE] Add Confirm Email for Vendor/User after Register
+		- [UPDATE] Add Filter review rate for Tour, Space
+
+ 
+
+
+
+
+1.5.0 - November 14 - 2019
+	- NEW: 
+	    + Add Car Module
+		+ Add Identity Verify for user and vendor
+		+ Show Identity Verify + Role name On vendor profile
+		+ Add SMS Notifications
+		+ Add Multi-currency
+		+ Add Map Layout for Hotel/Space/Car
+		+ Add Block New
+		+ Currency add DZD – Algerian Dinar
+		
+	- UPDATE:
+		+ Update translation the Booking statuses
+		+ List Location can take by location  ID
+		+ Vendor signup form add new business name field
+		+ Add Captcha for Form Vendor Register
+		+ Remove the "/en" in link URL if "/en" is main language
+		+ Limit the User ID in link Vendor Profile, only Vendor role can be opened link Profile
+		+ Modification "number of rooms"
+		
+		+ Optimize the Manager of Media image 
+
+	- FIXED:
+		+ Payout history issues: shows payout history for all vendor 
+		+ The Booking Form is overridden to the Loginform when it requires users to log in before the Book
+		+ Price Tour + Space  in  Availability table is calculated wrong
+		+ Select Square Size Unit but it's not change 
+
+
+1.4.0 - October 04 - 2019
+
+	- NEW:
+	     + Add Hotel-Room Module
+	     + Add Payout Module for Vendor
+	     + Add The business name for vendor
+	     + Add Options to hide email, phone in Vendor Profile
+	     + Add Update vendor profile layout
+	     + Add Avaibility Tour/Space for Vendor Dashboard
+	     + Add Vendor can change Service Status(Make Hide/Publish)
+	     + Add Add options to allow Vendor can change his own booking status
+	     + Add Add Social Share buttons in Tour/Space/Hotel
+	     + Add Search field for Gmap Metabox while creating new Tour/Space/Hotel
+	     + Add Delete button in Media list
+	     + Add Dinar tunisien TND Currency
+	     + Add Tool Check PHP version before installation
+	     + Add Load the Default translate
+	     + Add Auto updater in Dashboard -> Tools
+	     + Add Include and exclude option would be nice for the tours
+	     + Add Availability Booking information: Booked / Full Booking
+	     + Add Show Role of Vendor in vendor profile
+	     + Add Show buyer fees on the form book
+
+	- UPDATE:
+
+	    + Update  Extra Price for Space
+	    + Update  Update Stripe Gateway (use token method)
+	    + Update  Hide star, review count on the list, single Servces if TURN OFF the Review in settings
+	    + Update  Code optimization
+	    + Update  Layout Profile for Vendor
+	    + Update  Review form: Hide form if guests can't be commented
+	    + Update  Option allow view Location single that is created in List Location Block(Setup in Template)
+	    + Update  Tour FAQs text editor
+
+	- Fix:
+	    + Fix Tour Map Layout on Mobile
+	    + Fix Issues while using Default Language(Turn off Multi-Lang)
+	    + Fix Translate is missing text
+	    + Fix Multi-lang bug in Template builder
+	    + Fix Message button is overrided on the Filter list
+	    + Fix Cached issues
+	    + Fix Can't upload image in template
+	    + Fix The image is added in the Content section that can't be saved
+	    + Fix Tour Draft still show in Related Tour
+	    + Fix Space booking issues in 1 day 
+
+
+1.3.1 - Sep 1 - 2019
+	- HOT FIX:
+		+ [Fixed] Booking settings
+
+		+ [Fixed] Registration Issues
+
+		+ [Fixed] Several incidents issue
+
+1.3.0 - Aug 30 - 2019
+	- NEW:
+	    + Add Availability calendar for Tour
+	    + Add Location Detail Page
+	    + Add Live Chat for Customer and Vendor
+	    + Add Wishlist for User Panel
+	    + Add Commission system for Vendor
+	    + Add Vendor Profile
+	    + Add Show Total Price in Tour's Booking form
+	    + Add Add Booking fees for space and tour
+	    + Add Smart search location for space and tour
+	    + Add Page Register for vendor
+		+ Allow admin to duplicate content for tour and space
+		+ Update filter get featured item in Block Template 
+
+	- Fix:
+
+		+ [Fixed] Can't embed youtube iframe in the editor
+		+ [Fixed] Translate tool shows wrong count number(%)
+		+ [Fixed] Don't show next button on the calendar
+		+ [Fixed] Multi-lang bug in Template builder
+
+1.2.0 - Aug 7 - 2019
+	- NEW:
+		+ Multi language for site
+		+ Add Post Type Space for Rental
+		+ Add pagination for Media Uploading
+		+ Add Config Email settings in admin Dashboard
+		+ Add Config Timezone in settings
+		+ Add Favicon option
+		+ Booking report for vendor
+		+ Add Options to change Contact information 
+
+	- Fix:
+		+ [Fixed] error Create Tour in vendor panel
+		+ [Fixed] Date time issue in the form search
+		+ [Fixed] Scroll issue in Testimonial Block in Home Template
+		+ [Fixed] Openstreemap
+
+1.1.0 - Jul,10 - 2019
+	- NEW:
+		+ Tour Booking Calendar: View all your tour bookings in calendar (Only for Admin, will update for Vendor later)
+		+ Stripe Standard Payment Gateway
+		+ Change default forgot password email template to match our design
+		+ Add bulk actions for Language Management page
+		+ Add options for enable ReCaptcha in Login/Register and Booking form
+		+ Move uploads folder to "public/uploads", you need to copy all old files under "storage/app/public" to "public/uploads"
+		+ Add "Find Translations" button in Translation Tool
+		
+	- Fix:
+		+ Bug create/update user
+		+ Bug in translations tool
+		+ Bug button "remove" in tour page does not work
+		+ Change default image size in tour search page to width: 600px (old is 150px)
+		+ Bug in delete menu item
+		+ Other small improvements
+		
+1.0.0 - Jun,27 - 2019 First Release

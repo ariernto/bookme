@@ -1,0 +1,26 @@
+<svg width="22px" height="22px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="01_Home" transform="translate(-155.000000, -2016.000000)" stroke="#1A2B50" stroke-width="0.5">
+            <g id="trending-car" transform="translate(135.000000, 1603.000000)">
+                <g id="one_tour" transform="translate(0.000000, 86.000000)">
+                    <g id="tour">
+                        <g id="Group-4" transform="translate(20.000000, 327.000000)">
+                            <g id="Regular">
+                                <circle id="Oval" cx="10" cy="3.125" r="2.5"></circle>
+                                <path d="M13.125,11.875 L13.125,10 C13.125,8.27411016 11.7258898,6.875 10,6.875 C8.27411016,6.875 6.875,8.27411016 6.875,10 L6.875,11.875 L8.125,11.875 L8.75,16.875 L11.25,16.875 L11.875,11.875 L13.125,11.875 Z" id="Shape"></path>
+                                <circle id="Oval" cx="3.75" cy="5" r="1.875"></circle>
+                                <path d="M4.75,8.28916667 C3.79624791,7.9682092 2.74632008,8.12578507 1.92880562,8.71257878 C1.11129116,9.29937249 0.626070499,10.2436921 0.625,11.25 L0.625,11.875 L1.875,11.875 L2.5,15.625 L5,15.625 L5.31333333,13.745" id="Shape"></path>
+                                <circle id="Oval" cx="16.25" cy="5" r="1.875"></circle>
+                                <path d="M15.25,8.28916667 C16.2037521,7.9682092 17.2536799,8.12578507 18.0711944,8.71257878 C18.8887088,9.29937249 19.3739295,10.2436921 19.375,11.25 L19.375,11.875 L18.125,11.875 L17.5,15.625 L15,15.625 L14.6866667,13.745" id="Shape"></path>
+                                <path d="M19.375,17.5 C19.375,18.5358333 15.1775,19.375 10,19.375 C4.8225,19.375 0.625,18.5358333 0.625,17.5" id="Shape"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
