@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:BookingCore booking.localhost
+BEGIN:VEVENT
+UID:f6bda9c8a27f7470e56ee5254f8b8d9e
+DTSTART:20191201T000000Z
+SEQUENCE:0
+TRANSP:OPAQUE
+DTEND:20191203T000000Z
+SUMMARY: Admin Booking Space STAY GREENWICH VILLAGE
+CLASS:PUBLIC
+X-ALT-DESC;FMTTYPE=text/html:<p>Name: Admin</p>\n                          
+       <p>Email:admin@dev.com</p>\n                                <p>Phone
+ :112 666 888</p>\n                                <p>Address:</p>\n       
+                          <p>Customer notes:</p>\n                         
+        <p>Total guest:1</p>
+CATEGORIES:Space
+DTSTAMP:20191125T091118Z
+END:VEVENT
+END:VCALENDAR
