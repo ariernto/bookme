@@ -4,7 +4,7 @@
             <h3 class="form-group-title">{{__("Credit Options")}}</h3>
         </div>
         <div class="col-sm-8">
-            <div class="panel rounded">
+            <div class="panel">
                 <div class="panel-body">
                     <div class="form-group">
                         <label class="" >{{__("Credit exchange rate")}}</label>

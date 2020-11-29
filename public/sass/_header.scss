@@ -1,7 +1,6 @@
 .bravo_wrap {
     .bravo_topbar {
-        // background: #1A2B48;
-        background: #110122;
+        background: #1A2B48;
         padding: 15px 0;
         @media(max-width: 768px){
             display: none;
@@ -134,13 +133,12 @@
 
     }
     .bravo_header {
-        // background: #f4f5f9;
-        background: #110122;
+        background: #f4f5f9;
+
         .content {
-            background: #110122;
+            background: #f4f5f9;
             display: flex;
             align-items: center;
-            justify-content: space-between;
 
             .header-left {
                 position: relative;
@@ -152,8 +150,7 @@
                     width: 90%;
                 }
                 .bravo-logo {
-                    color: #fff;
-                    font-size: 32px;
+
                 }
 
                 .bravo-menu {
@@ -178,8 +175,7 @@
                                 font-size: 14px;
                                 font-weight: 600;
                                 text-transform: uppercase;
-                                // color: #1A2B48;
-                                color: #efefef;
+                                color: #1A2B48;
                                 transition: all 0.3s;
                                 @media(max-width: 1366px){
                                     padding: 35px 15px;
@@ -190,7 +186,7 @@
                             }
 
                             &.active {
-                                color: #fff;
+                                color: #5191FA;
                             }
 
                             > .fa {
@@ -303,7 +299,7 @@
                         padding-right: 18px;
                         display: inline-block;
                         a {
-                            color: #fff;
+                            color: #000;
                             font-weight: 400;
                             font-size: 12px;
                             text-decoration: none;

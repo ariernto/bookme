@@ -7,16 +7,12 @@
 //Modules Media
 @import "../../resources/module/media/admin/scss/browser";
 body {
-    color: #242424;
+    color: #1A2B48;
     font-size: 14px;
     font-family: 'Poppins', sans-serif;
     font-weight: normal;
     line-height: 1.5;
     overflow-x: hidden;
-
-    &.user-page {
-        background: #1A2B47;
-    }
 }
 /* Prevents img without src to appear */
 //For Lazy Load
