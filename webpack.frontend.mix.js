@@ -11,6 +11,7 @@ mix.webpackConfig({
 mix.sass('public/sass/app.scss','css');
 mix.sass('public/sass/contact.scss','css');
 mix.sass('public/sass/rtl.scss','css');
+mix.sass('public/sass/notification.scss','css');
 // ----------------------------------------------------------------------------------------------------
 //Booking
 mix.sass('public/module/booking/scss/checkout.scss','module/booking/css');

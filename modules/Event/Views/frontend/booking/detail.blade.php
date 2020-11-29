@@ -8,7 +8,7 @@
                     @php
                         $service_translation = $service->translateOrOrigin($lang_local);
                     @endphp
-                    <h3 class="service-name"><a href="{{$service->getDetailUrl()}}">{{$service_translation->title}}</a></h3>
+                    <h3 class="service-name"><a href="{{$service->getDetailUrl()}}">{!! clean($service_translation->title) !!}</a></h3>
                     @if($service_translation->address)
                         <p class="address"><i class="fa fa-map-marker"></i>
                             {{$service_translation->address}}
@@ -17,7 +17,7 @@
                 </div>
                 <div>
                     @if($image_url = $service->getImageUrl())
-                        <img src="{{$image_url}}" alt="{{$service->title}}">
+                        <img src="{{$image_url}}" alt="{!! clean($service_translation->title) !!}">
                     @endif
                 </div>
                 @php $vendor = $service->author; @endphp
@@ -42,7 +42,7 @@
                         <div class="label">{{__('Duration:')}}</div>
                         <div class="val">
                             @php $duration = $booking->getMeta("duration") @endphp
-                            {{duration_format($duration,true)}}
+                            {{duration_format($duration)}}
                         </div>
                     </li>
                 @endif
@@ -92,32 +92,41 @@
                         </ul>
                     </li>
                 @endif
-                @if(!empty($booking->buyer_fees))
-                    @php
+                @php
+                    $list_all_fee = [];
+                    if(!empty($booking->buyer_fees)){
                         $buyer_fees = json_decode($booking->buyer_fees , true);
-                        foreach ($buyer_fees as $buyer_fee){
-                            $fee_price = $buyer_fee['price'];
-                            if(!empty($buyer_fee['unit']) and $buyer_fee['unit'] == "percent"){
-                                $fee_price = ( $booking->total_before_fees / 100 ) * $buyer_fee['price'];
+                        $list_all_fee = $buyer_fees;
+                    }
+                    if(!empty($vendor_service_fee = $booking->vendor_service_fee)){
+                        $list_all_fee = array_merge($list_all_fee , $vendor_service_fee);
+                    }
+                @endphp
+                @if(!empty($list_all_fee))
+                    @foreach ($list_all_fee as $item)
+                        @php
+                            $fee_price = $item['price'];
+                            if(!empty($item['unit']) and $item['unit'] == "percent"){
+                                $fee_price = ( $booking->total_before_fees / 100 ) * $item['price'];
                             }
-                    @endphp
-                    <li>
-                        <div class="label">
-                            {{$buyer_fee['name_'.$lang_local] ?? $buyer_fee['name']}}
-                            <i class="icofont-info-circle" data-toggle="tooltip" data-placement="top" title="{{ $buyer_fee['desc_'.$lang_local] ?? $buyer_fee['desc'] }}"></i>
-                            @if(!empty($buyer_fee['per_ticket']) and $buyer_fee['per_ticket'] == "on")
-                                : {{$booking->total_guests}} * {{format_money( $fee_price )}}
-                            @endif
-                        </div>
-                        <div class="val">
-                            @if(!empty($buyer_fee['per_ticket']) and $buyer_fee['per_ticket'] == "on")
-                                {{ format_money( $fee_price * $booking->total_guests ) }}
-                            @else
-                                {{ format_money( $fee_price ) }}
-                            @endif
-                        </div>
-                    </li>
-                    @php } @endphp
+                        @endphp
+                        <li>
+                            <div class="label">
+                                {{$item['name_'.$lang_local] ?? $item['name']}}
+                                <i class="icofont-info-circle" data-toggle="tooltip" data-placement="top" title="{{ $item['desc_'.$lang_local] ?? $item['desc'] }}"></i>
+                                @if(!empty($item['per_ticket']) and $item['per_ticket'] == "on")
+                                    : {{$booking->total_guests}} * {{format_money( $fee_price )}}
+                                @endif
+                            </div>
+                            <div class="val">
+                                @if(!empty($item['per_ticket']) and $item['per_ticket'] == "on")
+                                    {{ format_money( $fee_price * $booking->total_guests ) }}
+                                @else
+                                    {{ format_money( $fee_price ) }}
+                                @endif
+                            </div>
+                        </li>
+                    @endforeach
                 @endif
                 <li class="final-total d-block">
                     <div class="d-flex justify-content-between">

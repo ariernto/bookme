@@ -39,6 +39,7 @@ class SettingClass extends BaseSettingsClass
                     'tour_booking_buyer_fees',
                     'tour_vendor_create_service_must_approved_by_admin',
                     'tour_allow_vendor_can_change_their_booking_status',
+                    'tour_allow_vendor_can_change_paid_amount',
                     'tour_search_fields',
                     'tour_map_search_fields',
 
@@ -47,6 +48,8 @@ class SettingClass extends BaseSettingsClass
                     'tour_deposit_type',
                     'tour_deposit_amount',
                     'tour_deposit_fomular',
+
+                    'tour_layout_map_option',
                 ],
                 'html_keys'=>[
 

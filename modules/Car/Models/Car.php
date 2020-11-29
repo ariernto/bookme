@@ -4,12 +4,14 @@ namespace Modules\Car\Models;
 
 use App\Currency;
 use Illuminate\Http\Response;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Modules\Booking\Models\Bookable;
 use Modules\Booking\Models\Booking;
+use Modules\Booking\Traits\CapturesService;
 use Modules\Core\Models\Attributes;
 use Modules\Core\Models\SEO;
 use Modules\Core\Models\Terms;
@@ -22,11 +24,15 @@ use Modules\Location\Models\Location;
 
 class Car extends Bookable
 {
+    use Notifiable;
     use SoftDeletes;
+    use CapturesService;
+
     protected $table = 'bravo_cars';
     public $type = 'car';
     public $checkout_booking_detail_file       = 'Car::frontend/booking/detail';
     public $checkout_booking_detail_modal_file = 'Car::frontend/booking/detail-modal';
+    public $set_paid_modal_file                = 'Car::frontend/booking/set-paid-modal';
     public $email_new_booking_file             = 'Car::emails.new_booking_detail';
     public $availabilityClass = CarDate::class;
 
@@ -43,6 +49,7 @@ class Car extends Bookable
     protected $casts = [
         'faqs'  => 'array',
         'extra_price'  => 'array',
+        'service_fee'  => 'array',
         'price'=>'float',
         'sale_price'=>'float',
     ];
@@ -245,26 +252,45 @@ class Car extends Bookable
             }
         }
 
-        //Buyer Fees
+        //Buyer Fees for Admin
         $total_before_fees = $total;
-        $list_fees = setting_item('car_booking_buyer_fees');
-        if (!empty($list_fees)) {
-            $total_fee = 0;
-            $lists = json_decode($list_fees, true);
+        $list_buyer_fees = setting_item('car_booking_buyer_fees');
+        $total_buyer_fee = 0;
+        if (!empty($list_buyer_fees)) {
+            $lists = json_decode($list_buyer_fees, true);
             foreach ($lists as $item) {
                 //for Fixed
                 $fee_price = $item['price'];
                 // for Percent
-                if(!empty($item['unit']) and $item['unit'] == "percent"){
-                    $fee_price = ( $total_before_fees / 100 ) * $item['price'];
+                if (!empty($item['unit']) and $item['unit'] == "percent") {
+                    $fee_price = ($total_before_fees / 100) * $item['price'];
                 }
                 if (!empty($item['per_person']) and $item['per_person'] == "on") {
-                    $total_fee += $fee_price * $total_guests;
+                    $total_buyer_fee += $fee_price * $total_guests;
                 } else {
-                    $total_fee += $fee_price;
+                    $total_buyer_fee += $fee_price;
                 }
             }
-            $total += $total_fee;
+            $total += $total_buyer_fee;
+        }
+
+        //Service Fees for Vendor
+        $total_service_fee = 0;
+        if(!empty($this->enable_service_fee) and !empty($list_service_fee = $this->service_fee)){
+            foreach ($list_service_fee as $item) {
+                //for Fixed
+                $serice_fee_price = $item['price'];
+                // for Percent
+                if (!empty($item['unit']) and $item['unit'] == "percent") {
+                    $serice_fee_price = ($total_before_fees / 100) * $item['price'];
+                }
+                if (!empty($item['per_person']) and $item['per_person'] == "on") {
+                    $total_service_fee += $serice_fee_price * $total_guests;
+                } else {
+                    $total_service_fee += $serice_fee_price;
+                }
+            }
+            $total += $total_service_fee;
         }
 
         if (empty($start_date) or empty($end_date)) {
@@ -280,8 +306,12 @@ class Car extends Bookable
         $booking->total_guests = 1;
         $booking->start_date = $start_date->format('Y-m-d H:i:s');
         $booking->end_date = $end_date->format('Y-m-d H:i:s');
-        $booking->buyer_fees = $list_fees ?? '';
+
+        $booking->vendor_service_fee_amount = $total_service_fee ?? '';
+        $booking->vendor_service_fee = $list_service_fee ?? '';
+        $booking->buyer_fees = $list_buyer_fees ?? '';
         $booking->total_before_fees = $total_before_fees;
+
         $booking->calculateCommission();
         $booking->number = $number;
 
@@ -302,7 +332,7 @@ class Car extends Bookable
                     break;
             }
             if($booking_deposit_fomular == "deposit_and_fee"){
-                $booking->deposit = $booking->deposit + $total_fee;
+                $booking->deposit = $booking->deposit + $total_buyer_fee + $total_service_fee;
             }
         }
 
@@ -500,6 +530,17 @@ class Car extends Bookable
             foreach ($list_fees as $item){
                 $item['type_name'] = $item['name_'.app()->getLocale()] ?? $item['name'] ?? '';
                 $item['type_desc'] = $item['desc_'.app()->getLocale()] ?? $item['desc'] ?? '';
+                $item['price_type'] = '';
+                if (!empty($item['per_person']) and $item['per_person'] == 'on') {
+                    $item['price_type'] .= '/' . __('guest');
+                }
+                $booking_data['buyer_fees'][] = $item;
+            }
+        }
+        if(!empty($this->enable_service_fee) and !empty($service_fee = $this->service_fee)){
+            foreach ($service_fee as $item) {
+                $item['type_name'] = $item['name_' . app()->getLocale()] ?? $item['name'] ?? '';
+                $item['type_desc'] = $item['desc_' . app()->getLocale()] ?? $item['desc'] ?? '';
                 $item['price_type'] = '';
                 if (!empty($item['per_person']) and $item['per_person'] == 'on') {
                     $item['price_type'] .= '/' . __('guest');
@@ -874,11 +915,14 @@ class Car extends Bookable
         $review_scores = $request->query('review_score');
         if (is_array($review_scores) && !empty($review_scores)) {
             $where_review_score = [];
+            $params = [];
             foreach ($review_scores as $number){
-                $where_review_score[] = " ( bravo_cars.review_score >= {$number} AND bravo_cars.review_score <= {$number}.9 ) ";
+                $where_review_score[] = " ( bravo_cars.review_score >= ? AND bravo_cars.review_score <= ? ) ";
+                $params[] = $number;
+                $params[] = $number.'.9';
             }
             $sql_where_review_score = " ( " . implode("OR", $where_review_score) . " )  ";
-            $model_car->WhereRaw($sql_where_review_score);
+            $model_car->WhereRaw($sql_where_review_score,$params);
         }
         if(!empty( $service_name = $request->query("service_name") )){
             if( setting_item('site_enable_multi_lang') && setting_item('site_locale') != app()->getLocale() ){

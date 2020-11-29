@@ -13,6 +13,8 @@ use Modules\AdminController;
 use Modules\Car\Models\Car;
 use Modules\Car\Models\CarTerm;
 use Modules\Car\Models\CarTranslation;
+use Modules\Core\Events\CreatedServicesEvent;
+use Modules\Core\Events\UpdatedServiceEvent;
 use Modules\Core\Models\Attributes;
 use Modules\Location\Models\Location;
 
@@ -220,6 +222,8 @@ class CarController extends AdminController
             'extra_price',
             'is_featured',
             'default_state',
+            'enable_service_fee',
+            'service_fee',
         ];
         if($this->hasPermission('car_manage_others')){
             $dataKeys[] = 'create_user';
@@ -238,8 +242,10 @@ class CarController extends AdminController
             }
 
             if($id > 0 ){
+                event(new UpdatedServiceEvent($row));
                 return back()->with('success',  __('Car updated') );
             }else{
+                event(new CreatedServicesEvent($row));
                 return redirect(route('car.admin.edit',$row->id))->with('success', __('Car created') );
             }
         }
@@ -282,23 +288,26 @@ class CarController extends AdminController
                         $query->where("create_user", Auth::id());
                         $this->checkPermission('car_delete');
                     }
-                    $query->first();
-                    if(!empty($query)){
-                        $query->delete();
+                    $row = $query->first();
+                    if(!empty($row)){
+                        $row->delete();
+                        event(new UpdatedServiceEvent($row));
+
                     }
                 }
                 return redirect()->back()->with('success', __('Deleted success!'));
                 break;
             case "recovery":
                 foreach ($ids as $id) {
-                    $query = $this->car::where("id", $id);
+                    $query = $this->car::withTrashed()->where("id", $id);
                     if (!$this->hasPermission('car_manage_others')) {
                         $query->where("create_user", Auth::id());
                         $this->checkPermission('car_delete');
                     }
-                    $query->first();
-                    if(!empty($query)){
-                        $query->restore();
+                    $row = $query->first();
+                    if(!empty($row)){
+                        $row->restore();
+                        event(new UpdatedServiceEvent($row));
                     }
                 }
                 return redirect()->back()->with('success', __('Recovery success!'));
@@ -318,8 +327,14 @@ class CarController extends AdminController
                         $query->where("create_user", Auth::id());
                         $this->checkPermission('car_update');
                     }
-                    $query->update(['status' => $action]);
+                    $row = $query->first();
+                    $row->status  = $action;
+                    $row->save();
+                    event(new UpdatedServiceEvent($row));
+
+
                 }
+
                 return redirect()->back()->with('success', __('Update success!'));
                 break;
         }

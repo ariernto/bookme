@@ -27,7 +27,7 @@
 									</div>
 									<div class="form-mess"></div>
 								</form>
-							
+
 							</div>
 						</div>
 					</div>
@@ -110,16 +110,12 @@
 <script src="{{ asset('libs/select2/js/select2.min.js') }}"></script>
 <script src="{{ asset('js/functions.js?_ver='.config('app.version')) }}"></script>
 
-@if(setting_item('inbox_enable'))
-	<script src="{{ asset('module/core/js/chat-engine.js?_ver='.config('app.version')) }}"></script>
-@endif
-
 @if(
     setting_item('tour_location_search_style')=='autocompletePlace' || setting_item('hotel_location_search_style')=='autocompletePlace' || setting_item('car_location_search_style')=='autocompletePlace' || setting_item('space_location_search_style')=='autocompletePlace' || setting_item('hotel_location_search_style')=='autocompletePlace' || setting_item('event_location_search_style')=='autocompletePlace'
 )
 	{!! App\Helpers\MapEngine::scripts() !!}
 @endif
-
+<script src="{{ asset('libs/pusher.min.js') }}"></script>
 <script src="{{ asset('js/home.js?_ver='.config('app.version')) }}"></script>
 
 @if(!empty($is_user_page))

@@ -5,12 +5,11 @@ namespace Bavix\Wallet\Simple;
 use Bavix\Wallet\Interfaces\Mathable;
 
 /**
- * Class MathService
- * @package Bavix\Wallet\Simple
+ * Class MathService.
+ * @deprecated Will be removed in 6.x.
  */
 class Math implements Mathable
 {
-
     /**
      * @var int
      */
@@ -119,7 +118,7 @@ class Math implements Mathable
     }
 
     /**
-     * @param int $scale
+     * @param int|null $scale
      * @return int
      */
     protected function scale(?int $scale = null): int
@@ -129,10 +128,9 @@ class Math implements Mathable
         }
 
         if ($this->scale === null) {
-            $this->scale = (int)config('wallet.math.scale', 64);
+            $this->scale = (int) config('wallet.math.scale', 64);
         }
 
         return $this->scale;
     }
-
 }

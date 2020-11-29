@@ -27,7 +27,9 @@
                     <div class="col-md-9">
                         @include('Tour::admin/tour/tour-content')
                         @include('Tour::admin/tour/tour-location')
-                        @if(is_default_lang())
+                        @include('Hotel::admin.hotel.surrounding')
+
+                    @if(is_default_lang())
                             @include('Tour::admin/tour/pricing')
                             @include('Tour::admin/tour/availability')
                         @endif
@@ -86,9 +88,8 @@
                                         <label >{{__('Default State')}}</label>
                                         <br>
                                         <select name="default_state" class="custom-select">
-                                            <option value="">{{__('-- Please select --')}}</option>
-                                            <option value="1" @if(old('default_state',$row->default_state ?? 0) == 1) selected @endif>{{__("Always available")}}</option>
-                                            <option value="0" @if(old('default_state',$row->default_state ?? 0) == 0) selected @endif>{{__("Only available on specific dates")}}</option>
+                                            <option value="1" @if(old('default_state',$row->default_state ?? -1) == 1) selected @endif>{{__("Always available")}}</option>
+                                            <option value="0" @if(old('default_state',$row->default_state ?? -1) == 0) selected @endif>{{__("Only available on specific dates")}}</option>
                                         </select>
                                     </div>
                                 </div>

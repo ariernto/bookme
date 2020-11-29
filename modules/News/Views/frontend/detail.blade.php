@@ -9,7 +9,7 @@
 @section('content')
 <div class="bravo-news">
     @php
-        $title_page = setting_item("news_page_list_title");
+        $title_page = setting_item_with_lang("news_page_list_title");
         if(!empty($custom_title_page)){
             $title_page = $custom_title_page;
         }

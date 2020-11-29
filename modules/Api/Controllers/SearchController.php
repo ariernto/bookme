@@ -66,7 +66,7 @@ class SearchController extends Controller
         $row = $class::find($id);
         if(empty($row))
         {
-            $this->sendError(__("Resource not found"));
+            return $this->sendError(__("Resource not found"));
         }
 
         return $this->sendSuccess([

@@ -17,13 +17,13 @@
                         {{csrf_field()}}
                         <select name="action" class="form-control">
                             <option value="">{{__(" Bulk Actions ")}}</option>
-                            <option value="publish">{{__(" Publish ")}}</option>
-                            <option value="draft">{{__(" Move to Draft ")}}</option>
-                            <option value="pending">{{__("Move to Pending")}}</option>
                             {{--<option value="clone">{{__(" Clone ")}}</option>--}}
                             @if(!empty($recovery))
                                 <option value="recovery">{{__(" Recovery ")}}</option>
                             @else
+                                <option value="publish">{{__(" Publish ")}}</option>
+                                <option value="draft">{{__(" Move to Draft ")}}</option>
+                                <option value="pending">{{__("Move to Pending")}}</option>
                                 <option value="delete">{{__(" Delete ")}}</option>
                             @endif
 

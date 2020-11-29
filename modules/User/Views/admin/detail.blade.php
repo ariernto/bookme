@@ -18,12 +18,6 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>{{__("Business ID")}}</label>
-                                        <input type="text" value="{{old('business_id',$row->business_id)}}" name="business_id" placeholder="{{__("Business ID")}}" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
                                         <label>{{__("Business name")}}</label>
                                         <input type="text" value="{{old('business_name',$row->business_name)}}" name="business_name" placeholder="{{__("Business name")}}" class="form-control">
                                     </div>
@@ -34,6 +28,14 @@
                                         <input type="email" required value="{{old('email',$row->email)}}" placeholder="{{ __('Email')}}" name="email" class="form-control"  >
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>{{__("User name")}}</label>
+                                        <input type="text" name="user_name" value="{{old('user_name',$row->user_name)}}" placeholder="{{__("User name")}}" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>{{__("First name")}}</label>
@@ -135,49 +137,6 @@
                         </div>
                     </div>
                     <div class="panel">
-                        <div class="panel-title"><strong>{{ __('Vendor Permissions')}}</strong></div>
-                        <div class="panel-body">                            
-                            <div class="form-group">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="vendor-permission-accomodation" name="vendor_permission[]" value="accomodation" @if($row->hasPermissionTo('accommodation_view')) checked @endif >
-                                    <label class="custom-control-label" for="vendor-permission-accomodation">Access Accomodation</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="vendor-permission-activity" name="vendor_permission[]" value="activity" @if($row->hasPermissionTo('activity_view')) checked @endif >
-                                    <label class="custom-control-label" for="vendor-permission-activity">Access Activity</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="vendor-permission-boat" name="vendor_permission[]" value="boat" @if($row->hasPermissionTo('boat_view')) checked @endif >
-                                    <label class="custom-control-label" for="vendor-permission-boat">Access Boat</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="vendor-permission-car" name="vendor_permission[]" value="car" @if($row->hasPermissionTo('car_view')) checked @endif >
-                                    <label class="custom-control-label" for="vendor-permission-car">Access Car</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="vendor-permission-hotel" name="vendor_permission[]" value="hotel" @if($row->hasPermissionTo('hotel_view')) checked @endif >
-                                    <label class="custom-control-label" for="vendor-permission-hotel">Access Hotel</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="vendor-permission-event" name="vendor_permission[]" value="event" @if($row->hasPermissionTo('event_view')) checked @endif >
-                                    <label class="custom-control-label" for="vendor-permission-event">Access Event</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="vendor-permission-sauna" name="vendor_permission[]" value="sauna" @if($row->hasPermissionTo('sauna_view')) checked @endif >
-                                    <label class="custom-control-label" for="vendor-permission-sauna">Access Sauna</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="vendor-permission-space" name="vendor_permission[]" value="space" @if($row->hasPermissionTo('space_view')) checked @endif >
-                                    <label class="custom-control-label" for="vendor-permission-space">Access Space</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="vendor-permission-tour" name="vendor_permission[]" value="tour" @if($row->hasPermissionTo('tour_view')) checked @endif >
-                                    <label class="custom-control-label" for="vendor-permission-tour">Access Tour</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel">
                         <div class="panel-title"><strong>{{ __('Vendor')}}</strong></div>
                         <div class="panel-body">
                             <div class="form-group">
@@ -185,15 +144,16 @@
                                 <div class="form-controls">
                                     <select name="vendor_commission_type" class="form-control">
                                         <option value="">{{__("Default")}}</option>
-                                        <option value="percent" {{($row->vendor_commission_type ?? '') == 'percent' ? 'selected' : ''  }}>{{__('Percent')}}</option>
-                                        <option value="amount" {{($row->vendor_commission_type ?? '') == 'amount' ? 'selected' : ''  }}>{{__('Amount')}}</option>
+                                        <option value="percent" {{old("vendor_commission_type",($row->vendor_commission_type ?? '')) == 'percent' ? 'selected' : ''  }}>{{__('Percent')}}</option>
+                                        <option value="amount" {{old("vendor_commission_type",($row->vendor_commission_type ?? '')) == 'amount' ? 'selected' : ''  }}>{{__('Amount')}}</option>
+                                        <option value="disable" {{old("vendor_commission_type",($row->vendor_commission_type ?? '')) == 'disable' ? 'selected' : ''  }}>{{__('Disable Commission')}}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>{{__('Vendor commission value')}}</label>
                                 <div class="form-controls">
-                                    <input type="text" class="form-control" name="vendor_commission_amount" value="{{!empty($row->vendor_commission_amount) ? $row->vendor_commission_amount:'' }}">
+                                    <input type="text" class="form-control" name="vendor_commission_amount" value="{{old("vendor_commission_amount",($row->vendor_commission_amount ?? '')) }}">
                                 </div>
                             </div>
                         </div>

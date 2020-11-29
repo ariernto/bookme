@@ -22,7 +22,7 @@ $lang_local = app()->getLocale();
         <tr>
             <td class="label">{{__('Car name')}}</td>
             <td class="val">
-                <a href="{{$service->getDetailUrl()}}">{{$translation->title}}</a>
+                <a href="{{$service->getDetailUrl()}}">{!! clean($translation->title) !!}</a>
             </td>
 
         </tr>
@@ -108,32 +108,41 @@ $lang_local = app()->getLocale();
 
                     @endif
 
-                    @if(!empty($booking->buyer_fees))
-                        @php
+                    @php
+                        $list_all_fee = [];
+                        if(!empty($booking->buyer_fees)){
                             $buyer_fees = json_decode($booking->buyer_fees , true);
-                            foreach ($buyer_fees as $buyer_fee){
-                                $fee_price = $buyer_fee['price'];
-                                if(!empty($buyer_fee['type']) or $buyer_fee['type'] == "percent"){
-                                    $fee_price = ( $booking->total_before_fees / 100 ) * $buyer_fee['price'];
+                            $list_all_fee = $buyer_fees;
+                        }
+                        if(!empty($vendor_service_fee = $booking->vendor_service_fee)){
+                            $list_all_fee = array_merge($list_all_fee , $vendor_service_fee);
+                        }
+                    @endphp
+                    @if(!empty($list_all_fee))
+                        @foreach ($list_all_fee as $item)
+                            @php
+                                $fee_price = $item['price'];
+                                if(!empty($item['unit']) and $item['unit'] == "percent"){
+                                    $fee_price = ( $booking->total_before_fees / 100 ) * $item['price'];
                                 }
-                        @endphp
-                        <tr>
-                            <td class="label">
-                                {{$buyer_fee['name_'.$lang_local] ?? $buyer_fee['name']}}
-                                <i class="icofont-info-circle" data-toggle="tooltip" data-placement="top" title="{{ $buyer_fee['desc_'.$lang_local] ?? $buyer_fee['desc'] }}"></i>
-                                @if(!empty($buyer_fee['per_person']) and $buyer_fee['per_person'] == "on")
-                                    : {{$booking->total_guests}} * {{format_money( $fee_price )}}
-                                @endif
-                            </td>
-                            <td class="val">
-                                @if(!empty($buyer_fee['per_person']) and $buyer_fee['per_person'] == "on")
-                                    {{ format_money( $fee_price * $booking->total_guests ) }}
-                                @else
-                                    {{ format_money( $fee_price ) }}
-                                @endif
-                            </td>
-                        </tr>
-                        @php } @endphp
+                            @endphp
+                            <tr>
+                                <td class="label">
+                                    {{$item['name_'.$lang_local] ?? $item['name']}}
+                                    <i class="icofont-info-circle" data-toggle="tooltip" data-placement="top" title="{{ $item['desc_'.$lang_local] ?? $item['desc'] }}"></i>
+                                    @if(!empty($item['per_person']) and $item['per_person'] == "on")
+                                        : {{$booking->total_guests}} * {{format_money( $fee_price )}}
+                                    @endif
+                                </td>
+                                <td class="val">
+                                    @if(!empty($item['per_person']) and $item['per_person'] == "on")
+                                        {{ format_money( $fee_price * $booking->total_guests ) }}
+                                    @else
+                                        {{ format_money( $fee_price ) }}
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
                     @endif
                     
                 </table>

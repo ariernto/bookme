@@ -14,7 +14,6 @@ Route::group(['prefix'=>'user/'.config('space.space_route_prefix'),'middleware' 
     Route::get('/del/{id}','ManageSpaceController@deleteSpace')->name('space.vendor.delete');
     Route::post('/store/{id}','ManageSpaceController@store')->name('space.vendor.store');
     Route::get('bulkEdit/{id}','ManageSpaceController@bulkEditSpace')->name("space.vendor.bulk_edit");
-    Route::get('/booking-report','ManageSpaceController@bookingReport')->name("space.vendor.booking_report");
     Route::get('/booking-report/bulkEdit/{id}','ManageSpaceController@bookingReportBulkEdit')->name("space.vendor.booking_report.bulk_edit");
 	Route::get('clone/{id}','ManageSpaceController@cloneSpace')->name("space.vendor.clone");
     Route::get('/recovery','ManageSpaceController@recovery')->name('space.vendor.recovery');

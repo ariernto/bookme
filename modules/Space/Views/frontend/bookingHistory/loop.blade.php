@@ -11,7 +11,7 @@
                 $translation = $service->translateOrOrigin(app()->getLocale());
             @endphp
             <a target="_blank" href="{{$service->getDetailUrl()}}">
-                {{$translation->title}}
+                {!! clean($translation->title) !!}
             </a>
         @else
             {{__("[Deleted]")}}

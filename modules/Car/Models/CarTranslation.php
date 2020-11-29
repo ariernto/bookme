@@ -28,6 +28,9 @@ class CarTranslation extends Car
     public function getSeoType(){
         return $this->seo_type;
     }
+    public function getRecordRoot(){
+        return $this->belongsTo(Car::class,'origin_id');
+    }
 
     public static function boot() {
 		parent::boot();

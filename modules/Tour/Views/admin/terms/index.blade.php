@@ -10,7 +10,7 @@
                 <div class="panel">
                     <div class="panel-title">{{__("Add Term")}}</div>
                     <div class="panel-body">
-                        <form action="{{url('admin/module/tour/attribute/term_store')}}" method="post">
+                        <form action="{{route('tour.admin.attribute.term.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
                             @csrf
                             @include('Tour::admin/terms/form')
                             <div class="">
@@ -24,7 +24,7 @@
                 <div class="filter-div d-flex justify-content-between ">
                     <div class="col-left">
                         @if(!empty($rows))
-                            <form method="post" action="{{url('admin/module/tour/attribute/editTermBulk')}}" class="filter-form filter-form-left d-flex justify-content-start">
+                            <form method="post" action="{{route('tour.admin.attribute.term.editTermBulk')}}" class="filter-form filter-form-left d-flex justify-content-start">
                                 {{csrf_field()}}
                                 <select name="action" class="form-control">
                                     <option value="">{{__(" Bulk Action ")}}</option>
@@ -35,7 +35,7 @@
                         @endif
                     </div>
                     <div class="col-left">
-                        <form method="get" action="{{url('/admin/module/tour/attribute/terms/'.$attr->id)}} " class="filter-form filter-form-right d-flex justify-content-end" role="search">
+                        <form method="get" action="{{ route('tour.admin.attribute.term.index',['attr_id' => $attr->id]) }} " class="filter-form filter-form-right d-flex justify-content-end" role="search">
                             <input type="text" name="s" value="{{ Request()->s }}" class="form-control" placeholder="{{__("Search by name")}}">
                             <button class="btn-info btn btn-icon btn_search" id="search-submit" type="submit">{{__('Search')}}</button>
                         </form>
@@ -59,7 +59,7 @@
                                         <tr>
                                             <td><input type="checkbox" class="check-item" name="ids[]" value="{{$row->id}}"></td>
                                             <td class="title">
-                                                <a href="{{url('admin/module/tour/attribute/term_edit/'.$row->id)}}">{{$row->name}}</a>
+                                                <a href="{{route('tour.admin.attribute.term.edit', ['id' => $row->id])}}">{{$row->name}}</a>
                                             </td>
                                             <td>{{ display_date($row->updated_at)}}</td>
                                         </tr>

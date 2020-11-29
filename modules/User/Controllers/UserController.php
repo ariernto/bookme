@@ -1,6 +1,7 @@
 <?php
 namespace Modules\User\Controllers;
 
+use App\Notifications\AdminChannelServices;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
@@ -8,7 +9,7 @@ use Matrix\Exception;
 use Modules\FrontendController;
 use Modules\User\Events\NewVendorRegistered;
 use Modules\User\Events\SendMailUserRegistered;
-use Modules\User\Models\Newsletter;
+use Modules\User\Events\UserSubscriberSubmit;
 use Modules\User\Models\Subscriber;
 use Modules\User\Models\User;
 use Illuminate\Http\Request;
@@ -21,6 +22,7 @@ use Modules\Booking\Models\Booking;
 use App\Helpers\ReCaptchaEngine;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Modules\Booking\Models\Enquiry;
+use Illuminate\Support\Str;
 
 class UserController extends FrontendController
 {
@@ -33,7 +35,6 @@ class UserController extends FrontendController
         $this->enquiryClass = Enquiry::class;
         parent::__construct();
     }
-
 
     public function dashboard(Request $request)
     {
@@ -87,6 +88,9 @@ class UserController extends FrontendController
 
     public function profileUpdate(Request $request){
         $user = Auth::user();
+        $messages = [
+            'user_name.required'      => __('The User name field is required.'),
+        ];
         $request->validate([
             'first_name' => 'required|max:255',
             'last_name'  => 'required|max:255',
@@ -96,12 +100,24 @@ class UserController extends FrontendController
                 'max:255',
                 Rule::unique('users')->ignore($user->id)
             ],
-        ]);
+            'user_name'=> [
+                'required',
+                'max:255',
+                'min:4',
+                'string',
+                'alpha_dash',
+                Rule::unique('users')->ignore($user->id)
+            ],
+            'phone'       => [
+                'required',
+                Rule::unique('users')->ignore($user->id)
+            ],
+        ],$messages);
         $input = $request->except('bio');
-
         $user->fill($input);
         $user->bio = clean($request->input('bio'));
         $user->birthday = date("Y-m-d", strtotime($user->birthday));
+        $user->user_name = Str::slug( $request->input('user_name') ,"_");
         $user->save();
         return redirect()->back()->with('success', __('Update successfully'));
     }
@@ -245,7 +261,7 @@ class UserController extends FrontendController
                 'required',
                 'string'
             ],
-            'phone'       => ['required'],
+            'phone'       => ['required','unique:users'],
             'term'       => ['required'],
         ];
         $messages = [
@@ -318,6 +334,9 @@ class UserController extends FrontendController
             $a->first_name = $request->input('first_name');
             $a->last_name = $request->input('last_name');
             $a->save();
+
+            event(new UserSubscriberSubmit($a));
+
             return $this->sendSuccess([], __('Thank you for subscribing'));
         }
     }
@@ -374,6 +393,7 @@ class UserController extends FrontendController
         ];
         return view('User::frontend.enquiryReport', $data);
     }
+
     public function enquiryReportBulkEdit($enquiry_id, Request $request)
     {
         $status = $request->input('status');

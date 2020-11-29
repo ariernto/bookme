@@ -3,7 +3,7 @@
     <div class="panel-body">
         <div class="form-group">
             <label>{{__("Title")}}</label>
-            <input type="text" value="{{$translation->title}}" placeholder="{{__("Name of the car")}}" name="title" class="form-control">
+            <input type="text" value="{!! clean($translation->title) !!}" placeholder="{{__("Name of the car")}}" name="title" class="form-control">
         </div>
         <div class="form-group">
             <label class="control-label">{{__("Content")}}</label>

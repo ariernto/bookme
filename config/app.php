@@ -170,7 +170,7 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
 
         /*
@@ -270,7 +270,7 @@ return [
         ],
     ],
 
-    'version'=>"1.8.2",
+    'version'=>"1.9.0",
 
     'updater_url'=>"http://check.bookingcore.org/updater.php"
 

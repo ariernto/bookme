@@ -13,7 +13,6 @@ Route::group(['prefix'=>'user/'.config('car.car_route_prefix'),'middleware' => [
     Route::get('/del/{id}','ManageCarController@deleteCar')->name('car.vendor.delete');
     Route::post('/store/{id}','ManageCarController@store')->name('car.vendor.store');
     Route::get('bulkEdit/{id}','ManageCarController@bulkEditCar')->name("car.vendor.bulk_edit");
-    Route::get('/booking-report','ManageCarController@bookingReport')->name("car.vendor.booking_report");
     Route::get('/booking-report/bulkEdit/{id}','ManageCarController@bookingReportBulkEdit')->name("car.vendor.booking_report.bulk_edit");
     Route::get('/recovery','ManageCarController@recovery')->name('car.vendor.recovery');
     Route::get('/restore/{id}','ManageCarController@restore')->name('car.vendor.restore');

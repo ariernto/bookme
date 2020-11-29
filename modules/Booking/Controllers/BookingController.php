@@ -1,6 +1,7 @@
 <?php
 namespace Modules\Booking\Controllers;
 
+use App\Notifications\AdminChannelServices;
 use App\User;
 use DebugBar\DebugBar;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -9,7 +10,9 @@ use Illuminate\Support\Facades\Storage;
 use Mockery\Exception;
 //use Modules\Booking\Events\VendorLogPayment;
 use Modules\Booking\Events\BookingCreatedEvent;
+use Modules\Booking\Events\BookingUpdatedEvent;
 use Modules\Booking\Events\EnquirySendEvent;
+use Modules\Booking\Events\SetPaidAmountEvent;
 use Modules\Tour\Models\TourDate;
 use Validator;
 use Illuminate\Http\Request;
@@ -108,6 +111,10 @@ class BookingController extends \App\Http\Controllers\Controller
         if(!is_enable_guest_checkout() and !Auth::check()){
             return $this->sendError(__("You have to login in to do this"))->setStatusCode(401);
         }
+
+        if(Auth::user() && !Auth::user()->hasVerifiedEmail() && setting_item('enable_verify_email_register_user') == 1){
+            return $this->sendError(__("You have to verify email first"), ['url' => url('/email/verify')]);
+        }
         /**
          * @param Booking $booking
          */
@@ -193,7 +200,11 @@ class BookingController extends \App\Http\Controllers\Controller
 
         $rules = $service->filterCheckoutValidate($request, $rules);
         if (!empty($rules)) {
-            $validator = Validator::make($request->all(), $rules);
+            $messages = [
+                'term_conditions.required'    => __('Term conditions is required field'),
+                'payment_gateway.required' => __('Payment gateway is required field'),
+            ];
+            $validator = Validator::make($request->all(), $rules , $messages );
             if ($validator->fails()) {
                 return $this->sendError('', ['errors' => $validator->errors()]);
             }
@@ -204,6 +215,7 @@ class BookingController extends \App\Http\Controllers\Controller
             $credit = money_to_credit($booking->total,true);
             $wallet_total_used = $booking->total;
         }
+
 
         $service->beforeCheckout($request, $booking);
         // Normal Checkout
@@ -219,8 +231,8 @@ class BookingController extends \App\Http\Controllers\Controller
         $booking->country = $request->input('country');
         $booking->customer_notes = $request->input('customer_notes');
         $booking->gateway = $payment_gateway;
-        $booking->wallet_credit_used = $credit;
-        $booking->wallet_total_used = $wallet_total_used;
+        $booking->wallet_credit_used = floatval($credit);
+        $booking->wallet_total_used = floatval($wallet_total_used);
         $booking->pay_now = floatval($booking->deposit == null ? $booking->total : $booking->deposit);
 
 
@@ -229,7 +241,7 @@ class BookingController extends \App\Http\Controllers\Controller
             if($how_to_pay == 'full'){
                 $booking->deposit = 0;
                 $booking->pay_now = $booking->total;
-            }else{
+            }elseif($how_to_pay == 'deposit'){
                 // case guest input credit more than "pay deposit" need to pay
                 // Ex : pay deposit 10$ but guest input 20$ -> minus credit balance = 10$
                 if($wallet_total_used > $booking->deposit){
@@ -237,12 +249,17 @@ class BookingController extends \App\Http\Controllers\Controller
                     $booking->wallet_total_used = floatval($wallet_total_used);
                     $booking->wallet_credit_used = money_to_credit($wallet_total_used,true);
                 }
+
             }
 
             $booking->pay_now = max(0,$booking->pay_now - $wallet_total_used);
             $booking->paid = $booking->wallet_total_used;
+        }else{
+            if($how_to_pay == 'full'){
+                $booking->deposit = 0;
+                $booking->pay_now = $booking->total;
+            }
         }
-
 
         $gateways = get_payment_gateways();
         if($booking->pay_now > 0){
@@ -353,8 +370,7 @@ class BookingController extends \App\Http\Controllers\Controller
         if(!is_enable_guest_checkout() and !Auth::check()){
             return $this->sendError(__("You have to login in to do this"))->setStatusCode(401);
         }
-
-        if(Auth::user() && !Auth::user()->hasVerifiedEmail()){
+        if(Auth::user() && !Auth::user()->hasVerifiedEmail() && setting_item('enable_verify_email_register_user')==1){
             return $this->sendError(__("You have to verify email first"), ['url' => url('/email/verify')]);
         }
 
@@ -504,6 +520,50 @@ class BookingController extends \App\Http\Controllers\Controller
         event(new EnquirySendEvent($row));
         return $this->sendSuccess([
             'message' => __("Thank you for contacting us! We will be in contact shortly.")
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function setPaidAmount(Request $request){
+        $rules =  [
+            'remain'   => 'required|integer',
+            'id' => 'required'
+        ];
+
+        $validator = Validator::make($request->all(),$rules);
+        if ($validator->fails()) {
+            return $this->sendError('', ['errors' => $validator->errors()]);
+        }
+
+
+        $id = $request->input('id');
+        $remain = floatval($request->input('remain'));
+
+        if($remain < 0){
+            return $this->sendError(__('Remain can not smaller than 0'));
+        }
+
+        $booking = Booking::where('id', $id)->first();
+        if (empty($booking)) {
+            return $this->sendError(__('Booking not found'));
+        }
+
+        $booking->pay_now = $remain;
+        $booking->paid = floatval($booking->total) - $remain;
+        event(new SetPaidAmountEvent($booking));
+        if($remain == 0){
+            $booking->status = $booking::PAID;
+//            $booking->sendStatusUpdatedEmails();
+            event(new BookingUpdatedEvent($booking));
+        }
+
+        $booking->save();
+
+        return $this->sendSuccess([
+            'message' => __("You booking has been changed successfully")
         ]);
     }
 }

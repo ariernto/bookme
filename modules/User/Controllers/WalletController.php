@@ -8,12 +8,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Modules\Booking\Models\Payment;
 use Modules\FrontendController;
+use Modules\User\Events\RequestCreditPurchase;
 use Modules\User\Models\Wallet\DepositPayment;
 
 class WalletController extends FrontendController
 {
-    public function wallet(){
-
+    public function wallet()
+    {
+        if( setting_item('wallet_module_disable')){
+            return redirect(route("user.profile.index"));
+        }
         $row = auth()->user();
         $data = [
             'row'=>$row,
@@ -29,7 +33,9 @@ class WalletController extends FrontendController
         return view('User::frontend.wallet.index',$data);
     }
     public function buy(){
-
+        if( setting_item('wallet_module_disable')){
+            return redirect(route("user.profile.index"));
+        }
         $row = auth()->user();
         $booking = new \Modules\Booking\Controllers\BookingController();
         $data = [
@@ -53,8 +59,10 @@ class WalletController extends FrontendController
     }
 
     public function buyProcess(Request $request){
+        if( setting_item('wallet_module_disable')){
+            return redirect(route("user.profile.index"));
+        }
         $row = auth()->user();
-
         $rules = [];
         $message = [];
         if(setting_item('wallet_deposit_type') == 'list'){
@@ -151,6 +159,7 @@ class WalletController extends FrontendController
                 // Send Email
                 //$payment->sendNewPurchaseEmail();
             }
+            event(new RequestCreditPurchase($row, $payment));
         }
 
         if($success and $payment->status == 'completed') $redirect_url = route('user.wallet');

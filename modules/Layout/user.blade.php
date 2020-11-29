@@ -12,6 +12,7 @@
     <link href="{{ asset('libs/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
     <link href="{{ asset('libs/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('libs/icofont/icofont.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('dist/frontend/css/notification.css') }}" rel="newest stylesheet">
     <link href="{{ asset('dist/frontend/css/app.css?_ver='.config('app.version')) }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset("libs/daterange/daterangepicker.css") }}" >
     <!-- Fonts -->
@@ -33,7 +34,15 @@
             routes:{
                 login:'{{route('auth.login')}}',
                 register:'{{route('auth.register')}}',
-            }
+            },
+            currentUser: {{(int)Auth::id()}},
+            isAdmin : {{is_admin() ? 1 : 0}},
+            rtl: {{ setting_item_with_lang('enable_rtl') ? "1" : "0" }},
+            markAsRead:'{{route('core.notification.markAsRead')}}',
+            markAllAsRead:'{{route('core.notification.markAllAsRead')}}',
+            loadNotify : '{{route('core.notification.loadNotify')}}',
+            pusher_api_key : '{{setting_item("pusher_api_key")}}',
+            pusher_cluster : '{{setting_item("pusher_cluster")}}',
         };
         var i18n = {
             warning:"{{__("Warning")}}",

@@ -5,11 +5,13 @@ use App\Currency;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Modules\Booking\Models\Bookable;
 use Modules\Booking\Models\Booking;
+use Modules\Booking\Traits\CapturesService;
 use Modules\Core\Models\Terms;
 use Modules\Location\Models\Location;
 use Modules\Review\Models\Review;
@@ -25,10 +27,14 @@ use Modules\Core\Models\Attributes;
 
 class Tour extends Bookable
 {
+    use Notifiable;
     use SoftDeletes;
+    use CapturesService;
+
     protected $table                              = 'bravo_tours';
     public    $checkout_booking_detail_file       = 'Tour::frontend/booking/detail';
     public    $checkout_booking_detail_modal_file = 'Tour::frontend/booking/detail-modal';
+    public    $set_paid_modal_file                = 'Tour::frontend/booking/set-paid-modal';
     public    $email_new_booking_file             = 'Tour::emails.new_booking_detail';
     public    $type                               = 'tour';
     public    $availabilityClass                  = TourDate::class;
@@ -61,6 +67,8 @@ class Tour extends Bookable
         'include',
         'exclude',
         'itinerary',
+        'surrounding',
+
     ];
     protected $slugField                          = 'slug';
     protected $slugFromField                      = 'title';
@@ -75,6 +83,9 @@ class Tour extends Bookable
         'include'   => 'array',
         'exclude'   => 'array',
         'itinerary' => 'array',
+        'service_fee' => 'array',
+        'surrounding' => 'array',
+
     ];
 
     public static function getModelName()
@@ -352,12 +363,12 @@ class Tour extends Bookable
         if (!$this->checkBusyDate($start_date)) {
             return $this->sendError(__("Start date is not a valid date"));
         }
-        //Buyer Fees
+        //Buyer Fees for Admin
         $total_before_fees = $total;
-        $list_fees = setting_item('tour_booking_buyer_fees');
-        $total_fee = 0;
-        if (!empty($list_fees)) {
-            $lists = json_decode($list_fees, true);
+        $list_buyer_fees = setting_item('tour_booking_buyer_fees');
+        $total_buyer_fee = 0;
+        if (!empty($list_buyer_fees)) {
+            $lists = json_decode($list_buyer_fees, true);
             foreach ($lists as $item) {
                 //for Fixed
                 $fee_price = $item['price'];
@@ -366,13 +377,33 @@ class Tour extends Bookable
                     $fee_price = ($total_before_fees / 100) * $item['price'];
                 }
                 if (!empty($item['per_person']) and $item['per_person'] == "on") {
-                    $total_fee += $fee_price * $total_guests;
+                    $total_buyer_fee += $fee_price * $total_guests;
                 } else {
-                    $total_fee += $fee_price;
+                    $total_buyer_fee += $fee_price;
                 }
             }
-            $total += $total_fee;
+            $total += $total_buyer_fee;
         }
+
+        //Service Fees for Vendor
+        $total_service_fee = 0;
+        if(!empty($this->enable_service_fee) and !empty($list_service_fee = $this->service_fee)){
+            foreach ($list_service_fee as $item) {
+                //for Fixed
+                $serice_fee_price = $item['price'];
+                // for Percent
+                if (!empty($item['unit']) and $item['unit'] == "percent") {
+                    $serice_fee_price = ($total_before_fees / 100) * $item['price'];
+                }
+                if (!empty($item['per_person']) and $item['per_person'] == "on") {
+                    $total_service_fee += $serice_fee_price * $total_guests;
+                } else {
+                    $total_service_fee += $serice_fee_price;
+                }
+            }
+            $total += $total_service_fee;
+        }
+
         $booking = new $this->bookingClass();
         $booking->status = 'draft';
         $booking->object_id = $request->input('service_id');
@@ -384,8 +415,12 @@ class Tour extends Bookable
         $booking->start_date = $start_date->format('Y-m-d H:i:s');
         $start_date->modify('+ ' . max(1, $this->duration) . ' hours');
         $booking->end_date = $start_date->format('Y-m-d H:i:s');
-        $booking->buyer_fees = $list_fees ?? '';
+
+        $booking->vendor_service_fee_amount = $total_service_fee ?? '';
+        $booking->vendor_service_fee = $list_service_fee ?? '';
+        $booking->buyer_fees = $list_buyer_fees ?? '';
         $booking->total_before_fees = $total_before_fees;
+
         $booking->calculateCommission();
         if ($this->isDepositEnable()) {
             $booking_deposit_fomular = $this->getDepositFomular();
@@ -402,12 +437,11 @@ class Tour extends Bookable
                     break;
             }
             if ($booking_deposit_fomular == "deposit_and_fee") {
-                $booking->deposit = $booking->deposit + $total_fee;
+                $booking->deposit = $booking->deposit + $total_buyer_fee + $total_service_fee;
             }
         }
         $check = $booking->save();
         if ($check) {
-
             $this->bookingClass::clearDraftBookings();
             $booking->addMeta('duration', $this->duration);
             $booking->addMeta('base_price', $base_price);
@@ -557,8 +591,8 @@ class Tour extends Bookable
                 if (!empty($booking_data['person_types'])) {
                     foreach ($booking_data['person_types'] as $k => &$type) {
                         if (!empty($lang) and !empty($type['name_' . $lang])) {
-                            $type['name'] = $type['name_' . $lang];
-                            $type['desc'] = $type['desc_' . $lang];
+                            $type['name'] = !empty($type['name_' . $lang])??$type['name_' . $lang];
+                            $type['desc'] = !empty($type['desc_' . $lang])??$type['desc_' . $lang];
                         }
                         $type['min'] = (int)$type['min'];
                         $type['max'] = (int)$type['max'];
@@ -603,6 +637,17 @@ class Tour extends Bookable
         $list_fees = setting_item_array('tour_booking_buyer_fees');
         if (!empty($list_fees)) {
             foreach ($list_fees as $item) {
+                $item['type_name'] = $item['name_' . app()->getLocale()] ?? $item['name'] ?? '';
+                $item['type_desc'] = $item['desc_' . app()->getLocale()] ?? $item['desc'] ?? '';
+                $item['price_type'] = '';
+                if (!empty($item['per_person']) and $item['per_person'] == 'on') {
+                    $item['price_type'] .= '/' . __('guest');
+                }
+                $booking_data['buyer_fees'][] = $item;
+            }
+        }
+        if(!empty($this->enable_service_fee) and !empty($service_fee = $this->service_fee)){
+            foreach ($service_fee as $item) {
                 $item['type_name'] = $item['name_' . app()->getLocale()] ?? $item['name'] ?? '';
                 $item['type_desc'] = $item['desc_' . app()->getLocale()] ?? $item['desc'] ?? '';
                 $item['price_type'] = '';
@@ -930,7 +975,7 @@ class Tour extends Bookable
         if (!empty($price_range = $request->query('price_range'))) {
             $pri_from = explode(";", $price_range)[0];
             $pri_to = explode(";", $price_range)[1];
-            $raw_sql_min_max = "( (IFNULL(bravo_tours.sale_price,0) > 0 and bravo_tours.sale_price >= ? ) OR (IFNULL(bravo_tours.sale_price,0) <= 0 and bravo_tours.price >= ?) ) 
+            $raw_sql_min_max = "( (IFNULL(bravo_tours.sale_price,0) > 0 and bravo_tours.sale_price >= ? ) OR (IFNULL(bravo_tours.sale_price,0) <= 0 and bravo_tours.price >= ?) )
 								AND ( (IFNULL(bravo_tours.sale_price,0) > 0 and bravo_tours.sale_price <= ? ) OR (IFNULL(bravo_tours.sale_price,0) <= 0 and bravo_tours.price <= ?) )";
             $model_Tour->WhereRaw($raw_sql_min_max, [
                 $pri_from,
@@ -945,12 +990,15 @@ class Tour extends Bookable
             $list_cat = TourCategory::whereIn('id', $category_ids)->where("status", "publish")->get();
             if (!empty($list_cat)) {
                 $where_left_right = [];
+                $params = [];
                 foreach ($list_cat as $cat) {
-                    $where_left_right[] = " ( bravo_tour_category._lft >= {$cat->_lft} AND bravo_tour_category._rgt <= {$cat->_rgt} ) ";
+                    $where_left_right[] = " ( bravo_tour_category._lft >= ? AND bravo_tour_category._rgt <= ? ) ";
+                    $params[] = $cat->_lft;
+                    $params[] = $cat->_rgt;
                 }
                 $sql_where_join = " ( " . implode("OR", $where_left_right) . " )  ";
-                $model_Tour->join('bravo_tour_category', function ($join) use ($sql_where_join) {
-                        $join->on('bravo_tour_category.id', '=', 'bravo_tours.category_id')->WhereRaw($sql_where_join);
+                $model_Tour->join('bravo_tour_category', function ($join) use ($sql_where_join,$params) {
+                        $join->on('bravo_tour_category.id', '=', 'bravo_tours.category_id')->WhereRaw($sql_where_join,$params);
                     });
             }
         }
@@ -961,11 +1009,14 @@ class Tour extends Bookable
         $review_scores = $request->query('review_score');
         if (is_array($review_scores) && !empty($review_scores)) {
             $where_review_score = [];
+            $params = [];
             foreach ($review_scores as $number) {
-                $where_review_score[] = " ( bravo_tours.review_score >= {$number} AND bravo_tours.review_score <= {$number}.9 ) ";
+                $where_review_score[] = " ( bravo_tours.review_score >= ? AND bravo_tours.review_score <= ? ) ";
+                $params[] = $number;
+                $params[] = $number.'.9';
             }
             $sql_where_review_score = " ( " . implode("OR", $where_review_score) . " )  ";
-            $model_Tour->WhereRaw($sql_where_review_score);
+            $model_Tour->WhereRaw($sql_where_review_score,$params);
         }
         if (!empty($service_name = $request->query("service_name"))) {
             if (setting_item('site_enable_multi_lang') && setting_item('site_locale') != app()->getLocale()) {
@@ -979,7 +1030,7 @@ class Tour extends Bookable
         }
         if(!empty($lat = $request->query('map_lat')) and !empty($lgn = $request->query('map_lgn'))){
 //            ORDER BY (POW((lon-$lon),2) + POW((lat-$lat),2))";
-            $model_Tour->orderByRaw("POW((bravo_tours.map_lng-".$lgn."),2) + POW((bravo_tours.map_lat-".$lat."),2)");
+            $model_Tour->orderByRaw("POW((bravo_tours.map_lng-?),2) + POW((bravo_tours.map_lat-?),2)",[$lgn,$lat]);
         }
         $orderby = $request->input("orderby");
         switch ($orderby){

@@ -1,9 +1,14 @@
 <?php
 namespace Modules\Space\Controllers;
 
+use App\Notifications\AdminChannelServices;
+use Modules\Booking\Events\BookingUpdatedEvent;
+use Modules\Core\Events\CreatedServicesEvent;
+use Modules\Core\Events\UpdatedServiceEvent;
 use Modules\FrontendController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Modules\Location\Models\LocationCategory;
 use Modules\Space\Models\Space;
 use Modules\Location\Models\Location;
 use Modules\Core\Models\Attributes;
@@ -19,6 +24,10 @@ class ManageSpaceController extends FrontendController
     protected $attributesClass;
     protected $locationClass;
     protected $bookingClass;
+    /**
+     * @var string
+     */
+    private $locationCategoryClass;
 
     public function __construct()
     {
@@ -28,6 +37,7 @@ class ManageSpaceController extends FrontendController
         $this->spaceTermClass = SpaceTerm::class;
         $this->attributesClass = Attributes::class;
         $this->locationClass = Location::class;
+        $this->locationCategoryClass = LocationCategory::class;
         $this->bookingClass = Booking::class;
     }
     public function callAction($method, $parameters)
@@ -91,6 +101,8 @@ class ManageSpaceController extends FrontendController
         $query = $this->spaceClass::onlyTrashed()->where("create_user", $user_id)->where("id", $id)->first();
         if(!empty($query)){
             $query->restore();
+            event(new UpdatedServiceEvent($query));
+
         }
         return redirect(route('space.vendor.recovery'))->with('success', __('Restore space success!'));
     }
@@ -103,6 +115,7 @@ class ManageSpaceController extends FrontendController
             'row'           => $row,
             'translation' => new $this->spaceTranslationClass(),
             'space_location' => $this->locationClass::where("status","publish")->get()->toTree(),
+            'location_category' => $this->locationCategoryClass::where('status', 'publish')->get(),
             'attributes'    => $this->attributesClass::where('service', 'space')->get(),
             'breadcrumbs'        => [
                 [
@@ -169,6 +182,10 @@ class ManageSpaceController extends FrontendController
             'default_state',
             'min_day_before_booking',
             'min_day_stays',
+            'enable_service_fee',
+            'service_fee',
+            'surrounding',
+
         ];
         if($this->hasPermission('space_manage_others')){
             $dataKeys[] = 'create_user';
@@ -185,8 +202,11 @@ class ManageSpaceController extends FrontendController
             }
 
             if($id > 0 ){
+                event(new UpdatedServiceEvent($row));
+
                 return back()->with('success',  __('Space updated') );
             }else{
+                event(new CreatedServicesEvent($row));
                 return redirect(route('space.vendor.edit',['id'=>$row->id]))->with('success', __('Space created') );
             }
         }
@@ -222,6 +242,7 @@ class ManageSpaceController extends FrontendController
             'translation'    => $translation,
             'row'           => $row,
             'space_location' => $this->locationClass::where("status","publish")->get()->toTree(),
+            'location_category' => $this->locationCategoryClass::where('status', 'publish')->get(),
             'attributes'    => $this->attributesClass::where('service', 'space')->get(),
             "selected_terms" => $row->terms->pluck('term_id'),
             'breadcrumbs'        => [
@@ -246,6 +267,8 @@ class ManageSpaceController extends FrontendController
         $query = $this->spaceClass::where("create_user", $user_id)->where("id", $id)->first();
         if(!empty($query)){
             $query->delete();
+            event(new UpdatedServiceEvent($query));
+
         }
         return redirect(route('space.vendor.index'))->with('success', __('Delete space success!'));
     }
@@ -273,27 +296,9 @@ class ManageSpaceController extends FrontendController
                 break;
         }
         $query->save();
-        return redirect()->back()->with('success', __('Update success!'));
-    }
+        event(new UpdatedServiceEvent($query));
 
-    public function bookingReport(Request $request)
-    {
-        $data = [
-            'bookings' => $this->bookingClass::getBookingHistory($request->input('status'), false , Auth::id() , 'space'),
-            'statues'  => config('booking.statuses'),
-            'breadcrumbs'        => [
-                [
-                    'name' => __('Manage Space'),
-                    'url'  => route('space.vendor.index')
-                ],
-                [
-                    'name' => __('Booking Report'),
-                    'class'  => 'active'
-                ]
-            ],
-            'page_title'         => __("Booking Report"),
-        ];
-        return view('Space::frontend.manageSpace.bookingReport', $data);
+        return redirect()->back()->with('success', __('Update success!'));
     }
 
     public function bookingReportBulkEdit($booking_id , Request $request){
@@ -308,7 +313,7 @@ class ManageSpaceController extends FrontendController
 
                 if($status == Booking::CANCELLED) $item->tryRefundToWallet();
 
-                $item->sendStatusUpdatedEmails();
+                event(new BookingUpdatedEvent($item));
                 return redirect()->back()->with('success', __('Update success'));
             }
             return redirect()->back()->with('error', __('Booking not found!'));

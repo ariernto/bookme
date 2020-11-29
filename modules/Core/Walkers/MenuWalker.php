@@ -26,7 +26,7 @@
 
 			foreach ($items as $k=>$item) {
 
-				$class = $item['class'] ?? '';
+				$class = e($item['class'] ?? '');
 				$url = $item['url'] ?? '';
 				$item['target'] = $item['target'] ?? '';
 				if (!isset($item['item_model']))
@@ -56,9 +56,9 @@
 				$class.=' depth-'.($depth);
 				printf('<li class="%s">', $class);
 				if (!empty($item['children'])) {
-					$item['name'] .= ' <i class="fa fa-angle-down"></i>';
+					$item['name'] .= ' <i class="caret fa fa-angle-down"></i>';
 				}
-				printf('<a  target="%s" href="%s" >%s</a>', $item['target'], $url, $item['name']);
+				printf('<a  target="%s" href="%s" >%s</a>', e($item['target']), e($url), clean($item['name']));
 				if (!empty($item['children'])) {
 					echo '<ul class="children-menu menu-dropdown">';
 					echo $html;

@@ -109,11 +109,6 @@ class ModuleProvider extends ModuleServiceProvider
                         'permission' => 'car_create',
                     ],
                     [
-                        'url'   => route('car.vendor.booking_report'),
-                        'title'      => __("Booking Report"),
-                        'permission' => 'car_view',
-                    ],
-                    [
                         'url'   => route('car.vendor.recovery'),
                         'title'      => __("Recovery"),
                         'permission' => 'car_create',

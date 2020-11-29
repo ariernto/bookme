@@ -14,9 +14,17 @@ use Modules\FrontendController;
 use Modules\User\Events\NewVendorRegistered;
 use Modules\User\Events\SendMailUserRegistered;
 use Modules\Vendor\Models\VendorRequest;
+use Modules\Booking\Models\Booking;
+
 
 class VendorController extends FrontendController
 {
+    protected $bookingClass;
+    public function __construct()
+    {
+        $this->bookingClass = Booking::class;
+        parent::__construct();
+    }
     public function register(Request $request)
     {
         $rules = [
@@ -125,5 +133,21 @@ class VendorController extends FrontendController
                 ], __("Register success. Please wait for admin approval"));
             }
         }
+    }
+
+    public function bookingReport(Request $request)
+    {
+        $data = [
+            'bookings'    => $this->bookingClass::getBookingHistory($request->input('status'), false, Auth::id()),
+            'statues'     => config('booking.statuses'),
+            'breadcrumbs' => [
+                [
+                    'name'  => __('Booking Report'),
+                    'class' => 'active'
+                ],
+            ],
+            'page_title'  => __("Booking Report"),
+        ];
+        return view('Vendor::frontend.bookingReport.index', $data);
     }
 }

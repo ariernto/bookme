@@ -53,7 +53,7 @@
                                             <a href="{{url('admin/module/template/edit/'.$row->id)}}">{{$row->title}}</a>
                                         </td>
                                         <td>{{$row->updated_at}}</td>
-                                        <td><a class="btn btn-sm btn-primary" href="{{url('admin/module/template/exportTemplate',[$row->id])}}"> <i class="fa fa-download" aria-hidden="true"></i> {{__('Export')}}</a></td>
+                                        <td><a class="btn btn-sm btn-primary" href="{{route('template.admin.exportTemplate',[$row->id])}}"> <i class="fa fa-download" aria-hidden="true"></i> {{__('Export')}}</a></td>
                                     </tr>
                                 @endforeach
                             @else

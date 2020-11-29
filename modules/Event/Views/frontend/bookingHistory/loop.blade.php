@@ -11,7 +11,7 @@
                 $translation = $service->translateOrOrigin(app()->getLocale());
             @endphp
             <a target="_blank" href="{{$service->getDetailUrl()}}">
-                {{$translation->title}}
+                {!! clean($translation->title) !!}
             </a>
         @else
             {{__("[Deleted]")}}
@@ -22,7 +22,7 @@
         {{__("Start date")}} : {{display_date($booking->start_date)}} <br>
         {{__("Duration")}} :
         @php $duration = $booking->getMeta("duration") @endphp
-        {{duration_format($duration,true)}}
+        {{duration_format($duration)}}
     </td>
     <td>{{format_money($booking->total)}}</td>
     <td>{{format_money($booking->paid)}}</td>

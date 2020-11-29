@@ -15,7 +15,6 @@ Route::group(['prefix'=>'user/'.config('hotel.hotel_route_prefix'),'middleware' 
     Route::get('/del/{id}','VendorController@delete')->name('hotel.vendor.delete');
     Route::post('/store/{id}','VendorController@store')->name('hotel.vendor.store');
     Route::get('bulkEdit/{id}','VendorController@bulkEdithotel')->name("hotel.vendor.bulk_edit");
-    Route::get('/booking-report','VendorController@bookingReport')->name("hotel.vendor.booking_report");
     Route::get('/booking-report/bulkEdit/{id}','VendorController@bookingReportBulkEdit')->name("hotel.vendor.booking_report.bulk_edit");
     Route::group(['prefix'=>'availability'],function(){
         Route::get('/','AvailabilityController@index')->name('hotel.vendor.availability.index');

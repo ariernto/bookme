@@ -37,7 +37,17 @@ Route::group(['prefix'=>'user','middleware' => ['auth','verified']],function(){
     Route::get('wallet','WalletController@wallet')->name('user.wallet');
     Route::get('wallet/buy','WalletController@buy')->name('user.wallet.buy');
     Route::post('wallet/buyProcess','WalletController@buyProcess')->name('user.wallet.buyProcess');
+
+    Route::get('chat','ChatController@index')->name('user.chat');
 });
+
+Route::group(['prefix'=>config('chatify.path'),'middleware'=>'auth'],function(){
+    Route::get('/', 'ChatController@iframe')->name(config('chatify.path'));
+    Route::post('search','ChatController@search')->name('search');
+    Route::post('getContacts', 'ChatController@getContacts')->name('contacts.get');
+    Route::post('idInfo', 'ChatController@idFetchData');
+});
+
 
 Route::group(['prefix'=>'profile'],function(){
 Route::match(['get'],'/{id}','ProfileController@profile')->name("user.profile");

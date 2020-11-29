@@ -239,6 +239,9 @@ class MenuController extends AdminController
 
     public function store(Request $request)
     {
+        if(is_demo_mode()){
+            return $this->sendError("DEMO MODE: You are not allowed to do it");
+        }
         $request->validate([
             'items' => 'required',
             'name'  => 'required|max:255'

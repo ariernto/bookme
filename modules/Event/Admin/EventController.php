@@ -10,11 +10,14 @@ namespace Modules\Event\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\AdminController;
+use Modules\Core\Events\CreatedServicesEvent;
+use Modules\Core\Events\UpdatedServiceEvent;
 use Modules\Event\Models\Event;
 use Modules\Event\Models\EventTerm;
 use Modules\Event\Models\EventTranslation;
 use Modules\Core\Models\Attributes;
 use Modules\Location\Models\Location;
+use Modules\Location\Models\LocationCategory;
 
 class EventController extends AdminController
 {
@@ -23,6 +26,11 @@ class EventController extends AdminController
     protected $event_term;
     protected $attributes;
     protected $location;
+    /**
+     * @var string
+     */
+    private $locationCategoryClass;
+
     public function __construct()
     {
         parent::__construct();
@@ -32,6 +40,7 @@ class EventController extends AdminController
         $this->event_term = EventTerm::class;
         $this->attributes = Attributes::class;
         $this->location = Location::class;
+        $this->locationCategoryClass = LocationCategory::class;
     }
 
     public function callAction($method, $parameters)
@@ -124,6 +133,7 @@ class EventController extends AdminController
             'row'            => $row,
             'attributes'     => $this->attributes::where('service', 'event')->get(),
             'event_location' => $this->location::where('status', 'publish')->get()->toTree(),
+            'location_category' => $this->locationCategoryClass::where('status', 'publish')->get(),
             'translation'    => new $this->event_translation(),
             'breadcrumbs'    => [
                 [
@@ -158,7 +168,8 @@ class EventController extends AdminController
             'translation'    => $translation,
             "selected_terms" => $row->terms->pluck('term_id'),
             'attributes'     => $this->attributes::where('service', 'event')->get(),
-            'event_location'  => $this->location::where('status', 'publish')->get()->toTree(),
+            'event_location'  => $this->location::where('status', 'publish')->get()->toTree(),    
+            'location_category' => $this->locationCategoryClass::where('status', 'publish')->get(),
             'enable_multi_lang'=>true,
             'breadcrumbs'    => [
                 [
@@ -220,6 +231,9 @@ class EventController extends AdminController
             'extra_price',
             'is_featured',
             'default_state',
+            'enable_service_fee',
+            'service_fee',
+            'surrounding',
         ];
         if($this->hasPermission('event_manage_others')){
             $dataKeys[] = 'create_user';
@@ -238,8 +252,12 @@ class EventController extends AdminController
             }
 
             if($id > 0 ){
+                event(new UpdatedServiceEvent($row));
+
                 return back()->with('success',  __('Event updated') );
             }else{
+                event(new CreatedServicesEvent($row));
+
                 return redirect(route('event.admin.edit',$row->id))->with('success', __('Event created') );
             }
         }
@@ -282,23 +300,27 @@ class EventController extends AdminController
                         $query->where("create_user", Auth::id());
                         $this->checkPermission('event_delete');
                     }
-                    $query->first();
-                    if(!empty($query)){
-                        $query->delete();
+                    $row = $query->first();
+                    if(!empty($row)){
+                        $row->delete();
+                        event(new UpdatedServiceEvent($row));
+
                     }
                 }
                 return redirect()->back()->with('success', __('Deleted success!'));
                 break;
             case "recovery":
                 foreach ($ids as $id) {
-                    $query = $this->event::where("id", $id);
+                    $query = $this->event::withTrashed()->where("id", $id);
                     if (!$this->hasPermission('event_manage_others')) {
                         $query->where("create_user", Auth::id());
                         $this->checkPermission('event_delete');
                     }
-                    $query->first();
-                    if(!empty($query)){
-                        $query->restore();
+                    $row = $query->first();
+                    if(!empty($row)){
+                        $row->restore();
+                        event(new UpdatedServiceEvent($row));
+
                     }
                 }
                 return redirect()->back()->with('success', __('Recovery success!'));
@@ -318,7 +340,11 @@ class EventController extends AdminController
                         $query->where("create_user", Auth::id());
                         $this->checkPermission('event_update');
                     }
-                    $query->update(['status' => $action]);
+                    $row = $query->first();
+                    $row->status  = $action;
+                    $row->save();
+                    event(new UpdatedServiceEvent($row));
+
                 }
                 return redirect()->back()->with('success', __('Update success!'));
                 break;

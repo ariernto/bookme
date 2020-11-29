@@ -247,13 +247,13 @@
                         <p>{{__('You must enable on main lang.')}}</p>
                     @endif
                 @endif
-                
-                
+
+
                 <div class="form-group" data-condition="cookie_agreement_enable:is(1)">
                     <label>{{__("Agree Text Button")}}</label>
                     <div class="form-controls">
                         <input type="text" name="cookie_agreement_button_text" value="{{setting_item_with_lang('cookie_agreement_button_text',request()->query('lang')) ?? ''}}" class="form-control">
-                    
+
                     </div>
                 </div>
                 <div class="form-group" data-condition="cookie_agreement_enable:is(1)">
@@ -266,3 +266,4 @@
         </div>
     </div>
 </div>
+@include('Core::admin.settings.groups.parts.pusher')

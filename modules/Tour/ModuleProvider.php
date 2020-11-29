@@ -108,11 +108,6 @@ class ModuleProvider extends ModuleServiceProvider
                         'permission' => 'tour_create',
                     ],
                     [
-                        'url'        => route('tour.vendor.booking_report'),
-                        'title'      => __("Booking Report"),
-                        'permission' => 'tour_view',
-                    ],
-                    [
                         'url'   => route('tour.vendor.recovery'),
                         'title'      => __("Recovery"),
                         'permission' => 'tour_create',

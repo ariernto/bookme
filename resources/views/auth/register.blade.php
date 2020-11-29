@@ -6,7 +6,7 @@
             <div class="col-md-5">
                 <div class="">
                     <h4 class="form-title">{{ __('Register') }}</h4>
-                    @include('auth.register-form',['captcha_action'=>'register_normal'])
+                    @include('Layout::auth.register-form',['captcha_action'=>'register_normal'])
                 </div>
             </div>
         </div>

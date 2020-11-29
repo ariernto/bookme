@@ -357,10 +357,7 @@ class BaseModel extends Model
         if($this->status == "publish"){
             return true;
         }
-        if(Auth::id() and $this->create_user == Auth::id() ){
-            return true;
-        }
-        if(Auth::id() and Auth::user()->hasPermissionTo('dashboard_vendor_access')){
+        if(Auth::id() and $this->create_user == Auth::id() and Auth::user()->hasPermissionTo('dashboard_vendor_access')){
             return true;
         }
         return false;

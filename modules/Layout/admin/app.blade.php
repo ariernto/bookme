@@ -42,6 +42,13 @@
             map_gmap_key:'{{setting_item('map_gmap_key')}}',
             csrf:'{{csrf_token()}}',
             date_format:'{{get_moment_date_format()}}',
+            markAsRead:'{{route('core.admin.notification.markAsRead')}}',
+            markAllAsRead:'{{route('core.admin.notification.markAllAsRead')}}',
+            loadNotify : '{{route('core.admin.notification.loadNotify')}}',
+            pusher_api_key : '{{setting_item("pusher_api_key")}}',
+            pusher_cluster : '{{setting_item("pusher_cluster")}}',
+            isAdmin : {{is_admin() ? 1 : 0}},
+            currentUser: {{(int)Auth::id()}},
         };
         var i18n = {
             warning:"{{__("Warning")}}",
@@ -123,7 +130,7 @@
 
 <!-- Scripts -->
 {!! \App\Helpers\Assets::css(true) !!}
-
+<script src="{{ asset('libs/pusher.min.js') }}"></script>
 <script src="{{ asset('dist/admin/js/manifest.js?_ver='.config('app.version')) }}" ></script>
 <script src="{{ asset('dist/admin/js/vendor.js?_ver='.config('app.version')) }}" ></script>
 

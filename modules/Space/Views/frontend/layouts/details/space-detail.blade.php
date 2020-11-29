@@ -1,6 +1,6 @@
 <div class="g-header">
     <div class="left">
-        <h1>{{$translation->title}}</h1>
+        <h1>{!! clean($translation->title) !!}</h1>
         @if($translation->address)
             <p class="address"><i class="fa fa-map-marker"></i>
                 {{$translation->address}}
@@ -150,6 +150,7 @@
     @endforeach
 </div>
 @endif
+@includeIf("Hotel::frontend.layouts.details.hotel-surrounding")
 @if($row->map_lat && $row->map_lng)
 <div class="g-location">
     <h3>{{__("Location")}}</h3>

@@ -140,7 +140,7 @@ class AvailabilityController extends FrontendController{
         $rows =  $query->take(40)->get();
         $allDates = [];
 
-        $period = periodDate($request->input('start'),$request->input('end'));
+        $period = periodDate($request->input('start'),$request->input('end'),false);
         foreach ($period as $dt){
             $date = [
                 'id'=>rand(0,999),
@@ -201,7 +201,7 @@ class AvailabilityController extends FrontendController{
         if(!empty($bookings))
         {
             foreach ($bookings as $booking){
-                $period = periodDate($booking->start_date,$booking->end_date);
+                $period = periodDate($booking->start_date,$booking->end_date,false);
                 foreach ($period as $dt){
                     $date = $dt->format('Y-m-d');
                     if(isset($allDates[$date])){
@@ -249,7 +249,7 @@ class AvailabilityController extends FrontendController{
         }
 
         $postData = $request->input();
-        $period = periodDate($request->input('start_date'),$request->input('end_date'));
+        $period = periodDate($request->input('start_date'),$request->input('end_date'),false);
         foreach ($period as $dt){
             $date = $this->roomDateClass::where('start_date',$dt->format('Y-m-d'))->where('target_id',$target_id)->first();
 

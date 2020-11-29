@@ -1,3 +1,11 @@
+# 2.9.1
+
+* Fix xdebug function crash on PHP 8
+
+# 2.9.0
+
+* JsonResponseHandler includes the exception code
+
 # 2.8.0
 
 * Support PHP 8

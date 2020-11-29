@@ -37,6 +37,7 @@ class SettingClass extends BaseSettingsClass
                     'space_booking_buyer_fees',
                     'space_vendor_create_service_must_approved_by_admin',
                     'space_allow_vendor_can_change_their_booking_status',
+                    'space_allow_vendor_can_change_paid_amount',
                     'space_search_fields',
                     'space_map_search_fields',
 
@@ -45,6 +46,8 @@ class SettingClass extends BaseSettingsClass
                     'space_deposit_type',
                     'space_deposit_amount',
                     'space_deposit_fomular',
+
+                    'space_layout_map_option',
                 ],
                 'html_keys'=>[
 

@@ -17,39 +17,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>{{__('Email Host')}}</label>
-                        <div class="form-controls">
-                            <input type="text" class="form-control" name="email_host" value="{{!empty($settings['email_host'])?$settings['email_host']:"smtp.mailgun.org" }}">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>{{__('Email Port')}}</label>
-                        <div class="form-controls">
-                            <input type="text" class="form-control" name="email_port" value="{{!empty($settings['email_port'])?$settings['email_port']:"587" }}">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>{{__('Email Encryption')}}</label>
-                        <div class="form-controls">
-                            <select name="email_encryption" class="form-control">
-                                <option value="tls" {{($settings['email_encryption'] ?? '') == 'tls' ? 'selected' : ''  }}>TLS</option>
-                                <option value="ssl" {{($settings['email_encryption'] ?? '') == 'ssl' ? 'selected' : ''  }}>SSL</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>{{__('Email Username')}}</label>
-                        <div class="form-controls">
-                            <input type="text" class="form-control" name="email_username" value="{{@$settings['email_username'] }}">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>{{__('Email Password')}}</label>
-                        <div class="form-controls">
-                            <input type="password" class="form-control" name="email_password" value="{{@$settings['email_password'] }}">
-                        </div>
-                    </div>
+
                 @else
                     <p>{{__('You can edit on main lang.')}}</p>
                 @endif
@@ -57,15 +25,53 @@
         </div>
     </div>
 </div>
-<hr>
+
 @if(is_default_lang())
-    <div class="row" data-operator="or" data-condition="email_driver:is(mailgun),email_driver:is(postmark),email_driver:is(ses),email_driver:is(sparkpost)">
+    <div class="row " data-operator="or" data-condition="email_driver:is(smtp),email_driver:is(sendmail),email_driver:is(mailgun),email_driver:is(postmark),email_driver:is(ses),email_driver:is(sparkpost)">
+        <div class="col-12">
+            <hr>
+        </div>
         <div class="col-sm-4">
             <h3 class="form-group-title">{{__('Config Email Service')}}</h3>
         </div>
         <div class="col-sm-8">
             <div class="panel">
                 <div class="panel-body">
+                    <div data-operator="or" data-condition="email_driver:is(smtp),email_driver:is(sendmail)">
+                        <div class="form-group">
+                            <label>{{__('Email Host')}}</label>
+                            <div class="form-controls">
+                                <input type="text" class="form-control" name="email_host" value="{{!empty($settings['email_host'])?$settings['email_host']:"smtp.mailgun.org" }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>{{__('Email Port')}}</label>
+                            <div class="form-controls">
+                                <input type="text" class="form-control" name="email_port" value="{{!empty($settings['email_port'])?$settings['email_port']:"587" }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>{{__('Email Encryption')}}</label>
+                            <div class="form-controls">
+                                <select name="email_encryption" class="form-control">
+                                    <option value="tls" {{($settings['email_encryption'] ?? '') == 'tls' ? 'selected' : ''  }}>TLS</option>
+                                    <option value="ssl" {{($settings['email_encryption'] ?? '') == 'ssl' ? 'selected' : ''  }}>SSL</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>{{__('Email Username')}}</label>
+                            <div class="form-controls">
+                                <input type="text" class="form-control" name="email_username" value="{{@$settings['email_username'] }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>{{__('Email Password')}}</label>
+                            <div class="form-controls">
+                                <input type="password" class="form-control" name="email_password" value="{{@$settings['email_password'] }}">
+                            </div>
+                        </div>
+                    </div>
                     <div data-condition="email_driver:is(mailgun)">
                         <div class="form-group">
                             <label class="">{{__("Mailgun Domain")}}</label>
@@ -117,6 +123,27 @@
                         </div>
 
                     </div>
+                    <div data-condition="email_driver:is(mandrill)">
+                        <div class="form-group">
+                            <label class="">{{__("Ses Key")}}</label>
+                            <div class="form-controls">
+                                <input type="text" autocomplete="no" class="form-control" name="email_ses_key" value="{{@$settings['email_ses_key'] }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="">{{__("Ses Secret")}}</label>
+                            <div class="form-controls">
+                                <input type="text" autocomplete="no" class="form-control" name="email_ses_secret" value="{{@$settings['email_ses_secret'] }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="">{{__("Ses Region")}}</label>
+                            <div class="form-controls">
+                                <input type="text" autocomplete="no" class="form-control" name="email_ses_region" value="{{!empty($settings['email_ses_region'])?$settings['email_ses_region']:"us-east-1" }}">
+                            </div>
+                        </div>
+
+                    </div>
                     <div data-condition="email_driver:is(sparkpost)">
                         <div class="form-group">
                             <label class="">{{__("Sparkpost Secret")}}</label>
@@ -128,9 +155,9 @@
                 </div>
             </div>
         </div>
-        <hr>
     </div>
 @endif
+<hr>
 <div class="row">
     <div class="col-sm-4">
         <h3 class="form-group-title">{{__('Email Testing')}}</h3>

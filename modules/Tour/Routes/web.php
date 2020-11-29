@@ -19,7 +19,6 @@ Route::group(['prefix'=>'user/'.config('tour.tour_route_prefix'),'middleware' =>
     Route::post('/store/{id}','ManageTourController@store')->name('tour.vendor.store');
     Route::get('bulkEdit/{id}','ManageTourController@bulkEditTour')->name("tour.vendor.bulk_edit");
     Route::get('clone/{id}','ManageTourController@cloneTour')->name("tour.vendor.clone");
-    Route::get('/booking-report','ManageTourController@bookingReport')->name("tour.vendor.booking_report");
     Route::get('/booking-report/bulkEdit/{id}','ManageTourController@bookingReportBulkEdit')->name("tour.vendor.booking_report.bulk_edit");
     Route::get('/recovery','ManageTourController@recovery')->name('tour.vendor.recovery');
     Route::get('/restore/{id}','ManageTourController@restore')->name('tour.vendor.restore');

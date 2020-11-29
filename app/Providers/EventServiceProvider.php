@@ -8,15 +8,20 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Modules\Booking\Events\EnquirySendEvent;
 use Modules\Booking\Events\VendorLogPayment;
+use Modules\Booking\Listeners\EnquiryNotifyListen;
 use Modules\Booking\Listeners\EnquirySendListen;
 use Modules\Booking\Listeners\VendorLogPaymentListen;
 use Modules\User\Events\NewVendorRegistered;
 use Modules\User\Events\SendMailUserRegistered;
 use Modules\User\Events\VendorApproved;
 use Modules\User\Listeners\SendMailUserRegisteredListen;
+use Modules\User\Listeners\SendNotifyApproved;
+use Modules\User\Listeners\SendNotifyRegistered;
+use Modules\User\Listeners\SendNotifyRegisteredListen;
 use Modules\User\Listeners\SendVendorApprovedMail;
 use Modules\User\Listeners\SendVendorRegisterdEmail;
 use Modules\Vendor\Events\PayoutRequestEvent;
+use Modules\Vendor\Listeners\PayoutNotifyListener;
 use Modules\Vendor\Listeners\PayoutRequestNotificationListener;
 
 class EventServiceProvider extends ServiceProvider
@@ -31,22 +36,27 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         SendMailUserRegistered::class => [
-            SendMailUserRegisteredListen::class
+            SendMailUserRegisteredListen::class,
+            SendNotifyRegisteredListen::class
         ],
         VendorApproved::class=>[
-            SendVendorApprovedMail::class
+            SendVendorApprovedMail::class,
+            SendNotifyApproved::class
         ],
         NewVendorRegistered::class=>[
-            SendVendorRegisterdEmail::class
+            SendVendorRegisterdEmail::class,
+            SendNotifyRegistered::class
         ],
 //        VendorLogPayment::class =>[
 //            VendorLogPaymentListen::class
 //        ]
         PayoutRequestEvent::class=>[
-            PayoutRequestNotificationListener::class
+            PayoutRequestNotificationListener::class,
+            PayoutNotifyListener::class
         ],
         EnquirySendEvent::class=>[
-            EnquirySendListen::class
+            EnquirySendListen::class,
+            EnquiryNotifyListen::class
         ]
     ];
 

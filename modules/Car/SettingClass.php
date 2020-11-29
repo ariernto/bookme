@@ -37,6 +37,7 @@ class SettingClass extends BaseSettingsClass
                     'car_booking_buyer_fees',
                     'car_vendor_create_service_must_approved_by_admin',
                     'car_allow_vendor_can_change_their_booking_status',
+                    'car_allow_vendor_can_change_paid_amount',
                     'car_search_fields',
                     'car_map_search_fields',
 
@@ -45,6 +46,8 @@ class SettingClass extends BaseSettingsClass
                     'car_deposit_type',
                     'car_deposit_amount',
                     'car_deposit_fomular',
+
+                    'car_layout_map_option',
                 ],
                 'html_keys'=>[
 

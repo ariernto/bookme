@@ -26,7 +26,7 @@ class ModuleProvider extends ModuleServiceProvider
         $count = VendorPayout::countInitial();
         return [
             'payout'=>[
-                "position"=>60,
+                "position"=>70,
                 'url'        => 'admin/module/vendor/payout',
                 'title'      => __("Payouts :count",['count'=>$count ? sprintf('<span class="badge badge-warning">%d</span>',$count) : '']),
                 'icon'       => 'icon ion-md-card',
@@ -44,6 +44,13 @@ class ModuleProvider extends ModuleServiceProvider
     public static function getUserMenu()
     {
         $res = [];
+        $res['booking_report']= [
+            'url'        => route('vendor.bookingReport'),
+            'title'      => __("Booking Report"),
+            'icon'       => 'icon ion-ios-pie',
+            'position'   => 35,
+            'permission' => 'dashboard_vendor_access',
+        ];
         if(!setting_item('disable_payout'))
         {
             $res['payout']= [
@@ -54,7 +61,6 @@ class ModuleProvider extends ModuleServiceProvider
                 'permission' => 'dashboard_vendor_access',
             ];
         }
-
         return $res;
     }
 }

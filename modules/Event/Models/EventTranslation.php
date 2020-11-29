@@ -13,6 +13,7 @@ class EventTranslation extends Event
         'content',
         'faqs',
         'address',
+        'surrounding'
     ];
 
     protected $slugField     = false;
@@ -23,6 +24,7 @@ class EventTranslation extends Event
     ];
     protected $casts = [
         'faqs'  => 'array',
+        'surrounding'  => 'array',
     ];
 
     public function getSeoType(){

@@ -7,7 +7,11 @@ use Modules\User\Models\Wallet\DepositPayment;
 
 class ModuleProvider extends \Modules\ModuleServiceProvider
 {
+    public function register()
+    {
 
+        $this->app->register(RouteServiceProvider::class);
+    }
     public static function getAdminMenu()
     {
         $count = 0;

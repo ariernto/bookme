@@ -25,7 +25,7 @@
             @endif
             <div class="post-inner">
                 <h3 class="post-title">
-                    <a class="text-darken" href="{{$row->getDetailUrl()}}"> {{$translation->title}}</a>
+                    <a class="text-darken" href="{{$row->getDetailUrl()}}"> {!! clean($translation->title) !!}</a>
                 </h3>
                 <div class="post-info">
                     <ul>

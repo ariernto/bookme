@@ -27,7 +27,7 @@ class LocationController extends Controller
         $row = Location::find($id);
         if(empty($row))
         {
-            $this->sendError(__("Location not found"));
+            return $this->sendError(__("Location not found"));
         }
 
         return $this->sendSuccess([

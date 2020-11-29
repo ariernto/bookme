@@ -28,7 +28,7 @@
                 <li class="dot"> {{ display_date($row->updated_at)}}  </li>
             </ul>
         </div>
-        <h3 class="item-title"><a href="{{$row->getDetailUrl()}}"> {{$translation->title}} </a></h3>
+        <h3 class="item-title"><a href="{{$row->getDetailUrl()}}"> {!! clean($translation->title) !!} </a></h3>
         <div class="item-desc">
             {!! get_exceprt($translation->content,70,"...") !!}
         </div>

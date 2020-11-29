@@ -15,7 +15,7 @@
         <div class="bravo_form_search">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-9 col-md-12">
+                    <div class="col-12">
                         @include('Tour::frontend.layouts.search.form-search')
                     </div>
                 </div>

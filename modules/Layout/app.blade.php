@@ -26,7 +26,9 @@
     <link href="{{ asset('libs/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('libs/icofont/icofont.min.css') }}" rel="stylesheet">
     <link href="{{ asset('libs/select2/css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('dist/frontend/css/notification.css') }}" rel="newest stylesheet">
     <link href="{{ asset('dist/frontend/css/app.css?_ver='.config('app.version')) }}" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="{{ asset("libs/daterange/daterangepicker.css") }}" >
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -57,8 +59,14 @@
                 tour:'{{route('tour.search')}}',
                 space:'{{route('space.search')}}',
             },
-            currentUser:{{(int)Auth::id()}},
-            rtl: {{ setting_item_with_lang('enable_rtl') ? "1" : "0" }}
+            currentUser: {{(int)Auth::id()}},
+            isAdmin : {{is_admin() ? 1 : 0}},
+            rtl: {{ setting_item_with_lang('enable_rtl') ? "1" : "0" }},
+            markAsRead:'{{route('core.notification.markAsRead')}}',
+            markAllAsRead:'{{route('core.notification.markAllAsRead')}}',
+            loadNotify : '{{route('core.notification.loadNotify')}}',
+            pusher_api_key : '{{setting_item("pusher_api_key")}}',
+            pusher_cluster : '{{setting_item("pusher_cluster")}}',
         };
         var i18n = {
             warning:"{{__("Warning")}}",
@@ -105,11 +113,11 @@
     @if(setting_item_with_lang('enable_rtl'))
         <link href="{{ asset('dist/frontend/css/rtl.css') }}" rel="stylesheet">
     @endif
-
     {!! setting_item('head_scripts') !!}
     {!! setting_item_with_lang_raw('head_scripts') !!}
 
     @php event(new \Modules\Layout\Events\LayoutEndHead()); @endphp
+
 </head>
 <body class="frontend-page {{$body_class ?? ''}} @if(setting_item_with_lang('enable_rtl')) is-rtl @endif @if(is_api()) is_api @endif">
     @php event(new \Modules\Layout\Events\LayoutBeginBody()); @endphp

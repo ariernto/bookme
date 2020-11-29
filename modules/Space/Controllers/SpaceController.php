@@ -2,6 +2,7 @@
 namespace Modules\Space\Controllers;
 
 use App\Http\Controllers\Controller;
+use Modules\Location\Models\LocationCategory;
 use Modules\Space\Models\Space;
 use Illuminate\Http\Request;
 use Modules\Location\Models\Location;
@@ -13,10 +14,16 @@ class SpaceController extends Controller
 {
     protected $spaceClass;
     protected $locationClass;
+    /**
+     * @var string
+     */
+    private $locationCategoryClass;
+
     public function __construct()
     {
         $this->spaceClass = Space::class;
         $this->locationClass = Location::class;
+        $this->locationCategoryClass = LocationCategory::class;
     }
 
     public function callAction($method, $parameters)
@@ -96,6 +103,7 @@ class SpaceController extends Controller
             'row'          => $row,
             'translation'       => $translation,
             'space_related' => $space_related,
+            'location_category'=>$this->locationCategoryClass::where("status", "publish")->with('translations')->get(),
             'booking_data' => $row->getBookingData(),
             'review_list'  => $review_list,
             'seo_meta'  => $row->getSeoMetaWithTranslation(app()->getLocale(),$translation),

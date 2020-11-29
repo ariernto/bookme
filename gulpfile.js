@@ -25,7 +25,7 @@ function copyPackage() {
 		'!.git/**',
 		'!.idea/**',
 		'!storage/installed',
-		'!storage/app/public/**',
+		//'!storage/app/public/**',
 		'!storage/app/0000/**',
 		'!storage/app/uploads/**',
 		'!public/storage/**',

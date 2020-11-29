@@ -109,11 +109,6 @@ class ModuleProvider extends ModuleServiceProvider
                         'permission' => 'event_create',
                     ],
                     [
-                        'url'   => route('event.vendor.booking_report'),
-                        'title'      => __("Booking Report"),
-                        'permission' => 'event_view',
-                    ],
-                    [
                         'url'   => route('event.vendor.recovery'),
                         'title'      => __("Recovery"),
                         'permission' => 'event_create',

@@ -4,7 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -30,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
 
         if(env('APP_HTTPS')) {
             \URL::forceScheme('https');
+            $this->app['request']->server->set('HTTPS','on');
         }
 
         Schema::defaultStringLength(191);
@@ -37,6 +40,11 @@ class AppServiceProvider extends ServiceProvider
         app()->setLocale('en');
 
         if(strpos($request->path(),'install') === false  && file_exists(storage_path().'/installed')){
+
+            // create symlink storage
+            if(!is_link(public_path('storage'))){
+                Artisan::call('storage:link', [] );
+            }
 
             $locale = $request->segment(1);
             $languages = \Modules\Language\Models\Language::getActive();
