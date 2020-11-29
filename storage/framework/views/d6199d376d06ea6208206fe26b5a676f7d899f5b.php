@@ -15,4 +15,4 @@
             <input type="text" class="check-in-out" name="date" value="<?php echo e(Request::query('date',date("Y-m-d")." - ".date("Y-m-d",strtotime("+1 day")))); ?>">
         </div>
     </div>
-</div><?php /**PATH D:\Web\Laravel\newpro\package\modules/Tour/Views/frontend/layouts/search/fields/date.blade.php ENDPATH**/ ?>
+</div><?php /**PATH D:\Web\Laravel\newpro\package\modules/Event/Views/frontend/layouts/search/fields/date.blade.php ENDPATH**/ ?>
