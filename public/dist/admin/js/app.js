@@ -3699,9 +3699,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Localhost\bookinh-core\resources\admin\js\app.js */"./resources/admin/js/app.js");
-__webpack_require__(/*! D:\Localhost\bookinh-core\resources\admin\scss\vendors.scss */"./resources/admin/scss/vendors.scss");
-module.exports = __webpack_require__(/*! D:\Localhost\bookinh-core\resources\admin\scss\app.scss */"./resources/admin/scss/app.scss");
+__webpack_require__(/*! D:\Web\Laravel\newpro\package\resources\admin\js\app.js */"./resources/admin/js/app.js");
+__webpack_require__(/*! D:\Web\Laravel\newpro\package\resources\admin\scss\vendors.scss */"./resources/admin/scss/vendors.scss");
+module.exports = __webpack_require__(/*! D:\Web\Laravel\newpro\package\resources\admin\scss\app.scss */"./resources/admin/scss/app.scss");
 
 
 /***/ })
