@@ -13,19 +13,19 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         //Cache::flush();
-        $this->call(RolesAndPermissionsSeeder::class);
-        $this->call(Language::class);
-        $this->call(UsersTableSeeder::class);
-        $this->call(MediaFileSeeder::class);
-        $this->call(General::class);
-        $this->call(LocationSeeder::class);
-        $this->call(News::class);
-        $this->call(Tour::class);
-        $this->call(SpaceSeeder::class);
-        $this->call(HotelSeeder::class);
-        $this->call(CarSeeder::class);
-        $this->call(EventSeeder::class);
-        $this->call(SocialSeeder::class);
-        $this->call(DemoSeeder::class);
+        // $this->call(RolesAndPermissionsSeeder::class);
+        // $this->call(Language::class);
+        // $this->call(UsersTableSeeder::class);
+        // $this->call(MediaFileSeeder::class);
+        // $this->call(General::class);
+        // $this->call(LocationSeeder::class);
+        // $this->call(News::class);
+        // $this->call(Tour::class);
+        // $this->call(SpaceSeeder::class);
+        // $this->call(HotelSeeder::class);
+        // $this->call(CarSeeder::class);
+        // $this->call(EventSeeder::class);
+        // $this->call(SocialSeeder::class);
+        // $this->call(DemoSeeder::class);
     }
 }

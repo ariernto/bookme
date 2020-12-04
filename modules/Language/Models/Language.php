@@ -25,13 +25,9 @@ class Language extends BaseModel
 
     public static function getActive($withCurrent = true)
     {
-        $value = Cache::rememberForever('locale_active_'.((int) $withCurrent ), function () use ($withCurrent) {
-            $q = parent::query();
-            if(!$withCurrent){
-                $q->where('locale','!=',\App::getLocale());
-            }
-            return $q->where('status', 'publish')->orderByRaw('CASE WHEN (locale = \''.e(setting_item('site_locale')).'\') THEN 0 ELSE 1 END')->get();
-        });
+        $value = Language::where('status', 'publish')
+                ->orderByRaw('CASE WHEN (locale = \''.e(setting_item('site_locale')).'\') THEN 0 ELSE 1 END')
+                ->get();
         return $value;
 
     }
