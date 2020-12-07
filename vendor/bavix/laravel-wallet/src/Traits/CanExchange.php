@@ -14,8 +14,9 @@ use Bavix\Wallet\Services\WalletService;
 
 trait CanExchange
 {
+
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function exchange(Wallet $to, $amount, ?array $meta = null): Transfer
     {
@@ -29,7 +30,7 @@ trait CanExchange
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function safeExchange(Wallet $to, $amount, ?array $meta = null): ?Transfer
     {
@@ -41,7 +42,7 @@ trait CanExchange
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function forceExchange(Wallet $to, $amount, ?array $meta = null): Transfer
     {
@@ -70,11 +71,12 @@ trait CanExchange
                         ->setWithdraw($withdraw)
                         ->setFrom($from)
                         ->setFee($fee)
-                        ->setTo($to),
+                        ->setTo($to)
                 ]);
 
                 return current($transfers);
             });
         });
     }
+
 }

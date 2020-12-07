@@ -186,11 +186,11 @@ class PhoneNumber implements Jsonable, JsonSerializable, Serializable
      * Format the phone number in a way that it can be dialled from the provided country using a cellphone.
      *
      * @param string $country
-     * @param bool   $withFormatting
+     * @param bool   $removeFormatting
      * @return string
      * @throws \Propaganistas\LaravelPhone\Exceptions\CountryCodeException
      */
-    public function formatForMobileDialingInCountry($country, $withFormatting = false)
+    public function formatForMobileDialingInCountry($country, $removeFormatting = false)
     {
         if (! static::isValidCountryCode($country)) {
             throw CountryCodeException::invalid($country);
@@ -199,7 +199,7 @@ class PhoneNumber implements Jsonable, JsonSerializable, Serializable
         return $this->lib->formatNumberForMobileDialing(
             $this->getPhoneNumberInstance(),
             $country,
-            $withFormatting
+            $removeFormatting
         );
     }
 
@@ -312,16 +312,6 @@ class PhoneNumber implements Jsonable, JsonSerializable, Serializable
         }
 
         return in_array($this->getType(true), $types, true);
-    }
-
-    /**
-     * Get the raw provided number.
-     *
-     * @return string
-     */
-    public function getRawNumber()
-    {
-    	return $this->number;
     }
 
     /**

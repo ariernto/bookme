@@ -8,8 +8,9 @@ use Bavix\Wallet\Traits\HasWalletFloat;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class UserFloat.
+ * Class UserFloat
  *
+ * @package Bavix\Wallet\Test\Models
  * @property string $name
  * @property string $email
  */

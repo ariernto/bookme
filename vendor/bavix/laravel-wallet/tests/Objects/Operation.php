@@ -4,6 +4,7 @@ namespace Bavix\Wallet\Test\Objects;
 
 class Operation extends \Bavix\Wallet\Objects\Operation
 {
+
     /**
      * @return array
      */
@@ -13,4 +14,5 @@ class Operation extends \Bavix\Wallet\Objects\Operation
             'bank_method' => $this->meta['bank_method'] ?? null,
         ]);
     }
+
 }

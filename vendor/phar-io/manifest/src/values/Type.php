@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php
 /*
  * This file is part of PharIo\Manifest.
  *
@@ -7,35 +7,54 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace PharIo\Manifest;
 
 use PharIo\Version\VersionConstraint;
 
 abstract class Type {
-    public static function application(): Application {
+    /**
+     * @return Application
+     */
+    public static function application() {
         return new Application;
     }
 
-    public static function library(): Library {
+    /**
+     * @return Library
+     */
+    public static function library() {
         return new Library;
     }
 
-    public static function extension(ApplicationName $application, VersionConstraint $versionConstraint): Extension {
+    /**
+     * @param ApplicationName   $application
+     * @param VersionConstraint $versionConstraint
+     *
+     * @return Extension
+     */
+    public static function extension(ApplicationName $application, VersionConstraint $versionConstraint) {
         return new Extension($application, $versionConstraint);
     }
 
-    /** @psalm-assert-if-true Application $this */
-    public function isApplication(): bool {
+    /**
+     * @return bool
+     */
+    public function isApplication() {
         return false;
     }
 
-    /** @psalm-assert-if-true Library $this */
-    public function isLibrary(): bool {
+    /**
+     * @return bool
+     */
+    public function isLibrary() {
         return false;
     }
 
-    /** @psalm-assert-if-true Extension $this */
-    public function isExtension(): bool {
+    /**
+     * @return bool
+     */
+    public function isExtension() {
         return false;
     }
 }

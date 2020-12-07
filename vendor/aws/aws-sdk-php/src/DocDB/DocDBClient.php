@@ -2,7 +2,6 @@
 namespace Aws\DocDB;
 
 use Aws\AwsClient;
-use Aws\PresignUrlMiddleware;
 
 /**
  * This client is used to interact with the **Amazon DocumentDB with MongoDB compatibility** service.
@@ -91,31 +90,4 @@ use Aws\PresignUrlMiddleware;
  * @method \Aws\Result stopDBCluster(array $args = [])
  * @method \GuzzleHttp\Promise\Promise stopDBClusterAsync(array $args = [])
  */
-class DocDBClient extends AwsClient {
-    public function __construct(array $args)
-    {
-        $args['with_resolved'] = function (array $args) {
-            $this->getHandlerList()->appendInit(
-                PresignUrlMiddleware::wrap(
-                    $this,
-                    $args['endpoint_provider'],
-                    [
-                        'operations' => [
-                            'CopyDBClusterSnapshot',
-                            'CreateDBCluster',
-                        ],
-                        'service' => 'rds',
-                        'presign_param' => 'PreSignedUrl',
-                        'require_different_region' => true,
-                        'extra_query_params' => [
-                            'CopyDBClusterSnapshot' => ['DestinationRegion'],
-                            'CreateDBCluster' => ['DestinationRegion'],
-                        ]
-                    ]
-                ),
-                'rds.presigner'
-            );
-        };
-        parent::__construct($args);
-    }
-}
+class DocDBClient extends AwsClient {}

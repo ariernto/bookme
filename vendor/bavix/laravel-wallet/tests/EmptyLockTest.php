@@ -6,6 +6,7 @@ use Bavix\Wallet\Objects\EmptyLock;
 
 class EmptyLockTest extends TestCase
 {
+
     /**
      * @return void
      */
@@ -30,4 +31,5 @@ class EmptyLockTest extends TestCase
         self::assertIsString($str);
         self::assertEquals($str, $empty->owner());
     }
+
 }

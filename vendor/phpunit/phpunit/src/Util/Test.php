@@ -153,7 +153,7 @@ final class Test
      */
     public static function getMissingRequirements(string $className, string $methodName): array
     {
-        $required = self::getRequirements($className, $methodName);
+        $required = static::getRequirements($className, $methodName);
         $missing  = [];
         $hint     = null;
 
@@ -519,10 +519,6 @@ final class Test
 
     public static function isTestMethod(\ReflectionMethod $method): bool
     {
-        if (!$method->isPublic()) {
-            return false;
-        }
-
         if (\strpos($method->getName(), 'test') === 0) {
             return true;
         }
@@ -697,9 +693,9 @@ final class Test
                     }
 
                     foreach ($methods as $method) {
-                        if ($inverse && !$method->{$visibility}()) {
+                        if ($inverse && !$method->$visibility()) {
                             $codeToCoverList[] = $method;
-                        } elseif (!$inverse && $method->{$visibility}()) {
+                        } elseif (!$inverse && $method->$visibility()) {
                             $codeToCoverList[] = $method;
                         }
                     }
