@@ -3,14 +3,13 @@
 namespace Bavix\Wallet\Simple;
 
 /**
- * Class BCMath
- * @package Bavix\Wallet\Simple
+ * Class BCMath.
+ * @deprecated Will be removed in 6.x.
  */
 class BCMath extends Math
 {
-
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function add($first, $second, ?int $scale = null): string
     {
@@ -18,7 +17,7 @@ class BCMath extends Math
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function sub($first, $second, ?int $scale = null): string
     {
@@ -26,7 +25,7 @@ class BCMath extends Math
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function div($first, $second, ?int $scale = null): string
     {
@@ -34,7 +33,7 @@ class BCMath extends Math
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function mul($first, $second, ?int $scale = null): string
     {
@@ -42,7 +41,7 @@ class BCMath extends Math
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function pow($first, $second, ?int $scale = null): string
     {
@@ -50,7 +49,7 @@ class BCMath extends Math
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function ceil($number): string
     {
@@ -70,7 +69,7 @@ class BCMath extends Math
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function floor($number): string
     {
@@ -90,7 +89,7 @@ class BCMath extends Math
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function round($number, int $precision = 0): string
     {
@@ -99,10 +98,10 @@ class BCMath extends Math
         }
 
         if ($this->isNegative($number)) {
-            return bcsub($number, '0.' . str_repeat('0', $precision) . '5', $precision);
+            return bcsub($number, '0.'.str_repeat('0', $precision).'5', $precision);
         }
 
-        return bcadd($number, '0.' . str_repeat('0', $precision) . '5', $precision);
+        return bcadd($number, '0.'.str_repeat('0', $precision).'5', $precision);
     }
 
     /**
@@ -111,7 +110,7 @@ class BCMath extends Math
      */
     public function abs($number): string
     {
-        if (!preg_match('~^-?\d*(\.\d*)?$~', $number, $matches)) {
+        if (! preg_match('~^-?\d*(\.\d*)?$~', $number, $matches)) {
             return 0;
         }
 
@@ -129,7 +128,7 @@ class BCMath extends Math
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function compare($first, $second): int
     {
@@ -144,5 +143,4 @@ class BCMath extends Math
     {
         return strpos($number, '-') === 0;
     }
-
 }
