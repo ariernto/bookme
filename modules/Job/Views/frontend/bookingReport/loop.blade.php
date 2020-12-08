@@ -47,7 +47,7 @@
             <div class="dropdown-menu">
                 @if(!empty($statues))
                     @foreach($statues as $status)
-                        <a href="{{ route("hotel.vendor.booking_report.bulk_edit" , ['id'=>$booking->id , 'status'=>$status]) }}">
+                        <a href="{{ route("job.vendor.booking_report.bulk_edit" , ['id'=>$booking->id , 'status'=>$status]) }}">
                             <i class="icofont-long-arrow-right"></i> {{__('Mark as: :name',['name'=>booking_status_to_text($status)])}}
                         </a>
                     @endforeach

@@ -10,7 +10,7 @@
                 <div class="panel">
                     <div class="panel-title">{{__("Add Attributes")}}</div>
                     <div class="panel-body">
-                        <form action="{{route('hotel.admin.attribute.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
+                        <form action="{{route('job.admin.attribute.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
                             @csrf
                             @include('Job::admin/attribute/form',['parents'=>$rows])
                             <div class="">
@@ -60,12 +60,12 @@
                                             <td><input type="checkbox" class="check-item" name="ids[]" value="{{$row->id}}">
                                             </td>
                                             <td class="title">
-                                                <a href="{{route('hotel.admin.attribute.edit',['id'=>$row->id])}}">{{$row->name}}</a>
+                                                <a href="{{route('job.admin.attribute.edit',['id'=>$row->id])}}">{{$row->name}}</a>
                                             </td>
                                             <td>
-                                                <a href="{{route('hotel.admin.attribute.edit',['id'=>$row->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> {{__('Edit')}}
+                                                <a href="{{route('job.admin.attribute.edit',['id'=>$row->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> {{__('Edit')}}
                                                 </a>
-                                                <a href="{{route('hotel.admin.attribute.term.index',['id'=>$row->id])}}" class="btn btn-sm btn-success"><i class="fa fa"></i> {{__("Manage Terms")}}
+                                                <a href="{{route('job.admin.attribute.term.index',['id'=>$row->id])}}" class="btn btn-sm btn-success"><i class="fa fa"></i> {{__("Manage Terms")}}
                                                 </a>
 
                                             </td>

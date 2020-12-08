@@ -5,7 +5,7 @@ use Modules\Template\Blocks\BaseBlock;
 use Modules\Job\Models\Job;
 use Modules\Location\Models\Location;
 
-class ListHotel extends BaseBlock
+class ListJob extends BaseBlock
 {
     function __construct()
     {
@@ -117,7 +117,7 @@ class ListHotel extends BaseBlock
             'title'      => $model['title'],
             'desc'       => $model['desc'],
         ];
-        return view('Job::frontend.blocks.list-hotel.index', $data);
+        return view('Job::frontend.blocks.list-job.index', $data);
     }
 
     public function contentAPI($model = []){

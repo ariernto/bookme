@@ -11,12 +11,12 @@
                 <textarea name="content" class="d-none has-ckeditor" cols="30" rows="10">{{$translation->content}}</textarea>
             </div>
         </div>
-        @if(is_default_lang())
+        {{-- @if(is_default_lang())
             <div class="form-group">
                 <label class="control-label">{{__("Youtube Video")}}</label>
                 <input type="text" name="video" class="form-control" value="{{$row->video}}" placeholder="{{__("Youtube link video")}}">
             </div>
-        @endif
+        @endif --}}
         @if(is_default_lang())
             <div class="form-group">
                 <label class="control-label">{{__("Banner Image")}}</label>
@@ -32,7 +32,7 @@
     </div>
 </div>
 
-<div class="panel">
+{{-- <div class="panel">
     <div class="panel-title"><strong>{{__("Job Policy")}}</strong></div>
     <div class="panel-body">
         @if(is_default_lang())
@@ -94,4 +94,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}

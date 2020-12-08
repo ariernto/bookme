@@ -56,7 +56,7 @@
                 checkout:'<?php echo e(is_api() ? route('api.booking.doCheckout') : route('booking.doCheckout')); ?>'
             },
             module:{
-                hotel:'<?php echo e(route('hotel.search')); ?>',
+                hotel:'<?php echo e(route('job.search')); ?>',
                 car:'<?php echo e(route('car.search')); ?>',
                 tour:'<?php echo e(route('tour.search')); ?>',
                 space:'<?php echo e(route('space.search')); ?>',

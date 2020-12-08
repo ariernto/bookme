@@ -19,7 +19,7 @@ class AvailabilityController extends \Modules\Job\Controllers\AvailabilityContro
     protected function hasHotelPermission($hotel_id = false){
         if(empty($hotel_id)) return false;
 
-        $hotel = $this->hotelClass::find($hotel_id);
+        $hotel = $this->jobClass::find($hotel_id);
         if(empty($hotel)) return false;
 
         if(!$this->hasPermission('hotel_manage_others') and $hotel->create_user != Auth::id()){
