@@ -64,7 +64,8 @@ $menus = [
 ];
 
 // Modules
-$custom_modules = \Modules\ServiceProvider::getModules();
+// $custom_modules = \Modules\ServiceProvider::getModules();
+$custom_modules = ['Job','Tour','Car'];
 if(!empty($custom_modules)){
     foreach($custom_modules as $module){
         $moduleClass = "\\Modules\\".ucfirst($module)."\\ModuleProvider";
@@ -95,7 +96,7 @@ if(!empty($custom_modules)){
 
     }
 }
-
+// dd($menus);
 // Plugins Menu
 $plugins_modules = \Plugins\ServiceProvider::getModules();
 if(!empty($plugins_modules)){
