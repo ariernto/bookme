@@ -42,9 +42,7 @@ $menus = [
 ];
 
 // Modules
-// $custom_modules = \Modules\ServiceProvider::getModules();
-$custom_modules = ['Job'];
-// dd($custom_modules);
+$custom_modules = \Modules\ServiceProvider::getModules();
 if(!empty($custom_modules)){
     foreach($custom_modules as $module){
         $moduleClass = "\\Modules\\".ucfirst($module)."\\ModuleProvider";

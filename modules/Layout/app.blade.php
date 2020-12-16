@@ -54,7 +54,7 @@
                 checkout:'{{is_api() ? route('api.booking.doCheckout') : route('booking.doCheckout')}}'
             },
             module:{
-                hotel:'{{route('job.search')}}',
+                hotel:'{{route('hotel.search')}}',
                 car:'{{route('car.search')}}',
                 tour:'{{route('tour.search')}}',
                 space:'{{route('space.search')}}',
@@ -126,7 +126,7 @@
     {!! setting_item_with_lang_raw('body_scripts') !!}
     <div class="bravo_wrap">
         @if(!is_api())
-            {{-- @include('Layout::parts.topbar') --}}
+            @include('Layout::parts.topbar')
             @include('Layout::parts.header')
         @endif
 
