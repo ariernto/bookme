@@ -18,7 +18,7 @@ mix.sass('public/module/booking/scss/checkout.scss','module/booking/css');
 mix.sass('public/module/user/scss/user.scss','module/user/css');
 mix.sass('public/module/user/scss/profile.scss','module/user/css');
 mix.sass('public/module/tour/scss/tour.scss','module/tour/css');
-mix.sass('public/module/hotel/scss/hotel.scss','module/hotel/css');
+mix.sass('public/module/hotel/scss/job.scss','module/hotel/css');
 mix.sass('public/module/news/scss/news.scss','module/news/css');
 mix.sass('public/module/media/scss/browser.scss','module/media/css');
 mix.sass('public/module/space/scss/space.scss','module/space/css');
