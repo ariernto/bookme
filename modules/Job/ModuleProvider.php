@@ -30,27 +30,27 @@ class ModuleProvider extends ModuleServiceProvider
                 'url'        => 'admin/module/job',
                 'title'      => __('Jobs'),
                 'icon'       => 'fa fa-building-o',
-                'permission' => 'hotel_view',
+                'permission' => 'job_view',
                 'children'   => [
                     'add'=>[
                         'url'        => 'admin/module/job',
                         'title'      => __('All Jobs'),
-                        'permission' => 'hotel_view',
+                        'permission' => 'job_view',
                     ],
                     'create'=>[
                         'url'        => 'admin/module/job/create',
                         'title'      => __('Add new Job'),
-                        'permission' => 'hotel_create',
+                        'permission' => 'job_create',
                     ],
                     'category'=>[
                         'url'        => 'admin/module/job/room/attribute',
                         'title'      => __('Categories'),
-                        'permission' => 'hotel_manage_attributes',
+                        'permission' => 'job_manage_attributes',
                     ],
                     'recovery'=>[
                         'url'        => 'admin/module/job/recovery',
                         'title'      => __('Recovery'),
-                        'permission' => 'hotel_view',
+                        'permission' => 'job_view',
                     ],
                 ]
             ]
@@ -88,7 +88,7 @@ class ModuleProvider extends ModuleServiceProvider
                 'title'      => __("Manage Job"),
                 'icon'       => Job::getServiceIconFeatured(),
                 'position'   => 30,
-                'permission' => 'hotel_view',
+                'permission' => 'job_view',
                 'children' => [
                     [
                         'url'   => route('job.vendor.index'),
@@ -97,12 +97,12 @@ class ModuleProvider extends ModuleServiceProvider
                     [
                         'url'   => route('job.vendor.create'),
                         'title'      => __("Add Job"),
-                        'permission' => 'hotel_create',
+                        'permission' => 'job_create',
                     ],
                     [
                         'url'   => route('job.vendor.recovery'),
                         'title'      => __("Recovery"),
-                        'permission' => 'hotel_create',
+                        'permission' => 'job_create',
                     ],
                 ]
             ];

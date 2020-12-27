@@ -47,7 +47,7 @@ class JobController extends AdminController
 
     public function index(Request $request)
     {
-        $this->checkPermission('hotel_view');
+        $this->checkPermission('job_view');
         $query = $this->jobClass::query() ;
         $query->orderBy('id', 'desc');
         if (!empty($hotel_name = $request->input('s'))) {
@@ -82,7 +82,7 @@ class JobController extends AdminController
 
     public function create(Request $request)
     {
-        $this->checkPermission('hotel_create');
+        $this->checkPermission('job_create');
         $row = new $this->jobClass();
         $row->fill([
             'status' => 'publish'
@@ -110,7 +110,7 @@ class JobController extends AdminController
 
     public function recovery(Request $request)
     {
-        $this->checkPermission('hotel_view');
+        $this->checkPermission('job_view');
         $query = $this->jobClass::onlyTrashed() ;
         $query->orderBy('id', 'desc');
         if (!empty($hotel_name = $request->input('s'))) {
@@ -194,7 +194,7 @@ class JobController extends AdminController
                 return redirect(route('job.admin.index'));
             }
         }else{
-            $this->checkPermission('hotel_create');
+            $this->checkPermission('job_create');
             $row = new $this->jobClass();
             $row->status = "publish";
         }
@@ -259,7 +259,7 @@ class JobController extends AdminController
 
     public function saveTerms($row, $request)
     {
-        $this->checkPermission('hotel_manage_attributes');
+        $this->checkPermission('job_manage_attributes');
         if (empty($request->input('terms'))) {
             $this->jobTermClass::where('target_id', $row->id)->delete();
         } else {
@@ -318,7 +318,7 @@ class JobController extends AdminController
                 return redirect()->back()->with('success', __('Recovery success!'));
                 break;
             case "clone":
-                $this->checkPermission('hotel_create');
+                $this->checkPermission('job_create');
                 foreach ($ids as $id) {
                     (new $this->jobClass())->saveCloneByID($id);
                 }

@@ -1,5 +1,5 @@
 <?php
-if(!$user->hasPermissionTo('hotel_create')) return;
+if(!$user->hasPermissionTo('job_create')) return;
 ?>
 @if(!empty($services) and $services->total())
     <div class="bravo-profile-list-services">

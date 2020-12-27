@@ -54,7 +54,7 @@ class VendorController extends FrontendController
 
     public function index(Request $request)
     {
-        $this->checkPermission('hotel_view');
+        $this->checkPermission('job_view');
         $user_id = Auth::id();
         $list_hotel = $this->jobClass::where("create_user", $user_id)->orderBy('id', 'desc');
         $data = [
@@ -76,7 +76,7 @@ class VendorController extends FrontendController
 
     public function recovery(Request $request)
     {
-        $this->checkPermission('hotel_view');
+        $this->checkPermission('job_view');
         $user_id = Auth::id();
         $list_hotel = $this->jobClass::onlyTrashed()->where("create_user", $user_id)->orderBy('id', 'desc');
         $data = [
@@ -99,7 +99,7 @@ class VendorController extends FrontendController
 
     public function create(Request $request)
     {
-        $this->checkPermission('hotel_create');
+        $this->checkPermission('job_create');
         $row = new $this->jobClass();
         $data = [
             'row'           => $row,
@@ -137,7 +137,7 @@ class VendorController extends FrontendController
                 return redirect(route('job.vendor.index'));
             }
         }else{
-            $this->checkPermission('hotel_create');
+            $this->checkPermission('job_create');
             $row = new $this->jobClass();
             $row->status = "publish";
             if(setting_item("hotel_vendor_create_service_must_approved_by_admin", 0)){

@@ -24,7 +24,7 @@ class RoomAttributeController extends AdminController
 
     public function index(Request $request)
     {
-        $this->checkPermission('hotel_manage_attributes');
+        $this->checkPermission('job_manage_attributes');
         $listAttr = $this->attributesClass::where("service", 'hotel_room');
         if (!empty($search = $request->query('s'))) {
             $listAttr->where('name', 'LIKE', '%' . $search . '%');
@@ -55,7 +55,7 @@ class RoomAttributeController extends AdminController
             return redirect()->back()->with('error', __('Attributes not found!'));
         }
         $translation = $row->translateOrOrigin($request->query('lang'));
-        $this->checkPermission('hotel_manage_attributes');
+        $this->checkPermission('job_manage_attributes');
         $data = [
             'translation'    => $translation,
             'enable_multi_lang'=>true,
@@ -81,7 +81,7 @@ class RoomAttributeController extends AdminController
 
     public function store(Request $request)
     {
-        $this->checkPermission('hotel_manage_attributes');
+        $this->checkPermission('job_manage_attributes');
         $this->validate($request, [
             'name' => 'required'
         ]);
@@ -104,7 +104,7 @@ class RoomAttributeController extends AdminController
 
     public function editAttrBulk(Request $request)
     {
-        $this->checkPermission('hotel_manage_attributes');
+        $this->checkPermission('job_manage_attributes');
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids) or !is_array($ids)) {
@@ -127,7 +127,7 @@ class RoomAttributeController extends AdminController
 
     public function terms(Request $request, $attr_id)
     {
-        $this->checkPermission('hotel_manage_attributes');
+        $this->checkPermission('job_manage_attributes');
         $row = $this->attributesClass::find($attr_id);
         if (empty($row)) {
             return redirect()->back()->with('error', __('Term not found'));
@@ -162,7 +162,7 @@ class RoomAttributeController extends AdminController
 
     public function term_edit(Request $request, $id)
     {
-        $this->checkPermission('hotel_manage_attributes');
+        $this->checkPermission('job_manage_attributes');
         $row = $this->termsClass::find($id);
         if (empty($row)) {
             return redirect()->back()->with('error', __('Term not found'));
@@ -197,7 +197,7 @@ class RoomAttributeController extends AdminController
 
     public function term_store(Request $request)
     {
-        $this->checkPermission('hotel_manage_attributes');
+        $this->checkPermission('job_manage_attributes');
         $this->validate($request, [
             'name' => 'required'
         ]);
@@ -222,7 +222,7 @@ class RoomAttributeController extends AdminController
 
     public function editTermBulk(Request $request)
     {
-        $this->checkPermission('hotel_manage_attributes');
+        $this->checkPermission('job_manage_attributes');
         $ids = $request->input('ids');
         $action = $request->input('action');
         if (empty($ids) or !is_array($ids)) {
