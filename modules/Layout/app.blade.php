@@ -57,7 +57,6 @@
                 hotel:'{{route('job.search')}}',
                 car:'{{route('car.search')}}',
                 tour:'{{route('tour.search')}}',
-                space:'{{route('space.search')}}',
             },
             currentUser: {{(int)Auth::id()}},
             isAdmin : {{is_admin() ? 1 : 0}},
