@@ -1,12 +1,21 @@
 <?php
-namespace Modules\Tour\Blocks;
+namespace Modules\Template\Blocks;
 
 use Modules\Template\Blocks\BaseBlock;
+
 use Modules\Tour\Models\Tour;
+
+use Illuminate\Http\Request;
+
 use Modules\Tour\Models\TourCategory;
+
 use Modules\Location\Models\Location;
 
-class ListTours extends BaseBlock
+use Modules\Review\Models\Review;
+
+use Modules\Core\Models\Attributes;
+
+class FilterSearchHome extends BaseBlock
 {
     function __construct()
     {
@@ -127,13 +136,41 @@ class ListTours extends BaseBlock
     public function content($model = [])
     {
         $list = $this->query($model);
+        $markers = [];
+        if (!empty($list)) {
+            foreach ($list as $row) {
+                $markers[] = [
+                    "id" => $row->id,
+                    "title" => $row->title,
+                    "lat" => (float)$row->map_lat,
+                    "lng" => (float)$row->map_lng,
+                    "gallery" => $row->getGallery(true),
+                    "infobox" => view('Tour::frontend.layouts.search.loop-gird', ['row' => $row, 'disable_lazyload' => 1, 'wrap_class' => 'infobox-item'])->render(),
+                    'marker' => url('images/icons/png/pin.png'),
+                ];
+            }
+        }
+        $limit_location = 15;
+        if( empty(setting_item("space_location_search_style")) or setting_item("space_location_search_style") == "normal" ){
+            $limit_location = 1000;
+        }
         $data = [
-            'rows'       => $list,
-            'style_list' => $model['style'],
-            'title'      => $model['title'] ?? "",
-            'desc'      => $model['desc'] ?? "",
+            'rows' => $list,
+            'tour_category' => TourCategory::where('status', 'publish')->with(['translations'])->get()->toTree(),
+            'tour_location' => Location::where('status', 'publish')->with(['translations'])->limit($limit_location)->get()->toTree(),
+            'tour_min_max_price' => Tour::getMinMaxPrice(),
+            'markers' => $markers,
+            "blank" => 1,
+            "seo_meta" => Tour::getSeoMetaForPageList()
         ];
-        return view('Tour::frontend.blocks.list-tour.index', $data);
+        $layout = setting_item("tour_layout_search", 'normal');
+        $data['attributes'] = Attributes::where('service', 'tour')->with(['terms','translations'])->get();
+        if ($layout == "map") {
+            $data['body_class'] = 'has-search-map';
+            $data['html_class'] = 'full-page';
+            return view('Tour::frontend.search-map', $data);
+        }
+        return view('Tour::frontend.search', $data);
     }
 
     public function contentAPI($model = []){
