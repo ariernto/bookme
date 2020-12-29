@@ -53,7 +53,7 @@
     border: none;
     -webkit-box-shadow: none;
     box-shadow: none;
-    border-radius: 0.5rem;
+    border-radius: 3px;
     padding: 10px 20px;
     -webkit-transition: background .2s, color .2s;
     transition: background .2s, color .2s;
@@ -69,7 +69,7 @@
         background: #5191FA;
     }
     &.btn-danger{
-        background: #E77E64;
+        background: #FA5636;
         &:hover{
             background: #E65335;
         }
@@ -301,4 +301,8 @@
     font-size: 16px;
     font-weight: 600;
     line-height: 24px;
+}
+.avatar-cover{
+    background-size: cover;
+    background-position: center;
 }

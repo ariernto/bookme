@@ -8,13 +8,11 @@ use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Facades\DB;
 
 /**
- * Class DbService
- * @package Bavix\Wallet\Services
+ * Class DbService.
  * @codeCoverageIgnore
  */
 class DbService
 {
-
     /**
      * @return ConnectionInterface
      */
@@ -34,6 +32,10 @@ class DbService
      */
     public function transaction(Closure $callback, $attempts = 1)
     {
+        if ($this->connection()->transactionLevel()) {
+            return $callback($this);
+        }
+
         return $this->connection()->transaction($callback, $attempts);
     }
 
@@ -47,5 +49,4 @@ class DbService
     {
         return $this->connection()->raw($value);
     }
-
 }
