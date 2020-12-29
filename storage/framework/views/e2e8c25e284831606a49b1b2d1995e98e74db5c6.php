@@ -2,42 +2,26 @@
 $menus = [
     'admin'=>[
         'url'   => 'admin',
-        'title' => __("Overview"),
+        'title' => __("Dashboard"),
         'icon'  => 'icon ion-ios-desktop',
         "position"=>0
     ],
-    'space1'=>[
-        'url'   => 'space',
-        "position"=>1
-    ],
-    'divider1'=>[
-        'url'   => 'divider',
-        "position"=>40
-    ],
-    'divider2'=>[
-        'url'   => 'divider',
-        "position"=>45
-    ],
-    'divider3'=>[
-        'url'   => 'divider',
-        "position"=>54
-    ],
     'review'=>[
-        "position"=>55,
+        "position"=>50,
         'url'   => 'admin/module/review',
         'title' => __("Reviews"),
         'icon'  => 'icon ion-ios-text',
         'permission' => 'review_manage_others',
     ],
     'menu'=>[
-        "position"=>53,
+        "position"=>60,
         'url'        => 'admin/module/core/menu',
         'title'      => __("Menu"),
         'icon'       => 'icon ion-ios-apps',
         'permission' => 'menu_view',
     ],
     'template'=>[
-        "position"=>50,
+        "position"=>70,
         'url'        => 'admin/module/template',
         'title'      => __('Templates'),
         'icon'       => 'icon ion-logo-html5',
@@ -180,11 +164,7 @@ if (!empty($menus)){
             unset($menus[$k]);
             continue;
         }
-        
         $menus[$k]['class'] = $currentUrl == url($menuItem['url']) ? 'active' : '';
-        if (gettype($currentUrl) === 'object' && $menuItem['url'] == 'admin') {
-            $menus[$k]['class'] = 'active';
-        }
         if (!empty($menuItem['children'])) {
             $menus[$k]['class'] .= ' has-children';
             foreach ($menuItem['children'] as $k2 => $menuItem2) {
@@ -202,43 +182,36 @@ if (!empty($menus)){
         return $value['position'] ?? 100;
     }));
 }
+
 ?>
 <ul class="main-menu">
     <?php $__currentLoopData = $menus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menuItem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <?php $menuItem['class'] .= " ".str_ireplace("/","_",$menuItem['url']) ?>
-        <?php if($menuItem['url'] == 'space'): ?>
-            <li class="space"></li>
-        <?php elseif($menuItem['url'] == 'divider'): ?>
-            <li class="divider"></li>
-        <?php else: ?>
-            <li class="<?php echo e($menuItem['class']); ?>"><a href="<?php echo e(url($menuItem['url'])); ?>">
-                    <?php if(!empty($menuItem['icon'])): ?>
-                        <span class="icon text-center"><i class="<?php echo e($menuItem['icon']); ?>"></i></span>
-                    <?php endif; ?>
-                    <?php echo clean($menuItem['title'],[
-                        'Attr.AllowedClasses'=>null
-                    ]); ?>
+        <li class="<?php echo e($menuItem['class']); ?>"><a href="<?php echo e(url($menuItem['url'])); ?>">
+                <?php if(!empty($menuItem['icon'])): ?>
+                    <span class="icon text-center"><i class="<?php echo e($menuItem['icon']); ?>"></i></span>
+                <?php endif; ?>
+                <?php echo clean($menuItem['title'],[
+                    'Attr.AllowedClasses'=>null
+                ]); ?>
 
-                    <?php if(!empty($menuItem['children'])): ?>
-                        <span class="btn-toggle ml-auto"><i class="fa fa-angle-left pull-right"></i></span>
-                    <?php endif; ?>
-                </a>
-                <?php if(!empty($menuItem['children'])): ?>
-                    <ul class="children">
-                        <?php $__currentLoopData = $menuItem['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menuItem2): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <li class="<?php echo e($menuItem2['class']); ?>"><a href="<?php echo e(url($menuItem2['url'])); ?>">
+            </a>
+            <?php if(!empty($menuItem['children'])): ?>
+                <span class="btn-toggle"><i class="fa fa-angle-left pull-right"></i></span>
+                <ul class="children">
+                    <?php $__currentLoopData = $menuItem['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menuItem2): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li class="<?php echo e($menuItem['class']); ?>"><a href="<?php echo e(url($menuItem2['url'])); ?>">
                                 <?php if(!empty($menuItem2['icon'])): ?>
                                     <i class="<?php echo e($menuItem2['icon']); ?>"></i>
                                 <?php endif; ?>
                                 <?php echo clean($menuItem2['title'],[
                                     'Attr.AllowedClasses'=>null
                                 ]); ?></a>
-                            </li>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </ul>
-                <?php endif; ?>
-            </li>
-        <?php endif; ?>
+                        </li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </ul>
+            <?php endif; ?>
+        </li>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </ul>
 <?php /**PATH /home3/cdjofzdd/test.booking.dorica.fi/modules/Layout/admin/parts/sidebar.blade.php ENDPATH**/ ?>

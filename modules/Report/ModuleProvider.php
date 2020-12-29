@@ -15,7 +15,7 @@ class ModuleProvider extends \Modules\ModuleServiceProvider
         $count += $pending_purchase;
         return [
             'report'=>[
-                "position"=>41,
+                "position"=>110,
                 'url'        => 'admin/module/report/booking',
                 'title'      =>  __('Reports :count',['count'=>$count ? sprintf('<span class="badge badge-warning">%d</span>',$count) : '']),
                 'icon'       => 'icon ion-ios-pie',

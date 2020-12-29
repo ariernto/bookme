@@ -36,7 +36,6 @@
     .g-items-header{
         font-weight: bold;
         border: solid 1px #c4cdd5;
-        border-radius: .7rem;
         padding: 10px;
         text-align: center;
     }
@@ -409,12 +408,12 @@ th.slug{ width: 20%}
 .bravo-form.loading .fa-spinner {
     display: inline-block;
 }
-// .form-control {
-//     height: auto;
-// }
-// .input-group-text{
-//     padding:  5px 10px;
-// }
+.form-control {
+    height: auto;
+}
+.input-group-text{
+    padding:  5px 10px;
+}
 .form-group-multi-lang{
     padding: 10px;
     border: solid 1px #ccc;

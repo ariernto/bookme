@@ -12,49 +12,33 @@ $menus = [
         'url'      => route("user.booking_history"),
         'title'    => __("Booking History"),
         'icon'     => 'fa fa-clock-o',
-        'position' => 40
+        'position' => 20
     ],
     "wishlist"=>[
         'url'   => route("user.wishList.index"),
         'title' => __("Wishlist"),
         'icon'  => 'fa fa-heart-o',
-        'position' => 41
+        'position' => 21
     ],
     'profile'         => [
         'url'      => route("user.profile.index"),
-        'title'    => __("Profile"),
+        'title'    => __("My Profile"),
         'icon'     => 'fa fa-cogs',
-        'position' => 75
+        'position' => 40
     ],
     'password'        => [
         'url'      => route("user.change_password"),
         'title'    => __("Change password"),
         'icon'     => 'fa fa-lock',
-        'position' => 76
+        'position' => 50
     ],
     'admin'           => [
         'url'        => 'admin',
         'title'      => __("Admin Dashboard"),
         'icon'       => 'icon ion-ios-ribbon',
         'permission' => 'dashboard_access',
-        'position'   => 80
-    ],
-    'space1'        => [
-        'url'       => 'space',
-        'position'  => 39
-    ],
-    'space2'        => [
-        'url'       => 'space',
-        'position'  => 43
-    ],
-    'space3'        => [
-        'url'       => 'space',
-        'position'  => 74
-    ],
-    'space4'        => [
-        'url'       => 'space',
-        'position'  => 79
-    ],
+        'position'   => 60
+    ]
 ];
 
 // Modules
@@ -185,46 +169,40 @@ if (!empty($menus))
     <div class="sidebar-menu">
         <ul class="main-menu">
             @foreach($menus as $menuItem)
-                @if($menuItem['url'] == 'space')
-                    <li class="space">
-                    </li>
-                @else
-                    <li class="{{$menuItem['class']}}">
-                        <a href="{{ url($menuItem['url']) }}">
-                            @if(!empty($menuItem['icon']))
-                                <span class="icon text-center"><i class="{{$menuItem['icon']}}"></i></span>
-                            @endif
-                            {!! clean($menuItem['title']) !!}
+                <li class="{{$menuItem['class']}}">
+                    <a href="{{ url($menuItem['url']) }}">
+                        @if(!empty($menuItem['icon']))
+                            <span class="icon text-center"><i class="{{$menuItem['icon']}}"></i></span>
+                        @endif
+                        {!! clean($menuItem['title']) !!}
 
-                        </a>
-                        @if(!empty($menuItem['children']))
-                            <i class="caret"></i>
-                        @endif
-                        @if(!empty($menuItem['children']))
-                            <ul class="children">
-                                @foreach($menuItem['children'] as $menuItem2)
-                                    <li class="{{$menuItem2['class']}}"><a href="{{ url($menuItem2['url']) }}">
-                                            @if(!empty($menuItem2['icon']))
-                                                <i class="{{$menuItem2['icon']}}"></i>
-                                            @endif
-                                            {!! clean($menuItem2['title']) !!}</a></li>
-                                @endforeach
-                            </ul>
-                        @endif
-                @endif
+                    </a>
+                    @if(!empty($menuItem['children']))
+                        <i class="caret"></i>
+                    @endif
+                    @if(!empty($menuItem['children']))
+                        <ul class="children">
+                            @foreach($menuItem['children'] as $menuItem2)
+                                <li class="{{$menuItem2['class']}}"><a href="{{ url($menuItem2['url']) }}">
+                                        @if(!empty($menuItem2['icon']))
+                                            <i class="{{$menuItem2['icon']}}"></i>
+                                        @endif
+                                        {!! clean($menuItem2['title']) !!}</a></li>
+                            @endforeach
+                        </ul>
+                    @endif
                 </li>
             @endforeach
         </ul>
     </div>
-    <div class="logout px-5">
+    <div class="logout">
         <form id="logout-form-vendor" action="{{ route('auth.logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}
         </form>
         <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-vendor').submit();"><i class="fa fa-sign-out"></i> {{__("Log Out")}}
         </a>
     </div>
-    <div class="logout px-5">
-        {{-- <a href="{{url('/')}}" style="color: #1ABC9C"><i class="fa fa-long-arrow-left"></i> {{__("Back to Homepage")}}</a> --}}
-        <a href="{{url('/')}}"><i class="fa fa-long-arrow-left"></i> {{__("Back to Homepage")}}</a>
+    <div class="logout">
+        <a href="{{url('/')}}" style="color: #1ABC9C"><i class="fa fa-long-arrow-left"></i> {{__("Back to Homepage")}}</a>
     </div>
 </div>
