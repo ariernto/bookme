@@ -1,10 +1,12 @@
 <?php
 namespace Modules\Report\Admin;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\AdminController;
 use Modules\Booking\Emails\NewBookingEmail;
+use Modules\Booking\Events\BookingUpdatedEvent;
 use Modules\Booking\Models\Booking;
 
 class BookingController extends AdminController
@@ -68,9 +70,11 @@ class BookingController extends AdminController
                 if (!$this->hasPermission('booking_manage_others')) {
                     $query->where("vendor_id", Auth::id());
                 }
-                $query->first();
-                if(!empty($query)){
-                    $query->delete();
+                $row = $query->first();
+                if(!empty($row)){
+                    $row->delete();
+                    event(new BookingUpdatedEvent($row));
+
                 }
             }
         } else {
@@ -86,15 +90,14 @@ class BookingController extends AdminController
                     $item->save();
 
                     if($action == Booking::CANCELLED) $item->tryRefundToWallet();
-
-                    $item->sendStatusUpdatedEmails();
+                    event(new BookingUpdatedEvent($item));
                 }
             }
         }
         return redirect()->back()->with('success', __('Update success'));
     }
 
-    public function email_preview($id)
+    public function email_preview(Request $request, $id)
     {
         $booking = Booking::find($id);
         return (new NewBookingEmail($booking))->render();

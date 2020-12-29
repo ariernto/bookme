@@ -11,7 +11,7 @@
     <div class="bravo-user-dashboard">
         <div class="row dashboard-price-info row-eq-height mb-5">
             <div class="col-lg-3 col-md-3">
-                <div class="dashboard-item rounded border">
+                <div class="dashboard-item">
                     <div class="wrap-box">
                         <div class="title">
                             {{"Credit balance"}}

@@ -10,6 +10,7 @@ use Aws\ClientResolver;
 use Aws\Command;
 use Aws\Exception\AwsException;
 use Aws\HandlerList;
+use Aws\InputValidationMiddleware;
 use Aws\Middleware;
 use Aws\Retry\QuotaManager;
 use Aws\RetryMiddleware;
@@ -46,6 +47,8 @@ use Psr\Http\Message\RequestInterface;
  * @method \GuzzleHttp\Promise\Promise deleteBucketCorsAsync(array $args = [])
  * @method \Aws\Result deleteBucketEncryption(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteBucketEncryptionAsync(array $args = [])
+ * @method \Aws\Result deleteBucketIntelligentTieringConfiguration(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise deleteBucketIntelligentTieringConfigurationAsync(array $args = [])
  * @method \Aws\Result deleteBucketInventoryConfiguration(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteBucketInventoryConfigurationAsync(array $args = [])
  * @method \Aws\Result deleteBucketLifecycle(array $args = [])
@@ -80,6 +83,8 @@ use Psr\Http\Message\RequestInterface;
  * @method \GuzzleHttp\Promise\Promise getBucketCorsAsync(array $args = [])
  * @method \Aws\Result getBucketEncryption(array $args = [])
  * @method \GuzzleHttp\Promise\Promise getBucketEncryptionAsync(array $args = [])
+ * @method \Aws\Result getBucketIntelligentTieringConfiguration(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise getBucketIntelligentTieringConfigurationAsync(array $args = [])
  * @method \Aws\Result getBucketInventoryConfiguration(array $args = [])
  * @method \GuzzleHttp\Promise\Promise getBucketInventoryConfigurationAsync(array $args = [])
  * @method \Aws\Result getBucketLifecycle(array $args = [])
@@ -134,6 +139,8 @@ use Psr\Http\Message\RequestInterface;
  * @method \GuzzleHttp\Promise\Promise headObjectAsync(array $args = [])
  * @method \Aws\Result listBucketAnalyticsConfigurations(array $args = [])
  * @method \GuzzleHttp\Promise\Promise listBucketAnalyticsConfigurationsAsync(array $args = [])
+ * @method \Aws\Result listBucketIntelligentTieringConfigurations(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise listBucketIntelligentTieringConfigurationsAsync(array $args = [])
  * @method \Aws\Result listBucketInventoryConfigurations(array $args = [])
  * @method \GuzzleHttp\Promise\Promise listBucketInventoryConfigurationsAsync(array $args = [])
  * @method \Aws\Result listBucketMetricsConfigurations(array $args = [])
@@ -160,6 +167,8 @@ use Psr\Http\Message\RequestInterface;
  * @method \GuzzleHttp\Promise\Promise putBucketCorsAsync(array $args = [])
  * @method \Aws\Result putBucketEncryption(array $args = [])
  * @method \GuzzleHttp\Promise\Promise putBucketEncryptionAsync(array $args = [])
+ * @method \Aws\Result putBucketIntelligentTieringConfiguration(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise putBucketIntelligentTieringConfigurationAsync(array $args = [])
  * @method \Aws\Result putBucketInventoryConfiguration(array $args = [])
  * @method \GuzzleHttp\Promise\Promise putBucketInventoryConfigurationAsync(array $args = [])
  * @method \Aws\Result putBucketLifecycle(array $args = [])
@@ -214,6 +223,9 @@ use Psr\Http\Message\RequestInterface;
 class S3Client extends AwsClient implements S3ClientInterface
 {
     use S3ClientTrait;
+
+    /** @var array */
+    private static $mandatoryAttributes = ['Bucket', 'Key'];
 
     public static function getArguments()
     {
@@ -373,6 +385,11 @@ class S3Client extends AwsClient implements S3ClientInterface
                 ]
             ),
             's3.bucket_endpoint_arn'
+        );
+
+        $stack->appendValidate(
+            InputValidationMiddleware::wrap($this->getApi(), self::$mandatoryAttributes),
+            'input_validation_middleware'
         );
         $stack->appendSign(PutObjectUrlMiddleware::wrap(), 's3.put_object_url');
         $stack->appendSign(PermanentRedirectMiddleware::wrap(), 's3.permanent_redirect');

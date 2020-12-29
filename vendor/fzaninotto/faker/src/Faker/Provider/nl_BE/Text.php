@@ -24639,4 +24639,709 @@ in de kerken, richte elke vloersteen zich op om u te verpletteren en
 u te zeggen: "Hier is de hoereerster; hier is de verdoemde; hier is
 de vermaledijde!"
 
-En Lamm
+En Lamme sprong op van geluk en riep blijde uit:
+
+--Zij was trouw, de monnik heeft het gezegd! Leve Kalleken!
+
+Doch zij, weenend en sidderend, zeide:
+
+--O, Lamme, neem die verdoemenis over mij weg! Ik zie de helle! Neem
+de verdoemenis weg!
+
+--Monnik, trek de verdoemenis in, gebood Lamme.
+
+--Ik zal het niet doen, dikzak, antwoordde de monnik.
+
+En de vrouw, bleek en sidderend, viel op de knieën en smeekte broer
+Adriaensen met de handen te zamen.
+
+En Lamme zei tot den monnik:
+
+--Trek de verdoemenis in of gij wordt gehangen: en, breekt de koorde,
+uit hoofde van uwe zwaarte, zoo wordt gij herhangen, totdat de dood
+er op volge.
+
+--Gehangen en herhangen! zeiden de Geuzen.
+
+--Als het zoo is, zei de monnik tot Kalleken, ga dan, ontuchtige
+vrouwe; ga dan met dien dikzak; ga, ik hef mijne verdoemenis op, maar
+God en al zijne santen houden u in het oog: ga met dien dikzak, ga!
+
+En hij zweeg, blazend en zweetend.
+
+Plotseling riep Lamme uit:
+
+--Hij zwelt op, hij zwelt op! Daar is de zesde kin: de zevende kin
+is de geraaktheid!
+
+... En nu, zeide hij tot de Geuzen, ik beveel u aan God, u,
+Uilenspiegel aan God, u allen, mijn goede vrienden, aan God, Nele
+mijne vriendin, aan God, de heilige zaak van de vrijheid: ik kan
+niets meer voor haar....
+
+Vervolgens, als hij iedereen omhelsd had, zeide hij tot zijne vrouw
+Kalleken:
+
+--Kom, het is het uur van onze wettige liefde.
+
+Terwijl het bootje, dat Lamme en zijne welbeminde meevoerde, over
+het water gleed, riepen al de matrozen, soldaten en scheepsjongens
+met hunnen hoed zwaaiend:
+
+--Vaarwel, broeder; vaarwel, Lamme; vaarwel, broeder, broeder en
+vriend!
+
+En Nele wischte met heur liefelijken vinger eenen traan uit het oog
+van Uilenspiegel en zeide tot hem:
+
+--Gij zijt droef, mijn vriend?
+
+--Hij was goed, zeide hij.
+
+--Ha! zeide zij, zal die oorlog dan nooit een einde nemen, zullen
+wij dan immer gedwongen zijn te leven in bloed en in tranen?
+
+--Laat ons de Zeven zoeken, antwoordde Uilenspiegel: het is nakend,
+het uur der verlossing....
+
+Volgens de belofte, die zij aan Lamme gedaan hadden, mestten de
+Geuzen den monnik voort in zijne kooi. Doch op zekeren dag werden
+zij het moede, en ze stelden hem in vrijheid tegen een rantsoen bij
+'t gewicht; en hij bracht een mooien stuiver op, want hij woog toen
+driehonderd zeventien pond en vijf onsen, Vlaamsch gewicht.
+
+En hij stierf als prior van zijn convent.
+
+
+
+
+VIII.
+
+Te dien tijde vergaderden de heeren van de Staten-Generaal te
+'s-Gravenhage, om Philippus, koning van Spanje, grave van Vlaanderen,
+van Holland enz., te oordeelen naarvolgens de door hem verleende
+charters en privileges.
+
+En de griffier sprak als volgt:
+
+--Het is een iegelijk bekend, dat een landvorst aangesteld is door
+God, als souverein en hoofd zijner onderdanen, om ze te verdedigen
+en te vrijwaren van alle beleediging, verdrukking en geweld, evenals
+een herder aangesteld is voor de verdediging en de hoede zijner
+kudde. Het is mede algemeen bekend, dat de onderdanen geenszins door
+God geschapen zijn ten gerieve des prinsen, om hem gehoorzaam te wezen
+in alles wat hij zou heeten, hetzij dat het vroom is of goddeloos,
+rechtveerdig of onrechtveerdig, noch om denzelven te dienen als
+slaven. Maar de vorst is vorst ten behoeve van zijne onderdanen,
+zonder dewelke hij niet kan wezen, om naar recht en rede te bestieren;
+om ze te behouden en te beminnen als een vader zijne kinderen, als
+een herder zijn kudde, en zijn leven te wagen om ze te verdedigen;
+doet hij het niet, zoo moet hij aanzien worden, niet voor eenen
+vorst, maar voor eenen dwingeland. Door oproeping van soldaten,
+door bullen van kruistocht en van kerkban, zond Philippus koning,
+vier uitheemsche legers af tegen ons. Welke zal zijne straf wezen,
+overeenkomstig de wetten en costumen van den lande?
+
+--Hij weze vervallen, antwoordden de heeren der Staten.
+
+--Philippus heeft zijne eeden verbroken; hij vergat de diensten, welke
+wij hem bewezen, de zegepralen, welke wij hem hielpen behalen. Toen
+hij zag, dat wij rijk waren, liet hij ons afzetten en bestelen door
+die van den raad van Spanje.
+
+--Hij weze vervallen als ondankbare en dief, antwoordden de heeren
+der Staten.
+
+--Philippus, vervolgde de griffier, stelde in de machtigste steden
+des lands bisschoppen aan, begiftigde en bevoordeelde dezelven met
+de goedingen der grootste abdijen; door de hulp van dezelven, bracht
+hij de Spaansche Inquisitie in onze landen.
+
+--Hij weze vervallen als beul, verkwister van eens andermans goeding,
+antwoordden de heeren der Staten.
+
+--Ten aanzien van de dwingelandij, vertoonden de edelen van de landen
+ten jare 1566 een verzoekschrift, bij hetwelk zij den souvereinen
+vorst smeekten zijn strenge plakkaten te verzachten en namelijk die
+op het stuk der inquisitie: hij weigerde steeds.
+
+--Hij weze vervallen als een tijger, die hardnekkig is in de wreedheid,
+antwoordden de heeren der Staten.
+
+De griffier vervolgde:
+
+--Philippus wordt ernstig verdacht van, door die van zijnen raad
+van Spanje, heimelijk den beeldenstorm en de plundering der kerken
+te hebben bewerkt, ten einde, onder voorwendsel van misdaad en
+wanordelijkheden, vreemde legers tegen ons te kunnen afzenden.
+
+--Hij weze vervallen als een werktuig des doods, antwoordden de heeren
+der Staten.
+
+--Te Antwerpen deed Philippus de inwoneren slachten, en de Vlaamsche
+en vreemde kooplieden ten onder brengen. Hij en zijn raad van
+Spanje gaven, door heimelijke onderrichtingen, aan zekeren Roda,
+een beruchten rabauw, het recht zich hoofdman der plunderaars te
+verklaren, den buit op te garen, zijn naam, van hem, Philippus koning,
+te gebruiken, zijne zegelen na te maken en zich te gedragen als zijn
+landvoogd en stedehouder. De onderschepte koninklijke brieven, welke
+zich in onze handen bevinden, bewijzen het stuk. Alles is gebeurd
+met zijne toestemming en na overleg met den raad van Spanje. Leest
+zijne brieven: daarin looft hij het feit van Antwerpen, bekent hij een
+uitstekenden dienst ontvangen te hebben, belooft hij dien te zullen
+beloonen, zet hij Roda en de andere Spanjaards aan, voort te gaan op
+dien roemvollen weg.
+
+--Hij weze vervallen als dief, als plunderaar, als moordenaar,
+antwoordden de heeren der Staten.
+
+--Wij willen slechts het behoud van onze privileges, een eerlijken
+en verzekerden vrede, meer vrijheid, namelijk op het stuk van den
+godsdienst, welke hoofdzakelijk eene gewetenszaak is: van Philippus
+kregen wij niets dan leugenachtige verdragen, welke tweedracht
+moesten zaaien onder de provinciën, om ze de eene na de andere te
+onderwerpen en met haar te handelen als met Indië, door plundering,
+verbeurdverklaring, terdoodbrenging en inquisitie.
+
+--Hij weze vervallen als moordenaar, die den moord van de landen
+beraamt, antwoordden de heeren der Staten.
+
+--Hij deed de landen bloeden door den hertog van Alva en zijne
+trawanten, door Medina Celi, Requesens, de judassen der raden van
+State en van de provinciën; don Juan en Alexander Farnese beval hij
+met ongemeene en bloedige strengheid te werk te gaan (zooals weer
+blijkt uit zijne onderschepte brieven); hij sloeg in den rijksban Prins
+Willem van Oranje, betaalde drie moordenaars, in afwachting dat hij den
+vierden betaalt; deed in de landen kasteelen en vestingen oprichten,
+deed de mannen levend verbranden, de vrouwlieden en meidekens levend
+begraven; erfde hunne goedingen, verworgde Montigny, Bergen en andere
+heeren, in weerwil van zijn koninklijk woord; hij doodde zijn zoon
+Carlos; vergiftigde prins Ascoly, dien hij deed trouwen met dona
+Eufrasia, dewelke door hem was bezwangerd, ten einde den bastaard,
+die moest geboren worden, met zijne goederen te verrijken; veerdigde
+tegen ons een edict uit, hetwelk ons allen verraders verklaarde, ons
+lijf en goed ontnemend, en bedreef die in een kersten land ongekende
+misdaad, geen onderscheid te maken tusschen schuldigen en onschuldigen.
+
+--Uit hoofde van alle wetten, rechten en privilegiën, weze hij
+vervallen, antwoordden de heeren der Staten.
+
+En de zegels des konings werden gebroken.
+
+En de zonne gloorde over land en zee, verguldde de gezwollen korenaren,
+rijpte de druiven en strooide op elke baar van de zee flikkerende
+perelen, het sieraad van Neerlands bruid: de Vrijheid.
+
+Vervolgens werd de Prins, te Delft zijnde, door een vierden moordenaar
+met drie kogels in de borst getroffen. En hij stierf, volgens zijne
+spreuk: "Rustig onder de wreede baren".
+
+Zijne vijanden zeiden van hem, dat hij, om koning Philippus te
+bestoken, en daar hij toch niet hoopte over de zuidelijke, katholieke
+Nederlanden te regeeren, deze bij geheim verdrag aangeboden had aan
+monseigneur Zijne Groote Hoogheid van Anjou. Doch deze was geenszins
+geboren om de telg Belgieland te verwekken bij de Vrijheid, dewelke
+niet houdt van buitensporige minnarijen.
+
+En Uilenspiegel verliet met Nele de vloot.
+
+En het Belgische vaderland zuchtte onder het juk, geworgd, gekneveld
+door de verraders.
+
+
+
+
+IX.
+
+Toen was men in de maand van het rijpe koren; de lucht was drukkend,
+de wind zoel: onder den vrijen hemel, op een vrijen grond, konden
+maaiers en pikkers in de akkers vrijelijk het koren oogsten, dat zij
+gezaaid hadden.
+
+Friesland, Drente, Overijsel, Gelderland, Utrecht, Noord-Brabant,
+Noord- en Zuid-Holland; Walcheren, Noord- en Zuid-Beveland, Duiveland
+en Schouwen, welke Zeeland uitmaken; heel de kust der Noordzee,
+van Knokke tot den Helder; de eilanden Texel, Vlieland, Ameland,
+Schiermonnikoog zouden, van de Wester-schelde tot de Ooster-Eems,
+het Spaansche juk afschudden; Maurits, zoon van den Zwijger, zette
+den oorlog voort.
+
+Nog ten volle in het bezit van hunne jeugd, hunne kracht en hunne
+schoonheid,--want de liefde en de geest van Vlaanderen blijven immer
+jong,--leefden Uilenspiegel en Nele rustig in den toren van Veere,
+in afwachting, dat, na menigvuldige wreede beproevingen, de wind der
+vrijheid over het Belgische vaderland zou waaien.
+
+Uilenspiegel had gevraagd om bevelhebber en wachter van den toren
+te worden benoemd, aanvoerende, dat hij, met zijne arendsoogen en
+hazenooren, zou kunnen zien en hooren of de Spanjaard het soms niet
+beproefde terug te komen naar de verloste landen en dat hij alsdan
+wacharm zou luiden.
+
+De magistraat deed wat hij vroeg: om den wille van zijn goede diensten,
+gaf men hem een gulden daags, twee pinten bier, boonen, kaas, beschuit,
+alsmede drie pond vleesch in de week.
+
+Aldus leefden Uilenspiegel en Nele getweeën heel goed; van verre zagen
+zij met vreugde de vrije Zeeuwsche eilanden: weiden en bosschen,
+kasteelen en vestingen, en de gewapende schepen der Geuzen, die de
+kusten bewaakten.
+
+'s Nachts klommen zij zeer dikwijls omhoog op den toren en, daar naast
+elkander gezeten, koutten zij over de harde gevechten, de schoone
+minnarijen van het verleden en ook van de toekomst. Van daar zagen zij
+de zee, welker lichtende golven zich braken en in schuim uiteenspatten,
+en als vurige spoken op de eilanden vielen. En Nele was verschrikt
+als zij in de polders dwaallichtjes zag, welke, zeide zij, zielen
+van arme dooden zijn. En al deze plaatsen waren slagvelden geweest.
+
+De dwaallichtjes stegen op uit de polders, huppelden langshenen
+de dijken, keerden vervolgens terug naar de polders, alsof zij de
+lichamen niet wilden verlaten, uit welke zij kwamen.
+
+Op zekeren nacht zei Nele tot Uilenspiegel:
+
+--Zie hoe talrijk zij zijn in Beveland, en hoe hoog zij zweven in de
+lucht: langs den kant van de vogeleilanden zie ik er het meest. Wilt
+gij medekomen, Thijl? wij zullen ons strijken met de zalve, welke
+dingen toont, die onzichtbaar zijn voor de oogen der stervelingen.
+
+Uilenspiegel antwoordde:
+
+--Als 't die zalve is, die mij naar den grooten sabbat bracht, heb
+ik er geen vertrouwen meer in.
+
+--Loochen de kracht der tooverije niet. Kom mee, Uilenspiegel.
+
+'s Anderen daags vroeg hij aan den magistraat, dat een trouw en
+scherpziend soldaat hem zou vervangen om den toren te wachten en te
+waken over het land.
+
+En hij toog henen met Nele naar de vogeleilanden.
+
+Terwijl zij stapten langs akkers en dijken, zagen zij kleine
+groene eilandjes, tusschen dewelke het zeewater stroomde, en, op de
+begraasde heuvelen, die zich tot het duin uitstrekten, een groote
+menigte kieviten, meeuwen en zeezwaluwen, die onbeweeglijk zaten
+en met hunne ruggen witte eilandjes uitmaakten; daarboven vlogen
+duizenden van die vogelen. De grond was vol nesten: Uilenspiegel,
+die zich bukte om een ei van den weg op te rapen, zag eene meeuw
+fladderend naar hem komen en een grooten schreeuw slaken. Op dien
+kreet kwamen meer dan honderd andere bij, die schreeuwden van angst
+en boven het hoofd van Uilenspiegel en de naburige nesten vlogen,
+doch zij durfden hem niet naderen.
+
+--Uilenspiegel, zeide Nele, die vogelen vragen genade voor hunne
+eieren.
+
+Vervolgens begon zij te beven, en zij zeide:
+
+--Ik ben bang, de zonne gaat onder, de hemel is wit, de sterren
+ontwaken, dit is het uur van de geesten. Zie, die roode uitwasemingen
+rakelings zweven langs den grond; Thijl, mijn beminde, wie is
+het helsche monster, dat aldus in de wolken zijn vurigen muil open
+doet? Zie, langs den kant van Philips-land, waar de koninklijke beul,
+uit wreedaardige heerschzucht, tweemaal achtereen zooveel arme menschen
+liet dooden, zie die dwaallichtjes dansen; 't is de nacht in denwelken
+de zielen der arme mannen, die gedood werden in de gevechten, het
+koude voorgeborchte des vagevuurs verlaten, om zich te komen warmen
+in de zoele lucht van de aarde: dit is het uur, waarop gij alles
+moogt vragen aan Christus, welke de God van de goede tooveraars is.
+
+--De assche klopt op mijn hert, zeide Uilenspiegel. Kon Christus maar
+die Zeven toonen, wier in den wind gesmeten assche ons Vlaanderen en
+heel de wereld gelukkig zou maken.
+
+--Ongeloovige, zeide Nele, gij zult ze zien met de zalve.
+
+--Misschien, als een geest wil nederdalen uit de koude sterre, zei
+Uilenspiegel, met den vinger naar Sirius wijzend.
+
+Bij dat gebaar hechtte een dwaallichtje, dat rondom hem fladderde,
+zich vast aan zijn vinger, en hoe meer hij het los wilde maken,
+hoe vaster het er aan bleef gehecht.
+
+Doch terwijl Nele beproefde Uilenspiegel los te maken, kreeg zij ook
+haar dwaallichtje aan de toppen heurer vingeren.
+
+Uilenspiegel sloeg op het zijne en sprak:
+
+--Antwoord! zijt gij de ziel van eenen Geus of van eenen Spanjool? Zijt
+gij de ziel van eenen Geus, ga dan naar het hemelrijk; zijt gij die
+van eenen Spanjool, keer terug naar de helle, die u braakte.
+
+Nele zeide hem:
+
+--Beleedig nooit de zielen, al waren het zielen van beulen.
+
+En, terwijl zij heur dwaallichtje op den top van heuren vinger deed
+dansen, zeide zij:
+
+--Lichtje, liefelijk lichtje, welke miede brengt gij uit het land van
+de zielen? Wat doen zij? Eten en drinken zij, hoewel zij geen mond
+hebben? Want gij ook hebt er geen, bevallig lichtje! ofwel, nemen
+zij slechts in het gezegende hemelrijk de menschelijke gedaante aan?
+
+--Hoe kunt gij, sprak Uilenspiegel, aldus uwen tijd verliezen met
+te spreken tot dat droef vlammetje, dat geene ooren heeft om u te
+aanhooren, en geenen mond om u te woord te staan?
+
+Maar zonder naar hem te luisteren;
+
+--Lichtje, zeide Nele, antwoord al dansend, want ik ga u driemaal
+ondervragen: eenmaal in den naam Gods, eenmaal in den naam der Heilige
+Maagd, en eenmaal in den naam der sylphen, die de boden zijn tusschen
+God en de menschen.
+
+Zij deed het, en het lichtje danste drie keeren.
+
+--Trek uwe kleederen uit; ik zal hetzelfde doen: hier is de zilveren
+doos met de tooverzalve, zei Nele tot Uilenspiegel.
+
+--'t Is mij eender, antwoordde Uilenspiegel.
+
+Toen zij zich ontkleed en met zalve bestreken hadden, legden zij zich
+naast elkander op het gras.
+
+De meeuwen kloegen; de donder rammelde dof in het zwerk, waarin een
+helle flits flikkerde; de wassende maan toonde tusschen twee vluchtige
+wolken nauwelijks hare twee gulden horens; Nele's en Uilenspiegel's
+dwaallichtjes gingen met de anderen dansen in den beemd.
+
+Plotseling werden Nele en heur vriend gegrepen met de groote hand
+van eenen reus, dewelke ze in de lucht smeet als sneeuwballen, ze
+weder opving, ze tusschen zijne handen ineenrolde en kneedde met
+zijne vingeren, ze smeet in de waddenplassen tusschen de duinen, en
+ze er weder uittrok, vol zeewier. En terwijl de reus ze vervolgens
+ronddroeg in het luchtruim, zong hij met eene stem, die al de meeuwen
+der eilanden van schrik deed ontwaken:
+
+
+    Lezen willen luizedwergen
+    Met ziekelijk troebel oog,
+    Wat wij zoo weigerlijk bergen:
+    De teekenen heilig en hoog.
+
+    Lelie, luis, het eerwaarde,
+    Lelie, vloo, de geheimenis,
+    Die in hemel, lucht en aarde
+    Met zeven nagels vernageld is.
+
+
+En inderdaad, Uilenspiegel en Nele zagen op het gras, in de lucht en
+in den hemel, zeven lichtende koperen tafelen, bevestigd door middel
+van zeven vlammende nagelen. Op de tafelen stond geschreven:
+
+
+    Onder den mesthoop kiemt de plant.
+    Is zeven slecht, zeven is goed.
+    Kolen vormen diamant,
+    Dwaze doctoren, leerlingen vroed.
+    Is zeven slecht, zeven is goed.
+
+
+En de reus stapte voort, gevolgd door al die dwaallichtjes, die,
+gonzend als krekelen, zeiden:
+
+
+    Kijkt toe wie de macht hier torst,
+    Der pausen paus, der vorsten vorst;
+    Wie Caesar aan den leiband houdt,
+    Kijkt toe, hij is van hout!
+
+
+Eensklaps veranderden zijne trekken, hij scheen magerder, treuriger,
+grooter. In eene hand hield hij eenen schepter en in de andere een
+zweerd. Hij hiet Hooveerdigheid.
+
+En Nele en Uilenspiegel ten gronde smijtend, zeide hij:
+
+--Ik ben God!
+
+En daar kwam naast hem, op eenen ezel gezeten, een dikke, roodwangige
+meid, nauwelijks gekleed, met bloote borsten, en wulpsche oogen:
+zij heette Onkuischheid; vervolgens kwam een oude jodin, die schalen
+van meeuweneieren opraapte: zij heette Gierigheid; dan een dikke,
+vraatzuchtige monnik, die worsten verslond, zich volpropte met
+pensen en gedurig mommelde als de zeug, op dewelke hij zat: het was
+de Gulzigheid; vervolgens kwam de Traagheid, trekkebeenend, bleek
+en opgezwollen, met doffe oogen, die de Gramschap met een prikstok
+voor zich dreef. Jammerend en badend in tranen, viel de Traagheid van
+vermoeienis op heure knieën; vervolgens kwam de magere Nijd, met een
+slangekop en hoektanden, die de Traagheid beet omdat zij te veel heur
+gemak zocht, de Gramschap omdat zij te levendig was, de Gulzigheid
+omdat zij te veel gegeten had, de Onkuischheid omdat zij te rood was,
+de Gierigheid ter oorzake van de schalen, de Hooveerdigheid omdat
+zij een purperen kleed en op het hoofd eene kroon droeg.
+
+En de dwaallichtjes dansten rondom hen.
+
+En, sprekend met stemmen als van kermende mannen, vrouwlieden,
+meidekens en kinderen, zeiden zij zuchtend:
+
+--Hooveerdigheid, bron van heerschzucht, Gramschap, moeder der
+wreedheid, gij dooddet ons op slagveld, in gevangenis en door
+marteling, om uwe schepters en kronen te behouden! Nijd, gij vernieldet
+in hunne kiem velerlei edele en nuttige denkbeelden: wij zijn de zielen
+van de verdrukte uitvinders; Gierigheid, gij veranderdet in goud,
+het zweet en het bloed van het arme volk: wij zijn de geesten van
+de zwoegers, uwe slachtofferen; Onkuischheid, gezellin en boelin van
+den Moord, die samen Nero, Messalina en Philippus, koning van Spanje,
+verwektet, gij koopt de deugd om en betaalt de verleiding; wij zijn de
+zielen der dooden; Traagheid en Gulzigheid, gij bevuilt en onteert de
+wereld: wij moeten u van haar verjagen, wij zijn de zielen der dooden.
+
+En men hoorde eene stem zeggen:
+
+
+    Onder den mesthoop kiemt de plant.
+    Is zeven slecht, zeven is goed.
+    Bij dwaze doctoren, leerlingen vroed;
+    Om asch te krijgen en tevens kool
+    Wat doet een vlooken op den dool?
+
+
+En de dwaallichtjes zeiden:
+
+--Wij zijn het vuur, de weerwraak van de oude tranen, de smerten van
+het gemeen; de weerwraak op de heeren, die joegen op menschelijk wild;
+de weerwraak van de onnutte gevechten, van het in de gevangenissen
+vergoten bloed, van de levend verbrande mannen, de levend begraven
+vrouwlieden en meidekens; de weerwraak van het akelig en bloedig
+verleden. Wij zijn het vuur, wij zijn de zielen der dooden!
+
+Bij die woorden werden de Zeven veranderd in houten standbeelden,
+waarbij zij hunne vroegere gedaante behielden.
+
+En eene stem zeide:
+
+--Uilenspiegel, verbrand het hout.
+
+En Uilenspiegel, zich naar de dwaallichtjes wendend, zeide:
+
+--Gij, die het vuur zijt, verricht uwe taak.
+
+En de dwaallichtjes omringden in groote menigte de Zeven, welke
+verbrandden tot assche.
+
+En het bloed vloeide bij stroomen.
+
+En uit de assche kwamen zeven andere beelden te voorschijn; het
+eerste zeide:
+
+--Ik was Hooveerdigheid, nu heet ik edele Fierheid.
+
+De anderen spraken ook, en Uilenspiegel en Nele zagen Zuinigheid komen
+uit Gierigheid, Levendigheid uit Gramschap, Eetlust uit Gulzigheid,
+Wedijver uit Nijd, Droomerij van dichters en denkers uit Traagheid. En
+de Onkuischheid, op hare geit, veranderde in een schoone vrouw,
+die Liefde hiet.
+
+En de dwaallichtjes dansten een blijden dans rondom dezelve.
+
+Uilenspiegel en Nele hoorden toen duizend heldere, grinnikende stemmen
+van verborgen mannen en vrouwen, die zongen:
+
+
+    Als over land en wateren
+    Die Zeven, hervormd, zullen heerschen,
+    Menschen, hoofden hoog!
+    't Is het heil der wereld.
+
+
+En Uilenspiegel zeide:
+
+--Nele, die geesten spotten met ons.
+
+Maar een machtige hand greep Nele bij den arm en wierp heur in het
+luchtruim.
+
+En de geesten zongen:
+
+
+    Raakt het Noorden,
+    Kussend het Westen,
+    Rampspoed is uit.
+    Vind de Zeven
+    En den Gordel.
+
+
+--Laas, zeide Uilenspiegel: Noord, West en Gordel.... Gij spreekt
+wel raadselachtig, heeren Geesten.
+
+En grinnikend zongen zij:
+
+
+    't Noorden is Nederland,
+    België 't Westen.
+    Gordel is vriendschap,
+    Gordel verbond.
+
+
+--Dat is wijs gesproken, heeren Geesten, zeide Uilenspiegel.
+
+En grinnikend zongen zij nog:
+
+
+    De gordel, arme,
+    Om Neerland en België,
+    Zal vriendschap wezen,
+    Vroom verbond.
+
+    Met raad
+    En daad,
+    Met dood
+    En bloed,
+    Als 't moet,
+    Was de Schelde daar niet,
+    Arme, de Schelde.
+
+
+--Laas, zei Uilenspiegel, dat is dus ons veelbewogen leven: tranen van
+'t menschdom en spotternij van 't lot.
+
+Grinnikend hernamen de geesten:
+
+
+    Verbond
+    Met bloed
+    En dood,
+    Was de Schelde daar niet!
+
+
+En een machtige hand greep Uilenspiegel en smeet hem in het luchtruim.
+
+
+
+
+X.
+
+Toen Nele ten gronde te recht kwam, zag zij niets anders meer dan
+de zonne, die opstond te midden van de gulden dampen, de toppen
+der grashalmen, die insgelijks als in goud gedoopt waren, en den
+zonnestraal, die de veeren der slapende meeuwen kleurde. Maar de
+meeuwen ontwaakten weldra.
+
+Vervolgens bekeek Nele zich zelve, zij zag, dat ze naakt was, en ze
+trok in der haast heure kleederen aan; vervolgens zag zij Uilenspiegel,
+insgelijks naakt, en zij bedekte hem; zij dacht, dat hij sliep, en
+zij schudde hem; maar hij verroerde zich niet meer dan een doode;
+zij werd van schrik bevangen.
+
+--Ha! zeide zij, heb ik mijnen vriend gedood met de tooverzalf? Ik
+wil ook sterven! Ha! Thijl, word wakker! Hij is als marmer zoo koud!
+
+Uilenspiegel werd niet wakker. Een dag en een nacht liepen voorbij,
+en Nele, koortsachtig van smert, waakte bij heuren vriend Uilenspiegel.
+
+In den morgen van den tweeden dag, hoorde Nele het geklingel eener bel,
+en zij zag een boer komen met eene spade op den schouder; achter hem
+gingen een burgemeester en twee schepenen met eene waskeers in de hand,
+de parochiepaap van Stavenisse en een koster, die een zonnescherm
+hield boven het hoofd van den paap.
+
+Zij gingen, naar zij zeiden, het heilig oliesel toedienen aan den
+dapperen Jacobsen, die vroeger Geus was uit schrik, maar die, nu het
+gevaar voorbij was, vóór zijn dood terugkeerde tot den schoot der
+Heilige Roomsche Kerke.
+
+Weldra waren zij dicht bij Nele, die schreide, en zij zagen het lichaam
+van Uilenspiegel uitgestrekt op het gras, met zijne kleederen aan.
+
+Nele knielde neder.
+
+--Meideken, zeide de burgemeester, wat doet gij bij dien doode?
+
+Zij antwoordde, zonder de oogen te durven opslaan:
+
+--Ik bid voor mijnen vriend, die hier viel, als door den bliksem
+getroffen. Nu ben ik alleen: daarom wil ik insgelijks sterven!
+
+De parochiepaap blies van genoegen en zei:
+
+--God zij geloofd, de Geus Uilenspiegel is dood! Boer, haast u en delf
+een graf; trek zijne kleederen uit, alvorens hem in de aarde te steken.
+
+--Neen, zei Nele, rechtspringend, men zal ze hem aanlaten, hij zou
+koude hebben in den killen grond.
+
+--Delf een graf, zeide de parochiepaap tot den boer, die de spade
+droeg.
+
+--Ik wil wel, zeide Nele badend in tranen; daar zijn geene wormen in
+het schelpzand, hij zal schoon en gaaf blijven, mijn geliefde.
+
+En, als waanzinnig, bukte zij zich over het lichaam van Uilenspiegel
+en kuste zij het met tranen en snikken.
+
+De burgemeester, de schepenen en de boer hadden medelijden, maar de
+pastoor zeide en herhaalde gedurig met blijdschap:
+
+--De groote Geus is dood, God zij geloofd!
+
+De boer dolf vervolgens een graf, legde Uilenspiegel er in en bedekte
+hem met zand. En de parochiepaap las over het graf de gebeden der
+dooden: allen knielden neder rondom het graf; doch plotseling zag men
+onder het zand een groote beweging, en Uilenspiegel keek rond zich,
+niesde en schudde het zand uit zijn haar, en greep den pastoor bij
+de keel en zeide:
+
+--Ketterbeul, gij begraaft mij levend in mijnen slaap. Waar is
+Nele? Hebt gij ze ook in de aarde gedolven? Wie zijt gij?
+
+De parochiepaap riep:
+
+--De groote Geus verrijst op deze wereld! Heere God! wees mijne
+ziele genadig!
+
+En hij vluchtte weg als een hert voor de honden.
+
+Nele kwam bij Uilenspiegel.
+
+--Kus mij, liefste, zeide hij.
+
+Toen keek hij opnieuw rondom zich; boer en koster waren op den loop
+gegaan met den pastoor, en hadden, om rapper te loopen, spade,
+waskeersen en zonnescherm ten gronde geworpen; burgemeester en
+schepenen hielden van schrik hunne ooren vast en lagen te jammeren op
+'t gras.
+
+Uilenspiegel ging tot hen en schudde hen.
+
+--Begraaft men, zeide hij, Uilenspiegel, den geest, Nele, het hert
+van Vlaanderen? Neen! Vlaanderen kan ook slapen, maar sterven,
+nooit! Kom, Nele.
+
+En hij toog henen met heur en zong zijn zesde liedeken, maar niemand
+weet waar hij zijn laatste zingen zal....
+
+
+                                 EINDE.
+
+
+
+
+
+
+
+AANTEEKENINGEN
+
+
+[1] Deze Voorrede werd, met een bepaald aantal platen, gevoegd in de
+eerste Fransche uitgave. (Lacroix-Verboeckhoven & Co.)
+
+[2] Die bewering is nauwkeurig. Aan een Vlaamsch boekje van den
+uitgever Van Paemel, getiteld: Het aerdig leven van Thyl Uylenspiegel,
+ontleende de dichter een aantal hoofdstukken van het Eerste Boek van
+zijn werk.
+
+[3] Over afleiding en beteekenis van het woord "Uilenspiegel"
+verschillen wij--en zeker de meeste Vlamingen met ons--teenemaal met
+Ch. de Coster. Omstandige, langdradige dissertatiën daaromtrent zullen
+wel overbodig zijn, en hooren ook in dit boek niet te huis. Zoo wij
+deze Voorrede in de Vlaamsche uitgave brachten, was het dus enkel
+met het inzicht het werk van Charles De Coster te eerbiedigen, en
+het, in zijn geheel, den Vlaamschen lezer aan te bieden. (Noot van
+den Vertaler.)
+EOT;
+}
