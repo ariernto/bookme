@@ -1,6 +1,6 @@
-<form action="<?php echo e(route("activity.search")); ?>" class="form bravo_form" method="get" style="background: none">
-    <div class="g-field-search" style="background: none">
-        <div class="row" style="background: none">
+<form action="<?php echo e(route("activity.search")); ?>" class="form bravo_form" method="get" style="background: #00000010">
+    <div class="g-field-search">
+        <div class="row">
             <?php $activity_search_fields = setting_item_array('activity_search_fields');
             $activity_search_fields = array_values(\Illuminate\Support\Arr::sort($activity_search_fields, function ($value) {
                 return $value['position'] ?? 0;
