@@ -1,0 +1,7 @@
+a:4:{s:6:"_token";s:40:"hoSiOBjNGdKr6FXAQeTV3xgh1tTaBptAKl5LLrRD";s:7:"message";a:3:{s:6:"status";s:5:"error";s:7:"message";s:661:"SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin@dev.com' for key 'users_email_unique' (SQL: insert into `users` (`first_name`, `last_name`, `email`, `password`, `phone`, `status`, `created_at`, `bio`) values (System, Admin, admin@dev.com, $2y$10$1jOvqONuAGGlvMEM2CaVmuRXUDvxXy3Gryb/m7AFcfHgQm/PndN8q, 112 666 888, publish, 2020-12-29 04:33:00, We're designers who have fallen in love with creating spaces for others to reflect, reset, and create. We split our time between two deserts (the Mojave, and the Sonoran). We love the way the heat sinks into our bones, the vibrant sunsets, and the wildlife we get to call our neighbors.))";s:11:"dbOutputLog";s:188:"Nothing to migrate.
+Seeding: RolesAndPermissionsSeeder
+Seeded:  RolesAndPermissionsSeeder (0.94 seconds)
+Seeding: Language
+Seeded:  Language (0.19 seconds)
+Seeding: UsersTableSeeder
+";}s:6:"_flash";a:2:{s:3:"new";a:0:{}s:3:"old";a:1:{i:0;s:7:"message";}}s:9:"_previous";a:1:{s:3:"url";s:33:"http://localhost/install/database";}}

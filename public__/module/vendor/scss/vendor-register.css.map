@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACI,8CAAkB;EACd,OAAO,EAAE,YAAY;EACrB,QAAQ,EAAE,QAAQ;EAClB,yDAAU;IACN,QAAQ,EAAE,QAAQ;IAClB,GAAG,EAAE,GAAG;IACR,IAAI,EAAE,GAAG;IACT,iBAAiB,EAAE,qBAAqB;IACxC,SAAS,EAAE,qBAAqB;IAChC,OAAO,EAAE,GAAG;EAGZ,+DAAU;IACN,OAAO,EAAE,CAAC",
+"sources": ["vendor-register.scss"],
+"names": [],
+"file": "vendor-register.css"
+}
