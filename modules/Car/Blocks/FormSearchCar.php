@@ -24,10 +24,38 @@ class FormSearchCar extends BaseBlock
                     'label'     => __('Sub Title')
                 ],
                 [
+                    'id'            => 'style',
+                    'type'          => 'radios',
+                    'label'         => __('Style Background'),
+                    'values'        => [
+                        [
+                            'value'   => '',
+                            'name' => __("Normal")
+                        ],
+                        [
+                            'value'   => 'carousel',
+                            'name' => __("Slider Carousel")
+                        ]
+                    ]
+                ],
+                [
                     'id'    => 'bg_image',
                     'type'  => 'uploader',
-                    'label' => __('Background Image Uploader')
+                    'label' => __('- Layout Normal: Background Image Uploader')
                 ],
+                [
+                    'id'          => 'list_slider',
+                    'type'        => 'listItem',
+                    'label'       => __('- Layout Slider: List Item(s)'),
+                    'title_field' => 'title',
+                    'settings'    => [
+                        [
+                            'id'    => 'bg_image',
+                            'type'  => 'uploader',
+                            'label' => __('Background Image Uploader')
+                        ]
+                    ]
+                ]
             ]
         ]);
     }
@@ -51,6 +79,8 @@ class FormSearchCar extends BaseBlock
         if (!empty($model['bg_image'])) {
             $data['bg_image_url'] = FileHelper::url($model['bg_image'], 'full');
         }
+        $data['style'] = $model['style'] ?? "";
+        $data['list_slider'] = $model['list_slider'] ?? "";
         return view('Car::frontend.blocks.form-search-car.index', $data);
     }
 

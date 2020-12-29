@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\UserMeta;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Matrix\Exception;
+use Modules\User\Events\SendMailUserRegistered;
 use Socialite;
 use App\User;
 use Illuminate\Support\Facades\Hash;
@@ -123,6 +126,12 @@ class LoginController extends Controller
                 $realUser->addMeta('social_meta_avatar', $user->getAvatar());
 
                 $realUser->assignRole('customer');
+
+                try {
+                    event(new SendMailUserRegistered($realUser));
+                } catch (Exception $exception) {
+                    Log::warning("SendMailUserRegistered: " . $exception->getMessage());
+                }
 
                 // Login with user
                 Auth::login($realUser);

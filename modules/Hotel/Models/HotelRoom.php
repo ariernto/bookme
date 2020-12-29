@@ -69,7 +69,7 @@ class HotelRoom extends Bookable
         $allDates = [];
         $tmp_price = 0;
         $tmp_night = 0;
-        $period = periodDate($filters['start_date'],$filters['end_date']);
+        $period = periodDate($filters['start_date'],$filters['end_date'],false);
         foreach ($period as $dt){
 //        for($i = strtotime($filters['start_date']); $i < strtotime($filters['end_date']); $i+= DAY_IN_SECONDS)
 //        {
@@ -98,7 +98,7 @@ class HotelRoom extends Bookable
         $roomBookings = $this->getBookingsInRange($filters['start_date'],$filters['end_date']);
         if(!empty($roomBookings)){
             foreach ($roomBookings as $roomBooking){
-                $period = periodDate($roomBooking->start_date,$roomBooking->end_date);
+                $period = periodDate($roomBooking->start_date,$roomBooking->end_date,false);
                 foreach ($period as $dt){
                     $date = $dt->format('Y-m-d');
 //                for($i = strtotime($roomBooking->start_date); $i <= strtotime($roomBooking->end_date); $i+= DAY_IN_SECONDS)

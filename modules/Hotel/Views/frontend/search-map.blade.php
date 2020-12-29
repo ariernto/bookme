@@ -16,7 +16,7 @@
         <div class="bravo_form_search_map">
             @include('Hotel::frontend.layouts.search-map.form-search-map')
         </div>
-        <div class="bravo_search_map">
+        <div class="bravo_search_map {{ setting_item_with_lang("hotel_layout_map_option",false,"map_left") }}">
             <div class="results_map">
                 <div class="map-loading d-none">
                     <div class="st-loader"></div>

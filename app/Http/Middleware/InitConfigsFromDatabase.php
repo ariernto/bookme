@@ -9,7 +9,10 @@
 	namespace App\Http\Middleware;
 
 	use Closure;
-	use Illuminate\Support\Facades\Config;
+    use Illuminate\Broadcasting\Broadcasters\Broadcaster;
+    use Illuminate\Broadcasting\BroadcastManager;
+    use Illuminate\Support\Facades\Broadcast;
+    use Illuminate\Support\Facades\Config;
 
 	class InitConfigsFromDatabase
 	{
@@ -90,8 +93,30 @@
 				if(!empty(setting_item('email_password'))){
 					Config::set('mail.password',setting_item("email_password"));
 				}
-			}
 
+				// Pusher
+                if (!empty(setting_item('broadcast_driver'))) {
+                    Config::set('broadcasting.default',setting_item('broadcast_driver','log'));
+                }
+                if (!empty(setting_item('pusher_api_key'))) {
+                    Config::set('chatify.pusher.key', setting_item("pusher_api_key"));
+                    Config::set('broadcasting.connections.pusher.key',setting_item('pusher_api_key'));
+                }
+                if (!empty(setting_item('pusher_api_secret'))) {
+                    Config::set('chatify.pusher.secret', setting_item("pusher_api_secret"));
+                    Config::set('broadcasting.connections.pusher.secret',setting_item('pusher_api_secret'));
+
+                }
+                if (!empty(setting_item('pusher_app_id'))) {
+                    Config::set('chatify.pusher.app_id', setting_item("pusher_app_id"));
+                    Config::set('broadcasting.connections.pusher.app_id',setting_item('pusher_app_id'));
+
+                }
+                if (!empty(setting_item('pusher_cluster'))) {
+                    Config::set('chatify.pusher.options.cluster',setting_item('pusher_cluster'));
+                    Config::set('broadcasting.connections.pusher.options.cluster',setting_item('pusher_cluster'));
+                }
+			}
 			return $next($request);
 		}
 	}

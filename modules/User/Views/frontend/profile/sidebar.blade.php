@@ -1,8 +1,7 @@
 <div class="profile-summary mb-2">
     <div class="profile-avatar">
         @if($avatar = $user->getAvatarUrl())
-            <div class="avatar-img">
-                <img src="{{$avatar}}" alt="{{$user->getDisplayName()}}">
+            <div class="avatar-img avatar-cover" style="background-image: url('{{$user->getAvatarUrl()}}')">
             </div>
         @else
             <span class="avatar-text">{{$user->getDisplayName()[0]}}</span>
@@ -53,21 +52,23 @@
         @endif
     </ul>
     @endif
-    <hr>
-    <h4 class="summary-title">{{__('Verifications')}}</h4>
-    <ul class="verification-lists">
-        @if(!empty($user->verification_fields))
-            @foreach($user->verification_fields as $field)
-                <li> <span class="left-icon">
-                     @if($field['is_verified'])
-                            <img src="{{asset('icon/success.svg')}}" alt="success">
-                        @else
-                            <img src="{{asset('icon/x.svg')}}" alt="success">
-                        @endif
-                    </span> <span>{{$field['name']}}</span>
+    @if(empty(setting_item('user_disable_verification_feature')))
+        <hr>
+        <h4 class="summary-title">{{__('Verifications')}}</h4>
+        <ul class="verification-lists">
+            @if(!empty($user->verification_fields))
+                @foreach($user->verification_fields as $field)
+                    <li> <span class="left-icon">
+                         @if($field['is_verified'])
+                                <img src="{{asset('icon/success.svg')}}" alt="success">
+                            @else
+                                <img src="{{asset('icon/x.svg')}}" alt="success">
+                            @endif
+                        </span> <span>{{$field['name']}}</span>
 
-                </li>
-            @endforeach
-        @endif
-    </ul>
+                    </li>
+                @endforeach
+            @endif
+        </ul>
+    @endif
 </div>

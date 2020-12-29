@@ -19,7 +19,7 @@
             </div>
         @endif
     </div>
-    <h2 class="title">{{$translation->title}}</h2>
+    <h2 class="title">{!! clean($translation->title) !!}</h2>
     <div class="post-info">
         <ul>
             @if(!empty($row->getAuthor))

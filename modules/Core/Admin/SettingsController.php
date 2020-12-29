@@ -97,33 +97,6 @@ class SettingsController extends AdminController
                 ];
                 Settings::clearCustomCssCache();
                 break;
-            case 'advance':
-                $keys = [
-                    'map_provider',
-                    'map_gmap_key',
-                    'google_client_secret',
-                    'google_client_id',
-                    'google_enable',
-                    'facebook_client_secret',
-                    'facebook_client_id',
-                    'facebook_enable',
-                    'twitter_enable',
-                    'twitter_client_id',
-                    'twitter_client_secret',
-                    'recaptcha_enable',
-                    'recaptcha_api_key',
-                    'recaptcha_api_secret',
-                    'head_scripts',
-                    'body_scripts',
-                    'footer_scripts',
-                    'size_unit',
-
-                    'cookie_agreement_enable',
-                    'cookie_agreement_button_text',
-                    'cookie_agreement_content',
-
-                ];
-                break;
         }
         if(!empty($group_data['keys'])) $keys = $group_data['keys'];
         if(!empty($group_data['html_keys'])) $htmlKeys = $group_data['html_keys'];

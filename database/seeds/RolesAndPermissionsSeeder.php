@@ -179,34 +179,32 @@ class RolesAndPermissionsSeeder extends Seeder
     public function initVendor(){
 
         $vendor = Role::findOrCreate('vendor');
-        
-        $vendor->givePermissionTo('dashboard_vendor_access');
 
         $vendor->givePermissionTo('media_upload');
-        
-        // $vendor->givePermissionTo('tour_view');
-        // $vendor->givePermissionTo('tour_create');
-        // $vendor->givePermissionTo('tour_update');
-        // $vendor->givePermissionTo('tour_delete');
+        $vendor->givePermissionTo('tour_view');
+        $vendor->givePermissionTo('tour_create');
+        $vendor->givePermissionTo('tour_update');
+        $vendor->givePermissionTo('tour_delete');
+        $vendor->givePermissionTo('dashboard_vendor_access');
 
-        // $vendor->givePermissionTo('space_view');
-        // $vendor->givePermissionTo('space_create');
-        // $vendor->givePermissionTo('space_update');
-        // $vendor->givePermissionTo('space_delete');
+        $vendor->givePermissionTo('space_view');
+        $vendor->givePermissionTo('space_create');
+        $vendor->givePermissionTo('space_update');
+        $vendor->givePermissionTo('space_delete');
 
-        // $vendor->givePermissionTo('hotel_view');
-        // $vendor->givePermissionTo('hotel_create');
-        // $vendor->givePermissionTo('hotel_update');
-        // $vendor->givePermissionTo('hotel_delete');
+        $vendor->givePermissionTo('hotel_view');
+        $vendor->givePermissionTo('hotel_create');
+        $vendor->givePermissionTo('hotel_update');
+        $vendor->givePermissionTo('hotel_delete');
 
-        // $vendor->givePermissionTo('car_view');
-        // $vendor->givePermissionTo('car_create');
-        // $vendor->givePermissionTo('car_update');
-        // $vendor->givePermissionTo('car_delete');
+        $vendor->givePermissionTo('car_view');
+        $vendor->givePermissionTo('car_create');
+        $vendor->givePermissionTo('car_update');
+        $vendor->givePermissionTo('car_delete');
 
-        // $vendor->givePermissionTo('event_view');
-        // $vendor->givePermissionTo('event_create');
-        // $vendor->givePermissionTo('event_update');
-        // $vendor->givePermissionTo('event_delete');
+        $vendor->givePermissionTo('event_view');
+        $vendor->givePermissionTo('event_create');
+        $vendor->givePermissionTo('event_update');
+        $vendor->givePermissionTo('event_delete');
     }
 }

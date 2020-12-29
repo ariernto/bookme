@@ -63,7 +63,7 @@
                             <th>{{__('Service')}}</th>
                             <th>{{__('Customer')}}</th>
 
-                            <th>{{__('Total')}}</th>
+                            <th>{{__('Payment Information')}}</th>
                             <th width="80px">{{__('Status')}}</th>
                             <th width="150px">{{__('Payment Method')}}</th>
                             <th width="120px">{{__('Created At')}}</th>
@@ -98,7 +98,10 @@
                                         <li>{{__("Custom Requirement:")}} {{$row->customer_notes}}</li>
                                     </ul>
                                 </td>
-                                <td>{{format_money_main($row->total)}}</td>
+                                <td>{{__("Total")}} : {{format_money_main($row->total)}}<br/>
+                                    {{__("Paid")}} : {{format_money_main($row->paid)}}<br/>
+                                    {{__("Remain")}} : {{format_money_main($booking->total - $booking->paid)}}<br/>
+                                </td>
                                 <td>
                                     <span class="label label-{{$row->status}}">{{$row->statusName}}</span>
                                 </td>
@@ -113,10 +116,12 @@
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-booking-{{$row->id}}">{{__('Detail')}}</a>
+                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-paid-{{$row->id}}">{{__('Set Paid')}}</a>
                                                 <a class="dropdown-item" href="{{url('admin/module/report/booking/email_preview/'.$row->id)}}">{{__('Email Preview')}}</a>
                                             </div>
                                         </div>
                                         @include ($service->checkout_booking_detail_modal_file ?? '')
+                                        @include ($service->set_paid_modal_file ?? '')
                                     @endif
                                 </td>
                             </tr>
@@ -130,4 +135,24 @@
             {{$rows->links()}}
         </div>
     </div>
+@endsection
+@section('script.body')
+    <script>
+        $(document).on('click', '#set_paid_btn', function (e) {
+            var id = $(this).data('id');
+            $.ajax({
+                url:bookingCore.url+'/booking/setPaidAmount',
+                data:{
+                    id: id,
+                    remain: $('#modal-paid-'+id+' #set_paid_input').val(),
+                },
+                dataType:'json',
+                type:'post',
+                success:function(res){
+                    alert(res.message);
+                    window.location.reload();
+                }
+            });
+        });
+    </script>
 @endsection

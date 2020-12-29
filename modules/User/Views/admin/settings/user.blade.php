@@ -50,7 +50,25 @@
         </div>
     </div>
     <hr>
+    <div class="row">
+        <div class="col-sm-4">
+            <h3 class="form-group-title">{{__("Disable verification feature?")}}</h3>
+        </div>
+        <div class="col-sm-8">
+            <div class="panel">
+                <div class="panel-title"><strong>{{__("Disable verification feature")}}</strong></div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="form-controls">
+                            <label><input type="checkbox" name="user_disable_verification_feature" value="1" @if(setting_item('user_disable_verification_feature')) checked @endif > {{__('Yes, please disable it')}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endif
+<hr>
 <div class="row">
     <div class="col-sm-4">
         <h3 class="form-group-title">{{__('Content Email User Registered')}}</h3>
@@ -120,7 +138,18 @@
     <div class="col-sm-8">
         <div class="panel">
             <div class="panel-body">
-                
+                @if(is_default_lang())
+                    <div class="form-group">
+                        <label> <input type="checkbox" @if($settings['enable_verify_email_register_user'] ?? '' == 1) checked @endif name="enable_verify_email_register_user" value="1"> {{__("Enable must verify email when customer registered ?")}}</label>
+                    </div>
+                @else
+                    <div class="form-group">
+                        <label> <input type="checkbox" @if($settings['enable_verify_email_register_user'] ?? '' == 1) checked @endif disabled name="enable_verify_email_register_user" value="1"> {{__("Enable must verify email when customer registered ?")}}</label>
+                    </div>
+                    @if($settings['enable_verify_email_register_user'] != 1)
+                        <p>{{__('You must enable on main lang.')}}</p>
+                    @endif
+                @endif
                 <div class="form-group">
                     <label>{{__("Subject")}}</label>
                     <div class="form-controls">

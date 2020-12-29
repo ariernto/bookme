@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Modules\Hotel\Models\Hotel;
 use Illuminate\Http\Request;
 use Modules\Location\Models\Location;
+use Modules\Location\Models\LocationCategory;
 use Modules\Review\Models\Review;
 use Modules\Core\Models\Attributes;
 use DB;
@@ -13,10 +14,16 @@ class HotelController extends Controller
 {
     protected $hotelClass;
     protected $locationClass;
+    /**
+     * @var string
+     */
+    private $locationCategoryClass;
+
     public function __construct()
     {
         $this->hotelClass = Hotel::class;
         $this->locationClass = Location::class;
+        $this->locationCategoryClass = LocationCategory::class;
     }
     public function callAction($method, $parameters)
     {
@@ -95,6 +102,7 @@ class HotelController extends Controller
             'row'          => $row,
             'translation'       => $translation,
             'hotel_related' => $hotel_related,
+            'location_category'=>$this->locationCategoryClass::where("status", "publish")->with('translations')->get(),
             'booking_data' => $row->getBookingData(),
             'review_list'  => $review_list,
             'seo_meta'  => $row->getSeoMetaWithTranslation(app()->getLocale(),$translation),

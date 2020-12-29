@@ -13,7 +13,12 @@
                     @foreach($terms as $term )
                         @php $translate_term = $term->translateOrOrigin(app()->getLocale()) @endphp
                         <div class="item {{$term->slug}} term-{{$term->id}}">
-                            <i class="{{ $term->icon ?? "icofont-check-circled icon-default" }}"></i>
+                            @if(!empty($term->image_id))
+                                @php $image_url = get_file_url($term->image_id, 'full'); @endphp
+                                <img src="{{$image_url}}" class="img-responsive" alt="{{$translate_term->name}}">
+                            @else
+                                <i class="{{ $term->icon ?? "icofont-check-circled icon-default" }}"></i>
+                            @endif
                             {{$translate_term->name}}</div>
                     @endforeach
                 </div>

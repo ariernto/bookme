@@ -54,7 +54,6 @@
             'last_login_at',
             'avatar_id',
             'bio',
-            'business_id',
             'business_name',
 //            'vendor_plan_id',
 //            'vendor_plan_enable',
@@ -188,12 +187,16 @@
             if(!empty($meta_avatar = $this->getMeta("social_meta_avatar",false))) {
                 return $meta_avatar;
             }
-            return '';
+            return asset('images/avatar.png');
+        }
+        public function getAvatarUrlAttribute()
+        {
+            return $this->getAvatarUrl();
         }
 
         public function getDisplayName($email = false)
         {
-            $name = $this->name;
+            $name = $this->name??"";
             if (!empty($this->first_name) or !empty($this->last_name)) {
                 $name = implode(' ', [$this->first_name, $this->last_name]);
             }
@@ -201,6 +204,9 @@
                 $name  = $this->business_name;
             }
             if(!trim($name) and $email) $name = $this->email;
+            if(empty($name)){
+               $name = ' ';
+            }
             return $name;
         }
 
@@ -284,7 +290,7 @@
             $total =  $query
                 ->whereIn('status',$status)
                 ->where('vendor_id',$this->id)
-                ->sum(DB::raw('total_before_fees - commission')) - $this->total_paid;
+                ->sum(DB::raw('total_before_fees - commission + vendor_service_fee_amount')) - $this->total_paid;
             return max(0,$total);
         }
 
@@ -428,6 +434,10 @@
             if($payment->status == 'completed'){
                 $this->deposit($payment->getMeta('credit'),$payment->getMeta());
             }
+        }
+
+        public function getNameAttribute(){
+            return $this->first_name.' '.$this->last_name;
         }
     }
 

@@ -11,6 +11,7 @@ use Modules\AdminController;
 use Modules\User\Events\VendorApproved;
 use Modules\Vendor\Models\VendorRequest;
 use Spatie\Permission\Models\Role;
+use Modules\User\Exports\UserExport;
 
 class UserController extends AdminController
 {
@@ -173,6 +174,14 @@ class UserController extends AdminController
                     'max:255',
                     Rule::unique('users')->ignore($row->id)
                 ],
+                'user_name'=> [
+                    'required',
+                    'max:255',
+                    'min:4',
+                    'string',
+                    'alpha_dash',
+                    Rule::unique('users')->ignore($row->id)
+                ],
             ]);
 
         }else{
@@ -190,6 +199,14 @@ class UserController extends AdminController
                     'max:255',
                     Rule::unique('users')
                 ],
+                'user_name'=> [
+                    'required',
+                    'max:255',
+                    'min:4',
+                    'string',
+                    'alpha_dash',
+                    Rule::unique('users')
+                ],
             ]);
 
             if(!$check->validated()){
@@ -201,6 +218,7 @@ class UserController extends AdminController
         }
 
         $row->name = $request->input('name');
+        $row->user_name = $request->input('user_name');
         $row->first_name = $request->input('first_name');
         $row->last_name = $request->input('last_name');
         $row->phone = $request->input('phone');
@@ -215,7 +233,6 @@ class UserController extends AdminController
         $row->city = $request->input('city');
         $row->state = $request->input('state');
         $row->zip_code = $request->input('zip_code');
-        $row->business_id = $request->input('business_id');
         $row->business_name = $request->input('business_name');
         $row->vendor_commission_type = $request->input('vendor_commission_type');
         $row->vendor_commission_amount = $request->input('vendor_commission_amount');
@@ -232,123 +249,12 @@ class UserController extends AdminController
 
         if ($row->save()) {
 
-            if ($request->input('role_id') and $role = Role::findById($request->input('role_id'))) {
-                $row->syncRoles($role);
-            }
-
-            $permissions = $request->input('vendor_permission');
-            if (isset($permissions) && count($permissions) > 0) {
-                if (in_array('tour', $permissions)) {
-                    $row->givePermissionTo('tour_view');
-                    $row->givePermissionTo('tour_create');
-                    $row->givePermissionTo('tour_update');
-                    $row->givePermissionTo('tour_delete');
-                }
-                else {
-                    $row->revokePermissionTo('tour_view');
-                    $row->revokePermissionTo('tour_create');
-                    $row->revokePermissionTo('tour_update');
-                    $row->revokePermissionTo('tour_delete');
-                }
-                if (in_array('space', $permissions)) {
-                    $row->givePermissionTo('space_view');
-                    $row->givePermissionTo('space_create');
-                    $row->givePermissionTo('space_update');
-                    $row->givePermissionTo('space_delete');
-                }
-                else {
-                    $row->revokePermissionTo('space_view');
-                    $row->revokePermissionTo('space_create');
-                    $row->revokePermissionTo('space_update');
-                    $row->revokePermissionTo('space_delete');
-                }
-
-                if (in_array('hotel', $permissions)) {
-                    $row->givePermissionTo('hotel_view');
-                    $row->givePermissionTo('hotel_create');
-                    $row->givePermissionTo('hotel_update');
-                    $row->givePermissionTo('hotel_delete');
-                }
-                else {
-                    $row->revokePermissionTo('hotel_view');
-                    $row->revokePermissionTo('hotel_create');
-                    $row->revokePermissionTo('hotel_update');
-                    $row->revokePermissionTo('hotel_delete');
-                }
-                if (in_array('car', $permissions)) {
-                    $row->givePermissionTo('car_view');
-                    $row->givePermissionTo('car_create');
-                    $row->givePermissionTo('car_update');
-                    $row->givePermissionTo('car_delete');
-                }
-                else {
-                    $row->revokePermissionTo('car_view');
-                    $row->revokePermissionTo('car_create');
-                    $row->revokePermissionTo('car_update');
-                    $row->revokePermissionTo('car_delete');
-                }
-                if (in_array('event', $permissions)) {
-                    $row->givePermissionTo('event_view');
-                    $row->givePermissionTo('event_create');
-                    $row->givePermissionTo('event_update');
-                    $row->givePermissionTo('event_delete');
-                }
-                else {
-                    $row->revokePermissionTo('event_view');
-                    $row->revokePermissionTo('event_create');
-                    $row->revokePermissionTo('event_update');
-                    $row->revokePermissionTo('event_delete');
-                }
-                if (in_array('activity', $permissions)) {
-                    $row->givePermissionTo('activity_view');
-                    $row->givePermissionTo('activity_create');
-                    $row->givePermissionTo('activity_update');
-                    $row->givePermissionTo('activity_delete');
-                }
-                else {
-                    $row->revokePermissionTo('activity_view');
-                    $row->revokePermissionTo('activity_create');
-                    $row->revokePermissionTo('activity_update');
-                    $row->revokePermissionTo('activity_delete');
-                }
-                if (in_array('accomodation', $permissions)) {
-                    $row->givePermissionTo('accommodation_view');
-                    $row->givePermissionTo('accommodation_create');
-                    $row->givePermissionTo('accommodation_update');
-                    $row->givePermissionTo('accommodation_delete');
-                }
-                else {
-                    $row->revokePermissionTo('accommodation_view');
-                    $row->revokePermissionTo('accommodation_create');
-                    $row->revokePermissionTo('accommodation_update');
-                    $row->revokePermissionTo('accommodation_delete');
-                }
-                if (in_array('boat', $permissions)) {
-                    $row->givePermissionTo('boat_view');
-                    $row->givePermissionTo('boat_create');
-                    $row->givePermissionTo('boat_update');
-                    $row->givePermissionTo('boat_delete');
-                }
-                else {
-                    $row->revokePermissionTo('boat_view');
-                    $row->revokePermissionTo('boat_create');
-                    $row->revokePermissionTo('boat_update');
-                    $row->revokePermissionTo('boat_delete');
-                }
-                if (in_array('sauna', $permissions)) {
-                    $row->givePermissionTo('sauna_view');
-                    $row->givePermissionTo('sauna_create');
-                    $row->givePermissionTo('sauna_update');
-                    $row->givePermissionTo('sauna_delete');
-                }
-                else {
-                    $row->revokePermissionTo('sauna_view');
-                    $row->revokePermissionTo('sauna_create');
-                    $row->revokePermissionTo('sauna_update');
-                    $row->revokePermissionTo('sauna_delete');
+            if(!is_demo_mode()){
+                if ($request->input('role_id') and $role = Role::findById($request->input('role_id'))) {
+                    $row->syncRoles($role);
                 }
             }
-
+            
             return back()->with('success', ($id and $id>0) ? __('User updated'):__("User created"));
         }
     }
@@ -406,7 +312,7 @@ class UserController extends AdminController
                 if($id == Auth::id()) continue;
                 $query = User::where("id", $id)->first();
                 if(!empty($query)){
-                    $query->email.='_d';
+                    $query->email.='_d_'.uniqid().rand(0,99999);
                     $query->save();
                     $query->delete();
                 }
@@ -483,4 +389,21 @@ class UserController extends AdminController
         }
         return redirect()->back()->with('success', __('Updated successfully!'));
     }
+
+    public function export()
+    {
+        return (new UserExport())->download('user-' . date('M-d-Y') . '.xlsx');
+    }
+    public function verifyEmail(Request $request,$id)
+    {
+        $user = User::find($id);
+        if(!empty($user)){
+            $user->email_verified_at = now();
+            $user->save();
+            return redirect()->back()->with('success', __('Verify email successfully!'));
+        }else{
+            return redirect()->back()->with('error', __('Verify email cancel!'));
+        }
+    }
+
 }

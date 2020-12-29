@@ -3,6 +3,7 @@ namespace Modules\Review\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\Core\Events\CreateReviewEvent;
 use Modules\Review\Models\Review;
 use Modules\Review\Models\ReviewMeta;
 use Validator;
@@ -134,6 +135,7 @@ class ReviewController extends Controller
             if ($module->getReviewApproved()) {
                 $msg = __("Review success! Please wait for admin approved!");
             }
+            event(new CreateReviewEvent($module, $review));
             $module->update_service_rate();
             if($is_return){
                 return $this->sendSuccess($msg);

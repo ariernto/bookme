@@ -10,9 +10,22 @@
 @else
     <input type="hidden" name="id" value="{{$row['id']}}">
 @endif
-<div class="form-group">
+@php  $languages = \Modules\Language\Models\Language::getActive(); @endphp
+<div class="form-group form-group-item">
     <label>{{__("Field Name")}} <span class="text-danger">*</span></label>
-    <input type="text" value="{{$row['name'] ?? ''}}" placeholder="" name="name" class="form-control" required>
+    <div class="border p-2 rounded">
+        @if(!empty($languages) && setting_item('site_enable_multi_lang') && setting_item('site_locale'))
+            @foreach($languages as $language)
+                @php $key_lang = setting_item('site_locale') != $language->locale ? "_".$language->locale : ""  @endphp
+                <div class="g-lang">
+                    <div class="title-lang">{{$language->name}}</div>
+                    <input type="text" value="{{$row['name'.$key_lang] ?? ''}}" placeholder="" name="name{{$key_lang}}" class="form-control" required>
+                </div>
+            @endforeach
+        @else
+            <input type="text" value="{{$row['name'] ?? ''}}" placeholder="" name="name" class="form-control" required>
+        @endif
+    </div>
     <div class="invalid-feedback">
         {{__('Please enter field name')}}
     </div>

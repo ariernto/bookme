@@ -17,16 +17,16 @@
                 </div>
                 @if($is_vendor_access)
                     <div class="form-group">
-                        <label>{{__("Business ID")}}</label>
-                        <input type="text" value="{{old('business_id',$dataUser->business_id)}}" name="business_id" placeholder="{{__("Business ID")}}" class="form-control">
-                        <i class="fa fa-user input-icon"></i>
-                    </div>
-                    <div class="form-group">
                         <label>{{__("Business name")}}</label>
                         <input type="text" value="{{old('business_name',$dataUser->business_name)}}" name="business_name" placeholder="{{__("Business name")}}" class="form-control">
                         <i class="fa fa-user input-icon"></i>
                     </div>
                 @endif
+                <div class="form-group">
+                    <label>{{__("User name")}}</label>
+                    <input type="text" name="user_name" value="{{old('user_name',$dataUser->user_name)}}" placeholder="{{__("User name")}}" class="form-control">
+                    <i class="fa fa-user input-icon"></i>
+                </div>
                 <div class="form-group">
                     <label>{{__("E-mail")}}</label>
                     <input type="text" name="email" value="{{old('email',$dataUser->email)}}" placeholder="{{__("E-mail")}}" class="form-control">
@@ -71,10 +71,10 @@
                                     {{__("Browse")}}… <input type="file">
                                 </span>
                             </span>
-                            <input type="text" data-error="{{__("Error upload...")}}" data-loading="{{__("Loading...")}}" class="form-control text-view" readonly value="{{ $dataUser->getAvatarUrl()?? __("No Image")}}">
+                            <input type="text" data-error="{{__("Error upload...")}}" data-loading="{{__("Loading...")}}" class="form-control text-view" readonly value="{{ get_file_url( old('avatar_id',$dataUser->avatar_id) ) ?? $dataUser->getAvatarUrl()?? __("No Image")}}">
                         </div>
-                        <input type="hidden" class="form-control" name="avatar_id" value="{{ $dataUser->avatar_id?? ""}}">
-                        <img class="image-demo" src="{{ $dataUser->getAvatarUrl()?? ""}}"/>
+                        <input type="hidden" class="form-control" name="avatar_id" value="{{ old('avatar_id',$dataUser->avatar_id)?? ""}}">
+                        <img class="image-demo" src="{{ get_file_url( old('avatar_id',$dataUser->avatar_id) ) ??  $dataUser->getAvatarUrl() ?? ""}}"/>
                     </div>
                 </div>
             </div>

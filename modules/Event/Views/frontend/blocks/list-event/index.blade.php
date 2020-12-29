@@ -20,6 +20,13 @@
                     @endforeach
                 </div>
             @endif
+            @if($style_list === "carousel")
+                <div class="owl-carousel">
+                    @foreach($rows as $row)
+                        @include('Event::frontend.layouts.search.loop-gird')
+                    @endforeach
+                </div>
+            @endif
         </div>
     </div>
 </div>

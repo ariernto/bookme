@@ -26,10 +26,24 @@ class ModuleProvider extends ModuleServiceProvider
         return [
             'location'=>[
                 "position"=>30,
-                'url'        => 'admin/module/location',
+                'url'        => route('location.admin.index'),
                 'title'      => __("Location"),
                 'icon'       => 'icon ion-md-compass',
                 'permission' => 'location_view',
+                'children'   => [
+                    'tour_view'=>[
+                        'url'        => route('location.admin.index'),
+                        'title'      => __('All Location'),
+                        'icon'       => 'icon ion-md-compass',
+                        'permission' => 'location_view',
+                    ],
+                    'tour_create'=>[
+                        'url'        => route('location.admin.category.index'),
+                        'title'      => __("All Category"),
+                        'icon'       => 'icon ion-md-compass',
+                        'permission' => 'location_view',
+                    ],
+                    ]
             ]
         ];
     }

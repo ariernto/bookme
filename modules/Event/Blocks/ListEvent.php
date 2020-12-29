@@ -37,6 +37,10 @@ class ListEvent extends BaseBlock
                         [
                             'value'   => 'normal',
                             'name' => __("Normal")
+                        ],
+                        [
+                            'value'   => 'carousel',
+                            'name' => __("Slider Carousel")
                         ]
                     ]
                 ],

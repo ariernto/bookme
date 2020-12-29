@@ -25,10 +25,16 @@ class SpaceTranslation extends Space
     protected $casts = [
         'faqs'  => 'array',
         'extra_price'  => 'array',
+        'surrounding'  => 'array',
     ];
 
     public function getSeoType(){
         return $this->seo_type;
+    }
+
+    public function getRecordRoot(){
+        return $this->belongsTo(Space::class,'origin_id');
+
     }
 	public static function boot() {
 		parent::boot();

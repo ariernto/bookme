@@ -11,7 +11,6 @@ use Modules\AdminController;
 //use Modules\Vendor\Models\VendorPlan;
 use Modules\User\Events\AdminUpdateVerificationData;
 use Modules\User\Events\VendorApproved;
-use Modules\Vendor\Models\VendorRequest;
 use Spatie\Permission\Models\Role;
 
 class VerificationController extends AdminController
@@ -132,5 +131,31 @@ class VerificationController extends AdminController
         event(new AdminUpdateVerificationData($row,$full));
 
         return redirect()->back()->with("success",__("Updated"));
+    }
+
+    public function bulkEdit(Request $request)
+    {
+        $this->checkPermission('user_create');
+        $ids = $request->input('ids');
+        $action = $request->input('action');
+        if (empty($ids))
+            return redirect()->back()->with('error', __('Select at leas 1 item!'));
+        if (empty($action))
+            return redirect()->back()->with('error', __('Select an Action!'));
+
+        switch ($action){
+            case "delete":
+                foreach ($ids as $id) {
+                    $query = User::find($id);
+                    if(!empty($query)){
+                        $query->verify_submit_status = null;
+                    }
+                    $query->save();
+                }
+                return redirect()->back()->with('success', __('Deleted success!'));
+                break;
+            default:
+                break;
+        }
     }
 }

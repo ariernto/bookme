@@ -8,7 +8,14 @@
         @include('admin.message')
         <div class="filter-div d-flex justify-content-between ">
             <div class="col-left">
-
+                <form method="post" action="{{ route("user.admin.verification.bulkEdit") }}" class="filter-form filter-form-left d-flex justify-content-start">
+                    {{csrf_field()}}
+                    <select name="action" class="form-control">
+                        <option value="">{{__(" Bulk Actions ")}}</option>
+                        <option value="delete">{{__(" Delete ")}}</option>
+                    </select>
+                    <button data-confirm="{{__("Do you want to delete?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Apply')}}</button>
+                </form>
             </div>
             <div class="col-left">
                 <form method="get" class="filter-form filter-form-right d-flex justify-content-end flex-column flex-sm-row" role="search">

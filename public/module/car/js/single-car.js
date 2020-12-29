@@ -477,7 +477,7 @@
         $('.bravo_single_book_wrap').modal('show');
     });
 
-    $(".bravo_detail_space .g-faq .item .header").click(function () {
+    $(".bravo_detail_car .g-faq .item .header").click(function () {
         $(this).parent().toggleClass("active");
     });
 

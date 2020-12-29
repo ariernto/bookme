@@ -25,7 +25,7 @@
                             </div>
                         @endif
                         <h3 class="thumb-list-item-title">
-                            <a href="{{ $blog->getDetailUrl(app()->getLocale()) }}">{{$translation->title}}</a>
+                            <a href="{{ $blog->getDetailUrl(app()->getLocale()) }}">{!! clean($translation->title) !!}</a>
                         </h3>
                     </div>
                 </li>

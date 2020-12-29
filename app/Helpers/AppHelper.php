@@ -1052,10 +1052,76 @@ function clean_by_key($object, $keyIndex, $children = 'children'){
     }
     return $object;
 }
-function periodDate($startDate,$endDate,$interval='1 day'){
+function periodDate($startDate,$endDate,$day = true,$interval='1 day'){
     $begin = new \DateTime($startDate);
     $end = new \DateTime($endDate);
+
+//    if($begin==$end){
+//        $end = $end->modify('+1 day');
+//    }
+
+    if($day){
+        $end = $end->modify('+1 day');
+    }
+
+
     $interval = \DateInterval::createFromDateString($interval);
     $period = new \DatePeriod($begin, $interval, $end);
     return $period;
+}
+
+function _fixTextScanTranslations(){
+    return __("Show on the map");
+}
+
+
+function is_admin(){
+    if(!auth()->check()) return false;
+    if(auth()->user()->hasPermissionTo('dashboard_access')) return true;
+    return false;
+}
+function is_vendor(){
+    if(!auth()->check()) return false;
+    if(auth()->user()->hasPermissionTo('dashboard_vendor_access')) return true;
+    return false;
+    }
+
+function get_link_detail_services($services, $id,$action='edit'){
+    if( \Route::has($services.'.admin.'.$action) ){
+        return route($services.'.admin.'.$action, ['id' => $id]);
+    }else{
+        return '#';
+    }
+
+}
+
+function get_link_vendor_detail_services($services, $id,$action='edit'){
+    if( \Route::has($services.'.vendor.'.$action) ){
+        return route($services.'.vendor.'.$action, ['id' => $id]);
+    }else{
+        return '#';
+    }
+
+}
+
+function format_interval($d1, $d2 = ''){
+    $first_date = new DateTime($d1);
+    if(!empty($d2)){
+        $second_date = new DateTime($d2);
+    }else{
+        $second_date = new DateTime();
+    }
+
+
+    $interval = $first_date->diff($second_date);
+
+    $result = "";
+    if ($interval->y) { $result .= $interval->format("%y years "); }
+    if ($interval->m) { $result .= $interval->format("%m months "); }
+    if ($interval->d) { $result .= $interval->format("%d days "); }
+    if ($interval->h) { $result .= $interval->format("%h hours "); }
+    if ($interval->i) { $result .= $interval->format("%i minutes "); }
+    if ($interval->s) { $result .= $interval->format("%s seconds "); }
+
+    return $result;
 }

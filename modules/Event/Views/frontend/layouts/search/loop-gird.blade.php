@@ -35,7 +35,7 @@
             @if($row->is_instant)
                 <i class="fa fa-bolt d-none"></i>
             @endif
-            {{$translation->title}}
+                {!! clean($translation->title) !!}
         </a>
     </div>
     @if(setting_item('space_enable_review'))
@@ -63,7 +63,7 @@
     @endif
     <div class="info">
         <div class="duration">
-            {{duration_format($row->duration,true)}}
+            {{duration_format($row->duration)}}
         </div>
         <div class="g-price">
             <div class="prefix">

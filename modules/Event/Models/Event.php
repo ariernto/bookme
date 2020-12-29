@@ -4,6 +4,7 @@ namespace Modules\Event\Models;
 
 use App\Currency;
 use Illuminate\Http\Response;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
@@ -22,11 +23,14 @@ use Modules\User\Models\UserWishList;
 
 class Event extends Bookable
 {
+    use Notifiable;
     use SoftDeletes;
     protected $table = 'bravo_events';
     public $type = 'event';
     public $checkout_booking_detail_file       = 'Event::frontend/booking/detail';
     public $checkout_booking_detail_modal_file = 'Event::frontend/booking/detail-modal';
+
+    public    $set_paid_modal_file                = 'Event::frontend/booking/set-paid-modal';
     public $email_new_booking_file             = 'Event::emails.new_booking_detail';
 
     protected $fillable = [
@@ -44,6 +48,9 @@ class Event extends Bookable
         'price'        => 'float',
         'sale_price'   => 'float',
         'ticket_types' => 'array',
+        'service_fee'  => 'array',
+        'surrounding' => 'array',
+
     ];
     protected $bookingClass;
     protected $reviewClass;
@@ -249,28 +256,47 @@ class Event extends Bookable
             return $this->sendError(__("Please select ticket!"));
         }
 
-        //Buyer Fees
+        //Buyer Fees for Admin
         $total_before_fees = $total;
-        $list_fees = setting_item('event_booking_buyer_fees');
-        $total_fee = 0;
-        if (!empty($list_fees)) {
-            $lists = json_decode($list_fees, true);
+        $list_buyer_fees = setting_item('event_booking_buyer_fees');
+        $total_buyer_fee = 0;
+        if (!empty($list_buyer_fees)) {
+            $lists = json_decode($list_buyer_fees, true);
             foreach ($lists as $item) {
                 //for Fixed
                 $fee_price = $item['price'];
                 // for Percent
-                if(!empty($item['unit']) and $item['unit'] == "percent"){
-                    $fee_price = ( $total_before_fees / 100 ) * $item['price'];
+                if (!empty($item['unit']) and $item['unit'] == "percent") {
+                    $fee_price = ($total_before_fees / 100) * $item['price'];
                 }
                 if (!empty($item['per_ticket']) and $item['per_ticket'] == "on") {
-                    $total_fee += $fee_price * $total_tickets;
+                    $total_buyer_fee += $fee_price * $total_tickets;
                 } else {
-                    $total_fee += $fee_price;
+                    $total_buyer_fee += $fee_price;
                 }
             }
-            $total += $total_fee;
+            $total += $total_buyer_fee;
         }
-        
+
+        //Service Fees for Vendor
+        $total_service_fee = 0;
+        if(!empty($this->enable_service_fee) and !empty($list_service_fee = $this->service_fee)){
+            foreach ($list_service_fee as $item) {
+                //for Fixed
+                $serice_fee_price = $item['price'];
+                // for Percent
+                if (!empty($item['unit']) and $item['unit'] == "percent") {
+                    $serice_fee_price = ($total_before_fees / 100) * $item['price'];
+                }
+                if (!empty($item['per_ticket']) and $item['per_ticket'] == "on") {
+                    $total_service_fee += $serice_fee_price * $total_tickets;
+                } else {
+                    $total_service_fee += $serice_fee_price;
+                }
+            }
+            $total += $total_service_fee;
+        }
+
         $booking = new $this->bookingClass();
         $booking->status = 'draft';
         $booking->object_id = $request->input('service_id');
@@ -282,7 +308,10 @@ class Event extends Bookable
         $booking->start_date = $start_date->format('Y-m-d H:i:s');
         $start_date->modify('+ ' . max(1, $this->duration) . ' hours');
         $booking->end_date = $start_date->format('Y-m-d H:i:s');
-        $booking->buyer_fees = $list_fees ?? '';
+
+        $booking->vendor_service_fee_amount = $total_service_fee ?? '';
+        $booking->vendor_service_fee = $list_service_fee ?? '';
+        $booking->buyer_fees = $list_buyer_fees ?? '';
         $booking->total_before_fees = $total_before_fees;
 
         $booking->calculateCommission();
@@ -303,7 +332,7 @@ class Event extends Bookable
                     break;
             }
             if($booking_deposit_fomular == "deposit_and_fee"){
-                $booking->deposit = $booking->deposit + $total_fee;
+                $booking->deposit = $booking->deposit + $total_buyer_fee + $total_service_fee;
             }
         }
 
@@ -357,7 +386,7 @@ class Event extends Bookable
                 }
             }
         }
-        return $ticket_types;
+        return array_values($ticket_types);
     }
 
     public function addToCartValidate(Request $request)
@@ -449,8 +478,8 @@ class Event extends Bookable
                             $type['price_type'] .= '/' . __('hour');
                             break;
                     }
-                    if (!empty($type['per_person'])) {
-                        $type['price_type'] .= '/' . __('guest');
+                    if (!empty($type['per_ticket'])) {
+                        $type['price_type'] .= '/' . __('ticket');
                     }
                 }
             }
@@ -463,8 +492,19 @@ class Event extends Bookable
                 $item['type_name'] = $item['name_'.app()->getLocale()] ?? $item['name'] ?? '';
                 $item['type_desc'] = $item['desc_'.app()->getLocale()] ?? $item['desc'] ?? '';
                 $item['price_type'] = '';
-                if (!empty($item['per_person']) and $item['per_person'] == 'on') {
-                    $item['price_type'] .= '/' . __('guest');
+                if (!empty($item['per_ticket']) and $item['per_ticket'] == 'on') {
+                    $item['price_type'] .= '/' . __('ticket');
+                }
+                $booking_data['buyer_fees'][] = $item;
+            }
+        }
+        if(!empty($this->enable_service_fee) and !empty($service_fee = $this->service_fee)){
+            foreach ($service_fee as $item) {
+                $item['type_name'] = $item['name_' . app()->getLocale()] ?? $item['name'] ?? '';
+                $item['type_desc'] = $item['desc_' . app()->getLocale()] ?? $item['desc'] ?? '';
+                $item['price_type'] = '';
+                if (!empty($item['per_ticket']) and $item['per_ticket'] == 'on') {
+                    $item['price_type'] .= '/' . __('ticket');
                 }
                 $booking_data['buyer_fees'][] = $item;
             }
@@ -826,11 +866,14 @@ class Event extends Bookable
         $review_scores = $request->query('review_score');
         if (is_array($review_scores) && !empty($review_scores)) {
             $where_review_score = [];
+            $params = [];
             foreach ($review_scores as $number){
-                $where_review_score[] = " ( bravo_events.review_score >= {$number} AND bravo_events.review_score <= {$number}.9 ) ";
+                $where_review_score[] = " ( bravo_events.review_score >= ? AND bravo_events.review_score <= ? ) ";
+                $params[] = $number;
+                $params[] = $number.'.9';
             }
             $sql_where_review_score = " ( " . implode("OR", $where_review_score) . " )  ";
-            $model_event->WhereRaw($sql_where_review_score);
+            $model_event->WhereRaw($sql_where_review_score,$params);
         }
 
         if(!empty( $service_name = $request->query("service_name") )){
@@ -846,7 +889,7 @@ class Event extends Bookable
         }
         if(!empty($lat = $request->query('map_lat')) and !empty($lgn = $request->query('map_lgn'))){
 //            ORDER BY (POW((lon-$lon),2) + POW((lat-$lat),2))";
-            $model_event->orderByRaw("POW((bravo_events.map_lng-".$lgn."),2) + POW((bravo_events.map_lat-".$lat."),2)");
+            $model_event->orderByRaw("POW((bravo_events.map_lng-?),2) + POW((bravo_events.map_lat-?),2)",[$lgn,$lat]);
         }
         $orderby = $request->input("orderby");
         switch ($orderby){
@@ -867,7 +910,7 @@ class Event extends Bookable
                 $model_event->orderBy("is_featured", "desc");
                 $model_event->orderBy("id", "desc");
         }
-        
+
         $model_event->groupBy("bravo_events.id");
 
         $max_guests = (int)($request->query('adults') + $request->query('children'));

@@ -15,7 +15,7 @@ Route::get('/category','CategoryController@index')->name('news.admin.category.in
 
 Route::get('category/getForSelect2','CategoryController@getForSelect2')->name('news.admin.category.getForSelect2');
 
-Route::get('/category/{id}','CategoryController@edit')->name('news.admin.category.edit');
+Route::get('/category/edit/{id}','CategoryController@edit')->name('news.admin.category.edit');
 
 Route::post('/category/store/{id}','CategoryController@store')->name('news.admin.category.store');
 

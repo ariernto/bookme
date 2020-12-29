@@ -109,11 +109,6 @@ class ModuleProvider extends ModuleServiceProvider
                         'permission' => 'space_create',
                     ],
                     [
-                        'url'        => route('space.vendor.booking_report'),
-                        'title'      => __("Booking Report"),
-                        'permission' => 'space_view',
-                    ],
-                    [
                         'url'   => route('space.vendor.recovery'),
                         'title'      => __("Recovery"),
                         'permission' => 'space_create',

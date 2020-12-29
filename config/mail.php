@@ -15,6 +15,9 @@ return [
     |            "sparkpost", "postmark", "log", "array"
     |
     */
+// laravel 7
+//    Supported: "smtp", "sendmail", "mailgun", "ses",
+//    |            "postmark", "log", "array"
 
     'driver' => env('MAIL_DRIVER', 'smtp'),
 

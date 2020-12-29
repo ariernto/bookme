@@ -10,6 +10,7 @@ if (!version_compare(phpversion(), '7.2', '>'))
 {
     die("Current PHP version: ".phpversion()."<br>You must upgrade PHP version 7.2 and later");
 }
+
 /**
  * Laravel - A PHP Framework For Web Artisans
  *

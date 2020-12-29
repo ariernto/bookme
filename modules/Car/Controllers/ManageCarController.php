@@ -1,10 +1,14 @@
 <?php
 namespace Modules\Car\Controllers;
 
+use App\Notifications\AdminChannelServices;
+use Modules\Booking\Events\BookingUpdatedEvent;
 use Modules\Booking\Models\Enquiry;
 use Modules\Car\Models\Car;
 use Modules\Car\Models\CarTerm;
 use Modules\Car\Models\CarTranslation;
+use Modules\Core\Events\CreatedServicesEvent;
+use Modules\Core\Events\UpdatedServiceEvent;
 use Modules\FrontendController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -94,6 +98,8 @@ class ManageCarController extends FrontendController
         $query = $this->carClass::onlyTrashed()->where("create_user", $user_id)->where("id", $id)->first();
         if(!empty($query)){
             $query->restore();
+            event(new UpdatedServiceEvent($query));
+
         }
         return redirect(route('car.vendor.recovery'))->with('success', __('Restore car success!'));
     }
@@ -169,6 +175,8 @@ class ManageCarController extends FrontendController
             'extra_price',
             'is_featured',
             'default_state',
+            'enable_service_fee',
+            'service_fee',
         ];
         if($this->hasPermission('car_manage_others')){
             $dataKeys[] = 'create_user';
@@ -184,8 +192,10 @@ class ManageCarController extends FrontendController
             }
 
             if($id > 0 ){
+                event(new UpdatedServiceEvent($row));
                 return back()->with('success',  __('Car updated') );
             }else{
+                event(new CreatedServicesEvent($row));
                 return redirect(route('car.vendor.edit',['id'=>$row->id]))->with('success', __('Car created') );
             }
         }
@@ -245,6 +255,8 @@ class ManageCarController extends FrontendController
         $query = $this->carClass::where("create_user", $user_id)->where("id", $id)->first();
         if(!empty($query)){
             $query->delete();
+            event(new UpdatedServiceEvent($query));
+
         }
         return redirect(route('car.vendor.index'))->with('success', __('Delete car success!'));
     }
@@ -272,27 +284,9 @@ class ManageCarController extends FrontendController
                 break;
         }
         $query->save();
-        return redirect()->back()->with('success', __('Update success!'));
-    }
+        event(new UpdatedServiceEvent($query));
 
-    public function bookingReport(Request $request)
-    {
-        $data = [
-            'bookings' => $this->bookingClass::getBookingHistory($request->input('status'), false , Auth::id() , 'car'),
-            'statues'  => config('booking.statuses'),
-            'breadcrumbs'        => [
-                [
-                    'name' => __('Manage Car'),
-                    'url'  => route('car.vendor.index')
-                ],
-                [
-                    'name' => __('Booking Report'),
-                    'class'  => 'active'
-                ]
-            ],
-            'page_title'         => __("Booking Report"),
-        ];
-        return view('Car::frontend.manageCar.bookingReport', $data);
+        return redirect()->back()->with('success', __('Update success!'));
     }
 
     public function bookingReportBulkEdit($booking_id , Request $request){
@@ -306,8 +300,7 @@ class ManageCarController extends FrontendController
                 $item->save();
 
                 if($status == Booking::CANCELLED) $item->tryRefundToWallet();
-
-                $item->sendStatusUpdatedEmails();
+                event(new BookingUpdatedEvent($item));
                 return redirect()->back()->with('success', __('Update success'));
             }
             return redirect()->back()->with('error', __('Booking not found!'));

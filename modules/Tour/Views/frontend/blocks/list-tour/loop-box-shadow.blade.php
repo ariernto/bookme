@@ -25,14 +25,10 @@
     </div>
     <div class="caption clear">
         <div class="title-address">
-            <h3 class="title"><a href="{{$row->getDetailUrl()}}"> {{$translation->title}} </a></h3>
+            <h3 class="title"><a href="{{$row->getDetailUrl()}}"> {!! clean($translation->title) !!} </a></h3>
             <p class="duration">
                 <span>
-                    @if($row->duration > 1)
-                        {{ __(":number hours",["number"=>$row->duration ]) }}
-                    @else
-                        {{ __(":number hour",["number"=>$row->duration ]) }}
-                    @endif
+                    {{duration_format($row->duration)}}
                 </span>
                 @if(!empty($row->location->name))
                     -

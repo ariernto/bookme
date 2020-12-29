@@ -54,20 +54,16 @@ class LocationController extends Controller
             }
 
         }
-        $res = $query->orderBy('name', 'asc')->limit(20)->get()->toTree();
+        $res = $query->orderBy('name', 'asc')->limit(20)->get();
         if(!empty($res) and count($res)){
             $list_json = [];
-            $traverse = function ($locations, $prefix = '') use (&$traverse, &$list_json) {
-                foreach ($locations as $location) {
-                    $translate = $location->translateOrOrigin(app()->getLocale());
-                    $list_json[] = [
-                        'id' => $location->id,
-                        'title' => $prefix . ' ' . $translate->name,
-                    ];
-                    $traverse($location->children, $prefix . '-');
-                }
-            };
-            $traverse($res);
+            foreach ($res as $location) {
+                $translate = $location->translateOrOrigin(app()->getLocale());
+                $list_json[] = [
+                    'id' => $location->id,
+                    'title' => $translate->name,
+                ];
+            }
             return $this->sendSuccess(['data'=>$list_json]);
         }
         return $this->sendError(__("Location not found"));

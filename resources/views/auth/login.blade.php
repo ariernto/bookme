@@ -7,7 +7,7 @@
             @include('Layout::admin.message')
             <div class="">
                 <h4 class="form-title">{{ __('Login') }}</h4>
-                @include('auth.login-form',['captcha_action'=>'login_normal'])
+                @include('Layout::auth.login-form',['captcha_action'=>'login_normal'])
             </div>
         </div>
     </div>

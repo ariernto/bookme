@@ -13,7 +13,6 @@ Route::group(['prefix'=>'user/'.env('EVENT_ROUTE_PREFIX','event'),'middleware' =
     Route::get('/del/{id}','VendorEventController@deleteEvent')->name('event.vendor.delete');
     Route::post('/store/{id}','VendorEventController@store')->name('event.vendor.store');
     Route::get('bulkEdit/{id}','VendorEventController@bulkEditEvent')->name("event.vendor.bulk_edit");
-    Route::get('/booking-report','VendorEventController@bookingReport')->name("event.vendor.booking_report");
     Route::get('/booking-report/bulkEdit/{id}','VendorEventController@bookingReportBulkEdit')->name("event.vendor.booking_report.bulk_edit");
     Route::get('/recovery','VendorEventController@recovery')->name('event.vendor.recovery');
     Route::get('/restore/{id}','VendorEventController@restore')->name('event.vendor.restore');

@@ -221,8 +221,17 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
                 cursor: pointer;
                 line-height: initial;
                 .user-avatar{
-                    width: 32px;
                     margin-right: 10px;
+                    .avatar-cover{
+                        width: 32px;
+                        height: 32px;
+                        border-radius: 50%;
+                        overflow: hidden;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-size: cover;
+                    }
                     .avatar-text{
                         border-radius: 50%;
                         text-align: center;
@@ -232,6 +241,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
                         display: block;
                         height: 32px;
                         line-height: 32px;
+                    }
+                    img{
+                        max-width: 30px;
                     }
                 }
                 .user-role{
@@ -578,3 +590,5 @@ tbody td.title{
         min-width: 500px;
     }
 }
+
+@import "_notification";

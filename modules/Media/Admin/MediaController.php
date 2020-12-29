@@ -3,6 +3,7 @@ namespace Modules\Media\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -16,6 +17,21 @@ use Spatie\LaravelImageOptimizer\Facades\ImageOptimizer;
 
 class MediaController extends Controller
 {
+
+    public function index(Response $request){
+
+        $this->setActiveMenu(route('media.admin.index'));
+        $data = [
+            'page_title'=>__("Media Management"),
+            'breadcrumbs'        => [
+                [
+                    'name' => __('Media Management'),
+                    'url'  => route('media.admin.index')
+                ],
+            ]
+        ];
+        return view('Media::admin.index', $data);
+    }
 
     public function sendError($message, $data = [])
     {

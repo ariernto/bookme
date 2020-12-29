@@ -7,7 +7,7 @@
                 @endfor
             </div>
         @endif
-        <h1>{{$translation->title}}</h1>
+        <h1>{!! clean($translation->title) !!}</h1>
         @if($translation->address)
             <h2 class="address"><i class="fa fa-map-marker"></i>
                 {{$translation->address}}
@@ -121,6 +121,9 @@
     </div>
 </div>
 <div class="bravo-hr"></div>
+@includeIf("Hotel::frontend.layouts.details.hotel-surrounding")
+<div class="bravo-hr"></div>
+
 @if($row->map_lat && $row->map_lng)
     <div class="g-location">
         <div class="location-title">
@@ -138,3 +141,4 @@
         </div>
     </div>
 @endif
+<div class="bravo-hr"></div>

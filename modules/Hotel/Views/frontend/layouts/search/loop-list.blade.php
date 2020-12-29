@@ -38,7 +38,7 @@
                 @if($row->is_instant)
                     <i class="fa fa-bolt d-none"></i>
                 @endif
-                {{$translation->title}}
+                    {!! clean($translation->title) !!}
             </a>
         </div>
         @if(!empty($attribute = $row->getAttributeInListingPage()))

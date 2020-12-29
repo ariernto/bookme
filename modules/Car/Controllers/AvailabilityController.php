@@ -244,7 +244,7 @@ class AvailabilityController extends FrontendController{
             $date->save();
         }
 
-        $this->sendSuccess([],__("Update Success"));
+        return $this->sendSuccess([],__("Update Success"));
 
     }
 }

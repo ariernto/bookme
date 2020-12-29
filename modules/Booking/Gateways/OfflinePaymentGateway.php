@@ -16,20 +16,20 @@ class OfflinePaymentGateway extends BaseGateway
         // Simple change status to processing
 
         if($booking->paid <= 0){
-            $booking->markAsProcessing($this, $service);
+            $booking->status = $booking::PROCESSING;
         }else{
             if($booking->paid < $booking->total){
                 $booking->status = $booking::PARTIAL_PAYMENT;
             }else{
                 $booking->status = $booking::PAID;
             }
-            $booking->save();
-            try{
-                event(new BookingCreatedEvent($booking));
+        }
 
-            } catch(\Swift_TransportException $e){
-                Log::warning($e->getMessage());
-            }
+        $booking->save();
+        try{
+            event(new BookingCreatedEvent($booking));
+        } catch(\Swift_TransportException $e){
+            Log::warning($e->getMessage());
         }
 
         $service->afterPaymentProcess($booking, $this);

@@ -10,8 +10,11 @@ namespace Modules\Space\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\AdminController;
+use Modules\Core\Events\CreatedServicesEvent;
+use Modules\Core\Events\UpdatedServiceEvent;
 use Modules\Core\Models\Attributes;
 use Modules\Location\Models\Location;
+use Modules\Location\Models\LocationCategory;
 use Modules\Space\Models\Space;
 use Modules\Space\Models\SpaceTerm;
 use Modules\Space\Models\SpaceTranslation;
@@ -23,6 +26,11 @@ class SpaceController extends AdminController
     protected $space_term;
     protected $attributes;
     protected $location;
+    /**
+     * @var string
+     */
+    private $locationCategoryClass;
+
     public function __construct()
     {
         parent::__construct();
@@ -32,6 +40,7 @@ class SpaceController extends AdminController
         $this->space_term = SpaceTerm::class;
         $this->attributes = Attributes::class;
         $this->location = Location::class;
+        $this->locationCategoryClass = LocationCategory::class;
     }
 
     public function callAction($method, $parameters)
@@ -125,6 +134,7 @@ class SpaceController extends AdminController
             'row'            => $row,
             'attributes'     => $this->attributes::where('service', 'space')->get(),
             'space_location' => $this->location::where('status', 'publish')->get()->toTree(),
+            'location_category' => $this->locationCategoryClass::where('status', 'publish')->get(),
             'translation'    => new $this->space_translation(),
             'breadcrumbs'    => [
                 [
@@ -160,6 +170,7 @@ class SpaceController extends AdminController
             "selected_terms" => $row->terms->pluck('term_id'),
             'attributes'     => $this->attributes::where('service', 'space')->get(),
             'space_location'  => $this->location::where('status', 'publish')->get()->toTree(),
+            'location_category' => $this->locationCategoryClass::where('status', 'publish')->get(),
             'enable_multi_lang'=>true,
             'breadcrumbs'    => [
                 [
@@ -222,6 +233,8 @@ class SpaceController extends AdminController
             'default_state',
             'min_day_before_booking',
             'min_day_stays',
+            'surrounding',
+
         ];
         if($this->hasPermission('space_manage_others')){
             $dataKeys[] = 'create_user';
@@ -232,6 +245,8 @@ class SpaceController extends AdminController
             $row->slug = $request->input('slug');
         }
 	    $row->ical_import_url  = $request->ical_import_url;
+        $row->enable_service_fee = $request->input('enable_service_fee');
+        $row->service_fee = $request->input('service_fee');
 
         $res = $row->saveOriginOrTranslation($request->input('lang'),true);
 
@@ -241,8 +256,12 @@ class SpaceController extends AdminController
             }
 
             if($id > 0 ){
+                event(new UpdatedServiceEvent($row));
+
                 return back()->with('success',  __('Space updated') );
             }else{
+                event(new CreatedServicesEvent($row));
+
                 return redirect(route('space.admin.edit',$row->id))->with('success', __('Space created') );
             }
         }
@@ -285,23 +304,27 @@ class SpaceController extends AdminController
                         $query->where("create_user", Auth::id());
                         $this->checkPermission('space_delete');
                     }
-                    $query->first();
-                    if(!empty($query)){
-                        $query->delete();
+                    $row  =  $query->first();
+                    if(!empty($row)){
+                        $row->delete();
+                        event(new UpdatedServiceEvent($row));
+
                     }
                 }
                 return redirect()->back()->with('success', __('Deleted success!'));
                 break;
             case "recovery":
                 foreach ($ids as $id) {
-                    $query = $this->space::where("id", $id);
+                    $query = $this->space::withTrashed()->where("id", $id);
                     if (!$this->hasPermission('space_manage_others')) {
                         $query->where("create_user", Auth::id());
                         $this->checkPermission('space_delete');
                     }
-                    $query->first();
-                    if(!empty($query)){
-                        $query->restore();
+                    $row = $query->first();
+                    if(!empty($row)){
+                        $row->restore();
+                        event(new UpdatedServiceEvent($row));
+
                     }
                 }
                 return redirect()->back()->with('success', __('Recovery success!'));
@@ -321,7 +344,10 @@ class SpaceController extends AdminController
                         $query->where("create_user", Auth::id());
                         $this->checkPermission('space_update');
                     }
-                    $query->update(['status' => $action]);
+                    $row = $query->first();
+                    $row->status  = $action;
+                    $row->save();
+                        event(new UpdatedServiceEvent($row));
                 }
                 return redirect()->back()->with('success', __('Update success!'));
                 break;

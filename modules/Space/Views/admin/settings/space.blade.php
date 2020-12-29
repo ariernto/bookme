@@ -29,10 +29,21 @@
                         </select>
                     </div>
                 </div>
+                @endif
+                <div class="form-group">
+                    <label class="" >{{__("Layout Map Option")}}</label>
+                    <div class="form-controls">
+                        <select name="space_layout_map_option" class="form-control">
+                            <option {{ (setting_item_with_lang('space_layout_map_option',request()->query('lang')) ?? '') == 'map_left' ? 'selected' : '' }} value="map_left">{{__('Map Left')}}</option>
+                            <option {{ (setting_item_with_lang('space_layout_map_option',request()->query('lang')) ?? '') == 'map_right' ? 'selected' : ''  }} value="map_right">{{__("Map Right")}}</option>
+                        </select>
+                    </div>
+                </div>
+                @if(is_default_lang())
                 <div class="form-group">
                     <label class="" >{{__("Limit item per Page")}}</label>
                     <div class="form-controls">
-                        <input type="number" min="1" name="space_page_limit_item" value="{{setting_item_with_lang('space_page_limit_item',request()->query('lang'), 9)}}" class="form-control">
+                        <input type="number" min="1" name="space_page_limit_item" placeholder="{{ __("Default: 9") }}" value="{{setting_item_with_lang('space_page_limit_item',request()->query('lang'), 9)}}" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
@@ -375,6 +386,14 @@
                             <label><input type="checkbox" name="space_allow_vendor_can_change_their_booking_status" value="1" @if(!empty($settings['space_allow_vendor_can_change_their_booking_status'])) checked @endif /> {{__("Yes please")}} </label>
                             <br>
                             <small class="form-text text-muted">{{__("ON: Vendor can change their booking status")}}</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="" >{{__("Allow vendor can change their booking paid amount")}}</label>
+                        <div class="form-controls">
+                            <label><input type="checkbox" name="space_allow_vendor_can_change_paid_amount" value="1" @if(!empty($settings['space_allow_vendor_can_change_paid_amount'])) checked @endif /> {{__("Yes please")}} </label>
+                            <br>
+                            <small class="form-text text-muted">{{__("ON: Vendor can change their booking paid amount")}}</small>
                         </div>
                     </div>
                 </div>

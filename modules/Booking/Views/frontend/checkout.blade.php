@@ -41,14 +41,29 @@
         })
 
         $('.deposit_amount').on('change', function(){
-            var credit_input = $(this).val();
+            checkPaynow();
+        });
+
+        $('input[type=radio][name=how_to_pay]').on('change', function(){
+            checkPaynow();
+        });
+
+        function checkPaynow(){
+            var credit_input = $('.deposit_amount').val();
+            var how_to_pay = $("input[name=how_to_pay]:checked").val();
             var convert_to_money = credit_input * {{ setting_item('wallet_credit_exchange_rate',1)}};
-            var pay_now_need_pay = parseInt({{@$booking->deposit}}) - convert_to_money;
+
+            if(how_to_pay == 'full'){
+                var pay_now_need_pay = parseFloat({{floatval($booking->total)}}) - convert_to_money;
+            }else{
+                var pay_now_need_pay = parseFloat({{floatval($booking->deposit == null ? $booking->total : $booking->deposit)}}) - convert_to_money;
+            }
+
             if(pay_now_need_pay < 0){
                 pay_now_need_pay = 0;
             }
             $('.convert_pay_now').html(bravo_format_money(pay_now_need_pay));
             $('.convert_deposit_amount').html(bravo_format_money(convert_to_money));
-        });
+        }
     </script>
 @endsection

@@ -105,11 +105,6 @@ class ModuleProvider extends ModuleServiceProvider
                         'permission' => 'hotel_create',
                     ],
                     [
-                        'url'   => route('hotel.vendor.booking_report'),
-                        'title'      => __("Booking Report"),
-                        'permission' => 'hotel_view',
-                    ],
-                    [
                         'url'   => route('hotel.vendor.recovery'),
                         'title'      => __("Recovery"),
                         'permission' => 'hotel_create',

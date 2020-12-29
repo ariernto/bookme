@@ -6,7 +6,7 @@
 ?>
 <div class="g-header">
     <div class="left">
-        <h1>{{$translation->title}}</h1>
+        <h1>{!! clean($translation->title) !!}</h1>
         @if($translation->address)
             <p class="address"><i class="fa fa-map-marker"></i>
                 {{$translation->address}}

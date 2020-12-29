@@ -303,8 +303,9 @@ class AvailabilityController extends FrontendController
         } else {
             $postData['person_types'] = null;
         }
+
 //        for ($i = strtotime($request->input('start_date')); $i <= strtotime($request->input('end_date')); $i += DAY_IN_SECONDS) {
-        $period = periodDate($request->input('start'),$request->input('end'));
+        $period = periodDate($request->input('start_date'),$request->input('end_date'));
         foreach ($period as $dt){
             $date = $this->tourDateClass::where('start_date', $dt->format('Y-m-d'))->where('target_id', $target_id)->first();
             if (empty($date)) {

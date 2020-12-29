@@ -34,7 +34,9 @@ jQuery(function ($) {
 	$('.bravo_form_search_map .smart-search .child_id').change(function () {
 		reloadForm();
 	});
-
+    $('.bravo_form_search_map .g-map-place input[name=map_place]').change(function () {
+        reloadForm();
+    });
 	$('.bravo_form_search_map .input-filter').change(function () {
 		reloadForm();
 	});

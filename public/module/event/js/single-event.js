@@ -90,7 +90,7 @@
                                     }
                                     break;
                             }
-                            if (typeof item.per_person !== "undefined") {
+                            if (typeof item.per_ticket !== "undefined") {
                                 type_total = type_total * total_tickets;
                             }
                             total += type_total;
@@ -111,7 +111,7 @@
                             fee_price = ( total / 100 ) * fee_price;
                         }
 
-                        if (typeof item.per_person !== "undefined") {
+                        if (typeof item.per_ticket !== "undefined") {
                             fee_price = fee_price * total_tickets;
                         }
                         total_fee += fee_price;
