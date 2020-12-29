@@ -1,1 +1,1 @@
-@include("Layout::admin.app")
+@include("Layout::admin.app")

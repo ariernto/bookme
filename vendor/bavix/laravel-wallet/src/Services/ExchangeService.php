@@ -7,6 +7,7 @@ use Bavix\Wallet\Interfaces\Wallet;
 
 class ExchangeService
 {
+
     /**
      * @param Wallet $from
      * @param Wallet $to
@@ -19,4 +20,5 @@ class ExchangeService
             ->withCurrency($from)
             ->convertTo($to);
     }
+
 }

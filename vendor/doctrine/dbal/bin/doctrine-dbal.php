@@ -1,6 +1,7 @@
 <?php
 
 use Doctrine\DBAL\Tools\Console\ConsoleRunner;
+use Symfony\Component\Console\Helper\HelperSet;
 
 $files       = [__DIR__ . '/../vendor/autoload.php', __DIR__ . '/../../../autoload.php'];
 $loader      = null;
@@ -40,7 +41,17 @@ if (! is_readable($configFile)) {
     exit(1);
 }
 
-$commands           = [];
-$connectionProvider = require $configFile;
+$commands  = [];
+$helperSet = require $configFile;
 
-ConsoleRunner::run($connectionProvider, $commands);
+if (! $helperSet instanceof HelperSet) {
+    foreach ($GLOBALS as $helperSetCandidate) {
+        if ($helperSetCandidate instanceof HelperSet) {
+            $helperSet = $helperSetCandidate;
+
+            break;
+        }
+    }
+}
+
+ConsoleRunner::run($helperSet, $commands);

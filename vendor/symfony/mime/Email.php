@@ -266,7 +266,7 @@ class Email extends Message
      */
     public function getPriority(): int
     {
-        [$priority] = sscanf($this->getHeaders()->getHeaderBody('X-Priority'), '%[1-5]');
+        list($priority) = sscanf($this->getHeaders()->getHeaderBody('X-Priority'), '%[1-5]');
 
         return $priority ?? 3;
     }
@@ -378,7 +378,7 @@ class Email extends Message
     }
 
     /**
-     * @return array|DataPart[]
+     * @return DataPart[]
      */
     public function getAttachments(): array
     {

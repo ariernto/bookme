@@ -6,9 +6,6 @@
             <h1 class="title-bar">{{ __('All Users')}}</h1>
             <div class="title-actions">
                 <a href="{{url('admin/module/user/create')}}" class="btn btn-primary">{{ __('Add new user')}}</a>
-                <a class="btn btn-warning btn-icon" href="{{ route("user.admin.export") }}" target="_blank" title="{{ __("Export to excel") }}">
-                    <i class="icon ion-md-cloud-download"></i> {{ __("Export to excel") }}
-                </a>
             </div>
         </div>
         @include('admin.message')
@@ -19,6 +16,8 @@
                         {{csrf_field()}}
                         <select name="action" class="form-control">
                             <option value="">{{__(" Bulk Actions ")}}</option>
+                            {{--<option value="publish">{{__(" Publish ")}}</option>--}}
+                            {{--<option value="draft">{{__(" Move to Draft ")}}</option>--}}
                             <option value="delete">{{__(" Delete ")}}</option>
                         </select>
                         <button data-confirm="{{__("Do you want to delete?")}}" class="btn-info btn btn-icon dungdt-apply-form-btn" type="button">{{__('Apply')}}</button>
@@ -85,11 +84,6 @@
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <a class="dropdown-item"  href="{{url('admin/module/user/edit/'.$row->id)}}"><i class="fa fa-edit"></i> {{__('Edit')}}</a>
-                                            @if(!$row->hasVerifiedEmail())
-                                                <a class="dropdown-item"  href="{{route('user.admin.verifyEmail',$row)}}"><i class="fa fa-edit"></i> {{__('Verify email')}}</a>
-                                                @else
-                                                <a class="dropdown-item"  href="#" ><i class="fa fa-check"></i> {{__('Email verified')}}</a>
-                                            @endif
                                             <a class="dropdown-item" href="{{url('admin/module/user/password/'.$row->id)}}"><i class="fa fa-lock"></i> {{__('Change Password')}}</a>
                                             <a href="{{route('user.admin.wallet.addCredit',['id'=>$row->id])}}" class="dropdown-item"><i class="fa fa-plus"></i> {{__("Add Credit")}}</a>
                                         </div>

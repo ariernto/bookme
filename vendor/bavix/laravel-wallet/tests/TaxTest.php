@@ -9,6 +9,7 @@ use Bavix\Wallet\Test\Models\ItemTax;
 
 class TaxTest extends TestCase
 {
+
     /**
      * @return void
      */
@@ -23,7 +24,7 @@ class TaxTest extends TestCase
             'quantity' => 1,
         ]);
 
-        $fee = (int) ($product->getAmountProduct($buyer) * $product->getFeePercent() / 100);
+        $fee = (int)($product->getAmountProduct($buyer) * $product->getFeePercent() / 100);
         $balance = $product->getAmountProduct($buyer) + $fee;
 
         self::assertEquals($buyer->balance, 0);
@@ -68,7 +69,7 @@ class TaxTest extends TestCase
             'quantity' => 1,
         ]);
 
-        $fee = (int) ($product->getAmountProduct($santa) * $product->getFeePercent() / 100);
+        $fee = (int)($product->getAmountProduct($santa) * $product->getFeePercent() / 100);
         $balance = $product->getAmountProduct($santa) + $fee;
 
         self::assertEquals($santa->balance, 0);
@@ -131,4 +132,5 @@ class TaxTest extends TestCase
 
         self::assertEquals($santa->balance, 0);
     }
+
 }

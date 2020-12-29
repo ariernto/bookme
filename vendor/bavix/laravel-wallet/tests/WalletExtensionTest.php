@@ -5,9 +5,11 @@ namespace Bavix\Wallet\Test;
 use Bavix\Wallet\Objects\Operation;
 use Bavix\Wallet\Test\Common\Models\Transaction;
 use Bavix\Wallet\Test\Models\Buyer;
+use Bavix\Wallet\Test\Objects;
 
 class WalletExtensionTest extends TestCase
 {
+
     /**
      * @return void
      */
@@ -47,4 +49,5 @@ class WalletExtensionTest extends TestCase
         self::assertInstanceOf(Transaction::class, $transaction);
         self::assertNull($transaction->bank_method);
     }
+
 }
