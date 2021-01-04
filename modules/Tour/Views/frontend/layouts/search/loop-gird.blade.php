@@ -24,15 +24,11 @@
     <hr class="hrcla" />
     <div class="info">
         <div class="row">
-            <div class="col-lg-4 col-md-12 col-sm-4 col-xs-6">
+            <div class="col-lg-12 col-md-12 col-sm-4 col-xs-6">
                 <i class="fa fa-calendar paddingicon"></i>
                 ALL YEAR
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-4 col-xs-6">
                 <i class="icofont-wall-clock paddingicon"></i>
                 3 HOURS
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-4 col-xs-6">
                 <i class="fa fa-star starcol"></i>
                 <i class="fa fa-star starcol"></i>
                 <i class="fa fa-star starcol"></i>
