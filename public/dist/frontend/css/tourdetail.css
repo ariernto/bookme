@@ -1,0 +1,250 @@
+.starreview {
+    display: flex;
+    margin-left: 230px;
+}
+
+.nobordercla {
+    border: 0px !important;
+}
+
+.myreview {
+    padding-right: 190px !important;
+    width: 100% !important;
+    border: 0px !important;
+}
+
+.d-flex {
+    margin-bottom: 20px !important;
+}
+
+.chacla {
+    padding-left: 10px !important;
+}
+
+.undochacla {
+    padding-left: 10px !important;
+    color: #C29D59 !important;
+}
+
+.fullwidth {
+    width: 100%;
+    background-color: #C29D59;
+}
+
+.starcol {
+    color: #C29D59 !important;
+    padding: 3px !important;
+}
+
+.review {
+    color: #C29D59 !important;
+}
+
+.onerow {
+    display: flex;
+}
+
+.bravo_single_book_wrap {
+    margin-top: 243px !important;
+}
+
+.bravo_single_book {
+    border-top: 1px solid #C29D59 !important;
+}
+
+.bookcha {
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    width: 100%;
+}
+
+.date-wrapper p {
+    margin-bottom: 0rem !important;
+}
+
+.bravo_content .container {
+    max-width: 1540px !important;
+}
+
+.fotorama__stage {
+    width: 1120px !important;
+    height: 464px !important;
+}
+
+.fotorama__stage__shaft {
+    width: 1120px !important;
+    height: 464px !important;
+}
+
+.fotorama__img {
+    width: 1120px !important;
+    height: 464px !important;
+}
+
+.datefield{
+    padding-left: 30px !important;
+}
+
+.timefield{
+    padding-right: 30px !important;
+}
+
+.nospace {
+    padding: 0px;
+}
+
+.flexblock {
+    display: block !important;
+}
+
+.card {
+    width: 30px !important;
+    height: 30px !important;
+    color: black !important;
+    border-radius: 0px !important;
+    padding-left: 9px !important;
+    padding-top: 3px !important;
+}
+
+.spancla {
+    padding-left: 0px !important;
+}
+
+.undoline {
+    width: 80px;
+    border-color: #C29D59;
+}
+
+.whiteheart {
+    font-size: 25px !important;
+    color : white !important;
+}
+
+.reposite {
+    top: 10px !important;
+    left: 10px !important;
+}
+
+.paddingicon {
+    padding-left: 20px !important;
+    padding-right: 5px !important;
+}
+
+.bravo_wrap .bravo_detail_tour .bravo-list-tour-related .item-tour .info .duration {
+    width: 100% !important;
+}
+
+.topline {
+    border-top: 1px solid #d7dce3 !important;
+    padding-top: 10px !important;
+}
+
+.marginset {
+    margin-right: 150px !important;
+    margin-left: 150px !important;
+}
+
+.locatcolor {
+    color: #C29D59 !important;
+    display: flex !important;
+}
+
+.hrcla {
+    width: 90% !important;
+}
+
+.moneycha {
+    text-align: right !important;
+    width: 100% !important;
+    margin-bottom: 0px !important;
+}
+
+.noborder {
+    border-bottom: 0px !important;
+}
+
+.totalcost {
+    border-top: 1px solid #d7dce3 !important;
+    padding-top: 10px !important;
+    border-bottom: 0px !important;
+    color: #C29D59 !important;
+}
+
+.orangefont {
+    color: #C29D59 !important;
+}
+
+.notop {
+    border-top: 0px !important;
+}
+
+.maylikecla {
+    text-align: center;
+    color: #C29D59 !important;
+    margin-bottom: 0px !important;
+}
+
+.nomargin {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+}
+
+.orangebtn {
+    background: #C29D59 !important;
+}
+
+.addbtn {
+    border: 1px solid #C29D59 !important;
+    color: #C29D59 !important;
+    margin-top: 20px !important;
+    padding-bottom: 3px !important;
+    padding-top: 3px !important;
+    border-radius: 0px !important;
+    font-size: 12px !important;
+    font-weight: 100 !important;
+}
+
+.g-overview h4 {
+    color: black !important;
+}
+
+.icon-include {
+    color: #C29D59 !important;
+}
+
+.g-faq {
+    border-top: 0px !important;
+}
+
+.review-box-score {
+    text-align: left !important;
+}
+
+.bravo-reviews .review-box .review-sumary .item .label {
+    width: 10% !important;
+    text-align: left !important;
+}
+
+.nametxt {
+    padding-top: 7px !important;
+    padding-right: 0px !important;
+}
+
+.nameinput {
+    padding-left: 0px !important;
+}
+
+.goldborder {
+    border: 1px solid #C29D59 !important;
+}
+
+.bottomspace {
+    padding-bottom: 20px !important;
+}
+
+.smarttext {
+    background: rgb(243, 243, 243);
+    height: 250px !important;
+    border: 0px !important;
+}
