@@ -11,7 +11,6 @@
  */
 
 return array (
-  25561 => 'Viettel',
   25562 => 'Viettel',
   25563 => 'MTC',
   25564 => 'Cootel',
@@ -21,7 +20,6 @@ return array (
   25568 => 'Airtel',
   25569 => 'Airtel',
   25571 => 'tiGO',
-  25572 => 'MO Mobile Holding Limited',
   25573 => 'Tanzania Telecom',
   25574 => 'Vodacom',
   25575 => 'Vodacom',

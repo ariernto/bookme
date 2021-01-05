@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php
 /*
  * This file is part of PharIo\Version.
  *
@@ -7,14 +7,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace PharIo\Version;
 
 class OrVersionConstraintGroup extends AbstractVersionConstraint {
-    /** @var VersionConstraint[] */
+    /**
+     * @var VersionConstraint[]
+     */
     private $constraints = [];
 
     /**
-     * @param string              $originalValue
+     * @param string $originalValue
      * @param VersionConstraint[] $constraints
      */
     public function __construct($originalValue, array $constraints) {
@@ -23,7 +26,12 @@ class OrVersionConstraintGroup extends AbstractVersionConstraint {
         $this->constraints = $constraints;
     }
 
-    public function complies(Version $version): bool {
+    /**
+     * @param Version $version
+     *
+     * @return bool
+     */
+    public function complies(Version $version) {
         foreach ($this->constraints as $constraint) {
             if ($constraint->complies($version)) {
                 return true;

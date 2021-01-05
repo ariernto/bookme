@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php
 /*
  * This file is part of PharIo\Manifest.
  *
@@ -7,27 +7,40 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace PharIo\Manifest;
 
 use PharIo\Version\Version;
 
 class Manifest {
-    /** @var ApplicationName */
+    /**
+     * @var ApplicationName
+     */
     private $name;
 
-    /** @var Version */
+    /**
+     * @var Version
+     */
     private $version;
 
-    /** @var Type */
+    /**
+     * @var Type
+     */
     private $type;
 
-    /** @var CopyrightInformation */
+    /**
+     * @var CopyrightInformation
+     */
     private $copyrightInformation;
 
-    /** @var RequirementCollection */
+    /**
+     * @var RequirementCollection
+     */
     private $requirements;
 
-    /** @var BundledComponentCollection */
+    /**
+     * @var BundledComponentCollection
+     */
     private $bundledComponents;
 
     public function __construct(ApplicationName $name, Version $version, Type $type, CopyrightInformation $copyrightInformation, RequirementCollection $requirements, BundledComponentCollection $bundledComponents) {
@@ -39,43 +52,76 @@ class Manifest {
         $this->bundledComponents    = $bundledComponents;
     }
 
-    public function getName(): ApplicationName {
+    /**
+     * @return ApplicationName
+     */
+    public function getName() {
         return $this->name;
     }
 
-    public function getVersion(): Version {
+    /**
+     * @return Version
+     */
+    public function getVersion() {
         return $this->version;
     }
 
-    public function getType(): Type {
+    /**
+     * @return Type
+     */
+    public function getType() {
         return $this->type;
     }
 
-    public function getCopyrightInformation(): CopyrightInformation {
+    /**
+     * @return CopyrightInformation
+     */
+    public function getCopyrightInformation() {
         return $this->copyrightInformation;
     }
 
-    public function getRequirements(): RequirementCollection {
+    /**
+     * @return RequirementCollection
+     */
+    public function getRequirements() {
         return $this->requirements;
     }
 
-    public function getBundledComponents(): BundledComponentCollection {
+    /**
+     * @return BundledComponentCollection
+     */
+    public function getBundledComponents() {
         return $this->bundledComponents;
     }
 
-    public function isApplication(): bool {
+    /**
+     * @return bool
+     */
+    public function isApplication() {
         return $this->type->isApplication();
     }
 
-    public function isLibrary(): bool {
+    /**
+     * @return bool
+     */
+    public function isLibrary() {
         return $this->type->isLibrary();
     }
 
-    public function isExtension(): bool {
+    /**
+     * @return bool
+     */
+    public function isExtension() {
         return $this->type->isExtension();
     }
 
-    public function isExtensionFor(ApplicationName $application, Version $version = null): bool {
+    /**
+     * @param ApplicationName $application
+     * @param Version|null    $version
+     *
+     * @return bool
+     */
+    public function isExtensionFor(ApplicationName $application, Version $version = null) {
         if (!$this->isExtension()) {
             return false;
         }

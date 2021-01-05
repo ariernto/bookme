@@ -6,4 +6,5 @@ use InvalidArgumentException;
 
 class WalletOwnerInvalid extends InvalidArgumentException
 {
+
 }

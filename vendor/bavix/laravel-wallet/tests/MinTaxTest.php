@@ -8,6 +8,7 @@ use Bavix\Wallet\Test\Models\ItemMinTax;
 
 class MinTaxTest extends TestCase
 {
+
     /**
      * @return void
      */
@@ -22,7 +23,7 @@ class MinTaxTest extends TestCase
             'quantity' => 1,
         ]);
 
-        $fee = (int) ($product->getAmountProduct($buyer) * $product->getFeePercent() / 100);
+        $fee = (int)($product->getAmountProduct($buyer) * $product->getFeePercent() / 100);
         if ($fee < $product->getMinimalFee()) {
             $fee = $product->getMinimalFee();
         }
@@ -55,4 +56,5 @@ class MinTaxTest extends TestCase
         $buyer->withdraw($buyer->balance);
         self::assertEquals($buyer->balance, 0);
     }
+
 }

@@ -31,7 +31,6 @@ abstract class AbstractMatcher
     const T_CLONE = 'T_CLONE';
     const T_NS_SEPARATOR = 'T_NS_SEPARATOR';
     const T_STRING = 'T_STRING';
-    const T_NAME_QUALIFIED = 'T_NAME_QUALIFIED';
     const T_WHITESPACE = 'T_WHITESPACE';
     const T_AND_EQUAL = 'T_AND_EQUAL';
     const T_BOOLEAN_AND = 'T_BOOLEAN_AND';
@@ -84,14 +83,14 @@ abstract class AbstractMatcher
     {
         $class = '';
         while (self::hasToken(
-            [self::T_NS_SEPARATOR, self::T_STRING, self::T_NAME_QUALIFIED],
+            [self::T_NS_SEPARATOR, self::T_STRING],
             $token = \array_pop($tokens)
         )) {
             if (self::needCompleteClass($token)) {
                 continue;
             }
 
-            $class = $token[1].$class;
+            $class = $token[1] . $class;
         }
 
         return $class;
