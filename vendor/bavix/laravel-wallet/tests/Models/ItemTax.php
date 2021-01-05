@@ -6,6 +6,7 @@ use Bavix\Wallet\Interfaces\Taxable;
 
 class ItemTax extends Item implements Taxable
 {
+
     /**
      * @return string
      */

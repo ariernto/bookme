@@ -2,7 +2,6 @@
 
 namespace Bavix\Wallet\Traits;
 
-use function app;
 use Bavix\Wallet\Interfaces\Mathable;
 use Bavix\Wallet\Interfaces\Storable;
 use Bavix\Wallet\Interfaces\Wallet;
@@ -12,24 +11,27 @@ use Bavix\Wallet\Models\Wallet as WalletModel;
 use Bavix\Wallet\Services\CommonService;
 use Bavix\Wallet\Services\DbService;
 use Bavix\Wallet\Services\WalletService;
-use function config;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Collection;
 use Throwable;
+use function app;
+use function config;
 
 /**
- * Trait HasWallet.
+ * Trait HasWallet
  *
+ * @package Bavix\Wallet\Traits
  *
  * @property-read Collection|WalletModel[] $wallets
  * @property-read int $balance
  */
 trait HasWallet
 {
+
     use MorphOneWallet;
 
     /**
-     * The input means in the system.
+     * The input means in the system
      *
      * @param int $amount
      * @param array|null $meta
@@ -41,7 +43,6 @@ trait HasWallet
     public function deposit($amount, ?array $meta = null, bool $confirmed = true): Transaction
     {
         $self = $this;
-
         return app(DbService::class)->transaction(static function () use ($self, $amount, $meta, $confirmed) {
             return app(CommonService::class)
                 ->deposit($self, $amount, $meta, $confirmed);
@@ -50,7 +51,7 @@ trait HasWallet
 
     /**
      * Magic laravel framework method, makes it
-     *  possible to call property balance.
+     *  possible to call property balance
      *
      * Example:
      *  $user1 = User::first()->load('wallet');
@@ -78,7 +79,7 @@ trait HasWallet
     }
 
     /**
-     * all user actions on wallets will be in this method.
+     * all user actions on wallets will be in this method
      *
      * @return MorphMany
      */
@@ -89,7 +90,7 @@ trait HasWallet
     }
 
     /**
-     * This method ignores errors that occur when transferring funds.
+     * This method ignores errors that occur when transferring funds
      *
      * @param Wallet $wallet
      * @param int $amount
@@ -106,7 +107,7 @@ trait HasWallet
     }
 
     /**
-     * A method that transfers funds from host to host.
+     * A method that transfers funds from host to host
      *
      * @param Wallet $wallet
      * @param int $amount
@@ -117,12 +118,11 @@ trait HasWallet
     public function transfer(Wallet $wallet, $amount, ?array $meta = null): Transfer
     {
         app(CommonService::class)->verifyWithdraw($this, $amount);
-
         return $this->forceTransfer($wallet, $amount, $meta);
     }
 
     /**
-     * Withdrawals from the system.
+     * Withdrawals from the system
      *
      * @param int $amount
      * @param array|null $meta
@@ -133,12 +133,11 @@ trait HasWallet
     public function withdraw($amount, ?array $meta = null, bool $confirmed = true): Transaction
     {
         app(CommonService::class)->verifyWithdraw($this, $amount);
-
         return $this->forceWithdraw($amount, $meta, $confirmed);
     }
 
     /**
-     * Checks if you can withdraw funds.
+     * Checks if you can withdraw funds
      *
      * @param int $amount
      * @param bool $allowZero
@@ -149,9 +148,9 @@ trait HasWallet
         $math = app(Mathable::class);
 
         /**
-         * Allow to buy for free with a negative balance.
+         * Allow to buy for free with a negative balance
          */
-        if ($allowZero && ! $math->compare($amount, 0)) {
+        if ($allowZero && !$math->compare($amount, 0)) {
             return true;
         }
 
@@ -159,7 +158,7 @@ trait HasWallet
     }
 
     /**
-     * Forced to withdraw funds from system.
+     * Forced to withdraw funds from system
      *
      * @param int $amount
      * @param array|null $meta
@@ -171,7 +170,6 @@ trait HasWallet
     public function forceWithdraw($amount, ?array $meta = null, bool $confirmed = true): Transaction
     {
         $self = $this;
-
         return app(DbService::class)->transaction(static function () use ($self, $amount, $meta, $confirmed) {
             return app(CommonService::class)
                 ->forceWithdraw($self, $amount, $meta, $confirmed);
@@ -191,7 +189,6 @@ trait HasWallet
     public function forceTransfer(Wallet $wallet, $amount, ?array $meta = null): Transfer
     {
         $self = $this;
-
         return app(DbService::class)->transaction(static function () use ($self, $amount, $wallet, $meta) {
             return app(CommonService::class)
                 ->forceTransfer($self, $wallet, $amount, $meta);
@@ -200,7 +197,7 @@ trait HasWallet
 
     /**
      * the transfer table is used to confirm the payment
-     * this method receives all transfers.
+     * this method receives all transfers
      *
      * @return MorphMany
      */
@@ -210,4 +207,5 @@ trait HasWallet
             ->getWallet($this, false)
             ->morphMany(config('wallet.transfer.model', Transfer::class), 'from');
     }
+
 }

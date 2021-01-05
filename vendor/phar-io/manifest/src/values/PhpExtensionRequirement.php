@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php
 /*
  * This file is part of PharIo\Manifest.
  *
@@ -7,17 +7,26 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace PharIo\Manifest;
 
 class PhpExtensionRequirement implements Requirement {
-    /** @var string */
+    /**
+     * @var string
+     */
     private $extension;
 
-    public function __construct(string $extension) {
+    /**
+     * @param string $extension
+     */
+    public function __construct($extension) {
         $this->extension = $extension;
     }
 
-    public function asString(): string {
+    /**
+     * @return string
+     */
+    public function __toString() {
         return $this->extension;
     }
 }

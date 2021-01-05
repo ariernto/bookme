@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTransfersTable extends Migration
 {
+
     /**
      * @return void
      */
@@ -57,4 +58,5 @@ class CreateTransfersTable extends Migration
     {
         Schema::drop($this->table());
     }
+
 }
