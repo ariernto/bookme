@@ -2,10 +2,10 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{!empty($recovery) ? __('Recovery') : __("All Hotels")}}</h1>
+            <h1 class="title-bar">{{!empty($recovery) ? __('Recovery') : __("All Jobs")}}</h1>
             <div class="title-actions">
                 @if(empty($recovery))
-                <a href="{{route('hotel.admin.create')}}" class="btn btn-primary">{{__("Add new hotel")}}</a>
+                <a href="{{route('job.admin.create')}}" class="btn btn-primary">{{__("Add new job")}}</a>
                 @endif
             </div>
         </div>
@@ -13,7 +13,7 @@
         <div class="filter-div d-flex justify-content-between ">
             <div class="col-left">
                 @if(!empty($rows))
-                    <form method="post" action="{{route('hotel.admin.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
+                    <form method="post" action="{{route('job.admin.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
                         {{csrf_field()}}
                         <select name="action" class="form-control">
                             <option value="">{{__(" Bulk Actions ")}}</option>
@@ -33,7 +33,7 @@
                 @endif
             </div>
             <div class="col-left">
-                <form method="get" action="{{ !empty($recovery) ? route('hotel.admin.recovery') : route('hotel.admin.index')}} " class="filter-form filter-form-right d-flex justify-content-end flex-column flex-sm-row" role="search">
+                <form method="get" action="{{ !empty($recovery) ? route('job.admin.recovery') : route('job.admin.index')}} " class="filter-form filter-form-right d-flex justify-content-end flex-column flex-sm-row" role="search">
                     @if(!empty($rows) and $hotel_manage_others)
                         <?php
                         $user = !empty(Request()->vendor_id) ? App\User::find(Request()->vendor_id) : false;
@@ -45,7 +45,7 @@
                                     'data' => array("user_type"=>"vendor")
                                 ],
                                 'allowClear'  => true,
-                                'placeholder' => __('-- Vendor --')
+                                'placeholder' => __('company')
                             ]
                         ], !empty($user->id) ? [
                             $user->id,
@@ -71,7 +71,7 @@
                             <th width="60px"><input type="checkbox" class="check-all"></th>
                             <th> {{ __('Name')}}</th>
                             <th width="200px"> {{ __('Location')}}</th>
-                            <th width="130px"> {{ __('Author')}}</th>
+                            <th width="130px"> {{ __('Company')}}</th>
                             <th width="100px"> {{ __('Status')}}</th>
                             <th width="100px"> {{ __('Reviews')}}</th>
                             <th width="100px"> {{ __('Date')}}</th>
@@ -85,7 +85,7 @@
                                     <td><input type="checkbox" name="ids[]" class="check-item" value="{{$row->id}}">
                                     </td>
                                     <td class="title">
-                                        <a href="{{route('hotel.admin.edit',['id'=>$row->id])}}">{{$row->title}}</a>
+                                        <a href="{{route('job.admin.edit',['id'=>$row->id])}}">{{$row->title}}</a>
                                     </td>
                                     <td>{{$row->location->name ?? ''}}</td>
                                     <td>
@@ -108,9 +108,9 @@
                                                 {{__("Action")}}
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" href="{{route('hotel.admin.edit',['id'=>$row->id])}}">{{__("Edit hotel")}}</a>
-                                                <a class="dropdown-item" href="{{route('hotel.admin.room.index',['hotel_id'=>$row->id])}}">{{__("Manage Rooms")}}</a>
-                                                <a class="dropdown-item" href="{{route('hotel.admin.room.availability.index',['hotel_id'=>$row->id])}}">{{__("Manage Rooms Availability")}}</a>
+                                                <a class="dropdown-item" href="{{route('job.admin.edit',['id'=>$row->id])}}">{{__("Edit hotel")}}</a>
+                                                <a class="dropdown-item" href="{{route('job.admin.room.index',['hotel_id'=>$row->id])}}">{{__("Manage Rooms")}}</a>
+                                                <a class="dropdown-item" href="{{route('job.admin.room.availability.index',['hotel_id'=>$row->id])}}">{{__("Manage Rooms Availability")}}</a>
                                             </div>
                                         </div>
                                     </td>

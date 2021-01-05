@@ -9,15 +9,15 @@ use Modules\Core\Events\UpdatedServiceEvent;
 use Modules\Core\Models\Attributes;
 use Modules\Location\Models\Location;
 use Modules\Job\Models\Job;
-use Modules\Job\Models\HotelTerm;
-use Modules\Job\Models\HotelTranslation;
+use Modules\Job\Models\JobTerm;
+use Modules\Job\Models\JobTranslation;
 use Modules\Location\Models\LocationCategory;
 
-class HotelController extends AdminController
+class JobController extends AdminController
 {
-    protected $hotelClass;
-    protected $hotelTranslationClass;
-    protected $hotelTermClass;
+    protected $jobClass;
+    protected $jobTranslationClass;
+    protected $jobTermClass;
     protected $attributesClass;
     protected $locationClass;
     /**
@@ -29,9 +29,9 @@ class HotelController extends AdminController
     {
         parent::__construct();
         $this->setActiveMenu('admin/module/hotel');
-        $this->hotelClass = Job::class;
-        $this->hotelTranslationClass = HotelTranslation::class;
-        $this->hotelTermClass = HotelTerm::class;
+        $this->jobClass = Job::class;
+        $this->jobTranslationClass = JobTranslation::class;
+        $this->jobTermClass = JobTerm::class;
         $this->attributesClass = Attributes::class;
         $this->locationClass = Location::class;
         $this->locationCategoryClass = LocationCategory::class;
@@ -48,7 +48,7 @@ class HotelController extends AdminController
     public function index(Request $request)
     {
         $this->checkPermission('hotel_view');
-        $query = $this->hotelClass::query() ;
+        $query = $this->jobClass::query() ;
         $query->orderBy('id', 'desc');
         if (!empty($hotel_name = $request->input('s'))) {
             $query->where('title', 'LIKE', '%' . $hotel_name . '%');
@@ -83,7 +83,7 @@ class HotelController extends AdminController
     public function create(Request $request)
     {
         $this->checkPermission('hotel_create');
-        $row = new $this->hotelClass();
+        $row = new $this->jobClass();
         $row->fill([
             'status' => 'publish'
         ]);
@@ -92,7 +92,7 @@ class HotelController extends AdminController
             'attributes'     => $this->attributesClass::where('service', 'hotel')->get(),
             'hotel_location' => $this->locationClass::where('status', 'publish')->get()->toTree(),
             'location_category' => $this->locationCategoryClass::where('status', 'publish')->get(),
-            'translation'    => new $this->hotelTranslationClass(),
+            'translation'    => new $this->jobTranslationClass(),
             'breadcrumbs'    => [
                 [
                     'name' => __('Hotels'),
@@ -111,7 +111,7 @@ class HotelController extends AdminController
     public function recovery(Request $request)
     {
         $this->checkPermission('hotel_view');
-        $query = $this->hotelClass::onlyTrashed() ;
+        $query = $this->jobClass::onlyTrashed() ;
         $query->orderBy('id', 'desc');
         if (!empty($hotel_name = $request->input('s'))) {
             $query->where('title', 'LIKE', '%' . $hotel_name . '%');
@@ -147,14 +147,14 @@ class HotelController extends AdminController
     public function edit(Request $request, $id)
     {
         $this->checkPermission('hotel_update');
-        $row = $this->hotelClass::find($id);
+        $row = $this->jobClass::find($id);
         if (empty($row)) {
-            return redirect(route('hotel.admin.index'));
+            return redirect(route('job.admin.index'));
         }
         $translation = $row->translateOrOrigin($request->query('lang'));
         if (!$this->hasPermission('hotel_manage_others')) {
             if ($row->create_user != Auth::id()) {
-                return redirect(route('hotel.admin.index'));
+                return redirect(route('job.admin.index'));
             }
         }
         $data = [
@@ -184,18 +184,18 @@ class HotelController extends AdminController
 
         if($id>0){
             $this->checkPermission('hotel_update');
-            $row = $this->hotelClass::find($id);
+            $row = $this->jobClass::find($id);
             if (empty($row)) {
-                return redirect(route('hotel.admin.index'));
+                return redirect(route('job.admin.index'));
             }
 
             if($row->create_user != Auth::id() and !$this->hasPermission('hotel_manage_others'))
             {
-                return redirect(route('hotel.admin.index'));
+                return redirect(route('job.admin.index'));
             }
         }else{
             $this->checkPermission('hotel_create');
-            $row = new $this->hotelClass();
+            $row = new $this->jobClass();
             $row->status = "publish";
         }
         $dataKeys = [
@@ -252,7 +252,7 @@ class HotelController extends AdminController
             }else{
                 event(new CreatedServicesEvent($row));
 
-                return redirect(route('hotel.admin.edit',$row->id))->with('success', __('Job created') );
+                return redirect(route('job.admin.edit',$row->id))->with('success', __('Job created') );
             }
         }
     }
@@ -261,16 +261,16 @@ class HotelController extends AdminController
     {
         $this->checkPermission('hotel_manage_attributes');
         if (empty($request->input('terms'))) {
-            $this->hotelTermClass::where('target_id', $row->id)->delete();
+            $this->jobTermClass::where('target_id', $row->id)->delete();
         } else {
             $term_ids = $request->input('terms');
             foreach ($term_ids as $term_id) {
-                $this->hotelTermClass::firstOrCreate([
+                $this->jobTermClass::firstOrCreate([
                     'term_id' => $term_id,
                     'target_id' => $row->id
                 ]);
             }
-            $this->hotelTermClass::where('target_id', $row->id)->whereNotIn('term_id', $term_ids)->delete();
+            $this->jobTermClass::where('target_id', $row->id)->whereNotIn('term_id', $term_ids)->delete();
         }
     }
 
@@ -287,7 +287,7 @@ class HotelController extends AdminController
         switch ($action){
             case "delete":
                 foreach ($ids as $id) {
-                    $query = $this->hotelClass::where("id", $id);
+                    $query = $this->jobClass::where("id", $id);
                     if (!$this->hasPermission('hotel_manage_others')) {
                         $query->where("create_user", Auth::id());
                         $this->checkPermission('hotel_delete');
@@ -303,7 +303,7 @@ class HotelController extends AdminController
                 break;
             case "recovery":
                 foreach ($ids as $id) {
-                    $query = $this->hotelClass::withTrashed()->where("id", $id);
+                    $query = $this->jobClass::withTrashed()->where("id", $id);
                     if (!$this->hasPermission('hotel_manage_others')) {
                         $query->where("create_user", Auth::id());
                         $this->checkPermission('hotel_delete');
@@ -320,14 +320,14 @@ class HotelController extends AdminController
             case "clone":
                 $this->checkPermission('hotel_create');
                 foreach ($ids as $id) {
-                    (new $this->hotelClass())->saveCloneByID($id);
+                    (new $this->jobClass())->saveCloneByID($id);
                 }
                 return redirect()->back()->with('success', __('Clone success!'));
                 break;
             default:
                 // Change status
                 foreach ($ids as $id) {
-                    $query = $this->hotelClass::where("id", $id);
+                    $query = $this->jobClass::where("id", $id);
                     if (!$this->hasPermission('hotel_manage_others')) {
                         $query->where("create_user", Auth::id());
                         $this->checkPermission('hotel_update');

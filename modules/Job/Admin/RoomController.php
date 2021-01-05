@@ -10,12 +10,12 @@ use Modules\Job\Models\HotelRoomTerm;
 use Modules\Job\Models\HotelRoomTranslation;
 use Modules\Location\Models\Location;
 use Modules\Job\Models\Job;
-use Modules\Job\Models\HotelTerm;
-use Modules\Job\Models\HotelTranslation;
+use Modules\Job\Models\JobTerm;
+use Modules\Job\Models\JobTranslation;
 
 class RoomController extends AdminController
 {
-    protected $hotelClass;
+    protected $jobClass;
     protected $roomTermClass;
     protected $attributesClass;
     protected $locationClass;
@@ -30,7 +30,7 @@ class RoomController extends AdminController
     {
         parent::__construct();
         $this->setActiveMenu('admin/module/hotel');
-        $this->hotelClass = Job::class;
+        $this->jobClass = Job::class;
         $this->roomTermClass = HotelRoomTerm::class;
         $this->attributesClass = Attributes::class;
         $this->locationClass = Location::class;
@@ -49,7 +49,7 @@ class RoomController extends AdminController
     protected function hasHotelPermission($hotel_id = false){
         if(empty($hotel_id)) return false;
 
-        $hotel = $this->hotelClass::find($hotel_id);
+        $hotel = $this->jobClass::find($hotel_id);
         if(empty($hotel)) return false;
 
         if(!$this->hasPermission('hotel_manage_others') and $hotel->create_user != Auth::id()){
@@ -114,13 +114,13 @@ class RoomController extends AdminController
 
         $row = $this->roomClass::find($id);
         if (empty($row) or $row->parent_id != $hotel_id) {
-            return redirect(route('hotel.admin.room.index',['hotel_id'=>$hotel_id]));
+            return redirect(route('job.admin.room.index',['hotel_id'=>$hotel_id]));
         }
 
         $translation = $row->translateOrOrigin($request->query('lang'));
         if (!$this->hasPermission('hotel_manage_others')) {
             if ($row->create_user != Auth::id()) {
-                return redirect(route('hotel.admin.room.index'));
+                return redirect(route('job.admin.room.index'));
             }
         }
         $data = [
@@ -163,17 +163,17 @@ class RoomController extends AdminController
             $this->checkPermission('hotel_update');
             $row = $this->roomClass::find($id);
             if (empty($row)) {
-                return redirect(route('hotel.admin.index'));
+                return redirect(route('job.admin.index'));
             }
 
             if($row->create_user != Auth::id() and !$this->hasPermission('hotel_manage_others'))
             {
-                return redirect(route('hotel.admin.room.index'));
+                return redirect(route('job.admin.room.index'));
             }
 
             if($row->parent_id != $hotel_id)
             {
-                return redirect(route('hotel.admin.room.index'));
+                return redirect(route('job.admin.room.index'));
             }
         }else{
             $this->checkPermission('hotel_create');

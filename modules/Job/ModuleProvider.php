@@ -84,23 +84,23 @@ class ModuleProvider extends ModuleServiceProvider
         $res = [];
         if(Job::isEnable()){
             $res['hotel'] = [
-                'url'   => route('hotel.vendor.index'),
+                'url'   => route('job.vendor.index'),
                 'title'      => __("Manage Job"),
                 'icon'       => Job::getServiceIconFeatured(),
                 'position'   => 30,
                 'permission' => 'hotel_view',
                 'children' => [
                     [
-                        'url'   => route('hotel.vendor.index'),
+                        'url'   => route('job.vendor.index'),
                         'title'  => __("All Hotels"),
                     ],
                     [
-                        'url'   => route('hotel.vendor.create'),
+                        'url'   => route('job.vendor.create'),
                         'title'      => __("Add Job"),
                         'permission' => 'hotel_create',
                     ],
                     [
-                        'url'   => route('hotel.vendor.recovery'),
+                        'url'   => route('job.vendor.recovery'),
                         'title'      => __("Recovery"),
                         'permission' => 'hotel_create',
                     ],
@@ -113,8 +113,8 @@ class ModuleProvider extends ModuleServiceProvider
     public static function getTemplateBlocks(){
         if(!Job::isEnable()) return [];
         return [
-            'form_search_hotel'=>"\\Modules\\Job\\Blocks\\FormSearchHotel",
-            'list_hotel'=>"\\Modules\\Job\\Blocks\\ListHotel",
+            'form_search_hotel'=>"\\Modules\\Job\\Blocks\\FormSearchJob",
+            'list_hotel'=>"\\Modules\\Job\\Blocks\\ListJob",
         ];
     }
 }

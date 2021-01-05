@@ -4,7 +4,7 @@ namespace Modules\Job\Models;
 
 use App\BaseModel;
 
-class HotelTranslation extends Job
+class JobTranslation extends Job
 {
     protected $table = 'bravo_hotel_translations';
 
@@ -17,7 +17,7 @@ class HotelTranslation extends Job
     ];
 
     protected $slugField     = false;
-    protected $seo_type = 'hotel_translation';
+    protected $seo_type = 'job_translation';
 
     protected $cleanFields = [
         'content'

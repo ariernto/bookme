@@ -10,9 +10,9 @@ use Modules\Review\Models\Review;
 use Modules\Core\Models\Attributes;
 use DB;
 
-class HotelController extends Controller
+class JobController extends Controller
 {
-    protected $hotelClass;
+    protected $jobClass;
     protected $locationClass;
     /**
      * @var string
@@ -21,7 +21,7 @@ class HotelController extends Controller
 
     public function __construct()
     {
-        $this->hotelClass = Job::class;
+        $this->jobClass = Job::class;
         $this->locationClass = Location::class;
         $this->locationCategoryClass = LocationCategory::class;
     }
@@ -38,7 +38,7 @@ class HotelController extends Controller
     {
 
         $is_ajax = $request->query('_ajax');
-        $list = call_user_func([$this->hotelClass,'search'],$request);
+        $list = call_user_func([$this->jobClass,'search'],$request);
         $markers = [];
         if (!empty($list)) {
             foreach ($list as $row) {
@@ -60,10 +60,10 @@ class HotelController extends Controller
         $data = [
             'rows'               => $list,
             'list_location'      => $this->locationClass::where('status', 'publish')->limit($limit_location)->with(['translations'])->get()->toTree(),
-            'hotel_min_max_price' => $this->hotelClass::getMinMaxPrice(),
+            'hotel_min_max_price' => $this->jobClass::getMinMaxPrice(),
             'markers'            => $markers,
             "blank"              => 1,
-            "seo_meta"           => $this->hotelClass::getSeoMetaForPageList()
+            "seo_meta"           => $this->jobClass::getSeoMetaForPageList()
         ];
         $layout = setting_item("hotel_layout_search", 'normal');
         if ($request->query('_layout')) {
@@ -87,7 +87,7 @@ class HotelController extends Controller
 
     public function detail(Request $request, $slug)
     {
-        $row = $this->hotelClass::where('slug', $slug)->with(['location','translations','hasWishList'])->first();;
+        $row = $this->jobClass::where('slug', $slug)->with(['location','translations','hasWishList'])->first();;
         if ( empty($row) or !$row->hasPermissionDetailView()) {
             return redirect('/');
         }
@@ -95,7 +95,7 @@ class HotelController extends Controller
         $hotel_related = [];
         $location_id = $row->location_id;
         if (!empty($location_id)) {
-            $hotel_related = $this->hotelClass::where('location_id', $location_id)->where("status", "publish")->take(4)->whereNotIn('id', [$row->id])->with(['location','translations','hasWishList'])->get();
+            $hotel_related = $this->jobClass::where('location_id', $location_id)->where("status", "publish")->take(4)->whereNotIn('id', [$row->id])->with(['location','translations','hasWishList'])->get();
         }
         $review_list = $row->getReviewList();
         $data = [
@@ -134,7 +134,7 @@ class HotelController extends Controller
             }
         }
 
-        $hotel = $this->hotelClass::find($hotel_id);
+        $hotel = $this->jobClass::find($hotel_id);
         if(empty($hotel_id) or empty($hotel)){
             return $this->sendError(__("Job not found"));
         }

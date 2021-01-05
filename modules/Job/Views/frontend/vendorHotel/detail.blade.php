@@ -7,10 +7,10 @@
         {{$row->id ? __('Edit: ').$row->title : __('Add new hotel')}}
         @if($row->id)
             <div class="title-action">
-                <a class="btn btn-info" href="{{route('hotel.vendor.room.index',['hotel_id'=>$row->id])}}">
+                <a class="btn btn-info" href="{{route('job.vendor.room.index',['hotel_id'=>$row->id])}}">
                     <i class="fa fa-hand-o-right"></i> {{__("Manage Rooms")}}
                 </a>
-                <a href="{{route('hotel.vendor.room.availability.index',['hotel_id'=>$row->id])}}" class="btn btn-warning">
+                <a href="{{route('job.vendor.room.availability.index',['hotel_id'=>$row->id])}}" class="btn btn-warning">
                     <i class="fa fa-calendar"></i> {{__("Availability Rooms")}}
                 </a>
             </div>
@@ -21,7 +21,7 @@
         @include('Language::admin.navigation')
     @endif
     <div class="lang-content-box">
-        <form action="{{route('hotel.vendor.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
+        <form action="{{route('job.vendor.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
             @csrf
             <div class="form-add-service">
                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
@@ -45,7 +45,7 @@
                     </div>
                     <div class="tab-pane fade" id="nav-tour-location">
                         @include('Job::admin/hotel/location',["is_smart_search"=>"1"])
-                        @include('Job::admin.hotel.surrounding')
+                        @include('Job::admin.job.surrounding')
                     </div>
                     @if(is_default_lang())
                         <div class="tab-pane fade" id="nav-tour-pricing">

@@ -10,7 +10,7 @@
                 <div class="panel">
                     <div class="panel-title">{{__("Add Term")}}</div>
                     <div class="panel-body">
-                        <form action="{{route('hotel.admin.attribute.term.store')}}" method="post">
+                        <form action="{{route('job.admin.attribute.term.store')}}" method="post">
                             @csrf
                             @include('Job::admin/terms/form')
                             <div class="">
@@ -60,10 +60,10 @@
                                         <tr>
                                             <td><input type="checkbox" class="check-item" name="ids[]" value="{{$row->id}}"></td>
                                             <td class="title">
-                                                <a href="{{route('hotel.admin.attribute.term.edit',['id'=>$row->id])}}">{{$row->name}}</a>
+                                                <a href="{{route('job.admin.attribute.term.edit',['id'=>$row->id])}}">{{$row->name}}</a>
                                             </td>
                                             <td>{{ display_date($row->updated_at)}}</td>
-                                            <td><a class="btn btn-primary btn-sm" href="{{route('hotel.admin.attribute.term.edit',['id'=>$row->id])}}"><i class="fa fa-edit"></i> {{__('Edit')}}</a></td>
+                                            <td><a class="btn btn-primary btn-sm" href="{{route('job.admin.attribute.term.edit',['id'=>$row->id])}}"><i class="fa fa-edit"></i> {{__('Edit')}}</a></td>
                                         </tr>
                                     @endforeach
                                 @else
