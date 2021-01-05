@@ -404,8 +404,6 @@ class Rfc5545Examples extends TestCase
         );
     }
 
-/* Requires support for negative BYMONTHDAY rules [No ticket]
- *
     // Page 127, Test 1 :: Third-to-last day of the month, forever
     //
     // UNTIL rule does not exist in original example.
@@ -425,11 +423,10 @@ class Rfc5545Examples extends TestCase
                 'DTSTART;TZID=America/New_York:19970928T090000',
                 'RRULE:FREQ=MONTHLY;BYMONTHDAY=-3;UNTIL=19980401',
             ),
-            6,
+            7,
             $checks
         );
     }
-*/
 
     // Page 127, Test 2 :: 2nd and 15th of each Month, for 10 occurrences
     public function test_page127_test2()
@@ -451,8 +448,6 @@ class Rfc5545Examples extends TestCase
         );
     }
 
-/*  Requires support for negative BYMONTHDAY rules [No ticket]
- *
     // Page 127, Test 3 :: First and last day of the month, for 10 occurrences
     public function test_page127_test3()
     {
@@ -473,7 +468,6 @@ class Rfc5545Examples extends TestCase
             $checks
         );
     }
-*/
 
     // Page 127, Test 4 :: 10th through 15th, every 18 months, for 10 occurrences
     public function test_page127_test4()
@@ -554,8 +548,6 @@ class Rfc5545Examples extends TestCase
         );
     }
 
-/*  Requires support for BYYEARDAY under YEARLY [#11]
- *
     // Page 128, Test 3 :: Every third Year on the 1st, 100th, & 200th day for 10 occurrences
     public function test_page128_test3()
     {
@@ -574,10 +566,7 @@ class Rfc5545Examples extends TestCase
             $checks
         );
     }
-*/
 
-/*  Requires support for BYDAY *without* BYMONTH under YEARLY [No ticket]
- *
     // Page 128, Test 4 :: 20th Monday of a Year, forever
     //
     // COUNT rule does not exist in original example.
@@ -598,10 +587,7 @@ class Rfc5545Examples extends TestCase
             $checks
         );
     }
-*/
 
-/*  Requires support for BYWEEKNO under YEARLY [#11]
- *
     // Page 129, Test 1 :: Monday of Week 20, where the default start of the week is Monday, forever
     //
     // COUNT rule does not exist in original example.
@@ -622,7 +608,6 @@ class Rfc5545Examples extends TestCase
             $checks
         );
     }
-*/
 
     // Page 129, Test 2 :: Every Thursday in March, forever
     //
@@ -693,8 +678,6 @@ class Rfc5545Examples extends TestCase
     }
 */
 
-/*  Requires support for BYMONTHDAY and BYDAY in the same MONTHLY RRULE [No ticket]
- *
     // Page 130, Test 1 :: The first Saturday that follows the first Sunday of the month, forever:
     //
     // COUNT rule does not exist in original example.
@@ -715,10 +698,7 @@ class Rfc5545Examples extends TestCase
             $checks
         );
     }
-*/
 
-/*  Requires support for BYMONTHDAY under YEARLY [#11]
- *
     // Page 130, Test 2 :: The first Tuesday after a Monday in November, every 4 Years (U.S. Presidential Election Day), forever
     //
     // COUNT rule does not exist in original example.
@@ -739,7 +719,6 @@ class Rfc5545Examples extends TestCase
             $checks
         );
     }
-*/
 
     // Page 130, Test 3 :: Third instance of either a Tuesday, Wednesday, or Thursday of a Month, for 3 months.
     public function test_page130_test3()

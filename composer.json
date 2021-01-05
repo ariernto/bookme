@@ -24,6 +24,7 @@
         "league/omnipay": "^3",
         "maatwebsite/excel": "^3.1",
         "mews/purifier": "^3.3",
+        "munafio/chatify": "^1.0",
         "omnipay/migs": "~3.0",
         "omnipay/paypal": "^3.0",
         "omnipay/stripe": "^3.0",
@@ -33,7 +34,8 @@
         "simplesoftwareio/simple-qrcode": "^2.0",
         "spatie/laravel-image-optimizer": "^1.4",
         "spatie/laravel-permission": "^3.16",
-        "tymon/jwt-auth": "^1.0"
+        "tymon/jwt-auth": "^1.0",
+        "pusher/pusher-php-server": "^3.4@dev"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
