@@ -1,4 +1,4 @@
-<form action="{{url( app_get_locale(false,false,'/').config('job.hotel_route_prefix') )}}" class="form bravo_form d-flex justify-content-start" method="get" onsubmit="return false;">
+<form action="{{url( app_get_locale(false,false,'/').config('job.job_route_prefix') )}}" class="form bravo_form d-flex justify-content-start" method="get" onsubmit="return false;">
     @php $hotel_map_search_fields = setting_item_array('hotel_map_search_fields');
 
     $hotel_map_search_fields = array_values(\Illuminate\Support\Arr::sort($hotel_map_search_fields, function ($value) {
