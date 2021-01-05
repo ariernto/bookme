@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Schema;
 
 class AddFeeTransfersTable extends Migration
 {
+
     /**
      * @return string
      */
@@ -36,4 +37,5 @@ class AddFeeTransfersTable extends Migration
             $table->dropColumn('fee');
         });
     }
+
 }

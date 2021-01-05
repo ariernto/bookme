@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        //Cache::flush();
+        Cache::flush();
         $this->call(RolesAndPermissionsSeeder::class);
         $this->call(Language::class);
         $this->call(UsersTableSeeder::class);
@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CarSeeder::class);
         $this->call(EventSeeder::class);
         $this->call(SocialSeeder::class);
-        $this->call(DemoSeeder::class);
+
+        // custom
+        $this->call(ExtraRolesAndPermissionsSeeder::class);        
     }
 }

@@ -7,6 +7,7 @@ use Bavix\Wallet\Objects\Cart;
 
 interface Customer extends Wallet
 {
+
     /**
      * @param Product $product
      * @param bool $force
