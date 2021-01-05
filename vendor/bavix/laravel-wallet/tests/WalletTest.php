@@ -10,6 +10,7 @@ use Bavix\Wallet\Test\Models\User;
 
 class WalletTest extends TestCase
 {
+
     /**
      * @return void
      */
@@ -136,7 +137,7 @@ class WalletTest extends TestCase
          * @var User $first
          * @var User $second
          */
-        [$first, $second] = factory(User::class, 2)->create();
+        list($first, $second) = factory(User::class, 2)->create();
         self::assertNotEquals($first->id, $second->id);
         self::assertEquals(0, $first->balance);
         self::assertEquals(0, $second->balance);
@@ -254,4 +255,5 @@ class WalletTest extends TestCase
         $user->withdraw($user->balance);
         self::assertEquals(0, $user->balance);
     }
+
 }

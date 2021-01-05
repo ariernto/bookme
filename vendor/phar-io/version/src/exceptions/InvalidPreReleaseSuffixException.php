@@ -1,5 +1,7 @@
-<?php declare(strict_types = 1);
+<?php
+
 namespace PharIo\Version;
 
 class InvalidPreReleaseSuffixException extends \Exception implements Exception {
+
 }

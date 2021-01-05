@@ -21,7 +21,7 @@ trait HasParameters
             if ($arguments instanceof InputArgument) {
                 $this->getDefinition()->addArgument($arguments);
             } else {
-                $this->addArgument(...array_values($arguments));
+                call_user_func_array([$this, 'addArgument'], $arguments);
             }
         }
 
@@ -29,7 +29,7 @@ trait HasParameters
             if ($options instanceof InputOption) {
                 $this->getDefinition()->addOption($options);
             } else {
-                $this->addOption(...array_values($options));
+                call_user_func_array([$this, 'addOption'], $options);
             }
         }
     }

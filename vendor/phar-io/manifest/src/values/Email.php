@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php
 /*
  * This file is part of PharIo\Manifest.
  *
@@ -7,24 +7,40 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace PharIo\Manifest;
 
 class Email {
-    /** @var string */
+    /**
+     * @var string
+     */
     private $email;
 
-    public function __construct(string $email) {
+    /**
+     * @param string $email
+     *
+     * @throws InvalidEmailException
+     */
+    public function __construct($email) {
         $this->ensureEmailIsValid($email);
 
         $this->email = $email;
     }
 
-    public function asString(): string {
+    /**
+     * @return string
+     */
+    public function __toString() {
         return $this->email;
     }
 
-    private function ensureEmailIsValid(string $url): void {
-        if (\filter_var($url, \FILTER_VALIDATE_EMAIL) === false) {
+    /**
+     * @param string $url
+     *
+     * @throws InvalidEmailException
+     */
+    private function ensureEmailIsValid($url) {
+        if (filter_var($url, \FILTER_VALIDATE_EMAIL) === false) {
             throw new InvalidEmailException;
         }
     }

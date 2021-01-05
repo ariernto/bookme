@@ -11,24 +11,16 @@ use Spatie\ImageOptimizer\Optimizers\Svgo;
 
 class OptimizerChainFactory
 {
-    public static function create(array $config = []): OptimizerChain
+    public static function create(): OptimizerChain
     {
-        $jpegQuality = '--max=85';
-        $pngQuality = '--quality=85';
-        if (isset($config['quality'])) {
-            $jpegQuality = '--max='.$config['quality'];
-            $pngQuality = '--quality='.$config['quality'];
-        }
-
         return (new OptimizerChain())
             ->addOptimizer(new Jpegoptim([
-                $jpegQuality,
+                '-m85',
                 '--strip-all',
                 '--all-progressive',
             ]))
 
             ->addOptimizer(new Pngquant([
-                $pngQuality,
                 '--force',
             ]))
 

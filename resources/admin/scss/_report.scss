@@ -30,18 +30,18 @@
     justify-content: space-between;
 
     .card-media{
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        border-radius: 0.3rem;
         flex-shrink: 0;
         margin-left: 15px;
         display: flex;
         align-items: center;
         text-align: center;
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color: #1C2D48;
         justify-content: center;
-        i{
-            font-size: 35px;
+        i {
+            font-size: 25px;
             color: white;
         }
         right: 20px;
@@ -49,7 +49,7 @@
         position: absolute;
     }
     .card-content{
-        color: white;
+        // color: white;
         flex-grow: 1;
         a{
             color:white;
@@ -57,18 +57,18 @@
                 text-decoration: none;
             }
         }
-        .card-title{
-            text-transform: uppercase;
+        .card-title {
             display: block;
             margin-bottom: 0px;
         }
-        .card-amount{
+        .card-amount {
             font-size: 28px;
             margin: 8px 0px;
             display: block;
             font-weight: 600;
         }
-        .card-desc{
+        .card-desc {
+            color: #ccc;
             display: block;
         }
     }

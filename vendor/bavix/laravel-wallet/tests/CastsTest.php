@@ -7,6 +7,7 @@ use Bavix\Wallet\Test\Models\User;
 
 class CastsTest extends TestCase
 {
+
     /**
      * @return void
      */
@@ -72,4 +73,5 @@ class CastsTest extends TestCase
         self::assertIsString($deposit->getKey());
         self::assertEquals($deposit->getCasts()['id'], 'string');
     }
+
 }

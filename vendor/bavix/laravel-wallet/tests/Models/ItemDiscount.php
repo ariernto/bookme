@@ -8,6 +8,7 @@ use Bavix\Wallet\Services\WalletService;
 
 class ItemDiscount extends Item implements Discount
 {
+
     /**
      * @return string
      */
@@ -26,4 +27,5 @@ class ItemDiscount extends Item implements Discount
             ->getWallet($customer)
             ->holder_id;
     }
+
 }

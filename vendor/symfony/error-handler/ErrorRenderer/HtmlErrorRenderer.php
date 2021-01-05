@@ -39,8 +39,6 @@ class HtmlErrorRenderer implements ErrorRendererInterface
     private $outputBuffer;
     private $logger;
 
-    private static $template = 'views/error.html.php';
-
     /**
      * @param bool|callable $debug        The debugging mode as a boolean or a callable that should return it
      * @param bool|callable $outputBuffer The output buffer as a string or a callable that should return it
@@ -136,7 +134,7 @@ class HtmlErrorRenderer implements ErrorRendererInterface
         $statusCode = $this->escape($exception->getStatusCode());
 
         if (!$debug) {
-            return $this->include(self::$template, [
+            return $this->include('views/error.html.php', [
                 'statusText' => $statusText,
                 'statusCode' => $statusCode,
             ]);
@@ -349,19 +347,8 @@ class HtmlErrorRenderer implements ErrorRendererInterface
     {
         extract($context, \EXTR_SKIP);
         ob_start();
-
-        include file_exists($name) ? $name : __DIR__.'/../Resources/'.$name;
+        include __DIR__.'/../Resources/'.$name;
 
         return trim(ob_get_clean());
-    }
-
-    /**
-     * Allows overriding the default non-debug template.
-     *
-     * @param string $template path to the custom template file to render
-     */
-    public static function setTemplate(string $template): void
-    {
-        self::$template = $template;
     }
 }

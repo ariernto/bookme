@@ -7,6 +7,7 @@ use Bavix\Wallet\Test\Models\UserMulti;
 
 class ExchangeTest extends TestCase
 {
+
     /**
      * @return void
      */
@@ -26,25 +27,25 @@ class ExchangeTest extends TestCase
             'slug' => 'rub',
         ]);
 
-        self::assertEquals(0, $rub->balance);
-        self::assertEquals(0, $usd->balance);
+        self::assertEquals($rub->balance, 0);
+        self::assertEquals($usd->balance, 0);
 
         $rub->deposit(10000);
 
-        self::assertEquals(10000, $rub->balance);
-        self::assertEquals(0, $usd->balance);
+        self::assertEquals($rub->balance, 10000);
+        self::assertEquals($usd->balance, 0);
 
         $transfer = $rub->exchange($usd, 10000);
-        self::assertEquals(0, $rub->balance);
-        self::assertEquals(147, $usd->balance);
-        self::assertEquals(1.47, $usd->balanceFloat); // $1.47
-        self::assertEquals(0, $transfer->fee);
-        self::assertEquals(Transfer::STATUS_EXCHANGE, $transfer->status);
+        self::assertEquals($rub->balance, 0);
+        self::assertEquals($usd->balance, 147);
+        self::assertEquals($usd->balanceFloat, 1.47); // $1.47
+        self::assertEquals($transfer->fee, 0);
+        self::assertEquals($transfer->status, Transfer::STATUS_EXCHANGE);
 
         $transfer = $usd->exchange($rub, $usd->balance);
-        self::assertEquals(0, $usd->balance);
-        self::assertEquals(9938, $rub->balance);
-        self::assertEquals(Transfer::STATUS_EXCHANGE, $transfer->status);
+        self::assertEquals($usd->balance, 0);
+        self::assertEquals($rub->balance, 9938);
+        self::assertEquals($transfer->status, Transfer::STATUS_EXCHANGE);
     }
 
     /**
@@ -66,10 +67,11 @@ class ExchangeTest extends TestCase
             'slug' => 'rub',
         ]);
 
-        self::assertEquals(0, $rub->balance);
-        self::assertEquals(0, $usd->balance);
+        self::assertEquals($rub->balance, 0);
+        self::assertEquals($usd->balance, 0);
 
         $transfer = $rub->safeExchange($usd, 10000);
         self::assertNull($transfer);
     }
+
 }

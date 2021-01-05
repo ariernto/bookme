@@ -541,15 +541,15 @@ trait InteractsWithPivotTable
         $query = $this->newPivotStatement();
 
         foreach ($this->pivotWheres as $arguments) {
-            $query->where(...$arguments);
+            call_user_func_array([$query, 'where'], $arguments);
         }
 
         foreach ($this->pivotWhereIns as $arguments) {
-            $query->whereIn(...$arguments);
+            call_user_func_array([$query, 'whereIn'], $arguments);
         }
 
         foreach ($this->pivotWhereNulls as $arguments) {
-            $query->whereNull(...$arguments);
+            call_user_func_array([$query, 'whereNull'], $arguments);
         }
 
         return $query->where($this->foreignPivotKey, $this->parent->{$this->parentKey});

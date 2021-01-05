@@ -11,6 +11,7 @@ use Bavix\Wallet\Test\Models\UserFloat as User;
 
 class WalletFloatTest extends TestCase
 {
+
     /**
      * @return void
      */
@@ -96,7 +97,7 @@ class WalletFloatTest extends TestCase
          * @var User $first
          * @var User $second
          */
-        [$first, $second] = factory(User::class, 2)->create();
+        list($first, $second) = factory(User::class, 2)->create();
         self::assertNotEquals($first->id, $second->id);
         self::assertEquals($first->balanceFloat, 0);
         self::assertEquals($second->balanceFloat, 0);
@@ -333,11 +334,11 @@ class WalletFloatTest extends TestCase
                 $user->depositFloat('0.00000001'); // Satoshi
             }
 
-            self::assertEquals($user->balance, '256'.str_repeat('0', 32 - 8));
+            self::assertEquals($user->balance, '256' . str_repeat('0', 32 - 8));
             self::assertEquals($math->compare($user->balanceFloat, '0.00000256'), 0);
 
-            $user->deposit(256 .str_repeat('0', 32));
-            $user->depositFloat('0.'.str_repeat('0', 31).'1');
+            $user->deposit(256 . str_repeat('0', 32));
+            $user->depositFloat('0.' . str_repeat('0', 31) . '1');
 
             [$q, $r] = explode('.', $user->balanceFloat, 2);
             self::assertEquals(strlen($r), $user->wallet->decimal_places);
@@ -347,7 +348,7 @@ class WalletFloatTest extends TestCase
     }
 
     /**
-     * Case from @ucanbehack.
+     * Case from @ucanbehack
      * @see https://github.com/bavix/laravel-wallet/issues/149
      */
     public function testBitcoin2(): void
@@ -371,4 +372,5 @@ class WalletFloatTest extends TestCase
             self::assertEquals($user->balance, 9699977);
         }
     }
+
 }
