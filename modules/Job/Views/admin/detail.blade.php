@@ -1,20 +1,20 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <form action="{{route('hotel.admin.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
+    <form action="{{route('job.admin.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
         @csrf
         <div class="container-fluid">
             <div class="d-flex justify-content-between mb20">
                 <div class="">
-                    <h1 class="title-bar">{{$row->id ? __('Edit: ').$row->title : __('Add new hotel')}}</h1>
+                    <h1 class="title-bar">{{$row->id ? __('Edit: ').$row->title : __('Add new Job')}}</h1>
                     @if($row->slug)
-                        <p class="item-url-demo">{{__("Permalink")}}: {{ url( config('hotel.hotel_route_prefix') ) }}/<a href="#" class="open-edit-input" data-name="slug">{{$row->slug}}</a>
+                        <p class="item-url-demo">{{__("Permalink")}}: {{ url( config('job.hotel_route_prefix') ) }}/<a href="#" class="open-edit-input" data-name="slug">{{$row->slug}}</a>
                         </p>
                     @endif
                 </div>
                 <div class="">
                     @if($row->id)
-                        <a class="btn btn-warning btn-xs" href="{{route('hotel.admin.room.index',['hotel_id'=>$row->id])}}" target="_blank"><i class="fa fa-hand-o-right"></i> {{__("Manage Rooms")}}</a>
+                        <a class="btn btn-warning btn-xs" href="{{route('job.admin.room.index',['hotel_id'=>$row->id])}}" target="_blank"><i class="fa fa-hand-o-right"></i> {{__("Manage Rooms")}}</a>
                     @endif
                     @if($row->slug)
                         <a class="btn btn-primary btn-xs" href="{{$row->getDetailUrl(request()->query('lang'))}}" target="_blank">{{__("View Job")}}</a>
@@ -28,11 +28,11 @@
             <div class="lang-content-box">
                 <div class="row">
                     <div class="col-md-9">
-                        @include('Job::admin.hotel.content')
-                        @include('Job::admin.hotel.pricing')
-                        @include('Job::admin.hotel.location')
-                        @include('Job::admin.hotel.surrounding')
-                        @include('Core::admin/seo-meta/seo-meta')
+                        @include('Job::admin.job.content')
+                        @include('Job::admin.job.pricing')
+                        @include('Job::admin.job.location')
+                        {{-- @include('Job::admin.job.surrounding') --}}
+                        {{-- @include('Core::admin/seo-meta/seo-meta') --}}
                     </div>
                     <div class="col-md-3">
                         <div class="panel">
@@ -77,7 +77,7 @@
                         </div>
                         @endif
                         @if(is_default_lang())
-                            <div class="panel">
+                            {{-- <div class="panel">
                                 <div class="panel-title"><strong>{{__("Availability")}}</strong></div>
                                 <div class="panel-body">
                                     <div class="form-group">
@@ -88,18 +88,18 @@
                                         </label>
                                     </div>
                                 </div>
-                            </div>
-                            @include('Job::admin.hotel.attributes')
+                            </div> --}}
+                            @include('Job::admin.job.attributes')
 
-                            <div class="panel">
+                            {{-- <div class="panel">
                                 <div class="panel-title"><strong>{{__('Feature Image')}}</strong></div>
                                 <div class="panel-body">
                                     <div class="form-group">
                                         {!! \Modules\Media\Helpers\FileHelper::fieldUpload('image_id',$row->image_id) !!}
                                     </div>
                                 </div>
-                            </div>
-{{--                            @include('Job::admin.hotel.ical')--}}
+                            </div> --}}
+{{--                            @include('Job::admin.job.ical')--}}
 
                         @endif
                     </div>

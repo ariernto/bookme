@@ -1,5 +1,5 @@
 <div class="bravo_filter">
-    <form action="{{ route("hotel.search") }}" class="bravo_form_filter">
+    <form action="{{ route("job.search") }}" class="bravo_form_filter">
         @if( !empty(Request::query('location_id')) )
             <input type="hidden" name="location_id" value="{{Request::query('location_id')}}">
         @endif

@@ -4,14 +4,14 @@
         <div class="d-flex justify-content-between mb20">
             <h1 class="title-bar">{{__("Room Management")}}</h1>
             <div class="title-actions">
-                <a href="{{route('hotel.admin.room.availability.index',['hotel_id'=>$hotel->id])}}" class="btn btn-warning btn-xs"><i class="fa fa-calendar"></i> {{__("Room Availability")}}</a>
-                <a href="{{route('hotel.admin.edit',['id'=>$hotel->id])}}" class="btn btn-info btn-xs"><i class="fa fa-hand-o-right"></i> {{__("Back to hotel")}}</a>
+                <a href="{{route('job.admin.room.availability.index',['hotel_id'=>$hotel->id])}}" class="btn btn-warning btn-xs"><i class="fa fa-calendar"></i> {{__("Room Availability")}}</a>
+                <a href="{{route('job.admin.edit',['id'=>$hotel->id])}}" class="btn btn-info btn-xs"><i class="fa fa-hand-o-right"></i> {{__("Back to hotel")}}</a>
             </div>
         </div>
         @include('admin.message')
         <div class="row">
             <div class="col-md-4">
-                <form novalidate class="needs-validation" action="{{route('hotel.admin.room.store',['hotel_id'=>$hotel->id,'id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
+                <form novalidate class="needs-validation" action="{{route('job.admin.room.store',['hotel_id'=>$hotel->id,'id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
                     <div class="panel">
                         <div class="panel-title"><strong>{{__("Add Room")}}</strong></div>
                         <div class="panel-body">
@@ -28,7 +28,7 @@
                 <div class="filter-div d-flex justify-content-between ">
                     <div class="col-left">
                         @if(!empty($rows))
-                            <form method="post" action="{{route('hotel.admin.room.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
+                            <form method="post" action="{{route('job.admin.room.bulkEdit')}}" class="filter-form filter-form-left d-flex justify-content-start">
                                 {{csrf_field()}}
                                 <select name="action" class="form-control">
                                     <option value="">{{__(" Bulk Actions ")}}</option>
@@ -68,13 +68,13 @@
                                                 <td><input type="checkbox" name="ids[]" class="check-item" value="{{$row->id}}">
                                                 </td>
                                                 <td class="title">
-                                                    <a href="{{route('hotel.admin.room.edit',['hotel_id'=>$hotel->id,'id'=>$row->id])}}">{{$row->title}}</a>
+                                                    <a href="{{route('job.admin.room.edit',['hotel_id'=>$hotel->id,'id'=>$row->id])}}">{{$row->title}}</a>
                                                 </td>
                                                 <td>{{$row->number}}</td>
                                                 <td>{{format_money($row->price)}}</td>
                                                 <td><span class="badge badge-{{ $row->status }}">{{ $row->status }}</span></td>
                                                 <td>
-                                                    <a href="{{route('hotel.admin.room.edit',['id'=>$row->id,'hotel_id'=>$hotel->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> {{__('Edit')}}
+                                                    <a href="{{route('job.admin.room.edit',['id'=>$row->id,'hotel_id'=>$hotel->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> {{__('Edit')}}
                                                     </a>
                                                 </td>
                                             </tr>
