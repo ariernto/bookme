@@ -103,7 +103,7 @@ class Job extends Bookable
         }
         $meta['seo_desc'] = setting_item_with_lang("hotel_page_list_seo_desc");
         $meta['seo_share'] = setting_item_with_lang("hotel_page_list_seo_share");
-        $meta['full_url'] = url(config('job.hotel_route_prefix'));
+        $meta['full_url'] = url(config('job.job_route_prefix'));
         return $meta;
     }
 
@@ -146,7 +146,7 @@ class Job extends Bookable
                 $param['room'] = $room;
             }
         }
-        $urlDetail = app_get_locale(false, false, '/') . config('job.hotel_route_prefix') . "/" . $this->slug;
+        $urlDetail = app_get_locale(false, false, '/') . config('job.job_route_prefix') . "/" . $this->slug;
         if (!empty($param)) {
             $urlDetail .= "?" . http_build_query($param);
         }
@@ -156,7 +156,7 @@ class Job extends Bookable
     public static function getLinkForPageSearch($locale = false, $param = [])
     {
 
-        return url(app_get_locale(false, false, '/') . config('job.hotel_route_prefix') . "?" . http_build_query($param));
+        return url(app_get_locale(false, false, '/') . config('job.job_route_prefix') . "?" . http_build_query($param));
     }
 
     public function getGallery($featuredIncluded = false)
