@@ -86,7 +86,7 @@ class MediaFileSeeder extends Seeder
 
         //Hotel
         DB::table('media_files')->insert([
-            ['file_name' => 'banner-search-hotel', 'file_path' => 'demo/hotel/banner-search-hotel.jpg', 'file_type' => 'image/jpeg', 'file_extension' => 'jpg'],
+            ['file_name' => 'banner-search-hotel', 'file_path' => 'demo/hotel/banner-search-job.jpg', 'file_type' => 'image/jpeg', 'file_extension' => 'jpg'],
         ]);
         for ($i=1 ; $i <= 4 ; $i++){
             DB::table('media_files')->insert([

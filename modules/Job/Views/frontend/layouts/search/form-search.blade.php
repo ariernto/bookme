@@ -1,4 +1,4 @@
-<form action="{{ route("hotel.search") }}" class="form bravo_form" method="get">
+<form action="{{ route("job.search") }}" class="form bravo_form" method="get">
     <div class="g-field-search">
         <div class="row">
             @php $hotel_search_fields = setting_item_array('hotel_search_fields');

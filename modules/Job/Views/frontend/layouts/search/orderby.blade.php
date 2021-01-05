@@ -1,5 +1,5 @@
 <div class="item">
-    <a href="{{ route("hotel.search",['_layout'=>'map']) }}">{{__("Show on the map")}}</a>
+    <a href="{{ route("job.search",['_layout'=>'map']) }}">{{__("Show on the map")}}</a>
 </div>
 <div class="item">
     @php
@@ -27,13 +27,13 @@
         </span>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
             @php $param['orderby'] = "" @endphp
-            <a class="dropdown-item" href="{{ route("hotel.search",$param) }}">{{ __("Recommended") }}</a>
+            <a class="dropdown-item" href="{{ route("job.search",$param) }}">{{ __("Recommended") }}</a>
             @php $param['orderby'] = "price_low_high" @endphp
-            <a class="dropdown-item" href="{{ route("hotel.search",$param) }}">{{ __("Price (Low to high)") }}</a>
+            <a class="dropdown-item" href="{{ route("job.search",$param) }}">{{ __("Price (Low to high)") }}</a>
             @php $param['orderby'] = "price_high_low" @endphp
-            <a class="dropdown-item" href="{{ route("hotel.search",$param) }}">{{ __("Price (High to low)") }}</a>
+            <a class="dropdown-item" href="{{ route("job.search",$param) }}">{{ __("Price (High to low)") }}</a>
             @php $param['orderby'] = "rate_high_low" @endphp
-            <a class="dropdown-item" href="{{ route("hotel.search",$param) }}">{{ __("Rating (High to low)") }}</a>
+            <a class="dropdown-item" href="{{ route("job.search",$param) }}">{{ __("Rating (High to low)") }}</a>
         </div>
     </div>
 </div>
