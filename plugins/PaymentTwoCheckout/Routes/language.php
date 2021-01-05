@@ -1,2 +1,2 @@
-<?php
+<?php
 include 'web.php';

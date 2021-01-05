@@ -461,6 +461,10 @@
                                 color: #5191fa;
                             }
                         }
+                        img{
+                            max-width: 30px;
+                            margin-right: 5px;
+                        }
                         @media(max-width: 768px){
                             flex: 0 0 50%;
                             max-width: 50%;
