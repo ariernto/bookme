@@ -54,7 +54,7 @@
                 checkout:'{{is_api() ? route('api.booking.doCheckout') : route('booking.doCheckout')}}'
             },
             module:{
-                hotel:'{{route('hotel.search')}}',
+                hotel:'{{route('job.search')}}',
                 car:'{{route('car.search')}}',
                 tour:'{{route('tour.search')}}',
                 space:'{{route('space.search')}}',

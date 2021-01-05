@@ -146,7 +146,7 @@
 				defaultView: 'dayGridMonth',
                 firstDay: daterangepickerLocale.first_day_of_week,
 				events:{
-                    	url:"{{route('hotel.admin.room.availability.loadDates',['hotel_id'=>$hotel->id])}}",
+                    	url:"{{route('job.admin.room.availability.loadDates',['hotel_id'=>$hotel->id])}}",
 						extraParams:{
 							id:lastId,
                         }
@@ -259,7 +259,7 @@
                     this.onSubmit = true;
                     this.form.person_types = Object.assign({},this.person_types);
                     $.ajax({
-                        url:'{{route('hotel.admin.room.availability.store',['hotel_id'=>$hotel->id])}}',
+                        url:'{{route('job.admin.room.availability.store',['hotel_id'=>$hotel->id])}}',
                         data:this.form,
                         dataType:'json',
                         method:'post',

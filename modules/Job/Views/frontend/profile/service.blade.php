@@ -3,7 +3,7 @@ if(!$user->hasPermissionTo('hotel_create')) return;
 ?>
 @if(!empty($services) and $services->total())
     <div class="bravo-profile-list-services">
-        @include('Job::frontend.blocks.list-hotel.index', ['rows'=>$services,'style_list'=>'normal','desc'=>' ','title'=>!empty($view_all) ? __('Job by :name',['name'=>$user->first_name]) :'','col'=>4])
+        @include('Job::frontend.blocks.list-job.index', ['rows'=>$services,'style_list'=>'normal','desc'=>' ','title'=>!empty($view_all) ? __('Job by :name',['name'=>$user->first_name]) :'','col'=>4])
 
         <div class="container">
             @if(!empty($view_all))

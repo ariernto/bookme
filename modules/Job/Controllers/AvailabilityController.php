@@ -22,7 +22,7 @@ class AvailabilityController extends FrontendController{
      * @var Booking
      */
     protected $bookingClass;
-    protected $hotelClass;
+    protected $jobClass;
     protected $currentHotel;
     protected $roomBookingClass;
 
@@ -34,7 +34,7 @@ class AvailabilityController extends FrontendController{
         $this->roomClass = HotelRoom::class;
         $this->roomDateClass = HotelRoomDate::class;
         $this->bookingClass = Booking::class;
-        $this->hotelClass = Job::class;
+        $this->jobClass = Job::class;
         $this->roomBookingClass = HotelRoomBooking::class;
     }
     public function callAction($method, $parameters)
@@ -49,7 +49,7 @@ class AvailabilityController extends FrontendController{
     protected function hasHotelPermission($hotel_id = false){
         if(empty($hotel_id)) return false;
 
-        $hotel = $this->hotelClass::find($hotel_id);
+        $hotel = $this->jobClass::find($hotel_id);
         if(empty($hotel)) return false;
 
         if(!$this->hasPermission('hotel_update') and $hotel->create_user != Auth::id()){
@@ -93,11 +93,11 @@ class AvailabilityController extends FrontendController{
         $breadcrumbs = [
             [
                 'name' => __('Hotels'),
-                'url'  => route('hotel.vendor.index')
+                'url'  => route('job.vendor.index')
             ],
             [
                 'name' => __('Job: :name',['name'=>$this->currentHotel->title]),
-                'url'  => route('hotel.vendor.edit',[$this->currentHotel->id])
+                'url'  => route('job.vendor.edit',[$this->currentHotel->id])
             ],
             [
                 'name'  => __('Availability'),

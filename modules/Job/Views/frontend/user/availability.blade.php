@@ -4,7 +4,7 @@
     <h2 class="title-bar no-border-bottom">
         {{ __("Availability Rooms") }}
         <div class="title-action">
-            <a class="btn btn-info" href="{{route('hotel.vendor.room.index',['hotel_id'=>$hotel->id])}}">
+            <a class="btn btn-info" href="{{route('job.vendor.room.index',['hotel_id'=>$hotel->id])}}">
                 <i class="fa fa-hand-o-right"></i> {{__("Manage Rooms")}}
             </a>
         </div>
@@ -153,7 +153,7 @@
 				defaultView: 'dayGridMonth',
                 firstDay: daterangepickerLocale.first_day_of_week,
 				events:{
-                        url:"{{route('hotel.vendor.room.availability.loadDates',['hotel_id'=>$hotel->id])}}",
+                        url:"{{route('job.vendor.room.availability.loadDates',['hotel_id'=>$hotel->id])}}",
 						extraParams:{
 							id:lastId,
                         }
@@ -266,7 +266,7 @@
                     this.onSubmit = true;
                     this.form.person_types = Object.assign({},this.person_types);
                     $.ajax({
-                        url:'{{route('hotel.vendor.room.availability.store',['hotel_id'=>$hotel->id])}}',
+                        url:'{{route('job.vendor.room.availability.store',['hotel_id'=>$hotel->id])}}',
                         data:this.form,
                         dataType:'json',
                         method:'post',

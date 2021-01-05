@@ -14,15 +14,15 @@ use Modules\Job\Models\Job;
 use Modules\Location\Models\Location;
 use Modules\Core\Models\Attributes;
 use Modules\Booking\Models\Booking;
-use Modules\Job\Models\HotelTerm;
-use Modules\Job\Models\HotelTranslation;
+use Modules\Job\Models\JobTerm;
+use Modules\Job\Models\JobTranslation;
 use Modules\Location\Models\LocationCategory;
 
 class VendorController extends FrontendController
 {
-    protected $hotelClass;
-    protected $hotelTranslationClass;
-    protected $hotelTermClass;
+    protected $jobClass;
+    protected $jobTranslationClass;
+    protected $jobTermClass;
     protected $attributesClass;
     protected $locationClass;
     protected $bookingClass;
@@ -34,9 +34,9 @@ class VendorController extends FrontendController
     public function __construct()
     {
         parent::__construct();
-        $this->hotelClass = Job::class;
-        $this->hotelTranslationClass = HotelTranslation::class;
-        $this->hotelTermClass = HotelTerm::class;
+        $this->jobClass = Job::class;
+        $this->jobTranslationClass = JobTranslation::class;
+        $this->jobTermClass = JobTerm::class;
         $this->attributesClass = Attributes::class;
         $this->locationClass = Location::class;
         $this->locationCategoryClass = LocationCategory::class;
@@ -56,13 +56,13 @@ class VendorController extends FrontendController
     {
         $this->checkPermission('hotel_view');
         $user_id = Auth::id();
-        $list_hotel = $this->hotelClass::where("create_user", $user_id)->orderBy('id', 'desc');
+        $list_hotel = $this->jobClass::where("create_user", $user_id)->orderBy('id', 'desc');
         $data = [
             'rows' => $list_hotel->paginate(5),
             'breadcrumbs'        => [
                 [
                     'name' => __('Manage Hotels'),
-                    'url'  => route('hotel.vendor.index')
+                    'url'  => route('job.vendor.index')
                 ],
                 [
                     'name'  => __('All'),
@@ -78,14 +78,14 @@ class VendorController extends FrontendController
     {
         $this->checkPermission('hotel_view');
         $user_id = Auth::id();
-        $list_hotel = $this->hotelClass::onlyTrashed()->where("create_user", $user_id)->orderBy('id', 'desc');
+        $list_hotel = $this->jobClass::onlyTrashed()->where("create_user", $user_id)->orderBy('id', 'desc');
         $data = [
             'rows' => $list_hotel->paginate(5),
             'recovery'           => 1,
             'breadcrumbs'        => [
                 [
                     'name' => __('Manage Hotels'),
-                    'url'  => route('hotel.vendor.index')
+                    'url'  => route('job.vendor.index')
                 ],
                 [
                     'name'  => __('Recovery'),
@@ -100,17 +100,17 @@ class VendorController extends FrontendController
     public function create(Request $request)
     {
         $this->checkPermission('hotel_create');
-        $row = new $this->hotelClass();
+        $row = new $this->jobClass();
         $data = [
             'row'           => $row,
-            'translation' => new $this->hotelTranslationClass(),
+            'translation' => new $this->jobTranslationClass(),
             'hotel_location' => $this->locationClass::where("status","publish")->get()->toTree(),
             'location_category' => $this->locationCategoryClass::where('status', 'publish')->get(),
             'attributes'    => $this->attributesClass::where('service', 'hotel')->get(),
             'breadcrumbs'        => [
                 [
                     'name' => __('Manage Hotels'),
-                    'url'  => route('hotel.vendor.index')
+                    'url'  => route('job.vendor.index')
                 ],
                 [
                     'name'  => __('Create'),
@@ -127,18 +127,18 @@ class VendorController extends FrontendController
 
         if($id>0){
             $this->checkPermission('hotel_update');
-            $row = $this->hotelClass::find($id);
+            $row = $this->jobClass::find($id);
             if (empty($row)) {
-                return redirect(route('hotel.vendor.index'));
+                return redirect(route('job.vendor.index'));
             }
 
             if($row->create_user != Auth::id() and !$this->hasPermission('hotel_manage_others'))
             {
-                return redirect(route('hotel.vendor.index'));
+                return redirect(route('job.vendor.index'));
             }
         }else{
             $this->checkPermission('hotel_create');
-            $row = new $this->hotelClass();
+            $row = new $this->jobClass();
             $row->status = "publish";
             if(setting_item("hotel_vendor_create_service_must_approved_by_admin", 0)){
                 $row->status = "pending";
@@ -192,7 +192,7 @@ class VendorController extends FrontendController
                 return back()->with('success',  __('Job updated') );
             }else{
                 event(new CreatedServicesEvent($row));
-                return redirect(route('hotel.vendor.edit',['id'=>$row->id]))->with('success', __('Job created') );
+                return redirect(route('job.vendor.edit',['id'=>$row->id]))->with('success', __('Job created') );
             }
         }
     }
@@ -200,16 +200,16 @@ class VendorController extends FrontendController
     public function saveTerms($row, $request)
     {
         if (empty($request->input('terms'))) {
-            $this->hotelTermClass::where('target_id', $row->id)->delete();
+            $this->jobTermClass::where('target_id', $row->id)->delete();
         } else {
             $term_ids = $request->input('terms');
             foreach ($term_ids as $term_id) {
-                $this->hotelTermClass::firstOrCreate([
+                $this->jobTermClass::firstOrCreate([
                     'term_id' => $term_id,
                     'target_id' => $row->id
                 ]);
             }
-            $this->hotelTermClass::where('target_id', $row->id)->whereNotIn('term_id', $term_ids)->delete();
+            $this->jobTermClass::where('target_id', $row->id)->whereNotIn('term_id', $term_ids)->delete();
         }
     }
 
@@ -217,10 +217,10 @@ class VendorController extends FrontendController
     {
         $this->checkPermission('hotel_update');
         $user_id = Auth::id();
-        $row = $this->hotelClass::where("create_user", $user_id);
+        $row = $this->jobClass::where("create_user", $user_id);
         $row = $row->find($id);
         if (empty($row)) {
-            return redirect(route('hotel.vendor.index'))->with('warning', __('Space not found!'));
+            return redirect(route('job.vendor.index'))->with('warning', __('Space not found!'));
         }
         $translation = $row->translateOrOrigin($request->query('lang'));
         $data = [
@@ -233,7 +233,7 @@ class VendorController extends FrontendController
             'breadcrumbs'        => [
                 [
                     'name' => __('Manage Hotels'),
-                    'url'  => route('hotel.vendor.index')
+                    'url'  => route('job.vendor.index')
                 ],
                 [
                     'name'  => __('Edit'),
@@ -249,33 +249,33 @@ class VendorController extends FrontendController
     {
         $this->checkPermission('hotel_delete');
         $user_id = Auth::id();
-        $query = $this->hotelClass::where("create_user", $user_id)->where("id", $id)->first();
+        $query = $this->jobClass::where("create_user", $user_id)->where("id", $id)->first();
         if(!empty($query)){
             $query->delete();
             event(new UpdatedServiceEvent($query));
 
         }
-        return redirect(route('hotel.vendor.index'))->with('success', __('Delete hotel success!'));
+        return redirect(route('job.vendor.index'))->with('success', __('Delete hotel success!'));
     }
 
     public function restore($id)
     {
         $this->checkPermission('hotel_delete');
         $user_id = Auth::id();
-        $query = $this->hotelClass::onlyTrashed()->where("create_user", $user_id)->where("id", $id)->first();
+        $query = $this->jobClass::onlyTrashed()->where("create_user", $user_id)->where("id", $id)->first();
         if(!empty($query)){
             $query->restore();
             event(new UpdatedServiceEvent($query));
 
         }
-        return redirect(route('hotel.vendor.recovery'))->with('success', __('Restore hotel success!'));
+        return redirect(route('job.vendor.recovery'))->with('success', __('Restore hotel success!'));
     }
 
     public function bulkEditHotel($id , Request $request){
         $this->checkPermission('hotel_update');
         $action = $request->input('action');
         $user_id = Auth::id();
-        $query = $this->hotelClass::where("create_user", $user_id)->where("id", $id)->first();
+        $query = $this->jobClass::where("create_user", $user_id)->where("id", $id)->first();
         if (empty($id)) {
             return redirect()->back()->with('error', __('No item!'));
         }

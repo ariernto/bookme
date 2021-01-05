@@ -10,7 +10,7 @@
                 <div class="panel">
                     <div class="panel-title">{{__("Add Attributes")}}</div>
                     <div class="panel-body">
-                        <form action="{{route('hotel.admin.room.attribute.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
+                        <form action="{{route('job.admin.room.attribute.store',['id'=>($row->id) ? $row->id : '-1','lang'=>request()->query('lang')])}}" method="post">
                             @csrf
                             @include('Job::admin.room.attribute.form',['parents'=>$rows])
                             <div class="">
@@ -35,7 +35,7 @@
                         @endif
                     </div>
                     <div class="col-left">
-                        <form method="get" action="{{route('hotel.admin.room.attribute.index')}} " class="filter-form filter-form-right d-flex justify-content-end" role="search">
+                        <form method="get" action="{{route('job.admin.room.attribute.index')}} " class="filter-form filter-form-right d-flex justify-content-end" role="search">
                             <input type="text" name="s" value="{{ Request()->s }}" class="form-control" placeholder="{{__("Search by name")}}">
                             <button class="btn-info btn btn-icon btn_search" id="search-submit" type="submit">{{__('Search')}}</button>
                         </form>
@@ -60,12 +60,12 @@
                                             <td><input type="checkbox" class="check-item" name="ids[]" value="{{$row->id}}">
                                             </td>
                                             <td class="title">
-                                                <a href="{{route('hotel.admin.room.attribute.edit',['id'=>$row->id])}}">{{$row->name}}</a>
+                                                <a href="{{route('job.admin.room.attribute.edit',['id'=>$row->id])}}">{{$row->name}}</a>
                                             </td>
                                             <td>
-                                                <a href="{{route('hotel.admin.room.attribute.edit',['id'=>$row->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> {{__('Edit')}}
+                                                <a href="{{route('job.admin.room.attribute.edit',['id'=>$row->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> {{__('Edit')}}
                                                 </a>
-                                                <a href="{{route('hotel.admin.room.attribute.term.index',['id'=>$row->id])}}" class="btn btn-sm btn-success"><i class="fa fa"></i> {{__("Manage Terms")}}
+                                                <a href="{{route('job.admin.room.attribute.term.index',['id'=>$row->id])}}" class="btn btn-sm btn-success"><i class="fa fa"></i> {{__("Manage Terms")}}
                                                 </a>
 
                                             </td>
