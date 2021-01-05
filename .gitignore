@@ -7,6 +7,7 @@ storage/app/*
 !storage/app/public/
 storage/app/public/*
 !storage/app/public/demo/
+/vendor
 /.idea
 /resources/ckeditor/node_modules/
 .env
@@ -15,6 +16,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
 /resources/admin/scss/css
 /storage/installed
-
