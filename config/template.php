@@ -1,4 +1,4 @@
-<?php
-return [
-    'blocks'=>[]
-];
+<?php
+return [
+    'blocks'=>[]
+];

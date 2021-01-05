@@ -2,6 +2,9 @@
 
 namespace Bavix\Wallet\Models;
 
+use function app;
+use function array_key_exists;
+use function array_merge;
 use Bavix\Wallet\Interfaces\Confirmable;
 use Bavix\Wallet\Interfaces\Customer;
 use Bavix\Wallet\Interfaces\Exchangeable;
@@ -11,19 +14,18 @@ use Bavix\Wallet\Traits\CanConfirm;
 use Bavix\Wallet\Traits\CanExchange;
 use Bavix\Wallet\Traits\CanPayFloat;
 use Bavix\Wallet\Traits\HasGift;
+use function config;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Str;
-use function app;
-use function array_key_exists;
-use function config;
 
 /**
- * Class Wallet
- * @package Bavix\Wallet\Models
+ * Class Wallet.
  * @property string $holder_type
  * @property int $holder_id
+ * @property string $name
  * @property string $slug
+ * @property string $description
  * @property int $balance
  * @property int $decimal_places
  * @property \Bavix\Wallet\Interfaces\Wallet $holder
@@ -31,7 +33,6 @@ use function config;
  */
 class Wallet extends Model implements Customer, WalletFloat, Confirmable, Exchangeable
 {
-
     use CanConfirm;
     use CanExchange;
     use CanPayFloat;
@@ -58,16 +59,14 @@ class Wallet extends Model implements Customer, WalletFloat, Confirmable, Exchan
     ];
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getCasts(): array
     {
-        $this->casts = array_merge(
-            $this->casts,
+        return array_merge(
+            parent::getCasts(),
             config('wallet.wallet.casts', [])
         );
-
-        return parent::getCasts();
     }
 
     /**
@@ -75,7 +74,7 @@ class Wallet extends Model implements Customer, WalletFloat, Confirmable, Exchan
      */
     public function getTable(): string
     {
-        if (!$this->table) {
+        if (! $this->table) {
             $this->table = config('wallet.wallet.table', 'wallets');
         }
 
@@ -92,9 +91,9 @@ class Wallet extends Model implements Customer, WalletFloat, Confirmable, Exchan
 
         /**
          * Must be updated only if the model does not exist
-         *  or the slug is empty
+         *  or the slug is empty.
          */
-        if (!$this->exists && !array_key_exists('slug', $this->attributes)) {
+        if (! $this->exists && ! array_key_exists('slug', $this->attributes)) {
             $this->attributes['slug'] = Str::slug($name);
         }
     }
@@ -132,7 +131,7 @@ class Wallet extends Model implements Customer, WalletFloat, Confirmable, Exchan
     public function getCurrencyAttribute(): string
     {
         $currencies = config('wallet.currencies', []);
+
         return $currencies[$this->slug] ?? Str::upper($this->slug);
     }
-
 }

@@ -2,42 +2,26 @@
 $menus = [
     'admin'=>[
         'url'   => 'admin',
-        'title' => __("Overview"),
+        'title' => __("Dashboard"),
         'icon'  => 'icon ion-ios-desktop',
         "position"=>0
     ],
-    'space1'=>[
-        'url'   => 'space',
-        "position"=>1
-    ],
-    'divider1'=>[
-        'url'   => 'divider',
-        "position"=>40
-    ],
-    'divider2'=>[
-        'url'   => 'divider',
-        "position"=>45
-    ],
-    'divider3'=>[
-        'url'   => 'divider',
-        "position"=>54
-    ],
     'review'=>[
-        "position"=>55,
+        "position"=>50,
         'url'   => 'admin/module/review',
         'title' => __("Reviews"),
         'icon'  => 'icon ion-ios-text',
         'permission' => 'review_manage_others',
     ],
     'menu'=>[
-        "position"=>53,
+        "position"=>60,
         'url'        => 'admin/module/core/menu',
         'title'      => __("Menu"),
         'icon'       => 'icon ion-ios-apps',
         'permission' => 'menu_view',
     ],
     'template'=>[
-        "position"=>50,
+        "position"=>70,
         'url'        => 'admin/module/template',
         'title'      => __('Templates'),
         'icon'       => 'icon ion-logo-html5',
@@ -180,11 +164,7 @@ if (!empty($menus)){
             unset($menus[$k]);
             continue;
         }
-        
         $menus[$k]['class'] = $currentUrl == url($menuItem['url']) ? 'active' : '';
-        if (gettype($currentUrl) === 'object' && $menuItem['url'] == 'admin') {
-            $menus[$k]['class'] = 'active';
-        }
         if (!empty($menuItem['children'])) {
             $menus[$k]['class'] .= ' has-children';
             foreach ($menuItem['children'] as $k2 => $menuItem2) {
@@ -202,41 +182,34 @@ if (!empty($menus)){
         return $value['position'] ?? 100;
     }));
 }
+
 ?>
 <ul class="main-menu">
     @foreach($menus as $menuItem)
         @php $menuItem['class'] .= " ".str_ireplace("/","_",$menuItem['url']) @endphp
-        @if ($menuItem['url'] == 'space')
-            <li class="space"></li>
-        @elseif ($menuItem['url'] == 'divider')
-            <li class="divider"></li>
-        @else
-            <li class="{{$menuItem['class']}}"><a href="{{ url($menuItem['url']) }}">
-                    @if(!empty($menuItem['icon']))
-                        <span class="icon text-center"><i class="{{$menuItem['icon']}}"></i></span>
-                    @endif
-                    {!! clean($menuItem['title'],[
-                        'Attr.AllowedClasses'=>null
-                    ]) !!}
-                    @if(!empty($menuItem['children']))
-                        <span class="btn-toggle ml-auto"><i class="fa fa-angle-left pull-right"></i></span>
-                    @endif
-                </a>
-                @if(!empty($menuItem['children']))
-                    <ul class="children">
-                        @foreach($menuItem['children'] as $menuItem2)
-                            <li class="{{$menuItem2['class']}}"><a href="{{ url($menuItem2['url']) }}">
+        <li class="{{$menuItem['class']}}"><a href="{{ url($menuItem['url']) }}">
+                @if(!empty($menuItem['icon']))
+                    <span class="icon text-center"><i class="{{$menuItem['icon']}}"></i></span>
+                @endif
+                {!! clean($menuItem['title'],[
+                    'Attr.AllowedClasses'=>null
+                ]) !!}
+            </a>
+            @if(!empty($menuItem['children']))
+                <span class="btn-toggle"><i class="fa fa-angle-left pull-right"></i></span>
+                <ul class="children">
+                    @foreach($menuItem['children'] as $menuItem2)
+                        <li class="{{$menuItem['class']}}"><a href="{{ url($menuItem2['url']) }}">
                                 @if(!empty($menuItem2['icon']))
                                     <i class="{{$menuItem2['icon']}}"></i>
                                 @endif
                                 {!! clean($menuItem2['title'],[
                                     'Attr.AllowedClasses'=>null
                                 ]) !!}</a>
-                            </li>
-                        @endforeach
-                    </ul>
-                @endif
-            </li>
-        @endif
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
+        </li>
     @endforeach
 </ul>
