@@ -23,17 +23,21 @@
     </div>
     <hr class="hrcla" />
     <div class="info">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-4 col-xs-6">
-                <i class="fa fa-calendar paddingicon"></i>
+        <div class="row smallcha">
+            <div class="col-lg-4 col-md-6 col-sm-12 p-1">
+                <i class="fa fa-calendar"></i>
                 ALL YEAR
-                <i class="icofont-wall-clock paddingicon"></i>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 p-1">
+                <i class="icofont-wall-clock"></i>
                 3 HOURS
-                <i class="fa fa-star starcol"></i>
-                <i class="fa fa-star starcol"></i>
-                <i class="fa fa-star starcol"></i>
-                <i class="fa fa-star starcol"></i>
-                <i class="fa fa-star starcol"></i>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 p-1">
+                <i class="fa fa-star smallstarcol"></i>
+                <i class="fa fa-star smallstarcol"></i>
+                <i class="fa fa-star smallstarcol"></i>
+                <i class="fa fa-star smallstarcol"></i>
+                <i class="fa fa-star smallstarcol"></i>
             </div>
         </div>
     </div>
