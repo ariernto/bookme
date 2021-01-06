@@ -8,7 +8,7 @@ use Modules\Review\Models\Review;
 use Modules\Review\Models\ReviewMeta;
 use Modules\Core\Models\Attributes;
 use Modules\Core\Models\Terms;
-use Modules\Hotel\Models\JobTerm;
+use Modules\Hotel\Models\HotelTerm;
 use Modules\Hotel\Models\HotelRoomTerm;
 
 class HotelSeeder extends Seeder
@@ -409,7 +409,7 @@ class HotelSeeder extends Seeder
             foreach ($term_ids as $k=>$term_id) {
                 if( rand(0 , count($term_ids) ) == $k) continue;
 
-                JobTerm::firstOrCreate([
+                HotelTerm::firstOrCreate([
                     'term_id' => $term_id,
                     'target_id' => $hotel_id
                 ]);
@@ -435,7 +435,7 @@ class HotelSeeder extends Seeder
                 if( rand(0 , count($term_ids) ) == $k) continue;
                 if( rand(0 , count($term_ids) ) == $k) continue;
                 if( rand(0 , count($term_ids) ) == $k) continue;
-                JobTerm::firstOrCreate([
+                HotelTerm::firstOrCreate([
                     'term_id' => $term_id,
                     'target_id' => $hotel_id
                 ]);

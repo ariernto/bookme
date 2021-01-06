@@ -17,7 +17,7 @@
     use Modules\Event\Models\EventTranslation;
     use Modules\Hotel\Models\Hotel;
     use Modules\Hotel\Models\HotelRoom;
-    use Modules\Hotel\Models\JobTranslation;
+    use Modules\Hotel\Models\HotelTranslation;
     use Modules\Location\Models\LocationCategory;
     use Modules\Location\Models\LocationCategoryTranslation;
     use Modules\Review\Models\Review;
@@ -746,8 +746,8 @@
                     $table->text('surrounding')->nullable();
                 }
             });
-            Schema::table(JobTranslation::getTableName(), function (Blueprint $table) {
-                if (!Schema::hasColumn(JobTranslation::getTableName(), 'surrounding')) {
+            Schema::table(HotelTranslation::getTableName(), function (Blueprint $table) {
+                if (!Schema::hasColumn(HotelTranslation::getTableName(), 'surrounding')) {
                     $table->text('surrounding')->nullable();
                 }
             });

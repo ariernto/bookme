@@ -28,7 +28,7 @@
                         @include('Event::admin.event.content')
                         @include('Event::admin.event.pricing')
                         @include('Event::admin.event.location')
-                        @include('Hotel::admin.job.surrounding')
+                        @include('Hotel::admin.hotel.surrounding')
                         @include('Core::admin/seo-meta/seo-meta')
                     </div>
                     <div class="col-md-3">
