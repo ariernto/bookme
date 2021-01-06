@@ -31,7 +31,7 @@
                             {{--@include('Space::admin.space.availability')--}}
                         @endif
                         @include('Space::admin.space.location')
-                        @include('Hotel::admin.job.surrounding')
+                        @include('Hotel::admin.hotel.surrounding')
                         @include('Core::admin/seo-meta/seo-meta')
                     </div>
                     <div class="col-md-3">
