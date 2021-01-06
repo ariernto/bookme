@@ -11,7 +11,7 @@
         <div class="container" style="padding-top: 50px">
             @include('Page::frontend.layouts.search.list-item')
         </div>
-        
+
         <section class="topImgOverSection">
             <div class="container textOverImgRight">
                 <img src="http://test.booking.dorica.fi/uploads/demo/tour/banner-search.jpg">
@@ -22,7 +22,7 @@
                 <div class="centeredTop"><i class="fa fa-play" aria-hidden="true"></i></div>
             </div>
         </section>
-        
+
         <section>
             <div class="container sectionPadding">
                 <h2 class="text-center">Destinations</h2>
@@ -55,7 +55,7 @@
                 </div>
             </div>
         </section>
-        
+
         <section class="sectionPadding">
             <div class="container">
                 <div class="row">
@@ -78,7 +78,7 @@
                                 <h4>Cottages 10,000+ </h4>
                                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the printing and typesetting industry.</p>
                             </div>
-        
+
                             <div class="sideWrap" style="margin-top: 25px;">
                                 <div class="iconSideWrap"><i class="fa fa-home"></i></div>
                                 <h4>Trust and Safety</h4>
@@ -89,7 +89,7 @@
                 </div>
             </div>
         </section>
-            
+
 <style>
     .nav.nav-tabs>li>a{
         background-color:none!important;
@@ -180,7 +180,7 @@
         .sideWrap p{
         font-size: 13px;
         }
-    </style>           
+    </style>
 @endsection
 
 @section('footer')
