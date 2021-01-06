@@ -1,4 +1,4 @@
-<form action="{{ route("tour.search") }}" class="form bravo_form" method="get">
+<form action="{{ route("tour.search") }}" class="form bravo_form transbackground" method="get">
 
     <div class="g-field-search">
 
@@ -20,7 +20,7 @@
 
                     @php $field['title'] = $field['title_'.app()->getLocale()] ?? $field['title'] ?? "" @endphp
 
-                    <div class="col-md-{{ $field['size'] ?? "6" }} border-right">
+                    <div class="col-md-{{ $field['size'] ?? "6" }} border-right topspace">
 
                         @switch($field['field'])
 
@@ -65,5 +65,9 @@
 <style>
     .topspace {
         padding-top: 20px;
+    }
+    .transbackground {
+        background: transparent !important;
+        box-shadow: 1px 1px 3px 3px rgba(0,0,0,0.5) !important;
     }
 </style>

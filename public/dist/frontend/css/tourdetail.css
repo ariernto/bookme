@@ -21,6 +21,10 @@
     padding-left: 10px !important;
 }
 
+.smallcha {
+    font-size: 10px !important;
+}
+
 .undochacla {
     padding-left: 10px !important;
     color: #C29D59 !important;
@@ -34,6 +38,11 @@
 .starcol {
     color: #C29D59 !important;
     padding: 3px !important;
+}
+
+.smallstarcol {
+    color: #C29D59 !important;
+    padding: 0px !important;
 }
 
 .review {
@@ -61,10 +70,6 @@
 
 .date-wrapper p {
     margin-bottom: 0rem !important;
-}
-
-.bravo_content .container {
-    max-width: 1540px !important;
 }
 
 .fotorama__stage {
