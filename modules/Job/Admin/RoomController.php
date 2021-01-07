@@ -61,7 +61,7 @@ class RoomController extends AdminController
     }
     public function index(Request $request,$hotel_id)
     {
-        $this->checkPermission('hotel_view');
+        $this->checkPermission('job_view');
 
         if(!$this->hasHotelPermission($hotel_id))
         {
@@ -176,7 +176,7 @@ class RoomController extends AdminController
                 return redirect(route('job.admin.room.index'));
             }
         }else{
-            $this->checkPermission('hotel_create');
+            $this->checkPermission('job_create');
             $row = new $this->roomClass();
             $row->status = "publish";
         }
@@ -218,7 +218,7 @@ class RoomController extends AdminController
 
     public function saveTerms($row, $request)
     {
-        $this->checkPermission('hotel_manage_attributes');
+        $this->checkPermission('job_manage_attributes');
         if (empty($request->input('terms'))) {
             $this->roomTermClass::where('target_id', $row->id)->delete();
         } else {
@@ -259,7 +259,7 @@ class RoomController extends AdminController
                 return redirect()->back()->with('success', __('Deleted success!'));
                 break;
             case "clone":
-                $this->checkPermission('hotel_create');
+                $this->checkPermission('job_create');
                 foreach ($ids as $id) {
                     (new $this->roomClass())->saveCloneByID($id);
                 }
