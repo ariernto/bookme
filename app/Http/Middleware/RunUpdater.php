@@ -169,27 +169,27 @@
             Permission::findOrCreate('vendor_payout_view');
             Permission::findOrCreate('vendor_payout_manage');
 
-            Permission::findOrCreate('hotel_view');
-            Permission::findOrCreate('hotel_create');
+            Permission::findOrCreate('job_view');
+            Permission::findOrCreate('job_create');
             Permission::findOrCreate('hotel_update');
             Permission::findOrCreate('hotel_delete');
             Permission::findOrCreate('hotel_manage_others');
-            Permission::findOrCreate('hotel_manage_attributes');
+            Permission::findOrCreate('job_manage_attributes');
 
             // Admin
             $role = Role::findOrCreate('administrator');
             $role->givePermissionTo('vendor_payout_view');
             $role->givePermissionTo('vendor_payout_manage');
-            $role->givePermissionTo('hotel_view');
-            $role->givePermissionTo('hotel_create');
+            $role->givePermissionTo('job_view');
+            $role->givePermissionTo('job_create');
             $role->givePermissionTo('hotel_update');
             $role->givePermissionTo('hotel_delete');
             $role->givePermissionTo('hotel_manage_others');
-            $role->givePermissionTo('hotel_manage_attributes');
+            $role->givePermissionTo('job_manage_attributes');
 
             $vendor = Role::findOrCreate('vendor');
-            $vendor->givePermissionTo('hotel_view');
-            $vendor->givePermissionTo('hotel_create');
+            $vendor->givePermissionTo('job_view');
+            $vendor->givePermissionTo('job_create');
             $vendor->givePermissionTo('hotel_update');
             $vendor->givePermissionTo('hotel_delete');
 

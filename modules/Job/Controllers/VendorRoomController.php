@@ -49,7 +49,7 @@ class VendorRoomController extends FrontendController
     }
     public function index(Request $request,$hotel_id)
     {
-        $this->checkPermission('hotel_view');
+        $this->checkPermission('job_view');
 
         if(!$this->hasHotelPermission($hotel_id))
         {
@@ -189,7 +189,7 @@ class VendorRoomController extends FrontendController
                 return redirect(route('job.vendor.room.index'));
             }
         }else{
-            $this->checkPermission('hotel_create');
+            $this->checkPermission('job_create');
             $row = new $this->roomClass();
             $row->status = "publish";
         }
