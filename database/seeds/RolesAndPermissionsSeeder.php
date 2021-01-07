@@ -131,12 +131,12 @@ class RolesAndPermissionsSeeder extends Seeder
         Permission::findOrCreate('space_manage_attributes');
 
         // Hotel
-        Permission::findOrCreate('hotel_view');
-        Permission::findOrCreate('hotel_create');
+        Permission::findOrCreate('job_view');
+        Permission::findOrCreate('job_create');
         Permission::findOrCreate('hotel_update');
         Permission::findOrCreate('hotel_delete');
         Permission::findOrCreate('hotel_manage_others');
-        Permission::findOrCreate('hotel_manage_attributes');
+        Permission::findOrCreate('job_manage_attributes');
 
         // Car
         Permission::findOrCreate('car_view');
@@ -192,8 +192,8 @@ class RolesAndPermissionsSeeder extends Seeder
         $vendor->givePermissionTo('space_update');
         $vendor->givePermissionTo('space_delete');
 
-        $vendor->givePermissionTo('hotel_view');
-        $vendor->givePermissionTo('hotel_create');
+        $vendor->givePermissionTo('job_view');
+        $vendor->givePermissionTo('job_create');
         $vendor->givePermissionTo('hotel_update');
         $vendor->givePermissionTo('hotel_delete');
 

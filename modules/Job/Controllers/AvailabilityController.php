@@ -62,7 +62,7 @@ class AvailabilityController extends FrontendController{
 
     public function index(Request $request,$hotel_id){
 
-        $this->checkPermission('hotel_create');
+        $this->checkPermission('job_create');
 
         if(!$this->hasHotelPermission($hotel_id))
         {
