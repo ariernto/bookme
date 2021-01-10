@@ -1,0 +1,8 @@
+9999999999s:505:"<h3>Hello Administrator</h3>
+                            <p>An user has been registered as Vendor. Please check the information bellow:</p>
+                            <p>Full name: [first_name] [last_name]</p>
+                            <p>Email: [email]</p>
+                            <p>Registration date: [created_at]</p>
+                            <p>You can approved the request here: [link_approved]</p>
+                            <p>Regards,</p>
+                            <p>Booking Core</p>";

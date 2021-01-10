@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php
 /*
  * This file is part of PharIo\Manifest.
  *
@@ -7,10 +7,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace PharIo\Manifest;
 
 class Application extends Type {
-    public function isApplication(): bool {
+    /**
+     * @return bool
+     */
+    public function isApplication() {
         return true;
     }
 }

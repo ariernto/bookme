@@ -41,8 +41,6 @@ use Aws\AwsClient;
  * @method \GuzzleHttp\Promise\Promise describeCodeCoveragesAsync(array $args = [])
  * @method \Aws\Result describeTestCases(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeTestCasesAsync(array $args = [])
- * @method \Aws\Result getReportGroupTrend(array $args = [])
- * @method \GuzzleHttp\Promise\Promise getReportGroupTrendAsync(array $args = [])
  * @method \Aws\Result getResourcePolicy(array $args = [])
  * @method \GuzzleHttp\Promise\Promise getResourcePolicyAsync(array $args = [])
  * @method \Aws\Result importSourceCredentials(array $args = [])

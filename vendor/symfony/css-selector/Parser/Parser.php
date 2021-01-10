@@ -113,7 +113,7 @@ class Parser implements ParserInterface
 
     private function parserSelectorNode(TokenStream $stream): Node\SelectorNode
     {
-        [$result, $pseudoElement] = $this->parseSimpleSelector($stream);
+        list($result, $pseudoElement) = $this->parseSimpleSelector($stream);
 
         while (true) {
             $stream->skipWhitespace();
@@ -134,7 +134,7 @@ class Parser implements ParserInterface
                 $combinator = ' ';
             }
 
-            [$nextSelector, $pseudoElement] = $this->parseSimpleSelector($stream);
+            list($nextSelector, $pseudoElement) = $this->parseSimpleSelector($stream);
             $result = new Node\CombinedSelectorNode($result, $combinator, $nextSelector);
         }
 
@@ -209,7 +209,7 @@ class Parser implements ParserInterface
                         throw SyntaxErrorException::nestedNot();
                     }
 
-                    [$argument, $argumentPseudoElement] = $this->parseSimpleSelector($stream, true);
+                    list($argument, $argumentPseudoElement) = $this->parseSimpleSelector($stream, true);
                     $next = $stream->getNext();
 
                     if (null !== $argumentPseudoElement) {

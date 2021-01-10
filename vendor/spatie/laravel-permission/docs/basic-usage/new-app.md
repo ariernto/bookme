@@ -9,7 +9,7 @@ If you want to just try out the features of this package you can get started wit
 
 The examples on this page are primarily added for assistance in creating a quick demo app for troubleshooting purposes, to post the repo on github for convenient sharing to collaborate or get support.
 
-If you're new to Laravel or to any of the concepts mentioned here, you can learn more in the [Laravel documentation](https://laravel.com/docs/) and in the free videos at Laracasts such as with the [Laravel From Scratch series](https://laracasts.com/series/laravel-6-from-scratch/).
+If you're new to Laravel or to any of the concepts mentioned here, you can learn more in the [Laravel documentation](https://laravel.com/docs/) and in the free videos at Laracasts such as in the [Laravel 6 from scratch series](https://laracasts.com/series/laravel-6-from-scratch/).
 
 ### Initial setup:
 
@@ -24,7 +24,7 @@ git commit -m "Fresh Laravel Install"
 # Environment
 cp -n .env.example .env
 sed -i '' 's/DB_CONNECTION=mysql/DB_CONNECTION=sqlite/' .env
-sed -i '' 's/DB_DATABASE=/#DB_DATABASE=/' .env
+sed -i '' 's/DB_DATABASE=laravel/#DB_DATABASE=laravel/' .env
 touch database/database.sqlite
 
 # Package
@@ -51,8 +51,6 @@ git add . && git commit -m "Setup auth scaffold"
 
 ```php
 <?php
-
-namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
@@ -90,19 +88,19 @@ class PermissionsDemoSeeder extends Seeder
         // gets all permissions via Gate::before rule; see AuthServiceProvider
 
         // create demo users
-        $user = \App\Models\User::factory()->create([
+        $user = Factory(App\User::class)->create([
             'name' => 'Example User',
             'email' => 'test@example.com',
         ]);
         $user->assignRole($role1);
 
-        $user = \App\Models\User::factory()->create([
+        $user = Factory(App\User::class)->create([
             'name' => 'Example Admin User',
             'email' => 'admin@example.com',
         ]);
         $user->assignRole($role2);
 
-        $user = \App\Models\User::factory()->create([
+        $user = Factory(App\User::class)->create([
             'name' => 'Example Super-Admin User',
             'email' => 'superadmin@example.com',
         ]);
@@ -115,6 +113,7 @@ class PermissionsDemoSeeder extends Seeder
 - re-migrate and seed the database:
 
 ```sh
+composer dump-autoload
 php artisan migrate:fresh --seed --seeder=PermissionsDemoSeeder
 ```
 

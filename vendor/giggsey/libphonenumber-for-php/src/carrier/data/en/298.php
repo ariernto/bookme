@@ -24,5 +24,4 @@ return array (
   2987 => 'Vodafone',
   29878 => 'Faroese Telecom',
   29879 => 'Faroese Telecom',
-  29891 => 'Tosa',
 );

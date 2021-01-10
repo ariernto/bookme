@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\SkipsOnError;
 use Maatwebsite\Excel\Concerns\ToModel;
-use Maatwebsite\Excel\Concerns\WithUpserts;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Exceptions\RowSkippedException;
 use Maatwebsite\Excel\Validators\RowValidator;
@@ -111,12 +110,8 @@ class ModelManager
              })
              ->each(function (Collection $models, string $model) use ($import) {
                  try {
-                     if ($import instanceof WithUpserts) {
-                         $model::query()->upsert($models->toArray(), $import->uniqueBy());
-                     } else {
-                         /* @var Model $model */
-                         $model::query()->insert($models->toArray());
-                     }
+                     /* @var Model $model */
+                     $model::query()->insert($models->toArray());
                  } catch (Throwable $e) {
                      if ($import instanceof SkipsOnError) {
                          $import->onError($e);
@@ -137,11 +132,7 @@ class ModelManager
             ->each(function (array $attributes, $index) use ($import) {
                 $this->toModels($import, $attributes, $index)->each(function (Model $model) use ($import) {
                     try {
-                        if ($import instanceof WithUpserts) {
-                            $model->upsert($model->getAttributes(), $import->uniqueBy());
-                        } else {
-                            $model->saveOrFail();
-                        }
+                        $model->saveOrFail();
                     } catch (Throwable $e) {
                         if ($import instanceof SkipsOnError) {
                             $import->onError($e);

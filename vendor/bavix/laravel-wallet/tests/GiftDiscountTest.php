@@ -8,6 +8,7 @@ use Bavix\Wallet\Test\Models\ItemDiscount;
 
 class GiftDiscountTest extends TestCase
 {
+
     /**
      * @return void
      */
@@ -110,4 +111,5 @@ class GiftDiscountTest extends TestCase
         $second->withdraw($second->balance);
         self::assertEquals($second->balance, 0);
     }
+
 }

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateWalletsTable extends Migration
 {
+
     /**
      * @return string
      */
@@ -36,7 +37,7 @@ class CreateWalletsTable extends Migration
         });
 
         /**
-         * migrate v1 to v2.
+         * migrate v1 to v2
          */
         $default = config('wallet.wallet.default.name', 'Default Wallet');
         $slug = config('wallet.wallet.default.slug', 'default');
@@ -67,4 +68,5 @@ class CreateWalletsTable extends Migration
     {
         Schema::drop($this->table());
     }
+
 }

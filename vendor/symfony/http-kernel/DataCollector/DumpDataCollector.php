@@ -75,7 +75,7 @@ class DumpDataCollector extends DataCollector implements DataDumperInterface
             $this->stopwatch->start('dump');
         }
 
-        ['name' => $name, 'file' => $file, 'line' => $line, 'file_excerpt' => $fileExcerpt] = $this->sourceContextProvider->getContext();
+        list('name' => $name, 'file' => $file, 'line' => $line, 'file_excerpt' => $fileExcerpt) = $this->sourceContextProvider->getContext();
 
         if ($this->dumper instanceof Connection) {
             if (!$this->dumper->write($data)) {

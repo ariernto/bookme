@@ -3,13 +3,15 @@
 namespace Bavix\Wallet\Test\Common\Models;
 
 /**
- * Class Transaction.
+ * Class Transaction
+ * @package Bavix\Wallet\Test\Common\Models
  * @property null|string $bank_method
  */
 class Transaction extends \Bavix\Wallet\Models\Transaction
 {
+
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function getFillable(): array
     {
@@ -17,4 +19,5 @@ class Transaction extends \Bavix\Wallet\Models\Transaction
             'bank_method',
         ]);
     }
+
 }

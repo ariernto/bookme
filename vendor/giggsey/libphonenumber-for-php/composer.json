@@ -55,8 +55,7 @@
       ".travis.yml",
       "build.xml",
       "libphonenumber-for-php.spec",
-      "phpunit.xml.dist",
-      "phpunit"
+      "phpunit.xml.dist"
     ]
   },
   "require": {
@@ -69,7 +68,7 @@
     "pear/versioncontrol_git": "^0.5",
     "pear/pear-core-minimal": "^1.9",
     "pear/pear_exception": "^1.0",
-    "symfony/phpunit-bridge": "^4.2 || ^5",
+    "phpunit/phpunit": "^4.8.36|^5.0",
     "symfony/console": "^2.8|^3.0",
     "php-coveralls/php-coveralls": "^1.0|^2.0"
   },
@@ -77,8 +76,5 @@
     "branch-alias": {
       "dev-master": "8.x-dev"
     }
-  },
-  "scripts": {
-    "test": "./phpunit"
   }
 }

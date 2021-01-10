@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Cashier\Billable;
 
 /**
- * Class User.
+ * Class User
  *
+ * @package Bavix\Wallet\Test\Models
  * @property string $name
  * @property string $email
  */
