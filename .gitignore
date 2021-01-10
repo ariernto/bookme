@@ -1,20 +1,5 @@
-/node_modules
-/public/hot
-/public/storage
-/public/uploads/0000
-/storage/*.key
-storage/app/*
-!storage/app/public/
-storage/app/public/*
-!storage/app/public/demo/
-/vendor
-/.idea
-/resources/ckeditor/node_modules/
-.env
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
-npm-debug.log
-yarn-error.log
 
+<<<<<<< HEAD
+=======
 /resources/admin/scss/css
+>>>>>>> 8430456354567cfae82d6968ced677d074d28c2d
