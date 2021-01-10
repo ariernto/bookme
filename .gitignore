@@ -19,5 +19,8 @@ yarn-error.log
 
 /resources/admin/scss/css
 /storage/installed
-
+storage/debugbar
+storage/framework/views
+storage/framework/cache
+storage/log
 node_modules
