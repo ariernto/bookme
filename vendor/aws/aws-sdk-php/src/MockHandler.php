@@ -5,7 +5,6 @@ use Aws\Exception\AwsException;
 use GuzzleHttp\Promise;
 use GuzzleHttp\Promise\RejectedPromise;
 use Psr\Http\Message\RequestInterface;
-use Exception;
 
 /**
  * Returns promises that are rejected or fulfilled using a queue of
@@ -49,12 +48,12 @@ class MockHandler implements \Countable
     {
         foreach (func_get_args() as $value) {
             if ($value instanceof ResultInterface
-                || $value instanceof Exception
+                || $value instanceof AwsException
                 || is_callable($value)
             ) {
                 $this->queue[] = $value;
             } else {
-                throw new \InvalidArgumentException('Expected an Aws\ResultInterface or Exception.');
+                throw new \InvalidArgumentException('Expected an Aws\ResultInterface or Aws\Exception\AwsException.');
             }
         }
     }

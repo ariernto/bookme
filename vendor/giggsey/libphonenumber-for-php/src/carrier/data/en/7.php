@@ -165,7 +165,6 @@ return array (
   7901150 => 'Tele2',
   7901151 => 'Sberbank-Telecom',
   7901152 => 'MTS',
-  7901155 => 'Tele2',
   7901156 => 'Tele2',
   7901157 => 'Tele2',
   7901158 => 'Apex Telecom',

@@ -8,6 +8,7 @@ use Bavix\Wallet\Test\Models\UserConfirm;
 
 class ConfirmMockTest extends TestCase
 {
+
     /**
      * @return void
      */
@@ -73,4 +74,5 @@ class ConfirmMockTest extends TestCase
         self::assertFalse($userConfirm->resetConfirm($transaction));
         self::assertFalse($userConfirm->safeResetConfirm($transaction));
     }
+
 }

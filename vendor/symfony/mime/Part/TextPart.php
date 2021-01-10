@@ -28,9 +28,6 @@ class TextPart extends AbstractPart
     private $body;
     private $charset;
     private $subtype;
-    /**
-     * @var ?string
-     */
     private $disposition;
     private $name;
     private $encoding;

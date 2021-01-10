@@ -1,4 +1,4 @@
-<?php
-return [
-    'Users' => __('Users')
+<?php
+return [
+    'Users' => __('Users')
 ];

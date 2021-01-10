@@ -160,23 +160,17 @@ body{
     margin-right: 0;
 }
 .bravo_wrap .bravo_detail_tour .bravo_content .g-faq .item .header h5,
-.bravo_wrap .bravo_detail_space .bravo_content .g-faq .item .header h5,
-.bravo_wrap .bravo_detail_hotel .bravo_content .g-faq .item .header h5,
-.bravo_wrap .bravo_detail_car .bravo_content .g-faq .item .header h5,
-.bravo_wrap .bravo_detail_event .bravo_content .g-faq .item .header h5,
 .bravo-reviews .review-list .review-item .review-item-body .review-star li{ float: right; }
 .bravo-reviews .review-box .review-box-score{ border-right: 0;     border-left: 1px solid #d7dce3; }
 .bravo-reviews .review-box .review-sumary .item .number{  margin-left: 0;  margin-right: 3%;}
 .bravo-reviews .review-message{border-right: 4px solid #5191fa; border-left: 0;}
-.bravo_wrap .bravo_content .g-header .review-score .head .left
-{
+.bravo_wrap .bravo_content .g-header .review-score .head .left{
     margin-left: 20px;
 }
 .modal-header .close{    margin-left: 0;}
 
 
 .bravo_wrap .bravo_detail_space .bravo_content .g-header .review-score .head .score::after,
-.bravo_wrap .bravo_detail_event .bravo_content .g-header .review-score .head .score::after,
 .bravo_wrap .bravo_detail_tour .bravo_content .g-header .review-score .head .score::after,
 .bravo_wrap .bravo_detail_hotel .bravo_content .g-header .review-score .head .score:after{
     right: -8px; left: auto !important;     border-width: 15px;
@@ -194,23 +188,13 @@ input[type=checkbox], input[type=radio]{    margin: -4px 4px 0 5px;}
 
 
 
-.bravo_wrap .bravo_detail_hotel .bravo_content .g-faq .item .header .arrow,
 .bravo_wrap .bravo_detail_space .bravo_content .g-faq .item .header .arrow,
-.bravo_wrap .bravo_detail_car .bravo_content .g-faq .item .header .arrow,
-.bravo_wrap .bravo_detail_event .bravo_content .g-faq .item .header .arrow,
-.bravo_wrap .bravo_detail_tour .bravo_content .g-faq .item .header .arrow
-{
-    float: left;
-}
+.bravo_wrap .bravo_detail_tour .bravo_content .g-faq .item .header .arrow{ float: left; }
 
 .bravo_wrap .bravo_detail_space .bravo_content .g-faq .item .header h5,
 .bravo_wrap .bravo_detail_space .bravo_content .g-faq .item .header .field-icon,
-.bravo_wrap .bravo_detail_hotel .bravo_content .g-faq .item .header .field-icon,
-.bravo_wrap .bravo_detail_car .bravo_content .g-faq .item .header .field-icon,
-.bravo_wrap .bravo_detail_event .bravo_content .g-faq .item .header .field-icon,
 .bravo_wrap .bravo_detail_tour .bravo_content .g-faq .item .header .field-icon{
-    float: right;
-    margin-left: 10px;
+    float: right; margin-left: 10px;
 }
 .bravo_wrap .bravo_search_tour .bravo-list-item .list-item .item-tour .sale_info,
 .bravo_wrap .bravo_detail_tour .bravo-list-tour-related .item-tour .sale_info{
@@ -228,6 +212,16 @@ input[type=checkbox], input[type=radio]{    margin: -4px 4px 0 5px;}
 .bravo_wrap .bravo_detail_space .bravo-list-space-related .item-loop .sale_info{
     right: auto; left: 10px
 }
+
+.bravo_wrap .bravo_detail_location .bravo_content .g-location-module .item-loop .featured,
+.bravo_wrap .bravo_detail_space .bravo-list-space-related .item-loop .featured{
+    left: auto; right: 0px;
+}
+.bravo_wrap .bravo_detail_location .bravo_content .g-location-module .item-loop .featured:after,
+.bravo_wrap .bravo_detail_space .bravo-list-space-related .item-loop .featured:after{
+    left: -10px; right: auto;
+}
+
 
 .bravo_wrap .bravo_detail_location .bravo_content .g-location-module .item-loop .thumb-image .service-wishlist,
 .bravo_search_tour .bravo-list-item .list-item .item-tour .thumb-image .service-wishlist,
@@ -290,15 +284,9 @@ body.has-search-map{ direction: rtl; }
     text-align: right;
 }
 
+.bravo_wrap .bravo_detail_location .bravo_content .g-location-module .item-loop .info .g-price
+{ text-align: right !important }
 
-.bravo_wrap .bravo_detail_location .bravo_content .g-location-module #module-hotel .item-loop .info .g-price {
-    text-align: right;
-}
-.bravo_wrap .bravo_detail_location .bravo_content .g-location-module #module-event .item-loop .info .g-price
-{ text-align: left !important }
-.bravo_wrap .bravo_detail_location .bravo_content .g-location-module #module-car .item-loop .info .g-price {
-    text-align: right;
-}
 
 /*Login form*/
 
@@ -336,7 +324,7 @@ body.has-search-map{ direction: rtl; }
 .bravo_wrap .page-template-content .bravo-testimonial .item p,
 .bravo_wrap .page-template-content .bravo-list-locations.style_4,
 .bravo_wrap .bravo-list-hotel .item-loop .info .g-price,
-.bravo_wrap .bravo-list-job.layout_normal,
+.bravo_wrap .bravo-list-hotel.layout_normal,
 .bravo_wrap .page-template-content .bravo-offer .item,
 .bravo_wrap .page-template-content .bravo-form-search-all .sub-heading,
 .bravo_wrap .page-template-content .bravo-form-search-all .text-heading{ text-align: right; }
@@ -386,7 +374,7 @@ body.has-search-map{ direction: rtl; }
     margin-left: 0;
 }
 .bravo_wrap .bravo_search_tour .bravo-list-item .list-item .item-tour .info .duration {
-    text-align: right;
+    text-align: left;
 }
 .bravo_wrap .bravo_search_space .bravo-list-item .list-item .item-loop .info .g-price {
     text-align: right;
@@ -395,9 +383,6 @@ body.has-search-map{ direction: rtl; }
     margin-left: 0;
 }
 .bravo_wrap .bravo_detail_tour .bravo_content .g-header .review-score .foot {
-    text-align: left;
-}
-.bravo_wrap .bravo_detail_event .bravo_content .g-header .review-score .foot {
     text-align: left;
 }
 .bravo_wrap .bravo_detail_tour .bravo_content .g-include-exclude .item .icon-exclude {
@@ -441,12 +426,6 @@ body.has-search-map{ direction: rtl; }
     direction: ltr;
 }
 .bravo_wrap .page-template-content .bravo-list-space .list-item{
-    direction: ltr;
-}
-.bravo_wrap .page-template-content .bravo-list-car .list-item{
-    direction: ltr;
-}
-.bravo_wrap .page-template-content .bravo-list-event .list-item{
     direction: ltr;
 }
 .bravo_wrap .page-template-content .bravo-featured-item.style3 .featured-item .content {
@@ -776,8 +755,9 @@ body.has-search-map{ direction: rtl; }
 .bravo_wrap .bravo_detail_location .bravo_content .g-location-module .item-tour .info .duration {
     text-align: left;
 }
-.frontend-page.is-rtl .bravo_wrap .bravo_footer .mailchimp .subcribe-form .form-control { padding-right: 130px;}
+.frontend-page.is-rtl .bravo_wrap .bravo_footer .mailchimp .subcribe-form .form-control { padding-right: 95px;}
 .frontend-page.is-rtl .bravo_wrap .bravo_detail_location .bravo_content .g-location-module #module-car .item-loop .featured{ right: auto; left: 0px;     padding: 0 12px;}
+.frontend-page.is-rtl .bravo_wrap .bravo_detail_location .bravo_content .g-location-module #module-car .item-loop .featured:after{ left: 36px; right: auto}
 
 .user-page.is-rtl .bravo_wrap .bravo_user_profile>.container-fluid>.row-eq-height>.col-md-3:after{
     width: auto !important;
@@ -788,166 +768,3 @@ body.has-search-map{ direction: rtl; }
 }
 .frontend-page.is-rtl .gateways-table #gateway_stripe .card_stripe i.bg,
 .frontend-page.is-rtl .gateways-table #gateway_stripe .card_stripe label i{ right: auto; left: 0;}
-
-
-.bravo_wrap .bravo_topbar .content .socials a:first-child {
-    padding-left: 15px;
-}
-
-.bravo_wrap .bravo_topbar .content .socials a {
-    padding-left: 15px;
-    padding-right: 0px;
-}
-
-.bravo_wrap .bravo-list-item .topbar-search .control .item {
-    margin-left: 0;
-    padding-left: 0px;
-    border-left: none;
-    margin-right: 5px;
-    padding-right: 5px;
-    border-right: solid 1px #a7a7a7;
-}
-
-.bravo_wrap .bravo-list-item .topbar-search .control .item .dropdown {
-    margin-right: 10px;
-    font-weight: 600;
-    margin-left: 0px;
-}
-
-.bravo_wrap .bravo_footer .copy-right .context .f-visa {
-    left: 15px;
-    right: auto;
-    text-align: left;
-}
-
-.bravo_wrap .bravo_detail_location .bravo_content .g-location-module #module-event .item-loop .featured {
-    right: auto;
-}
-
-.bravo_wrap .bravo_detail_location .bravo_content .g-location-module h4,
-.bravo_wrap .bravo_detail_location .bravo_content .g-trip-ideas {
-    text-align: right
-}
-
-.bravo_wrap .bravo_detail_location .bravo_content .g-location-module #module-tour .item-tour .featured {
-    right: auto;
-}
-
-.bravo_wrap .bravo_detail_location .bravo_content .g-location-module .item-tour .sale_info {
-    transform: rotate(46deg) !important;
-    right: -28px !important;
-    top: -11px !important;
-    left: auto;
-}
-
-.bravo_wrap .bravo_detail_location {
-    text-align: right;
-}
-.bravo_wrap .bravo_search_tour .bravo-list-item .list-item .item-tour .info .g-price {
-    flex: none;
-}
-.bravo_wrap .bravo_search_tour .bravo-list-item .list-item .item-tour .info .g-price .prefix .fr_text{
-    display: inherit;
-}
-.bravo_wrap .bravo_detail_location .bravo_content .g-location-module .item-tour .info .duration {
-    text-align: right;
-}
-.bravo_wrap .bravo_detail_location .bravo_content .g-location-module #module-tour .item-tour .info .g-price {
-    flex: none;
-}
-.bravo_wrap .bravo_detail_location .bravo_content .g-location-module #module-tour .item-tour .info .g-price .prefix .fr_text{
-    display: inherit;
-}
-.bravo_wrap .bravo_search_tour .bravo-list-item .list-item .item-tour .info .g-price .price .onsale {
-    left: 0;
-    right: auto;
-}
-.bravo_wrap .bravo_detail_location .bravo_content .g-location-module #module-tour .item-tour .info .g-price .price .onsale {
-    left: 0;
-    right: auto;
-}
-.bravo_wrap .bravo_detail_location .bravo_content .g-location-module #module-car .item-loop .sale_info {
-    right: auto;
-    left: 10px;
-}
-.bravo_wrap .bravo-list-hotel .owl-nav {
-    left: 0;
-    right: auto;
-}
-.bravo_wrap .bravo-list-car .owl-nav {
-    left: 0 !important;
-    right: auto !important;
-}
-.bravo_wrap .bravo-list-event .owl-nav {
-    left: 0;
-    right: auto;
-}
-.bravo_wrap .page-template-content .bravo-list-event .title,
-.bravo_wrap .page-template-content .bravo-list-event .sub-title{
-    text-align: right;
-}
-.bravo_wrap .bravo_search_event .bravo-list-item .list-item .item-loop .info .g-price {
-    text-align: left;
-}
-.bravo_wrap .bravo_detail_tour .bravo_banner .btn-group .btn .fa,
-.bravo_wrap .bravo_detail_space .bravo_banner .btn-group .btn .fa,
-.bravo_wrap .bravo_detail_hotel .bravo_banner .btn-group .btn .fa,
-.bravo_wrap .bravo_detail_car .bravo_banner .btn-group .btn .fa,
-.bravo_wrap .bravo_detail_event .bravo_banner .btn-group .btn .fa
-{
-    margin-left: 10px;
-    margin-right: 0;
-}
-.bravo_wrap .bravo_detail_event .bravo_content .g-header .review-score .head .score {
-    margin-left: 0;
-}
-.bravo_wrap .bravo_detail_event .bravo_content .g-header .left{
-    text-align: right;
-}
-.bravo_wrap .bravo_detail_event .bravo_content .g-event-feature .item .icon {
-    margin-right: 0;
-    margin-left: 20px;
-}
-.bravo_wrap .bravo_detail_event .bravo_content .g-event-feature .item {
-    text-align: right;
-}
-.bravo_wrap .bravo_detail_event .bravo_content .g-overview {
-    text-align: right;
-}
-.bravo_wrap .bravo_detail_event .bravo_content .g-attributes {
-    text-align: right;
-}
-.bravo_wrap .bravo_detail_event .bravo_content .g-attributes .list-attributes .item i {
-    float: right;
-    top: 3px;
-    margin-left: 5px;
-}
-.bravo_wrap .bravo_detail_space .bravo_content .g-overview ul li:before{margin-left: 20px;}
-.bravo_wrap .bravo_detail_car .bravo_content .g-overview ul li:before{margin-left: 20px;}
-.bravo_wrap .bravo_detail_event .bravo_content .g-overview ul li:before{margin-left: 20px;}
-.bravo_wrap .bravo_detail_event .bravo_content h3 {
-    text-align: right;
-}
-.bravo_wrap .bravo_detail_event .bravo_content .g-faq .item .body {
-    text-align: right;
-}
-.bravo_wrap .bravo_detail_event .bravo_content .g-gallery .social {
-    left: 30px;
-    right: 0;
-}
-.bravo_wrap .bravo_detail_event .bravo_content .g-gallery .social .social-share .share-wrapper {
-    left:0;
-    right: 10px;
-}
-.bravo_wrap .bravo_detail_event .bravo_content .g-gallery .social .social-share {
-    position: relative;
-}
-.bravo_wrap .bravo_detail_event .bravo-list-space-related .item-loop{
-    text-align: right;
-}
-.bravo_wrap .bravo_detail_event .bravo-list-space-related .item-loop .info .duration {
-    text-align: right;
-}
-.bravo_wrap .bravo_detail_event .bravo-list-space-related .item-loop .info .g-price {
-    text-align: left;
-}

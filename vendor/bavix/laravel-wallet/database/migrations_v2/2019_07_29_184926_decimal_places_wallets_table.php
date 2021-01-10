@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Schema;
 
 class DecimalPlacesWalletsTable extends Migration
 {
+
     /**
      * @return string
      */
@@ -36,4 +37,5 @@ class DecimalPlacesWalletsTable extends Migration
             $table->dropColumn('decimal_places');
         });
     }
+
 }

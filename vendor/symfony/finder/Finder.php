@@ -655,7 +655,7 @@ class Finder implements \IteratorAggregate, \Countable
     }
 
     /**
-     * Check if any results were found.
+     * Check if the any results were found.
      *
      * @return bool
      */

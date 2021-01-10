@@ -12,5 +12,6 @@
 
 return array (
   2402 => 'GETESA',
-  2405 => 'Muni',
+  240550 => 'Muni',
+  240551 => 'HiTS',
 );
