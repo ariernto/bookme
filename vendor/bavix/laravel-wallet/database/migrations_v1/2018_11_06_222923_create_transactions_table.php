@@ -11,6 +11,7 @@ use Illuminate\Support\Fluent as ColumnDefinition;
 
 class CreateTransactionsTable extends Migration
 {
+
     /**
      * @return void
      */
@@ -69,4 +70,5 @@ class CreateTransactionsTable extends Migration
     {
         Schema::drop($this->table());
     }
+
 }

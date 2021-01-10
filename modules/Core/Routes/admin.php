@@ -2,11 +2,6 @@
 use \Illuminate\Support\Facades\Route;
 
 Route::get('term/getForSelect2','TermController@index')->name('core.admin.term.getForSelect2');
-Route::post('markAsRead','NotificationController@markAsRead')->name('core.admin.notification.markAsRead');
-Route::post('markAllAsRead','NotificationController@markAllAsRead')->name('core.admin.notification.markAllAsRead');
-Route::get('notifications','NotificationController@loadNotify')->name('core.admin.notification.loadNotify');
-
-
 Route::group(['prefix'=>'updater'],function (){
     Route::get('/','UpdaterController@index')->name('core.admin.updater.index');
     Route::post('/store_license','UpdaterController@storeLicense')->name('core.admin.updater.store_license');

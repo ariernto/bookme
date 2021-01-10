@@ -115,8 +115,10 @@ final class Mbstring
         return iconv($fromEncoding, $toEncoding.'//IGNORE', $s);
     }
 
-    public static function mb_convert_variables($toEncoding, $fromEncoding, &...$vars)
+    public static function mb_convert_variables($toEncoding, $fromEncoding, &$a = null, &$b = null, &$c = null, &$d = null, &$e = null, &$f = null)
     {
+        $vars = array(&$a, &$b, &$c, &$d, &$e, &$f);
+
         $ok = true;
         array_walk_recursive($vars, function (&$v) use (&$ok, $toEncoding, $fromEncoding) {
             if (false === $v = Mbstring::mb_convert_encoding($v, $toEncoding, $fromEncoding)) {
@@ -627,11 +629,10 @@ final class Mbstring
     {
         $encoding = self::getEncoding($encoding);
         if ('CP850' === $encoding || 'ASCII' === $encoding) {
-            $pos = strrpos($haystack, $needle);
-        } else {
-            $needle = self::mb_substr($needle, 0, 1, $encoding);
-            $pos = iconv_strrpos($haystack, $needle, $encoding);
+            return strrchr($haystack, $needle, $part);
         }
+        $needle = self::mb_substr($needle, 0, 1, $encoding);
+        $pos = iconv_strrpos($haystack, $needle, $encoding);
 
         return self::getSubpart($pos, $part, $haystack, $encoding);
     }

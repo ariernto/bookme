@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php
 /*
  * This file is part of PharIo\Version.
  *
@@ -7,22 +7,26 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace PharIo\Version;
 
 class VersionConstraintParser {
     /**
      * @param string $value
      *
+     * @return VersionConstraint
+     *
      * @throws UnsupportedVersionConstraintException
      */
-    public function parse($value): VersionConstraint {
-        if (\strpos($value, '||') !== false) {
+    public function parse($value) {
+
+        if (strpos($value, '||') !== false) {
             return $this->handleOrGroup($value);
         }
 
-        if (!\preg_match('/^[\^~*]?v?[\d.*]+(?:-.*)?$/i', $value)) {
+        if (!preg_match('/^[\^~\*]?[\d.\*]+(?:-.*)?$/', $value)) {
             throw new UnsupportedVersionConstraintException(
-                \sprintf('Version constraint %s is not supported.', $value)
+                sprintf('Version constraint %s is not supported.', $value)
             );
         }
 
@@ -59,12 +63,14 @@ class VersionConstraintParser {
 
     /**
      * @param $value
+     *
+     * @return OrVersionConstraintGroup
      */
-    private function handleOrGroup($value): OrVersionConstraintGroup {
+    private function handleOrGroup($value) {
         $constraints = [];
 
-        foreach (\explode('||', $value) as $groupSegment) {
-            $constraints[] = $this->parse(\trim($groupSegment));
+        foreach (explode('||', $value) as $groupSegment) {
+            $constraints[] = $this->parse(trim($groupSegment));
         }
 
         return new OrVersionConstraintGroup($value, $constraints);
@@ -72,9 +78,11 @@ class VersionConstraintParser {
 
     /**
      * @param string $value
+     *
+     * @return AndVersionConstraintGroup
      */
-    private function handleTildeOperator($value): AndVersionConstraintGroup {
-        $version     = new Version(\substr($value, 1));
+    private function handleTildeOperator($value) {
+        $version = new Version(substr($value, 1));
         $constraints = [
             new GreaterThanOrEqualToVersionConstraint($value, $version)
         ];
@@ -97,9 +105,11 @@ class VersionConstraintParser {
 
     /**
      * @param string $value
+     *
+     * @return AndVersionConstraintGroup
      */
-    private function handleCaretOperator($value): AndVersionConstraintGroup {
-        $version = new Version(\substr($value, 1));
+    private function handleCaretOperator($value) {
+        $version = new Version(substr($value, 1));
 
         return new AndVersionConstraintGroup(
             $value,

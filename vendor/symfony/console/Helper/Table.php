@@ -418,13 +418,13 @@ class Table
 
         $crossings = $this->style->getCrossingChars();
         if (self::SEPARATOR_MID === $type) {
-            [$horizontal, $leftChar, $midChar, $rightChar] = [$borders[2], $crossings[8], $crossings[0], $crossings[4]];
+            list($horizontal, $leftChar, $midChar, $rightChar) = [$borders[2], $crossings[8], $crossings[0], $crossings[4]];
         } elseif (self::SEPARATOR_TOP === $type) {
-            [$horizontal, $leftChar, $midChar, $rightChar] = [$borders[0], $crossings[1], $crossings[2], $crossings[3]];
+            list($horizontal, $leftChar, $midChar, $rightChar) = [$borders[0], $crossings[1], $crossings[2], $crossings[3]];
         } elseif (self::SEPARATOR_TOP_BOTTOM === $type) {
-            [$horizontal, $leftChar, $midChar, $rightChar] = [$borders[0], $crossings[9], $crossings[10], $crossings[11]];
+            list($horizontal, $leftChar, $midChar, $rightChar) = [$borders[0], $crossings[9], $crossings[10], $crossings[11]];
         } else {
-            [$horizontal, $leftChar, $midChar, $rightChar] = [$borders[0], $crossings[7], $crossings[6], $crossings[5]];
+            list($horizontal, $leftChar, $midChar, $rightChar) = [$borders[0], $crossings[7], $crossings[6], $crossings[5]];
         }
 
         $markup = $leftChar;
@@ -514,30 +514,7 @@ class Table
         $width += Helper::strlen($cell) - Helper::strlenWithoutDecoration($this->output->getFormatter(), $cell);
         $content = sprintf($style->getCellRowContentFormat(), $cell);
 
-        $padType = $style->getPadType();
-        if ($cell instanceof TableCell && $cell->getStyle() instanceof TableCellStyle) {
-            $isNotStyledByTag = !preg_match('/^<(\w+|(\w+=[\w,]+;?)*)>.+<\/(\w+|(\w+=\w+;?)*)?>$/', $cell);
-            if ($isNotStyledByTag) {
-                $cellFormat = $cell->getStyle()->getCellFormat();
-                if (!\is_string($cellFormat)) {
-                    $tag = http_build_query($cell->getStyle()->getTagOptions(), null, ';');
-                    $cellFormat = '<'.$tag.'>%s</>';
-                }
-
-                if (strstr($content, '</>')) {
-                    $content = str_replace('</>', '', $content);
-                    $width -= 3;
-                }
-                if (strstr($content, '<fg=default;bg=default>')) {
-                    $content = str_replace('<fg=default;bg=default>', '', $content);
-                    $width -= \strlen('<fg=default;bg=default>');
-                }
-            }
-
-            $padType = $cell->getStyle()->getPadByAlign();
-        }
-
-        return sprintf($cellFormat, str_pad($content, $width, $style->getPaddingChar(), $padType));
+        return sprintf($cellFormat, str_pad($content, $width, $style->getPaddingChar(), $style->getPadType()));
     }
 
     /**
@@ -641,7 +618,7 @@ class Table
                     $lines = explode("\n", str_replace("\n", "<fg=default;bg=default>\n</>", $cell));
                     $nbLines = \count($lines) > $nbLines ? substr_count($cell, "\n") : $nbLines;
 
-                    $rows[$line][$column] = new TableCell($lines[0], ['colspan' => $cell->getColspan(), 'style' => $cell->getStyle()]);
+                    $rows[$line][$column] = new TableCell($lines[0], ['colspan' => $cell->getColspan()]);
                     unset($lines[0]);
                 }
 
@@ -649,7 +626,7 @@ class Table
                 $unmergedRows = array_replace_recursive(array_fill($line + 1, $nbLines, []), $unmergedRows);
                 foreach ($unmergedRows as $unmergedRowKey => $unmergedRow) {
                     $value = isset($lines[$unmergedRowKey - $line]) ? $lines[$unmergedRowKey - $line] : '';
-                    $unmergedRows[$unmergedRowKey][$column] = new TableCell($value, ['colspan' => $cell->getColspan(), 'style' => $cell->getStyle()]);
+                    $unmergedRows[$unmergedRowKey][$column] = new TableCell($value, ['colspan' => $cell->getColspan()]);
                     if ($nbLines === $unmergedRowKey - $line) {
                         break;
                     }

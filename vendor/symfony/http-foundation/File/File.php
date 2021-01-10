@@ -104,17 +104,6 @@ class File extends \SplFileInfo
         return $target;
     }
 
-    public function getContent(): string
-    {
-        $content = file_get_contents($this->getPathname());
-
-        if (false === $content) {
-            throw new FileException(sprintf('Could not get the content of the file "%s".', $this->getPathname()));
-        }
-
-        return $content;
-    }
-
     /**
      * @return self
      */

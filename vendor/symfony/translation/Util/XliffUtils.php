@@ -61,18 +61,21 @@ class XliffUtils
     {
         $xliffVersion = static::getVersionNumber($dom);
         $internalErrors = libxml_use_internal_errors(true);
-        if ($shouldEnable = self::shouldEnableEntityLoader()) {
+        if (\LIBXML_VERSION < 20900) {
             $disableEntities = libxml_disable_entity_loader(false);
         }
-        try {
-            $isValid = @$dom->schemaValidateSource(self::getSchema($xliffVersion));
-            if (!$isValid) {
-                return self::getXmlErrors($internalErrors);
-            }
-        } finally {
-            if ($shouldEnable) {
+
+        $isValid = @$dom->schemaValidateSource(self::getSchema($xliffVersion));
+        if (!$isValid) {
+            if (\LIBXML_VERSION < 20900) {
                 libxml_disable_entity_loader($disableEntities);
             }
+
+            return self::getXmlErrors($internalErrors);
+        }
+
+        if (\LIBXML_VERSION < 20900) {
+            libxml_disable_entity_loader($disableEntities);
         }
 
         $dom->normalizeDocument();
@@ -81,36 +84,6 @@ class XliffUtils
         libxml_use_internal_errors($internalErrors);
 
         return [];
-    }
-
-    private static function shouldEnableEntityLoader(): bool
-    {
-        // Version prior to 8.0 can be enabled without deprecation
-        if (\PHP_VERSION_ID < 80000) {
-            return true;
-        }
-
-        static $dom, $schema;
-        if (null === $dom) {
-            $dom = new \DOMDocument();
-            $dom->loadXML('<?xml version="1.0"?><test/>');
-
-            $tmpfile = tempnam(sys_get_temp_dir(), 'symfony');
-            register_shutdown_function(static function () use ($tmpfile) {
-                @unlink($tmpfile);
-            });
-            $schema = '<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <xsd:include schemaLocation="file:///'.str_replace('\\', '/', $tmpfile).'" />
-</xsd:schema>';
-            file_put_contents($tmpfile, '<?xml version="1.0" encoding="utf-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <xsd:element name="test" type="testType" />
-  <xsd:complexType name="testType"/>
-</xsd:schema>');
-        }
-
-        return !@$dom->schemaValidateSource($schema);
     }
 
     public static function getErrorsAsString(array $xmlErrors): string
