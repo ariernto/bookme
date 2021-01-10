@@ -12,7 +12,7 @@
 
     <div class="bravo_search_tour">
 
-        <div class="bravo_banner" @if($bg = setting_item("tour_page_search_banner")) style="background-image: url({{get_file_url($bg,'full')}});height:500px" @endif >
+        <div class="bravo_banner" @if($bg = setting_item("tour_page_search_banner")) style="background-image: url({{get_file_url($bg,'full')}});height:500px;height: 80vh;margin-top: -91px;padding-top: 370px;" @endif >
 
             <div class="container">
 
