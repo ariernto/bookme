@@ -3,7 +3,8 @@
 namespace Bavix\Wallet;
 
 /**
- * Class WalletConfigure.
+ * Class WalletConfigure
+ * @package Bavix\Wallet
  * @codeCoverageIgnore
  */
 class WalletConfigure

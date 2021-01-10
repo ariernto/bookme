@@ -8,18 +8,19 @@ use Bavix\Wallet\Services\WalletService;
 
 class Store implements Storable
 {
+
     /**
      * @var array
      */
     protected $balanceSheets = [];
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function getBalance($object)
     {
         $wallet = app(WalletService::class)->getWallet($object);
-        if (! \array_key_exists($wallet->getKey(), $this->balanceSheets)) {
+        if (!\array_key_exists($wallet->getKey(), $this->balanceSheets)) {
             $balance = method_exists($wallet, 'getRawOriginal') ?
                 $wallet->getRawOriginal('balance', 0) : $wallet->getOriginal('balance', 0);
 
@@ -30,7 +31,7 @@ class Store implements Storable
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function incBalance($object, $amount)
     {
@@ -38,28 +39,16 @@ class Store implements Storable
         $balance = $math->add($this->getBalance($object), $amount);
         $balance = $this->toInt($balance);
         $this->setBalance($object, $balance);
-
         return $balance;
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function setBalance($object, $amount): bool
     {
         $wallet = app(WalletService::class)->getWallet($object);
         $this->balanceSheets[$wallet->getKey()] = $this->toInt($amount);
-
-        return true;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function fresh(): bool
-    {
-        $this->balanceSheets = [];
-
         return true;
     }
 
@@ -71,4 +60,5 @@ class Store implements Storable
     {
         return app(Mathable::class)->round($balance ?: 0);
     }
+
 }

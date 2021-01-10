@@ -207,7 +207,7 @@ abstract class AbstractResponse implements ResponseInterface
         $this->validateRedirect();
 
         if ('GET' === $this->getRedirectMethod()) {
-            return new HttpRedirectResponse($this->getRedirectUrl());
+            return HttpRedirectResponse::create($this->getRedirectUrl());
         }
 
         $hiddenFields = '';
@@ -241,7 +241,7 @@ abstract class AbstractResponse implements ResponseInterface
             $hiddenFields
         );
 
-        return new HttpResponse($output);
+        return HttpResponse::create($output);
     }
 
     /**

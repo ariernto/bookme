@@ -9,6 +9,7 @@ use Bavix\Wallet\Test\Models\UserConfirm;
 
 class ConfirmTest extends TestCase
 {
+
     /**
      * @return void
      */
@@ -216,7 +217,7 @@ class ConfirmTest extends TestCase
          * @var Buyer $first
          * @var Buyer $second
          */
-        [$first, $second] = factory(Buyer::class, 2)->create();
+        list($first, $second) = factory(Buyer::class, 2)->create();
         $firstWallet = $first->wallet;
         $secondWallet = $second->wallet;
 
@@ -247,4 +248,5 @@ class ConfirmTest extends TestCase
         self::assertTrue($userConfirm->confirm($transaction));
         self::assertTrue($transaction->confirmed);
     }
+
 }

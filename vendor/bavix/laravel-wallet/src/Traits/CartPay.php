@@ -2,16 +2,16 @@
 
 namespace Bavix\Wallet\Traits;
 
-use function array_unique;
 use Bavix\Wallet\Exceptions\ProductEnded;
 use Bavix\Wallet\Interfaces\Product;
 use Bavix\Wallet\Models\Transfer;
 use Bavix\Wallet\Objects\Cart;
 use Bavix\Wallet\Services\CommonService;
 use Bavix\Wallet\Services\DbService;
-use function count;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Throwable;
+use function array_unique;
+use function count;
 
 trait CartPay
 {
@@ -24,7 +24,7 @@ trait CartPay
      */
     public function payFreeCart(Cart $cart): array
     {
-        if (! $cart->canBuy($this)) {
+        if (!$cart->canBuy($this)) {
             throw new ProductEnded(trans('wallet::errors.product_stock'));
         }
 
@@ -32,7 +32,6 @@ trait CartPay
             ->verifyWithdraw($this, 0, true);
 
         $self = $this;
-
         return app(DbService::class)->transaction(static function () use ($self, $cart) {
             $results = [];
             foreach ($cart->getItems() as $product) {
@@ -71,12 +70,11 @@ trait CartPay
      */
     public function payCart(Cart $cart, bool $force = null): array
     {
-        if (! $cart->canBuy($this, $force)) {
+        if (!$cart->canBuy($this, $force)) {
             throw new ProductEnded(trans('wallet::errors.product_stock'));
         }
 
         $self = $this;
-
         return app(DbService::class)->transaction(static function () use ($self, $cart, $force) {
             $results = [];
             foreach ($cart->getItems() as $product) {
@@ -140,7 +138,6 @@ trait CartPay
     public function refundCart(Cart $cart, bool $force = null, bool $gifts = null): bool
     {
         $self = $this;
-
         return app(DbService::class)->transaction(static function () use ($self, $cart, $force, $gifts) {
             $results = [];
             $transfers = $cart->alreadyBuy($self, $gifts);
@@ -153,7 +150,7 @@ trait CartPay
                 $transfer = $transfers[$key];
                 $transfer->load('withdraw.wallet');
 
-                if (! $force) {
+                if (!$force) {
                     app(CommonService::class)->verifyWithdraw(
                         $product,
                         $transfer->deposit->amount
@@ -234,4 +231,5 @@ trait CartPay
     {
         return current(app(Cart::class)->addItem($product)->alreadyBuy($this, $gifts)) ?: null;
     }
+
 }
