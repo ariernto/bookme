@@ -1,0 +1,185 @@
+.item-loop {
+    border: 1px solid #dfdfdf;
+    overflow: hidden;
+    padding-bottom: 10px;
+    position: relative;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    a {
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+    .sale_info {
+        position: absolute;
+        width: 45px;
+        height: 45px;
+        right: 10px;
+        bottom: 10px;
+        color: #fff;
+        font-size: 14px;
+        background-color: #d42681;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        z-index: 999;
+    }
+    .featured {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background: #d42681;
+        display: inline-block;
+        padding: 0 10px;
+        color: #fff;
+        font-size: 13px;
+        font-weight: 500;
+        z-index: 1;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 5px;
+    }
+    .thumb-image {
+        overflow: hidden;
+        background: #FFF;
+        position: relative;
+        padding-bottom: 80%;
+        &:hover {
+            a {
+                img {
+                    transform: scale(1.1);
+                }
+            }
+        }
+        a {
+            img {
+                transition: all 0.3s;
+                max-width: 100%;
+            }
+        }
+        .service-wishlist{
+            position: absolute;
+            right: 5px;
+            z-index: 10;
+            top: 0px;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+            i{
+                transition: all 0.3s;
+                font-size: 16px;
+            }
+            &:hover,&.loading{
+                i{
+                    color: #ff9290;
+                }
+            }
+            &.active{
+                i{
+                    color: #d42681;
+                    &:before {
+                        content: "\f004";
+                    }
+                }
+            }
+        }
+    }
+    .location {
+        font-size: 13px;
+        color: #d42681;
+        padding: 0 15px;
+        margin: 15px 0 0px;
+        i {
+            position: relative;
+            font-size: 16px;
+        }
+    }
+    .service-review {
+        .rate {
+            color: #d42681;
+        }
+        padding: 0 15px 0;
+        .review {
+            margin-left: 30px;
+            position: relative;
+            color: #6A7A84;
+            &:after {
+                position: absolute;
+                content: '';
+                width: 4px;
+                height: 4px;
+                background: #D0D7DD;
+                border-radius: 50%;
+                left: -18px;
+                top: 8px;
+            }
+        }
+    }
+    .start-time{
+        padding: 5px 15px 10px;
+        border-bottom: dashed 1px #dfdfdf;
+        margin-bottom: 10px;
+        color: #6a7a84;
+    }
+    .item-title {
+        padding: 0 15px 0px;
+        font-size: 16px;
+        font-weight: 500;
+        position: relative;
+        min-height: 50px;
+        @media(max-width: 766px){
+            min-height: auto;
+        }
+        a {
+            color: #1A2B50;
+        }
+        i{
+            color: #ffc107;
+            font-size: 15px;
+            margin-right: 2px;
+        }
+    }
+    .info {
+        padding: 0 15px 0;
+        display: flex;
+        .duration{
+            flex: 0 0 70px;
+            color: #6a7a84;
+        }
+        .g-price {
+            flex: 1;
+            text-align: right;
+            .prefix {
+                color: #5e6d77;
+                display: inline-block;
+                font-weight: normal;
+                position: relative;
+                i{
+                    font-size: 16px;
+                    color: #ffc107;
+                }
+            }
+            .price {
+                position: relative;
+                display: inline-block;
+                .text-price {
+                    font-size: 18px;
+                    color: #1a2b48;
+                    font-weight: 500;
+                    line-height: 20px;
+                }
+                .onsale {
+                    text-decoration: line-through;
+                    font-size: 14px;
+                    color: #cc0033 !important;
+                    font-weight: 400;
+                }
+                .unit{
+                    font-size: 14px;
+                    color: #5E6D77;
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+}
