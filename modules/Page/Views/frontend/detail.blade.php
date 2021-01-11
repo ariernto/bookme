@@ -8,7 +8,7 @@
         <div class="page-template-content">
             {!! $page->getProcessedContent() !!}
         </div>
-        <div class="container" style="padding-top: 50px">
+        <div class="container" style="padding-top: 80px">
             @include('Page::frontend.layouts.search.list-item')
         </div>
 
@@ -22,7 +22,7 @@
                 <div class="centeredTop"><i class="fa fa-play" aria-hidden="true"></i></div>
             </div>
         </section>
-
+        {{-- @include('Page::frontend.layouts.details.tour-itinerary') --}}
         <section>
             <div class="container sectionPadding">
                 <h2 class="text-center">Destinations</h2>

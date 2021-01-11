@@ -1,6 +1,6 @@
-<div class="bravo_header">
+<div class="bravo_header transheader">
     <div class="{{$container_class ?? 'container-fluid'}}">
-        <div class="content">
+        <div class="content transcontent">
             <div class="header-left">
                 <a href="{{url(app_get_locale(false,'/'))}}" class="bravo-logo">
                     @if($logo_id = setting_item("logo_id"))

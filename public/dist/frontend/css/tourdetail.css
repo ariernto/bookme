@@ -126,9 +126,34 @@
     color : white !important;
 }
 
-.reposite {
+.leftbotposit {
+    padding-left: 20px !important;
+}
+
+.service-wishlist {
     top: 10px !important;
     left: 10px !important;
+}
+
+.page-item.active .page-link  {
+    border: 0px !important;
+    background: #C29D59 !important;
+    border-radius: 10px;
+    color: white !important;
+}
+
+.page-item.disabled .page-link {
+    border: 0px !important;
+    background: #F3ECDF !important;
+    border-radius: 10px;
+    color: #C29D59 !important;
+}
+
+.page-item .page-link {
+    border: 0px !important;
+    background: #F3ECDF !important;
+    border-radius: 10px;
+    color: #C29D59 !important;
 }
 
 .paddingicon {

@@ -117,9 +117,8 @@
         Casual. Comfortable athletic clothing. hiking shoes, hat and warm jacket.
     </div>
 </div>
-
+@include('Tour::frontend.layouts.details.tour-include-exclude')
 @include('Tour::frontend.layouts.details.tour-faqs')
-
 @if($row->map_lat && $row->map_lng)
 <div class="g-location">
     <div class="location-title">
