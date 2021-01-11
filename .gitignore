@@ -4,7 +4,7 @@
 storage/debugbar
 storage/framework/views
 storage/framework/cache
-storage/log
+storage/logs
 node_modules
 
 node_modules
