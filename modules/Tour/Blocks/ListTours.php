@@ -164,17 +164,14 @@ class ListTours extends BaseBlock
             $list_cat = TourCategory::whereIn('id', $category_ids)->where("status","publish")->get();
             if(!empty($list_cat)){
                 $where_left_right = [];
-                $params = [];
                 foreach ($list_cat as $cat){
-                    $where_left_right[] = " ( bravo_tour_category._lft >= ? AND bravo_tour_category._rgt <= ? ) ";
-                    $params[] = $cat->_lft;
-                    $params[] = $cat->_rgt;
+                    $where_left_right[] = " ( bravo_tour_category._lft >= {$cat->_lft} AND bravo_tour_category._rgt <= {$cat->_rgt} ) ";
                 }
                 $sql_where_join = " ( ".implode("OR" , $where_left_right)." )  ";
                 $model_Tour
-                    ->join('bravo_tour_category', function ($join) use($sql_where_join,$params) {
+                    ->join('bravo_tour_category', function ($join) use($sql_where_join) {
                         $join->on('bravo_tour_category.id', '=', 'bravo_tours.category_id')
-                            ->WhereRaw($sql_where_join,$params);
+                            ->WhereRaw($sql_where_join);
                     });
             }
         }
