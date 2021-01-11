@@ -1,6 +1,7 @@
 .bravo_wrap {
     .bravo_topbar {
-        background: #1A2B48;
+        // background: #1A2B48;
+        background: #110122;
         padding: 15px 0;
         @media(max-width: 768px){
             display: none;
@@ -83,10 +84,6 @@
                 font-size: 12px;
             }
 
-            .topbar-right .dropdown-notifications .dropdown-menu {
-                left: 0 !important;
-            }
-
             .topbar-right .dropdown-menu {
                 right: 0;
                 left: auto !important;
@@ -137,12 +134,13 @@
 
     }
     .bravo_header {
-        background: #f4f5f9;
-
+        // background: #f4f5f9;
+        background: #110122;
         .content {
-            background: #f4f5f9;
+            background: #110122;
             display: flex;
             align-items: center;
+            justify-content: space-between;
 
             .header-left {
                 position: relative;
@@ -154,7 +152,8 @@
                     width: 90%;
                 }
                 .bravo-logo {
-
+                    color: #fff;
+                    font-size: 32px;
                 }
 
                 .bravo-menu {
@@ -179,7 +178,8 @@
                                 font-size: 14px;
                                 font-weight: 600;
                                 text-transform: uppercase;
-                                color: #1A2B48;
+                                // color: #1A2B48;
+                                color: #efefef;
                                 transition: all 0.3s;
                                 @media(max-width: 1366px){
                                     padding: 35px 15px;
@@ -190,7 +190,7 @@
                             }
 
                             &.active {
-                                color: #5191FA;
+                                color: #fff;
                             }
 
                             > .fa {
@@ -303,7 +303,7 @@
                         padding-right: 18px;
                         display: inline-block;
                         a {
-                            color: #000;
+                            color: #fff;
                             font-weight: 400;
                             font-size: 12px;
                             text-decoration: none;
@@ -513,7 +513,7 @@
                             transition: all 0.3s;
                             text-decoration: none;
                             padding: 10px 0;
-                            .caret{
+                            i{
                                 float: right;
                                 padding: 8px 15px 9px 15px;
                                 margin-top: -5px;
@@ -547,7 +547,7 @@
                         &.active{
                             > a{
                                 border-bottom: dashed 1px #1a2b48;
-                                > .caret{
+                                > i{
                                     &:before{
                                         content: "\f107";
                                     }
@@ -561,7 +561,7 @@
                                             display: block;
                                         }
                                         > a{
-                                            > .caret{
+                                            > i{
                                                 &:before{
                                                     content: "\f107";
                                                 }
