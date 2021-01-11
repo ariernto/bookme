@@ -37,7 +37,7 @@
             <div class="list-item">
 
                 <div class="row">
-@dd($rows)
+
                     @if($rows->total() > 0)
 
                         @foreach($rows as $row)
