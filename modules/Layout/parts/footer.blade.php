@@ -1,7 +1,7 @@
 @if(!is_api())
 
 	<div class="bravo_footer">
-		<div class="main-footer"> {{-- style="background-image: url({{asset('2background.png')}})" --}}
+		<div style="background-image: url({{asset('footerbackground.png')}})" class="main-footer"> {{-- style="background-image: url({{asset('2background.png')}})" --}}
 			<div class="container">
                 <div style="padding-top: 50px;padding-bottom: 50px" class="row">
                     <div class="col-lg-4">
