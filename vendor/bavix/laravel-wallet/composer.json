@@ -1,0 +1,69 @@
+{
+  "name": "bavix/laravel-wallet",
+  "description": "Easy work with virtual wallet.",
+  "keywords": [
+    "laravel",
+    "laravel6",
+    "laravel7",
+    "credits",
+    "bavix",
+    "currency",
+    "laravel6-package",
+    "laravel7-package",
+    "laravel-wallet",
+    "virtual",
+    "wallet",
+    "payments"
+  ],
+  "minimum-stability": "stable",
+  "homepage": "https://bavix.github.io/laravel-wallet/",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Babichev Maxim",
+      "email": "info@babichev.net"
+    }
+  ],
+  "require": {
+    "php": "^7.2|^8.0",
+    "ext-pdo": "*",
+    "illuminate/database": "^6.0|^7.0|^8.0",
+    "doctrine/dbal": "^2.8|^3.0",
+    "ramsey/uuid": "^3.0|^4.0"
+  },
+  "require-dev": {
+    "infection/infection": "0.15.*|0.16.*|0.17.*",
+    "orchestra/testbench": "^4.0|^5.0",
+    "phpstan/phpstan": "^0.12",
+    "phpunit/phpunit": "^8.0|^9.0",
+    "laravel/cashier": "^10.0|^11.0|^12.0"
+  },
+  "suggest": {
+    "ext-bcmath": "Used for accurate calculations of large numbers",
+    "bavix/laravel-wallet-swap": "Addition to the laravel-wallet library for quick setting of exchange rates",
+    "bavix/laravel-wallet-vacuum": "Addition to the laravel-wallet library for quick fix race condition"
+  },
+  "autoload": {
+    "psr-4": {
+      "Bavix\\Wallet\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Bavix\\Wallet\\Test\\": "tests/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-develop": "5.0.x-dev"
+    },
+    "laravel": {
+      "providers": [
+        "Bavix\\Wallet\\WalletServiceProvider"
+      ]
+    }
+  },
+  "config": {
+    "sort-packages": true
+  }
+}

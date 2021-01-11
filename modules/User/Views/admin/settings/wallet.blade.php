@@ -1,28 +1,10 @@
 @if(is_default_lang())
     <div class="row">
         <div class="col-sm-4">
-            <h3 class="form-group-title">{{__("Disable Wallet module?")}}</h3>
-        </div>
-        <div class="col-sm-8">
-            <div class="panel">
-                <div class="panel-title"><strong>{{__("Disable wallet module")}}</strong></div>
-                <div class="panel-body">
-                    <div class="form-group">
-                        <div class="form-controls">
-                            <label><input type="checkbox" name="wallet_module_disable" value="1" @if(setting_item('wallet_module_disable')) checked @endif > {{__('Yes, please disable it')}}</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-sm-4">
             <h3 class="form-group-title">{{__("Credit Options")}}</h3>
         </div>
         <div class="col-sm-8">
-            <div class="panel">
+            <div class="panel rounded">
                 <div class="panel-body">
                     <div class="form-group">
                         <label class="" >{{__("Credit exchange rate")}}</label>
