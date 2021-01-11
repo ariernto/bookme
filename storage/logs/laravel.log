@@ -1,0 +1,63 @@
+[2021-01-11 08:36:46] laravel.EMERGENCY: Unable to create configured logger. Using emergency logger. {"exception":"[object] (InvalidArgumentException(code: 0): Log [] is not defined. at D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php:192)
+[stacktrace]
+#0 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(118): Illuminate\\Log\\LogManager->resolve(NULL)
+#1 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(98): Illuminate\\Log\\LogManager->get(NULL)
+#2 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(547): Illuminate\\Log\\LogManager->driver()
+#3 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Exceptions\\Handler.php(122): Illuminate\\Log\\LogManager->error('syntax error, u...', Array)
+#4 D:\\Web\\Laravel\\VarghaJob\\bookme\\app\\Exceptions\\Handler.php(32): Illuminate\\Foundation\\Exceptions\\Handler->report(Object(ParseError))
+#5 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(366): App\\Exceptions\\Handler->report(Object(ParseError))
+#6 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(131): Illuminate\\Foundation\\Console\\Kernel->reportException(Object(ParseError))
+#7 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 {main}
+"} 
+[2021-01-11 08:36:46] laravel.ERROR: syntax error, unexpected '}' {"exception":"[object] (ParseError(code: 0): syntax error, unexpected '}' at D:\\Web\\Laravel\\VarghaJob\\bookme\\config\\database.php:5)
+[stacktrace]
+#0 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\LoadConfiguration.php(39): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->loadConfigurationFiles(Object(Illuminate\\Foundation\\Application), Object(Illuminate\\Config\\Repository))
+#1 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(230): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->bootstrap(Object(Illuminate\\Foundation\\Application))
+#2 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(310): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#3 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2021-01-11 08:36:50] laravel.EMERGENCY: Unable to create configured logger. Using emergency logger. {"exception":"[object] (InvalidArgumentException(code: 0): Log [] is not defined. at D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php:192)
+[stacktrace]
+#0 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(118): Illuminate\\Log\\LogManager->resolve(NULL)
+#1 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(98): Illuminate\\Log\\LogManager->get(NULL)
+#2 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(547): Illuminate\\Log\\LogManager->driver()
+#3 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Exceptions\\Handler.php(122): Illuminate\\Log\\LogManager->error('syntax error, u...', Array)
+#4 D:\\Web\\Laravel\\VarghaJob\\bookme\\app\\Exceptions\\Handler.php(32): Illuminate\\Foundation\\Exceptions\\Handler->report(Object(ParseError))
+#5 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(366): App\\Exceptions\\Handler->report(Object(ParseError))
+#6 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(131): Illuminate\\Foundation\\Console\\Kernel->reportException(Object(ParseError))
+#7 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 {main}
+"} 
+[2021-01-11 08:36:50] laravel.ERROR: syntax error, unexpected '}' {"exception":"[object] (ParseError(code: 0): syntax error, unexpected '}' at D:\\Web\\Laravel\\VarghaJob\\bookme\\config\\database.php:5)
+[stacktrace]
+#0 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\LoadConfiguration.php(39): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->loadConfigurationFiles(Object(Illuminate\\Foundation\\Application), Object(Illuminate\\Config\\Repository))
+#1 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(230): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->bootstrap(Object(Illuminate\\Foundation\\Application))
+#2 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(310): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#3 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2021-01-11 08:36:50] laravel.EMERGENCY: Unable to create configured logger. Using emergency logger. {"exception":"[object] (InvalidArgumentException(code: 0): Log [] is not defined. at D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php:192)
+[stacktrace]
+#0 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(118): Illuminate\\Log\\LogManager->resolve(NULL)
+#1 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(98): Illuminate\\Log\\LogManager->get(NULL)
+#2 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(547): Illuminate\\Log\\LogManager->driver()
+#3 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Exceptions\\Handler.php(122): Illuminate\\Log\\LogManager->error('syntax error, u...', Array)
+#4 D:\\Web\\Laravel\\VarghaJob\\bookme\\app\\Exceptions\\Handler.php(32): Illuminate\\Foundation\\Exceptions\\Handler->report(Object(ParseError))
+#5 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(366): App\\Exceptions\\Handler->report(Object(ParseError))
+#6 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(131): Illuminate\\Foundation\\Console\\Kernel->reportException(Object(ParseError))
+#7 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 {main}
+"} 
+[2021-01-11 08:36:50] laravel.ERROR: syntax error, unexpected '}' {"exception":"[object] (ParseError(code: 0): syntax error, unexpected '}' at D:\\Web\\Laravel\\VarghaJob\\bookme\\config\\database.php:5)
+[stacktrace]
+#0 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\LoadConfiguration.php(39): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->loadConfigurationFiles(Object(Illuminate\\Foundation\\Application), Object(Illuminate\\Config\\Repository))
+#1 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(230): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->bootstrap(Object(Illuminate\\Foundation\\Application))
+#2 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(310): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#3 D:\\Web\\Laravel\\VarghaJob\\bookme\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#4 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
