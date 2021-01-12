@@ -24,7 +24,7 @@
                     $traverse($location->children, $prefix.'-');
                 }
             };
-            $traverse($tour_location);
+            // $traverse($tour_location);
             ?>
 			<div class="smart-search">
 				<input type="text" class="smart-search-location parent_text form-control searchinput" {{ ( empty(setting_item("tour_location_search_style")) or setting_item("tour_location_search_style") == "normal" ) ? "readonly" : ""  }} placeholder="{{__("Activity type")}}" value="{{ $location_name }}" data-onLoad="{{__("Loading...")}}"

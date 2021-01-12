@@ -73,9 +73,7 @@
     {!! \App\Helpers\Assets::css() !!}
 
     {!! \App\Helpers\Assets::js() !!}
-
     <script>
-
         var bookingCore = {
 
             url:'{{url( app_get_locale() )}}',
