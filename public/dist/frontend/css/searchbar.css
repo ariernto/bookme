@@ -1,0 +1,74 @@
+.searchinput {
+    background: white !important;
+    height: 38px !important;
+}
+
+.topspace {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+}
+
+.forcalendar {
+    margin-top: -29px;
+    right: 25px;
+    position: absolute;
+}
+
+.irs-to {
+    background: white !important;
+    color: #707070 !important;
+}
+
+.irs-from {
+    background: white !important;
+    color: #707070 !important;
+}
+
+.irs-bar {
+    background: #d2b896 !important;
+    height: 3px !important;
+}
+
+.irs-line {
+    height: 3px !important;
+}
+
+.irs-grid {
+    display: none !important;
+}
+
+.irs-handle {
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 10px !important;
+    background: rgb(210, 184, 150) !important;
+    margin-top: -5px !important;
+}
+
+.irs-handle i{
+    display: none !important;
+}
+
+.irs-min {
+    display: none !important;
+}
+
+.irs-max {
+    display: none !important;
+}
+
+.irs-to:before {
+    display: none !important;
+}
+
+.irs-from:before {
+    display: none !important;
+}
+
+.nav-tabs li a {
+    background-color: transparent !important;
+}
+
+.nav-tabs li a.active {
+    background-color: #942752 !important;
+}
