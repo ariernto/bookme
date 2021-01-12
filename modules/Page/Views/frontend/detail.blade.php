@@ -6,11 +6,11 @@
 @section('content')
     <div class="bravo_search_tour">
         <div class="page-template-content">
-            {!! $row->getProcessedContent() !!}
+            {!! $page->getProcessedContent() !!}
         </div>
         <div class="container" style="padding-top: 80px">
             @include('Page::frontend.layouts.search.list-item')
-        </div> 
+        </div>
 
         <section class="topImgOverSection">
             <div class="container textOverImgRight">

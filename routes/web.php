@@ -22,7 +22,7 @@
 
 Route::get('/intro','LandingpageController@index');
 
-Route::get('/', 'HomeController@index');
+Route::get('/', '\Modules\Tour\Controllers\TourController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
