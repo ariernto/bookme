@@ -10,7 +10,7 @@
             @if(!empty($activity_search_fields))
                 @foreach($activity_search_fields as $field)
                     @php $field['title'] = $field['title_'.app()->getLocale()] ?? $field['title'] ?? "" @endphp
-                    <div class="col-md-{{ $field['size'] ?? "6" }}">
+                    <div class="col-md-{{ $field['size'] ?? "6"}} topspace">
                         @switch($field['field'])
                             @case ('activity_type')
                                 @include('Activity::frontend.layouts.search.fields.activity_type')
@@ -34,5 +34,5 @@
 <style>
 .tab-content::before{
     opacity: 0;
-}    
+}
 </style>

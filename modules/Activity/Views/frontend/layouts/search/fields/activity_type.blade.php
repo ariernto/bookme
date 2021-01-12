@@ -1,16 +1,12 @@
 @php($location_search_style = setting_item('tour_location_search_style'))
-<div class="form-group">
-	<i class="field-icon fa icofont-map"></i>
-	<div class="form-content">
-		<label>{{ $field['title'] ?? "" }}</label>
 		@if($location_search_style=='autocompletePlace')
 		<div class="g-map-place" >
-            <input type="text" name="map_place" placeholder="{{__("Activity Type")}}"  value="{{request()->input('map_place')}}" class="form-control border-0">
+            <input type="text" name="map_place" placeholder="{{__("Activity Type")}}"  value="{{request()->input('map_place')}}" class="form-control searchinput border-0">
             <div class="map d-none" id="map-{{\Illuminate\Support\Str::random(10)}}"></div>
             <input type="hidden" name="map_lat" value="{{request()->input('map_lat')}}">
             <input type="hidden" name="map_lgn" value="{{request()->input('map_lgn')}}">
         </div>
-		
+
 		@else
             <?php
             $location_name = "";
@@ -31,10 +27,18 @@
             $traverse($tour_location);
             ?>
 			<div class="smart-search">
-				<input type="text" class="smart-search-location parent_text form-control" {{ ( empty(setting_item("tour_location_search_style")) or setting_item("tour_location_search_style") == "normal" ) ? "readonly" : ""  }} placeholder="{{__("What is your type?")}}" value="{{ $location_name }}" data-onLoad="{{__("Loading...")}}"
+				<input type="text" class="smart-search-location parent_text form-control searchinput" {{ ( empty(setting_item("tour_location_search_style")) or setting_item("tour_location_search_style") == "normal" ) ? "readonly" : ""  }} placeholder="{{__("Activity type")}}" value="{{ $location_name }}" data-onLoad="{{__("Loading...")}}"
 				       data-default="{{ json_encode($list_json) }}">
 				<input type="hidden" class="child_id" name="location_id" value="{{Request::query('location_id')}}">
 			</div>
 		@endif
-	</div>
-</div>
+
+<style>
+    .smart-search-location::placeholder {
+        color: black !important;
+        padding-left: 10px;
+    }
+    .smart-search:after {
+        color: black !important;
+    }
+</style>
