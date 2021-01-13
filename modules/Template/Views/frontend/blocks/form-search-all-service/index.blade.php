@@ -1,5 +1,5 @@
 
-<div class="bravo-form-search-all" style="background-image: linear-gradient(0deg,rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2)),url('{{$bg_image_url}}') !important;height:500px">
+<div class="bravo-form-search-all" style="background-image: linear-gradient(0deg,rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2)),url('{{asset('topbackground.png')}}') !important;height:80vh;margin-top:-91px;padding-top: 370px;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">

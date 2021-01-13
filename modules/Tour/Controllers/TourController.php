@@ -117,7 +117,7 @@
             $data = [
 
                 'rows' => $list,
-                
+
                 'page'=>Page::where("id",'1')->where("status","publish")->first(),
 
                 'tour_category' => $this->tourCategoryClass::where('status', 'publish')->with(['translations'])->get()->toTree(),
