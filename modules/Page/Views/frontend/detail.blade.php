@@ -22,36 +22,12 @@
                 <div class="centeredTop"><i class="fa fa-play" aria-hidden="true"></i></div>
             </div>
         </section>
-        {{-- @include('Page::frontend.layouts.details.tour-itinerary') --}}
         <section>
             <div class="container sectionPadding">
                 <h2 class="text-center">Destinations</h2>
                 <p  class="text-center">Lorem ipsum dolor sit amet, conseetuer adipiscing elit. Aenan comdo igula eget. <br>Aenean massa cum sociis Theme natoque</p>
                 <div class="row">
-                    <div class="col-md-3">
-                        <div class="sliderWrap">
-                            <img src="http://test.booking.dorica.fi/uploads/demo/tour/banner-search.jpg">
-                                <div class="centered">Helsinki</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="sliderWrap">
-                            <img src="http://test.booking.dorica.fi/uploads/demo/tour/banner-search.jpg">
-                                <div class="centered">Turku</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="sliderWrap">
-                            <img src="http://test.booking.dorica.fi/uploads/demo/tour/banner-search.jpg">
-                                <div class="centered">Lapland</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="sliderWrap">
-                            <img src="http://test.booking.dorica.fi/uploads/demo/tour/banner-search.jpg">
-                                <div class="centered">Porvoo</div>
-                        </div>
-                    </div>
+                    @include('Page::frontend.layouts.details.tour-itinerary')
                 </div>
             </div>
         </section>
@@ -184,6 +160,15 @@
 @endsection
 
 @section('footer')
+    <script>
+        $(document).ready(function(e) {
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                nav: true,
+                navText: ['<span aria-label="Previous">‹</span>','<span aria-label="Next">›</span>'],
+            });
+        });
+    </script>
     <script type="text/javascript" src="{{ asset("libs/ion_rangeslider/js/ion.rangeSlider.min.js") }}"></script>
     <script type="text/javascript" src="{{ asset('module/tour/js/tour.js?_ver='.config('app.version')) }}"></script>
 @endsection

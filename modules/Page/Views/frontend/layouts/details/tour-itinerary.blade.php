@@ -1,44 +1,24 @@
-@if($translation->itinerary)
-
-    <div class="g-itinerary">
-
-        <h3> {{__("Itinerary")}} </h3>
-
-        <div class="list-item owl-carousel">
-
-            @foreach($translation->itinerary as $item)
-
-                <div class="item" style="background-image: url('{{ !empty($item['image_id']) ? get_file_url($item['image_id'],"full") : "" }}')">
-
-                    <div class="header">
-
-                        <div class="item-title">{{$item['title']}}</div>
-
-                        <div class="item-desc">{{$item['desc']}}</div>
-
-                    </div>
-
-                    <div class="body">
-
-                        <div class="item-title">{{$item['title']}}</div>
-
-                        <div class="item-desc">{{$item['desc']}}</div>
-
-                        <div class="item-context">
-
-                            {!! clean($item['content']) !!}
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            @endforeach
-
+<div class="bravo-list-tour">
+    <div class="container">
+        <div class="list-item">
+            <div class="owl-carousel">
+                @foreach ($tour_location as $row)
+                    @include('Tour::frontend.layouts.search.loop-gird-carousel')
+                @endforeach
+            </div>
         </div>
-
     </div>
-
-@endif
-
+</div>
+<script>
+    $(document).ready(function(e) {
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            nav: true,
+            items: 4,
+            navText: ['<','>'],
+        });
+    });
+</script>
+<style>
+    .owl-carousel .owl-nav button{width: 35px; height: 35px; text-align:center; border:1px solid #ccc !important;}
+</style>

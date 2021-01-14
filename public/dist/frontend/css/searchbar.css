@@ -31,6 +31,34 @@
     margin-left: 20px !important;
 }
 
+.owl-carousel .owl-nav {
+    position: relative !important;
+    bottom: 168px !important;
+}
+
+.owl-prev {
+    border-radius: 50%;
+    outline: none !important;
+    background:  #C29D59 !important;
+    color: white !important;
+}
+
+.owl-next {
+    border-radius: 50%;
+    outline: none !important;
+    background: white !important;
+    color: #C29D59 !important;
+}
+
+.sliderWrap .centered {
+    background-color: unset !important;
+}
+
+.owl-next {
+    right: 14px !important;
+    position: absolute !important;
+}
+
 .showall {
     display: block;
 }
@@ -44,6 +72,7 @@
     border-radius: 0px !important;
     width: 100% !important;
     margin-left: 20px !important;
+    font-size: 18px !important;
 }
 
 .padposit {
@@ -76,6 +105,7 @@
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.2) !important;
     background: transparent !important;
     position: relative !important;
+    z-index: 2 !important;
 }
 
 .titlecla {

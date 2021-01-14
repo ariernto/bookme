@@ -14,10 +14,14 @@
             <button class="btn dangerbtn">Book now</button>
         </div>
     </div>
-    <div class="location locatcolor">
+    <div class="location locatcolor row">
         @php $location =  $row->location->translateOrOrigin(app()->getLocale()) @endphp
-        {{$location->name ?? ''}}
-        <p class="moneycha">365 €</p>
+        <div class="col-lg-6 col-md-6">
+            {{$location->name ?? ''}}
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <p class="moneycha">365 €</p>
+        </div>
     </div>
     <div class="item-title">
         <a @if(!empty($blank)) target="_blank" @endif href="{{$row->getDetailUrl($include_param ?? true)}}">
