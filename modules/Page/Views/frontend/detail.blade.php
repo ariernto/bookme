@@ -8,7 +8,7 @@
         <div class="page-template-content">
             {!! $page->getProcessedContent() !!}
         </div>
-        <div class="container" style="padding-top: 80px">
+        <div class="container" style="padding-top: 80px;max-width: 1340px">
             @include('Page::frontend.layouts.search.list-item')
         </div>
 
@@ -24,8 +24,8 @@
         </section>
         <section>
             <div class="container sectionPadding">
-                <h2 class="text-center">Destinations</h2>
-                <p  class="text-center">Lorem ipsum dolor sit amet, conseetuer adipiscing elit. Aenan comdo igula eget. <br>Aenean massa cum sociis Theme natoque</p>
+                <h2 class="text-center slidertitle">Destinations</h2>
+                <p  class="text-center slidertext">Lorem ipsum dolor sit amet, conseetuer adipiscing elit. Aenan comdo igula eget. <br>Aenean massa cum sociis Theme natoque</p>
                 <div class="row">
                     @include('Page::frontend.layouts.details.tour-itinerary')
                 </div>
@@ -38,13 +38,13 @@
                     <div class="col-md-1"></div>
                     <div class="col-md-6">
                         <div>
-                            <p class="paraTop">Best Choice</p>
-                            <h3 class="mb-0" style="font-weight: 700;">Why Choose </h3>
-                            <h3 class="headBrown">Finland?</h3>
-                            <p class="mt-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                            <p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing.</p>
-                            <p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software.</p>
-                            <p><strong><a href="">Make your holiday Special</a></strong></p>
+                            <p class="paraTop normaltext">Best Choice</p>
+                            <h3 class="mb-0 bigsansfont" style="font-weight: 700;">Why Choose </h3>
+                            <h3 class="headBrown bigsansfont">Finland?</h3>
+                            <p class="mt-4 normaltext">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                            <p class="normaltext">It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing.</p>
+                            <p class="normaltext">It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software.</p>
+                            <p><strong><a class="strongtext" href="">Make your holiday Special</a></strong></p>
                         </div>
                     </div>
                     <div class="col-md-4">
