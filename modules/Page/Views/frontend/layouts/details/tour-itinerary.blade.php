@@ -1,5 +1,5 @@
 <div class="bravo-list-tour">
-    <div class="container">
+    <div class="container carouselrow">
         <div class="list-item">
             <div class="owl-carousel">
                 @foreach ($tour_location as $row)

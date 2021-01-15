@@ -27,6 +27,15 @@
             // $traverse($tour_location);
             ?>
 			<div class="smart-search">
+                <div style="
+                border-right: 1px solid black;
+                height: 25px;
+                position: absolute;
+                margin-top: 6px;
+                width: 100%;
+                right: 40px;
+                z-index: 2;
+                "></div>
 				<input type="text" class="smart-search-location parent_text form-control searchinput" {{ ( empty(setting_item("tour_location_search_style")) or setting_item("tour_location_search_style") == "normal" ) ? "readonly" : ""  }} placeholder="{{__("Activity type")}}" value="{{ $location_name }}" data-onLoad="{{__("Loading...")}}"
 				       data-default="{{ json_encode($list_json) }}">
 				<input type="hidden" class="child_id" name="location_id" value="{{Request::query('location_id')}}">

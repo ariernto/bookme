@@ -3,9 +3,95 @@
     height: 38px !important;
 }
 
+.moreposit {
+    margin-top: -12px !important;
+}
+
+
+.bravo_wrap .bravo_form .dropdown-toggle:after {
+    top: 16px !important;
+    color: black !important;
+}
+
+.blackfont {
+    color: black !important;
+}
+
 .topspace {
     padding-top: 20px !important;
     padding-bottom: 20px !important;
+    border: 0px !important;
+}
+
+.bravo-logo {
+    font-size: 30px !important;
+    text-decoration: none !important;
+}
+
+.bravo-menu ul li a {
+    font-size: 18px !important;
+    font-family: 'Poppins' !important;
+}
+
+.bravo_wrap .bravo_form .smart-search:after {
+    top: 16px !important;
+}
+
+.backtransparent {
+    background: #00000020 !important;
+}
+
+.sliderWrap .centered {
+    font-size: 36px !important;
+    font-family: 'Merienda-Regular_0_wt' !important;
+}
+
+.carouselrow {
+    max-width: 1574px !important;
+}
+
+.container.sectionPadding {
+    max-width: 1574px !important;
+}
+
+.bravo_wrap .page-template-content .bravo-form-search-all .g-form-control .nav-tabs li a {
+    font-size: 16px !important;
+    font-family: 'Lato' !important;
+}
+
+.bravo_wrap .bravo_header .content .header-left .bravo-menu {
+    padding-left: 158px !important;
+}
+
+.bravo_wrap .bravo_search_tour .bravo-list-item .list-item .item-tour .item-title {
+    font-size: 24px !important;
+    font-family: 'Work Sans' !important;
+}
+
+.bigsansfont {
+    font-size: 40px !important;
+    font-family: 'Work Sans' !important;
+}
+
+.normaltext {
+    font-size: 16px !important;
+    font-family: 'Muli' !important;
+}
+
+.strongtext {
+    font-size: 20px !important;
+    font-family: 'Work Sans' !important;
+}
+
+.slidertitle {
+    font-size: 40px !important;
+    font-family: 'Work Sans' !important;
+}
+
+.slidertext {
+    font-size: 20px !important;
+    font-family: 'Muli-Regular' !important;
+    margin-bottom: 3rem !important;
 }
 
 .forcalendar {
@@ -72,7 +158,8 @@
     border-radius: 0px !important;
     width: 100% !important;
     margin-left: 20px !important;
-    font-size: 18px !important;
+    font-size: 20px !important;
+    font-family: 'Muli' !important;
 }
 
 .padposit {
@@ -109,13 +196,15 @@
 }
 
 .titlecla {
-    font-family: Playfair Display !important;
+    font-family: PlayfairDisplay-Bold !important;
     text-align: center;
+    font-size: 40px !important;
 }
 
 .desccla {
-    font-family: Muli !important;
+    font-family: Muli-Regular !important;
     text-align: center;
+    font-size: 20px !important;
 }
 
 .topbar-search {

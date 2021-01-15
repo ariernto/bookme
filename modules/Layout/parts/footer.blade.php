@@ -5,14 +5,14 @@
 			<div class="container">
                 <div style="padding-top: 50px;padding-bottom: 50px" class="row">
                     <div class="col-lg-4">
-                        <h2>BOOKME</h2>
-                        <p>
+                        <h2 class="bookmecla">BOOKME</h2>
+                        <p class="blackcha">
                             <br/>
                             We aim to ensure that you never miss
                             an opportunity to travel.
                             <br/>
                         </p>
-                        <h6>Follow Us</h6>
+                        <h6 class="blackcha">Follow Us</h6>
                         <button class="sharebtn"><i class="fa fa-google socialicon"></i></button>
                         <button class="sharebtn"><i class="fa fa-twitter socialicon"></i></button>
                         <button class="sharebtn"><i class="fa fa-facebook socialicon"></i></button>
