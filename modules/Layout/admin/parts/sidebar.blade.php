@@ -51,32 +51,32 @@ $menus = [
         'permission' => 'setting_update',
         'children'   => \Modules\Core\Models\Settings::getSettingPages()
     ],
-    'tools'=>[
-        "position"=>90,
-        'url'      => 'admin/module/core/tools',
-        'title'    => __("Tools"),
-        'icon'     => 'icon ion-ios-hammer',
-        'children' => [
-            'language'=>[
-                'url'        => 'admin/module/language',
-                'title'      => __('Languages'),
-                'icon'       => 'icon ion-ios-globe',
-                'permission' => 'language_manage',
-            ],
-            'translations'=>[
-                'url'        => 'admin/module/language/translations',
-                'title'      => __("Translation Manager"),
-                'icon'       => 'icon ion-ios-globe',
-                'permission' => 'language_translation',
-            ],
-            'logs'=>[
-                'url'        => 'admin/logs',
-                'title'      => __("System Logs"),
-                'icon'       => 'icon ion-ios-nuclear',
-                'permission' => 'system_log_view',
-            ],
-        ]
-    ],
+    // 'tools'=>[
+    //     "position"=>90,
+    //     'url'      => 'admin/module/core/tools',
+    //     'title'    => __("Tools"),
+    //     'icon'     => 'icon ion-ios-hammer',
+    //     'children' => [
+    //         'language'=>[
+    //             'url'        => 'admin/module/language',
+    //             'title'      => __('Languages'),
+    //             'icon'       => 'icon ion-ios-globe',
+    //             'permission' => 'language_manage',
+    //         ],
+    //         'translations'=>[
+    //             'url'        => 'admin/module/language/translations',
+    //             'title'      => __("Translation Manager"),
+    //             'icon'       => 'icon ion-ios-globe',
+    //             'permission' => 'language_translation',
+    //         ],
+    //         'logs'=>[
+    //             'url'        => 'admin/logs',
+    //             'title'      => __("System Logs"),
+    //             'icon'       => 'icon ion-ios-nuclear',
+    //             'permission' => 'system_log_view',
+    //         ],
+    //     ]
+    // ],
 ];
 
 // Modules
@@ -180,7 +180,7 @@ if (!empty($menus)){
             unset($menus[$k]);
             continue;
         }
-        
+
         $menus[$k]['class'] = $currentUrl == url($menuItem['url']) ? 'active' : '';
         if (gettype($currentUrl) === 'object' && $menuItem['url'] == 'admin') {
             $menus[$k]['class'] = 'active';

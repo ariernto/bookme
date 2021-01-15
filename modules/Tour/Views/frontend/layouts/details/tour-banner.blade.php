@@ -1,6 +1,6 @@
 @if($row->banner_image_id)
 
-    <div class="bravo_banner" style="background-image: url('{{$row->getBannerImageUrlAttribute('full')}}');height: 80vh;margin-top: -91px;padding-top: 370px;">
+    <div class="bravo_banner" style="background-image: url('{{$row->getBannerImageUrlAttribute('full')}}');height: 80vh;margin-top: -97px;padding-top: 38vh;">
 
         <div class="container">
 
