@@ -8,7 +8,7 @@
         <div class="page-template-content">
             {!! $page->getProcessedContent() !!}
         </div>
-        <div class="container" style="padding-top: 80px;max-width: 1340px">
+        <div class="container" style="padding-top: 80px">
             @include('Page::frontend.layouts.search.list-item')
         </div>
 
