@@ -1,4 +1,4 @@
-<form action="{{ route("tour.search") }}" class="form bravo_form transbackground" method="get">
+<form action="{{ route("tour.search") }}" class="form bravo_form backtransparent" method="get">
 
     <div class="g-field-search">
 
