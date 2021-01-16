@@ -28,7 +28,7 @@
 
         <div class="bravo_form_search" >
 
-            <div class="container" style="position: relative;top: -270px;">
+            <div class="container" style="position: relative;top: -28vh;">
 
                 <div class="row">
 
