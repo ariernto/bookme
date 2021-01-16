@@ -3,7 +3,7 @@
         <div class="content transcontent">
             <div class="header-left">
                 <a href="{{url(app_get_locale(false,'/'))}}" class="bravo-logo">
-                    BOOKME
+                    BOOK<p style="font-weight: 200">ME</p>
                     @if($logo_id = setting_item("logo_id"))
                         <?php $logo = get_file_url($logo_id,'full') ?>
                         <img src="{{$logo}}" alt="{{setting_item("site_title")}}">
