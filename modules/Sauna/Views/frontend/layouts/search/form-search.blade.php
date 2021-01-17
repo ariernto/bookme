@@ -1,5 +1,5 @@
 <form action="{{ route("sauna.search") }}" class="form bravo_form backtransparent" method="get">
-    <div class="g-field-search borderline">
+    <div class="g-field-search">
         <div class="row">
             <div class="col-lg-4 col-md-4 border-right topspace">
                 @include('Sauna::frontend.layouts.search.fields.location')
@@ -63,9 +63,3 @@
         <button class="btn btn-primary btn-search" type="submit">{{__("Search")}}</button>
     </div>
 </form>
-<style>
-    .borderline {
-        border: 1px solid #3A2D48 !important;
-        border-radius: 5px 0px 0px 5px !important;
-    }
-</style>

@@ -1,5 +1,5 @@
 <form action="{{ route("tour.search") }}" class="form bravo_form backtransparent" method="get">
-    <div class="g-field-search borderline">
+    <div class="g-field-search">
         <div class="row">
             <div class="col-lg-4 col-md-4 border-right topspace">
                 @include('Tour::frontend.layouts.search.fields.location')
@@ -68,9 +68,5 @@
     .transbackground {
         background: transparent !important;
         box-shadow: 1px 1px 3px 3px rgba(0,0,0,0.5) !important;
-    }
-    .borderline {
-        border: 1px solid #3A2D48 !important;
-        border-radius: 5px 0px 0px 5px !important;
     }
 </style>

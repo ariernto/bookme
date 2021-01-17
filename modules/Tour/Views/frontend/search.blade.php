@@ -33,8 +33,9 @@
                 <div class="row maxwid">
 
                     <div class="col-lg-12 col-md-12">
-
-                        @include('Tour::frontend.layouts.search.form-search')
+                        <div class="borderline">
+                            @include('Tour::frontend.layouts.search.form-search')
+                        </div>
 
                     </div>
 

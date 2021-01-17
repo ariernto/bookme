@@ -14,9 +14,11 @@
         </div>
         <div class="bravo_form_search">
             <div class="container"  style="position: relative;top: -11vh;">
-                <div class="row maxwindow">
+                <div class="row maxwid">
                     <div class="col-lg-12 col-md-12">
-                        @include('Activity::frontend.layouts.search.form-search')
+                        <div class="borderline">
+                            @include('Activity::frontend.layouts.search.form-search')
+                        </div>
                     </div>
                 </div>
             </div>

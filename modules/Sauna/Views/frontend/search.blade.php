@@ -16,7 +16,9 @@
             <div class="container"  style="position: relative;top: -11vh;">
                 <div class="row maxwid">
                     <div class="col-lg-12 col-md-12">
-                        @include('Sauna::frontend.layouts.search.form-search')
+                        <div class="borderline">
+                            @include('Sauna::frontend.layouts.search.form-search')
+                        </div>
                     </div>
                 </div>
             </div>

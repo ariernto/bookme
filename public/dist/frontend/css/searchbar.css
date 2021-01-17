@@ -33,6 +33,7 @@
     font-family: -webkit-pictograph !important;
     font-size: 30px !important;
     font-weight: 300 !important;
+    padding-left: 15px !important;
 }
 
 .bravo_wrap .bravo_header .content .header-left .bravo-menu ul li a {
@@ -72,6 +73,7 @@
 
 .backtransparent {
     background: #00000020 !important;
+    margin-block-end: unset !important;
 }
 
 .sliderWrap .centered {
@@ -109,6 +111,11 @@
 .slidertext {
     font-family: 'Muli-Regular' !important;
     margin-bottom: 3rem !important;
+}
+
+.borderline {
+    border: 1px solid #3A2D48 !important;
+    border-radius: 5px !important;
 }
 
 .forcalendar {
