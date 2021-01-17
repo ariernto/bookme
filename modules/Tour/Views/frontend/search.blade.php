@@ -12,7 +12,7 @@
 
     <div class="bravo_search_tour">
 
-        <div class="bravo_banner" @if($bg = setting_item("tour_page_search_banner")) style="background-image: url({{get_file_url($bg,'full')}});height: 80vh;margin-top: -97px;padding-top: 38vh;" @endif >
+        <div class="bravo_banner" @if($bg = setting_item("tour_page_search_banner")) style="background-image: url({{get_file_url($bg,'full')}});height: 50vh;margin-top: -97px;padding-top: 24vh;" @endif >
 
             <div class="container">
 
@@ -28,11 +28,11 @@
 
         <div class="bravo_form_search" >
 
-            <div class="container" style="position: relative;top: -28vh;">
+            <div class="container" style="position: relative;top: -14vh;">
 
                 <div class="row">
 
-                    <div class="col-lg-9 col-md-12">
+                    <div class="col-lg-12 col-md-12">
 
                         @include('Tour::frontend.layouts.search.form-search')
 
