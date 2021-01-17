@@ -32,7 +32,7 @@
 
                 <div class="row">
 
-                    <div class="col-lg-9 col-md-12">
+                    <div class="col-lg-12 col-md-12">
 
                         @include('Tour::frontend.layouts.search.form-search')
 

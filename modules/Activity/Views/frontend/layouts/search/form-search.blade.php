@@ -1,4 +1,4 @@
-<form action="{{ route("activity.search") }}" class="form bravo_form" method="get" style="background: #00000010">
+<form action="{{ route("activity.search") }}" class="form bravo_form" method="get" style="background: #00000020">
     <div class="g-field-search">
         <div class="row">
             @php $activity_search_fields = setting_item_array('activity_search_fields');
