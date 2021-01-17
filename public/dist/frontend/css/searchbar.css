@@ -92,6 +92,11 @@
     font-family: 'Work Sans' !important;
 }
 
+input::-webkit-input-placeholder {
+    font-size: 15px;
+    line-height: 3;
+}
+
 .bigsansfont {
     font-family: 'Work Sans' !important;
 }

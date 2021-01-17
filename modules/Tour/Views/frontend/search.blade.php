@@ -66,16 +66,10 @@
 
 
 <style>
-    @media (min-width: 1500px)
-    {
-        .maxwid {
-            max-width: 1140px !important;
-        }
-    }
     @media (min-width: 992px)
     {
         .maxwid {
-            max-width: 960px;
+            max-width: 1200px;
         }
     }
     .maxwid {
