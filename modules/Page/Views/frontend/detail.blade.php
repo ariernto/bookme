@@ -14,19 +14,21 @@
 
         <section class="topImgOverSection">
             <div class="container textOverImgRight">
-                <img src="http://test.booking.dorica.fi/uploads/demo/tour/banner-search.jpg">
-                <div class="bottom-rightTop">
-                <p>Helsinki to Stockholm <span style="color: #C29D59;">from 34$</span></p>
-                <button class="btn">Book Now</button>
+                <div class="maxwid">
+                    <img src="http://test.booking.dorica.fi/uploads/demo/tour/banner-search.jpg">
+                    <div class="bottom-rightTop">
+                        <p>Helsinki to Stockholm <span style="color: #C29D59;">from 34$</span></p>
+                        <button class="btn">Book Now</button>
+                    </div>
+                    <div class="centeredTop"><i class="fa fa-play" aria-hidden="true"></i></div>
                 </div>
-                <div class="centeredTop"><i class="fa fa-play" aria-hidden="true"></i></div>
             </div>
         </section>
         <section>
             <div class="container sectionPadding">
                 <h2 class="text-center slidertitle">Destinations</h2>
                 <p  class="text-center slidertext">Lorem ipsum dolor sit amet, conseetuer adipiscing elit. Aenan comdo igula eget. <br>Aenean massa cum sociis Theme natoque</p>
-                <div class="row">
+                <div class="row maxwid">
                     @include('Page::frontend.layouts.details.tour-itinerary')
                 </div>
             </div>
@@ -34,7 +36,7 @@
 
         <section class="sectionPadding">
             <div class="container">
-                <div class="row">
+                <div class="row maxwid">
                     <div class="col-md-1"></div>
                     <div class="col-md-6">
                         <div>
@@ -67,6 +69,22 @@
         </section>
 
 <style>
+    @media (min-width: 1500px)
+    {
+        .maxwid {
+            max-width: 1140px !important;
+        }
+    }
+    @media (min-width: 992px)
+    {
+        .maxwid {
+            max-width: 960px;
+        }
+    }
+    .maxwid {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
     .nav.nav-tabs>li>a{
         background-color:none!important;
     }

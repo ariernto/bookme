@@ -12,13 +12,13 @@
 
     <div class="bravo_search_tour">
 
-        <div class="bravo_banner" @if($bg = setting_item("tour_page_search_banner")) style="background-image: url({{get_file_url($bg,'full')}});height: 80vh;margin-top: -97px;padding-top: 38vh;" @endif >
+        <div class="bravo_banner" @if($bg = setting_item("tour_page_search_banner")) style="background: #110122;height: 50vh;margin-top: -97px;padding-top: 24vh;" @endif >
 
             <div class="container">
 
-                <h1>
+                <h1 class="whitefont maxwid">
 
-                    {{setting_item_with_lang("tour_page_search_title")}}
+                    Search for tour
 
                 </h1>
 
@@ -28,11 +28,11 @@
 
         <div class="bravo_form_search" >
 
-            <div class="container" style="position: relative;top: -270px;">
+            <div class="container" style="position: relative;top: -11vh;">
 
-                <div class="row">
+                <div class="row maxwid">
 
-                    <div class="col-lg-9 col-md-12">
+                    <div class="col-lg-12 col-md-12">
 
                         @include('Tour::frontend.layouts.search.form-search')
 
@@ -65,6 +65,22 @@
 
 
 <style>
+    @media (min-width: 1500px)
+    {
+        .maxwid {
+            max-width: 1140px !important;
+        }
+    }
+    @media (min-width: 992px)
+    {
+        .maxwid {
+            max-width: 960px;
+        }
+    }
+    .maxwid {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
     .nav.nav-tabs>li>a{
         background-color:none!important;
     }

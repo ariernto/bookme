@@ -1,10 +1,16 @@
-<form action="{{ route("tour.search") }}" class="form bravo_form transbackground" method="get">
-
-    <div class="g-field-search">
-
+<form action="{{ route("tour.search") }}" class="form bravo_form backtransparent" method="get">
+    <div class="g-field-search borderline">
         <div class="row">
-
-            @php $tour_search_fields = setting_item_array('tour_search_fields');
+            <div class="col-lg-4 col-md-4 border-right topspace">
+                @include('Tour::frontend.layouts.search.fields.location')
+            </div>
+            <div class="col-lg-4 col-md-4 border-right topspace">
+                @include('Tour::frontend.layouts.search.fields.activity_type')
+            </div>
+            <div class="col-lg-4 col-md-4 border-right topspace">
+                @include('Tour::frontend.layouts.search.fields.date')
+            </div>
+            {{-- @php $tour_search_fields = setting_item_array('tour_search_fields');
 
             $tour_search_fields = array_values(\Illuminate\Support\Arr::sort($tour_search_fields, function ($value) {
 
@@ -48,20 +54,13 @@
 
                 @endforeach
 
-            @endif
-
+            @endif --}}
         </div>
-
     </div>
-
     <div class="g-button-submit">
-
         <button class="btn btn-primary btn-search" type="submit">{{__("Search")}}</button>
-
     </div>
-
 </form>
-
 <style>
     .topspace {
         padding-top: 20px;
@@ -69,5 +68,9 @@
     .transbackground {
         background: transparent !important;
         box-shadow: 1px 1px 3px 3px rgba(0,0,0,0.5) !important;
+    }
+    .borderline {
+        border: 1px solid #3A2D48 !important;
+        border-radius: 5px 0px 0px 5px !important;
     }
 </style>

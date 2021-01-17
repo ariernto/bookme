@@ -12,13 +12,13 @@
 
     <div class="bravo_search_activity">
 
-        <div class="bravo_banner" style="background-image: url({{asset('media/preview/167.jpg')}});height: 80vh;margin-top: -97px;padding-top: 38vh;background-position: 50%;background-repeat: no-repeat;background-size: cover" >
+        <div class="bravo_banner" style="background: #110122;height: 50vh;margin-top: -97px;padding-top: 24vh;background-position: 50%;background-repeat: no-repeat;background-size: cover" >
 
             <div class="container">
 
                 <h1 class="whitefont">
 
-                    Search for Activity
+                    Search for activity
 
                 </h1>
 
@@ -28,7 +28,7 @@
 
         <div class="bravo_form_search">
 
-            <div class="container"  style="position: relative;top: -290px;">
+            <div class="container"  style="position: relative;top: -11vh;">
 
                 <div class="row">
 

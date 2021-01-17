@@ -1,7 +1,7 @@
 
-<div class="bravo-form-search-all" style="background-image: linear-gradient(0deg,rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2)),url('{{asset('topbackground.png')}}') !important;height:80vh;margin-top:-97px;padding-top: 38vh;">
+<div class="bravo-form-search-all" style="background-image: linear-gradient(0deg,rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2)),url('{{asset('topbackground.png')}}') !important;height:100vh;margin-top:-91px;padding-top: 58vh;">
     <div class="container">
-        <div class="row">
+        <div class="row maxwid">
             <div class="col-lg-12">
                 <h1 class="text-heading">{{$title}}</h1>
                 <div class="sub-heading">{{$sub_title}}</div>
@@ -48,3 +48,21 @@
         </div>
     </div>
 </div>
+<style>
+    @media (min-width: 1500px)
+    {
+        .maxwid {
+            max-width: 1140px !important;
+        }
+    }
+    @media (min-width: 992px)
+    {
+        .maxwid {
+            max-width: 960px;
+        }
+    }
+    .maxwid {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+</style>

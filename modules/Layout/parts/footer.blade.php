@@ -3,7 +3,7 @@
 	<div class="bravo_footer">
 		<div style="background-image: url({{asset('footerbackground.png')}})" class="main-footer"> {{-- style="background-image: url({{asset('2background.png')}})" --}}
 			<div class="container">
-                <div style="padding-top: 50px;padding-bottom: 50px" class="row">
+                <div style="padding-top: 50px;padding-bottom: 50px" class="row maxwid">
                     <div class="col-lg-4">
                         <h2 class="bookmecla">BOOKME</h2>
                         <p class="blackcha">
@@ -72,7 +72,24 @@
 		</div>
 	</div>
 @endif
-
+<style>
+    @media (min-width: 1500px)
+    {
+        .maxwid {
+            max-width: 1140px !important;
+        }
+    }
+    @media (min-width: 992px)
+    {
+        .maxwid {
+            max-width: 960px;
+        }
+    }
+    .maxwid {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+</style>
 @include('Layout::parts.login-register-modal')
 @include('Layout::parts.chat')
 @if(Auth::id())

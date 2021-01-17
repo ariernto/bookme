@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row maxwid">
     <div class="col-lg-12 col-md-12">
 
         <div class="bravo-list-item">
@@ -125,6 +125,22 @@
 </script>
 <style>
 
+    @media (min-width: 1500px)
+    {
+        .maxwid {
+            max-width: 1140px !important;
+        }
+    }
+    @media (min-width: 992px)
+    {
+        .maxwid {
+            max-width: 960px;
+        }
+    }
+    .maxwid {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
     .gallery-title
     {
         font-size: 36px;
