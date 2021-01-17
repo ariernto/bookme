@@ -20,7 +20,7 @@
 
             <div class="container">
 
-                <div class="row">
+                <div class="row maxwid">
 
                     <div class="col-md-12 col-sm-12 col-xs-12 col-lg-9">
 
@@ -42,7 +42,7 @@
 
                 </div>
 
-                <div class="row end_tour_sticky">
+                <div class="row maxwid end_tour_sticky">
 
                     <div class="col-md-12">
 
@@ -171,6 +171,24 @@
 @endsection
 
 
+<style>
+    @media (min-width: 1500px)
+    {
+        .maxwid {
+            max-width: 1140px !important;
+        }
+    }
+    @media (min-width: 992px)
+    {
+        .maxwid {
+            max-width: 960px;
+        }
+    }
+    .maxwid {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+</style>
 
 @section('footer')
 
@@ -239,4 +257,3 @@
     <script type="text/javascript" src="{{ asset('module/tour/js/single-tour.js?_ver='.config('app.version')) }}"></script>
 
 @endsection
-

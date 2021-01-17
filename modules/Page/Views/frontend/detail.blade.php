@@ -14,14 +14,12 @@
 
         <section class="topImgOverSection">
             <div class="container textOverImgRight">
-                <div class="maxwid">
                     <img src="http://test.booking.dorica.fi/uploads/demo/tour/banner-search.jpg">
                     <div class="bottom-rightTop">
                         <p>Helsinki to Stockholm <span style="color: #C29D59;">from 34$</span></p>
                         <button class="btn">Book Now</button>
                     </div>
                     <div class="centeredTop"><i class="fa fa-play" aria-hidden="true"></i></div>
-                </div>
             </div>
         </section>
         <section>

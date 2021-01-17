@@ -54,7 +54,7 @@
 }
 
 .bravo_single_book_wrap {
-    margin-top: 243px !important;
+    margin-top: 221px !important;
 }
 
 .bravo_single_book {
@@ -171,8 +171,8 @@
 }
 
 .marginset {
-    margin-right: 150px !important;
-    margin-left: 150px !important;
+    margin-right: 50px !important;
+    margin-left: 50px !important;
 }
 
 .locatcolor {
@@ -259,6 +259,7 @@
 .nametxt {
     padding-top: 7px !important;
     padding-right: 0px !important;
+    padding-left: 0px !important;
 }
 
 .nameinput {
