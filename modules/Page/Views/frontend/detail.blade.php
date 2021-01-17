@@ -8,7 +8,7 @@
         <div class="page-template-content">
             {!! $page->getProcessedContent() !!}
         </div>
-        <div class="container" style="padding-top: 80px">
+        <div class="container maxrow" style="padding-top: 80px">
             @include('Page::frontend.layouts.search.list-item')
         </div>
 
@@ -77,6 +77,18 @@
     {
         .maxwid {
             max-width: 960px;
+        }
+    }
+    @media (min-width: 1500px)
+    {
+        .maxwid {
+            max-width: 1340px !important;
+        }
+    }
+    @media (min-width: 992px)
+    {
+        .maxwid {
+            max-width: 1260px !important;
         }
     }
     .maxwid {

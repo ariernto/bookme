@@ -54,7 +54,7 @@
 
         <div class="g-price row">
 
-            <div class="prefix col-lg-6 col-md-6">
+            <div class="prefix browncolor col-lg-6 col-md-6">
 
                 @if(!empty($row->location->name))
 
@@ -66,12 +66,8 @@
 
             </div>
 
-            <div class="price col-lg-6 col-md-6">
-
-                <span class="onsale">{{ $row->display_sale_price }}</span>
-
-                <div class="text-price">{{ $row->display_price }}</div>
-
+            <div class="price browncolor righttext col-lg-6 col-md-6">
+                {{ $row->display_price }}
             </div>
 
         </div>
@@ -93,62 +89,36 @@
         </a>
 
     </div>
-
-    @if(setting_item('space_enable_review'))
-
-    <?php
-
-    $reviewData = $row->getScoreReview();
-
-    $score_total = $reviewData['score_total'];
-
-    ?>
-
-        <div class="service-review">
-
-            <span class="rate">
-
-                @if($reviewData['total_review'] > 0) {{$score_total}}/5 @endif <span class="rate-text">{{$reviewData['review_text']}}</span>
-
-            </span>
-
-            <span class="review">
-
-             @if($reviewData['total_review'] > 1)
-
-                    {{ __(":number Reviews",["number"=>$reviewData['total_review'] ]) }}
-
-                @else
-
-                    {{ __(":number Review",["number"=>$reviewData['total_review'] ]) }}
-
-                @endif
-
-            </span>
-
-        </div>
-
-    @endif
-
-    @if(!empty($time = $row->start_time))
-
-        <div class="start-time">
-
-            {{ __("Start Time: :time",['time'=>$time]) }}
-
-        </div>
-
-    @endif
-
+    <hr class="hrcla" />
     <div class="info">
-
-        <div class="duration">
-
-            {{duration_format($row->duration,true)}}
-
+        <div class="row smallcha">
+            <div class="col-lg-4 col-md-4 col-sm-4 p-1 leftbotposit">
+                <i class="fa fa-calendar"></i>
+                ALL YEAR
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 p-1">
+                <i class="icofont-wall-clock"></i>
+                3 HOURS
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 p-1 leftbotposit">
+                <div class="starcla">
+                    <i class="fa fa-star-o smallstarcol"></i>
+                    <i class="fa fa-star-o smallstarcol"></i>
+                    <i class="fa fa-star-o smallstarcol"></i>
+                    <i class="fa fa-star-o smallstarcol"></i>
+                    <i class="fa fa-star-o smallstarcol"></i>
+                </div>
+            </div>
         </div>
-
     </div>
 
 </div>
 
+<style>
+    .browncolor {
+        color: #c29d59 !important;
+    }
+    .righttext {
+        text-align: right !important;
+    }
+</style>

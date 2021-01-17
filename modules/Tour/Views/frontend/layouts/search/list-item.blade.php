@@ -41,3 +41,21 @@
     </div>
 </div>
 
+<style>
+    @media (min-width: 1500px)
+    {
+        .maxrow {
+            max-width: 1340px !important;
+        }
+    }
+    @media (min-width: 992px)
+    {
+        .maxrow {
+            max-width: 1200px;
+        }
+    }
+    .maxrow {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+</style>

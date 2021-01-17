@@ -84,17 +84,17 @@
 <style>
     @media (min-width: 1500px)
     {
-        .maxwid {
-            max-width: 1140px !important;
+        .maxrow {
+            max-width: 1340px !important;
         }
     }
     @media (min-width: 992px)
     {
-        .maxwid {
-            max-width: 960px;
+        .maxrow {
+            max-width: 1060px;
         }
     }
-    .maxwid {
+    .maxrow {
         margin-left: auto !important;
         margin-right: auto !important;
     }
