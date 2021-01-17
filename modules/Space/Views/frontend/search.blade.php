@@ -12,7 +12,7 @@
 
     <div class="bravo_search_space">
 
-        <div class="bravo_banner" @if($bg = setting_item("space_page_search_banner")) style="background-image: url({{get_file_url($bg,'full')}});height: 80vh;margin-top: -97px;padding-top: 38vh;" @endif >
+        <div class="bravo_banner" @if($bg = setting_item("space_page_search_banner")) style="background-image: url({{get_file_url($bg,'full')}});height: 50vh;margin-top: -97px;padding-top: 24vh;" @endif >
 
             <div class="container">
 
@@ -28,7 +28,7 @@
 
         <div class="bravo_form_search">
 
-            <div class="container" style="position: relative;top: -270px;">
+            <div class="container" style="position: relative;top: -14vh;">
 
                 <div class="row">
 
