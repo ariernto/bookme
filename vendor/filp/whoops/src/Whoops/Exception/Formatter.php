@@ -21,7 +21,6 @@ class Formatter
         $response = [
             'type'    => get_class($exception),
             'message' => $exception->getMessage(),
-            'code'    => $exception->getCode(),
             'file'    => $exception->getFile(),
             'line'    => $exception->getLine(),
         ];

@@ -4,11 +4,11 @@ namespace Bavix\Wallet\Test;
 
 use Bavix\Wallet\Interfaces\Mathable;
 use Bavix\Wallet\Simple\BCMath;
-use Bavix\Wallet\Simple\BrickMath;
 use Bavix\Wallet\Simple\Math;
 
 class MathTest extends TestCase
 {
+
     /**
      * @dataProvider dataProvider
      * @param string $class
@@ -500,7 +500,7 @@ class MathTest extends TestCase
      */
     public function dataProvider(): array
     {
-        $providers = [[BrickMath::class], [Math::class]];
+        $providers = [[Math::class]];
 
         if (extension_loaded('bcmath')) {
             $providers[] = [BCMath::class];
@@ -508,4 +508,5 @@ class MathTest extends TestCase
 
         return $providers;
     }
+
 }

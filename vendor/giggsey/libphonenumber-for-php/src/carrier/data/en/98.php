@@ -24,8 +24,5 @@ return array (
   989981 => 'Shatel Mobile',
   9899900 => 'LOTUSTEL',
   989991 => 'Irancell',
-  9899996 => 'Rightel',
-  9899997 => 'Rightel',
-  9899998 => 'Rightel',
-  9899999 => 'Rightel',
+  989999 => 'Rightel',
 );

@@ -1,50 +1,61 @@
-<?php declare(strict_types = 1);
+<?php
+
 namespace PharIo\Version;
 
 class PreReleaseSuffix {
-    private const valueScoreMap = [
-        'dev'   => 0,
-        'a'     => 1,
+    private $valueScoreMap = [
+        'dev' => 0,
+        'a' => 1,
         'alpha' => 1,
-        'b'     => 2,
-        'beta'  => 2,
-        'rc'    => 3,
-        'p'     => 4,
+        'b' => 2,
+        'beta' => 2,
+        'rc' => 3,
+        'p' => 4,
         'patch' => 4,
     ];
 
-    /** @var string */
+    /**
+     * @var string
+     */
     private $value;
 
-    /** @var int */
+    /**
+     * @var int
+     */
     private $valueScore;
 
-    /** @var int */
+    /**
+     * @var int
+     */
     private $number = 0;
 
-    /** @var string  */
-    private $full;
-
     /**
-     * @throws InvalidPreReleaseSuffixException
+     * @param string $value
      */
-    public function __construct(string $value) {
+    public function __construct($value) {
         $this->parseValue($value);
     }
 
-    public function asString(): string {
-        return $this->full;
-    }
-
-    public function getValue(): string {
+    /**
+     * @return string
+     */
+    public function getValue() {
         return $this->value;
     }
 
-    public function getNumber(): ?int {
+    /**
+     * @return int|null
+     */
+    public function getNumber() {
         return $this->number;
     }
 
-    public function isGreaterThan(PreReleaseSuffix $suffix): bool {
+    /**
+     * @param PreReleaseSuffix $suffix
+     *
+     * @return bool
+     */
+    public function isGreaterThan(PreReleaseSuffix $suffix) {
         if ($this->valueScore > $suffix->valueScore) {
             return true;
         }
@@ -58,29 +69,27 @@ class PreReleaseSuffix {
 
     /**
      * @param $value
+     *
+     * @return int
      */
-    private function mapValueToScore($value): int {
-        if (\array_key_exists($value, self::valueScoreMap)) {
-            return self::valueScoreMap[$value];
+    private function mapValueToScore($value) {
+        if (array_key_exists($value, $this->valueScoreMap)) {
+            return $this->valueScoreMap[$value];
         }
 
         return 0;
     }
 
-    private function parseValue($value): void {
-        $regex = '/-?((dev|beta|b|rc|alpha|a|patch|p)\.?(\d*)).*$/i';
-
-        if (\preg_match($regex, $value, $matches) !== 1) {
-            throw new InvalidPreReleaseSuffixException(\sprintf('Invalid label %s', $value));
+    private function parseValue($value) {
+        $regex = '/-?(dev|beta|b|rc|alpha|a|patch|p)\.?(\d*).*$/i';
+        if (preg_match($regex, $value, $matches) !== 1) {
+            throw new InvalidPreReleaseSuffixException(sprintf('Invalid label %s', $value));
         }
 
-        $this->full = $matches[1];
-        $this->value = $matches[2];
-
-        if ($matches[3] !== '') {
-            $this->number = (int)$matches[3];
+        $this->value = $matches[1];
+        if (isset($matches[2])) {
+            $this->number = (int)$matches[2];
         }
-
-        $this->valueScore = $this->mapValueToScore($matches[2]);
+        $this->valueScore = $this->mapValueToScore($this->value);
     }
 }

@@ -2,12 +2,10 @@
 
 namespace Maatwebsite\Excel;
 
-use ArrayAccess;
-use Closure;
 use Illuminate\Support\Collection;
 use PhpOffice\PhpSpreadsheet\Worksheet\Row as SpreadsheetRow;
 
-class Row implements ArrayAccess
+class Row
 {
     use DelegatedMacroable;
 
@@ -17,19 +15,9 @@ class Row implements ArrayAccess
     protected $headingRow = [];
 
     /**
-     * @var \Closure
-     */
-    protected $preparationCallback;
-
-    /**
      * @var SpreadsheetRow
      */
-    protected $row;
-
-    /**
-     * @var array|null
-     */
-    protected $rowCache;
+    private $row;
 
     /**
      * @param SpreadsheetRow $row
@@ -73,10 +61,6 @@ class Row implements ArrayAccess
      */
     public function toArray($nullValue = null, $calculateFormulas = false, $formatData = true, ?string $endColumn = null)
     {
-        if (is_array($this->rowCache)) {
-            return $this->rowCache;
-        }
-
         $cells = [];
 
         $i = 0;
@@ -92,12 +76,6 @@ class Row implements ArrayAccess
             $i++;
         }
 
-        if (isset($this->preparationCallback)) {
-            $cells = ($this->preparationCallback)($cells, $this->row->getRowIndex());
-        }
-
-        $this->rowCache = $cells;
-
         return $cells;
     }
 
@@ -107,34 +85,5 @@ class Row implements ArrayAccess
     public function getIndex(): int
     {
         return $this->row->getRowIndex();
-    }
-
-    public function offsetExists($offset)
-    {
-        return isset(($this->toArray())[$offset]);
-    }
-
-    public function offsetGet($offset)
-    {
-        return ($this->toArray())[$offset];
-    }
-
-    public function offsetSet($offset, $value)
-    {
-        //
-    }
-
-    public function offsetUnset($offset)
-    {
-        //
-    }
-
-    /**
-     * @param \Closure $preparationCallback
-     * @internal
-     */
-    public function setPreparationCallback(Closure $preparationCallback = null)
-    {
-        $this->preparationCallback = $preparationCallback;
     }
 }

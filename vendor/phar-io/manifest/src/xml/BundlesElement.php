@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php
 /*
  * This file is part of PharIo\Manifest.
  *
@@ -7,10 +7,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace PharIo\Manifest;
 
 class BundlesElement extends ManifestElement {
-    public function getComponentElements(): ComponentElementCollection {
+    public function getComponentElements() {
         return new ComponentElementCollection(
             $this->getChildrenByName('component')
         );

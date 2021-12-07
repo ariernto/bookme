@@ -8,7 +8,6 @@ use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
 use Maatwebsite\Excel\Concerns\WithColumnLimit;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithProgressBar;
-use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Row;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
@@ -47,7 +46,6 @@ class ModelImporter
         $progessBar       = $import instanceof WithProgressBar;
         $withMapping      = $import instanceof WithMapping;
         $withCalcFormulas = $import instanceof WithCalculatedFormulas;
-        $withValidation   = $import instanceof WithValidation && method_exists($import, 'prepareForValidation');
         $endColumn        = $import instanceof WithColumnLimit ? $import->endColumn() : null;
 
         $this->manager->setRemembersRowNumber(method_exists($import, 'rememberRowNumber'));
@@ -58,10 +56,6 @@ class ModelImporter
 
             $row      = new Row($spreadSheetRow, $headingRow);
             $rowArray = $row->toArray(null, $withCalcFormulas, true, $endColumn);
-
-            if ($withValidation) {
-                $rowArray = $import->prepareForValidation($rowArray, $row->getIndex());
-            }
 
             if ($withMapping) {
                 $rowArray = $import->map($rowArray);

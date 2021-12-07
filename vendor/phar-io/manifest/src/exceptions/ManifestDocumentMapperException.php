@@ -1,4 +1,5 @@
-<?php declare(strict_types = 1);
+<?php
+
 namespace PharIo\Manifest;
 
 class ManifestDocumentMapperException extends \RuntimeException implements Exception {

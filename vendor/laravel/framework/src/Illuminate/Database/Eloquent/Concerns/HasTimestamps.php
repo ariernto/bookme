@@ -110,7 +110,7 @@ trait HasTimestamps
     /**
      * Get the name of the "created at" column.
      *
-     * @return string|null
+     * @return string
      */
     public function getCreatedAtColumn()
     {
@@ -120,7 +120,7 @@ trait HasTimestamps
     /**
      * Get the name of the "updated at" column.
      *
-     * @return string|null
+     * @return string
      */
     public function getUpdatedAtColumn()
     {
