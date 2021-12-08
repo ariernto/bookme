@@ -2,6 +2,7 @@
 
 namespace Maatwebsite\Excel;
 
+use Closure;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\FromArray;
@@ -282,13 +283,15 @@ class Sheet
         }
 
         if ($import instanceof OnEachRow) {
-            $headingRow = HeadingRowExtractor::extract($this->worksheet, $import);
-            $endColumn  = $import instanceof WithColumnLimit ? $import->endColumn() : null;
+            $headingRow          = HeadingRowExtractor::extract($this->worksheet, $import);
+            $endColumn           = $import instanceof WithColumnLimit ? $import->endColumn() : null;
+            $preparationCallback = $this->getPreparationCallback($import);
 
             foreach ($this->worksheet->getRowIterator()->resetStart($startRow ?? 1) as $row) {
                 $sheetRow = new Row($row, $headingRow);
 
                 if ($import instanceof WithValidation) {
+                    $sheetRow->setPreparationCallback($preparationCallback);
                     $toValidate = [$sheetRow->getIndex() => $sheetRow->toArray(null, $import instanceof WithCalculatedFormulas, $endColumn)];
 
                     try {
@@ -333,11 +336,15 @@ class Sheet
         $endColumn  = $import instanceof WithColumnLimit ? $import->endColumn() : null;
 
         $rows = [];
-        foreach ($this->worksheet->getRowIterator($startRow, $endRow) as $row) {
+        foreach ($this->worksheet->getRowIterator($startRow, $endRow) as $index => $row) {
             $row = (new Row($row, $headingRow))->toArray($nullValue, $calculateFormulas, $formatData, $endColumn);
 
             if ($import instanceof WithMapping) {
                 $row = $import->map($row);
+            }
+
+            if ($import instanceof WithValidation && method_exists($import, 'prepareForValidation')) {
+                $row = $import->prepareForValidation($row, $index);
             }
 
             $rows[] = $row;
@@ -579,6 +586,10 @@ class Sheet
      */
     public function appendRows($rows, $sheetExport)
     {
+        if (method_exists($sheetExport, 'prepareRows')) {
+            $rows = $sheetExport->prepareRows($rows);
+        }
+
         $rows = (new Collection($rows))->flatMap(function ($row) use ($sheetExport) {
             if ($sheetExport instanceof WithMapping) {
                 $row = $sheetExport->map($row);
@@ -609,7 +620,7 @@ class Sheet
     {
         // When dealing with eloquent models, we'll skip the relations
         // as we won't be able to display them anyway.
-        if (method_exists($row, 'attributesToArray')) {
+        if (is_object($row) && method_exists($row, 'attributesToArray')) {
             return $row->attributesToArray();
         }
 
@@ -709,5 +720,20 @@ class Sheet
         }
 
         return $this->chunkSize;
+    }
+
+    /**
+     * @param object|WithValidation $import
+     * @return Closure|null
+     */
+    private function getPreparationCallback($import)
+    {
+        if (!$import instanceof WithValidation || !method_exists($import, 'prepareForValidation')) {
+            return null;
+        }
+
+        return function (array $data, int $index) use ($import) {
+            return $import->prepareForValidation($data, $index);
+        };
     }
 }

@@ -2,6 +2,18 @@
 
 All notable changes to `image-optimizer` will be documented in this file
 
+## 1.3.2 - 2020-11-28
+
+- improve gifsicle (#131)
+
+## 1.3.1 - 2020-10-20
+
+- fix empty string setBinaryPath() (#129)
+
+## 1.3.0 - 2020-10-10
+
+- add support for php 8.0
+
 ## 1.2.1 - 2019-11-23
 
 - allow symfony 5 components

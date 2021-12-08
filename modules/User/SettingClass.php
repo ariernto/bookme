@@ -24,6 +24,8 @@ class SettingClass extends BaseSettingsClass
                     'inbox_enable',
                     'subject_email_verify_register_user',
                     'content_email_verify_register_user',
+                    'user_disable_verification_feature',
+                    'enable_verify_email_register_user',
                 ],
                 'html_keys'=>[
 
@@ -35,6 +37,8 @@ class SettingClass extends BaseSettingsClass
                 'position'=>50,
                 'view'=>"User::admin.settings.wallet",
                 "keys"=>[
+                    'wallet_module_disable',
+
                     'wallet_credit_exchange_rate',
                     'wallet_deposit_type',
                     'wallet_deposit_rate',

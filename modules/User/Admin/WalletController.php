@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\AdminController;
 use Modules\Booking\Models\Payment;
+use Modules\User\Events\UpdateCreditPurchase;
 use Modules\User\Models\Wallet\DepositPayment;
 
 class WalletController extends AdminController
@@ -111,6 +112,7 @@ class WalletController extends AdminController
                             $payment->markAsCompleted();
                             //$payment->sendUpdatedPurchaseEmail();
                         }
+                        event(new UpdateCreditPurchase(Auth::user(), $payment));
 
                         break;
                 }

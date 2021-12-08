@@ -146,14 +146,9 @@
     }
     .info {
         padding: 0 15px 0;
-        &:before, &:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
+        display: flex;
         .duration {
-            width: 40%;
-            float: left;
+            flex: auto;
             align-items: center;
             color: #5E6D77;
             position: relative;
@@ -164,8 +159,7 @@
             }
         }
         .g-price {
-            width: 60%;
-            float: left;
+            flex: auto;
             text-align: right;
             .prefix {
                 color: #5E6D77;
