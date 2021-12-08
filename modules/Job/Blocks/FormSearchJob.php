@@ -5,7 +5,7 @@ use Modules\Template\Blocks\BaseBlock;
 use Modules\Location\Models\Location;
 use Modules\Media\Helpers\FileHelper;
 
-class FormSearchHotel extends BaseBlock
+class FormSearchJob extends BaseBlock
 {
     function __construct()
     {
@@ -81,7 +81,7 @@ class FormSearchHotel extends BaseBlock
         }
         $data['style'] = $model['style'] ?? "";
         $data['list_slider'] = $model['list_slider'] ?? "";
-        return view('Job::frontend.blocks.form-search-hotel.index', $data);
+        return view('Job::frontend.blocks.form-search-job.index', $data);
     }
 
     public function contentAPI($model = []){

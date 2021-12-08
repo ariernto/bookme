@@ -18,7 +18,7 @@ use Modules\Location\Models\Location;
 use Modules\Media\Helpers\FileHelper;
 use Modules\Review\Models\Review;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Modules\Job\Models\HotelTranslation;
+use Modules\Job\Models\JobTranslation;
 use Modules\User\Models\UserWishList;
 use Illuminate\Notifications\Notifiable;
 
@@ -51,8 +51,8 @@ class Job extends Bookable
     protected $bookingClass;
     protected $reviewClass;
     protected $hotelDateClass;
-    protected $hotelTermClass;
-    protected $hotelTranslationClass;
+    protected $jobTermClass;
+    protected $jobTranslationClass;
     protected $userWishListClass;
     protected $termClass;
     protected $attributeClass;
@@ -64,8 +64,8 @@ class Job extends Bookable
         parent::__construct($attributes);
         $this->bookingClass = Booking::class;
         $this->reviewClass = Review::class;
-        $this->hotelTermClass = HotelTerm::class;
-        $this->hotelTranslationClass = HotelTranslation::class;
+        $this->jobTermClass = JobTerm::class;
+        $this->jobTranslationClass = JobTranslation::class;
         $this->userWishListClass = UserWishList::class;
         $this->termClass = Terms::class;
         $this->attributeClass = Attributes::class;
@@ -103,19 +103,19 @@ class Job extends Bookable
         }
         $meta['seo_desc'] = setting_item_with_lang("hotel_page_list_seo_desc");
         $meta['seo_share'] = setting_item_with_lang("hotel_page_list_seo_share");
-        $meta['full_url'] = url(config('hotel.hotel_route_prefix'));
+        $meta['full_url'] = url(config('job.hotel_route_prefix'));
         return $meta;
     }
 
     public function terms()
     {
-        return $this->hasMany($this->hotelTermClass, "target_id");
+        return $this->hasMany($this->jobTermClass, "target_id");
     }
 
     public function termsByAttributeInListingPage()
     {
         $attribute = setting_item("hotel_attribute_show_in_listing_page", 0);
-        return $this->hasManyThrough($this->termClass, $this->hotelTermClass, 'target_id', 'id', 'id', 'term_id')->where('bravo_terms.attr_id', $attribute)->with(['translations']);
+        return $this->hasManyThrough($this->termClass, $this->jobTermClass, 'target_id', 'id', 'id', 'term_id')->where('bravo_terms.attr_id', $attribute)->with(['translations']);
     }
 
     public function getAttributeInListingPage()
@@ -146,7 +146,7 @@ class Job extends Bookable
                 $param['room'] = $room;
             }
         }
-        $urlDetail = app_get_locale(false, false, '/') . config('hotel.hotel_route_prefix') . "/" . $this->slug;
+        $urlDetail = app_get_locale(false, false, '/') . config('job.hotel_route_prefix') . "/" . $this->slug;
         if (!empty($param)) {
             $urlDetail .= "?" . http_build_query($param);
         }
@@ -156,7 +156,7 @@ class Job extends Bookable
     public static function getLinkForPageSearch($locale = false, $param = [])
     {
 
-        return url(app_get_locale(false, false, '/') . config('hotel.hotel_route_prefix') . "?" . http_build_query($param));
+        return url(app_get_locale(false, false, '/') . config('job.hotel_route_prefix') . "?" . http_build_query($param));
     }
 
     public function getGallery($featuredIncluded = false)
@@ -184,7 +184,7 @@ class Job extends Bookable
 
     public function getEditUrl()
     {
-        return url(route('hotel.admin.edit', ['id' => $this->id]));
+        return url(route('job.admin.edit', ['id' => $this->id]));
     }
 
     public function getDiscountPercentAttribute()
@@ -783,13 +783,13 @@ class Job extends Bookable
         $new->save();
         //Terms
         foreach ($selected_terms as $term_id) {
-            $this->hotelTermClass::firstOrCreate([
+            $this->jobTermClass::firstOrCreate([
                 'term_id'   => $term_id,
                 'target_id' => $new->id
             ]);
         }
         //Language
-        $langs = $this->hotelTranslationClass::where("origin_id", $old->id)->get();
+        $langs = $this->jobTranslationClass::where("origin_id", $old->id)->get();
         if (!empty($langs)) {
             foreach ($langs as $lang) {
                 $langNew = $lang->replicate();
@@ -1076,7 +1076,7 @@ class Job extends Bookable
 
     static public function getClassAvailability()
     {
-        return "\Modules\Job\Controllers\HotelController";
+        return "\Modules\Job\Controllers\JobController";
     }
 
     static public function getFiltersSearch()

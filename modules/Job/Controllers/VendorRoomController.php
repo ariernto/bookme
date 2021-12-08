@@ -10,12 +10,12 @@ use Modules\Job\Models\HotelRoomTerm;
 use Modules\Job\Models\HotelRoomTranslation;
 use Modules\Location\Models\Location;
 use Modules\Job\Models\Job;
-use Modules\Job\Models\HotelTerm;
-use Modules\Job\Models\HotelTranslation;
+use Modules\Job\Models\JobTerm;
+use Modules\Job\Models\JobTranslation;
 
 class VendorRoomController extends FrontendController
 {
-    protected $hotelClass;
+    protected $jobClass;
     protected $roomTermClass;
     protected $attributesClass;
     protected $locationClass;
@@ -29,7 +29,7 @@ class VendorRoomController extends FrontendController
     public function __construct()
     {
         parent::__construct();
-        $this->hotelClass = Job::class;
+        $this->jobClass = Job::class;
         $this->roomTermClass = HotelRoomTerm::class;
         $this->attributesClass = Attributes::class;
         $this->locationClass = Location::class;
@@ -39,7 +39,7 @@ class VendorRoomController extends FrontendController
 
     protected function hasHotelPermission($hotel_id = false){
         if(empty($hotel_id)) return false;
-        $hotel = $this->hotelClass::find($hotel_id);
+        $hotel = $this->jobClass::find($hotel_id);
         if(empty($hotel)) return false;
         if(!$this->hasPermission('hotel_update') and $hotel->create_user != Auth::id()){
             return false;
@@ -67,11 +67,11 @@ class VendorRoomController extends FrontendController
             'breadcrumbs'        => [
                 [
                     'name' => __('Hotels'),
-                    'url'  => route('hotel.vendor.index')
+                    'url'  => route('job.vendor.index')
                 ],
                 [
                     'name' => __('Job: :name',['name'=>$this->currentHotel->title]),
-                    'url'  => route('hotel.vendor.edit',[$this->currentHotel->id])
+                    'url'  => route('job.vendor.edit',[$this->currentHotel->id])
                 ],
                 [
                     'name'  => __('All Rooms'),
@@ -105,15 +105,15 @@ class VendorRoomController extends FrontendController
             'breadcrumbs'    => [
                 [
                     'name' => __('Hotels'),
-                    'url'  => route('hotel.vendor.index')
+                    'url'  => route('job.vendor.index')
                 ],
                 [
                     'name' => __('Job: :name',['name'=>$this->currentHotel->title]),
-                    'url'  => route('hotel.vendor.edit',[$this->currentHotel->id])
+                    'url'  => route('job.vendor.edit',[$this->currentHotel->id])
                 ],
                 [
                     'name' => __('All Rooms'),
-                    'url'  => route("hotel.vendor.room.index",['hotel_id'=>$this->currentHotel->id])
+                    'url'  => route("job.vendor.room.index",['hotel_id'=>$this->currentHotel->id])
                 ],
                 [
                     'name'  => __('Create'),
@@ -137,7 +137,7 @@ class VendorRoomController extends FrontendController
 
         $row = $this->roomClass::find($id);
         if (empty($row) or $row->parent_id != $hotel_id) {
-            return redirect(route('hotel.vendor.room.index',['hotel_id'=>$hotel_id]));
+            return redirect(route('job.vendor.room.index',['hotel_id'=>$hotel_id]));
         }
 
         $translation = $row->translateOrOrigin($request->query('lang'));
@@ -151,15 +151,15 @@ class VendorRoomController extends FrontendController
             'breadcrumbs'    => [
                 [
                     'name' => __('Hotels'),
-                    'url'  => route('hotel.vendor.index')
+                    'url'  => route('job.vendor.index')
                 ],
                 [
                     'name' => __('Job: :name',['name'=>$this->currentHotel->title]),
-                    'url'  => route('hotel.vendor.edit',[$this->currentHotel->id])
+                    'url'  => route('job.vendor.edit',[$this->currentHotel->id])
                 ],
                 [
                     'name' => __('All Rooms'),
-                    'url'  => route("hotel.vendor.room.index",['hotel_id'=>$this->currentHotel->id])
+                    'url'  => route("job.vendor.room.index",['hotel_id'=>$this->currentHotel->id])
                 ],
                 [
                     'name' => __('Edit room: :name',['name'=>$row->title]),
@@ -182,11 +182,11 @@ class VendorRoomController extends FrontendController
             $this->checkPermission('hotel_update');
             $row = $this->roomClass::find($id);
             if (empty($row)) {
-                return redirect(route('hotel.vendor.index'));
+                return redirect(route('job.vendor.index'));
             }
             if($row->parent_id != $hotel_id)
             {
-                return redirect(route('hotel.vendor.room.index'));
+                return redirect(route('job.vendor.room.index'));
             }
         }else{
             $this->checkPermission('hotel_create');
@@ -224,7 +224,7 @@ class VendorRoomController extends FrontendController
             if($id > 0 ){
                 return redirect()->back()->with('success',  __('Room updated') );
             }else{
-                return redirect(route('hotel.vendor.room.edit',['hotel_id'=>$hotel_id,'id'=>$row->id]))->with('success', __('Room created') );
+                return redirect(route('job.vendor.room.edit',['hotel_id'=>$hotel_id,'id'=>$row->id]))->with('success', __('Room created') );
             }
         }
     }
