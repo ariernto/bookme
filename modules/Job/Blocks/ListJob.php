@@ -117,6 +117,9 @@ class ListJob extends BaseBlock
             'title'      => $model['title'],
             'desc'       => $model['desc'],
         ];
+
+
+        
         return view('Job::frontend.blocks.list-job.index', $data);
     }
 
