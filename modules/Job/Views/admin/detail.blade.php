@@ -8,7 +8,7 @@
                 <div class="">
                     <h1 class="title-bar">{{$row->id ? __('Edit: ').$row->title : __('Add new Job')}}</h1>
                     @if($row->slug)
-                        <p class="item-url-demo">{{__("Permalink")}}: {{ url( config('job.hotel_route_prefix') ) }}/<a href="#" class="open-edit-input" data-name="slug">{{$row->slug}}</a>
+                        <p class="item-url-demo">{{__("Permalink")}}: {{ url( config('job.job_route_prefix') ) }}/<a href="#" class="open-edit-input" data-name="slug">{{$row->slug}}</a>
                         </p>
                     @endif
                 </div>
@@ -99,7 +99,7 @@
                                     </div>
                                 </div>
                             </div> --}}
-{{--                            @include('Job::admin.job.ical')--}}
+                            {{--@include('Job::admin.job.ical')--}}
 
                         @endif
                     </div>
