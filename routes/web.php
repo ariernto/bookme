@@ -23,7 +23,6 @@ Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
     return "Cleared!";
 });
-
 //Login
 Auth::routes();
 //Custom User Login and Register
