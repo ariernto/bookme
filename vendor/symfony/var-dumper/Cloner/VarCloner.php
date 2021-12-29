@@ -222,7 +222,7 @@ class VarCloner extends AbstractCloner
                         $stub->position = $len++;
                     } elseif ($pos < $maxItems) {
                         if ($maxItems < $pos += \count($a)) {
-                            $a = \array_slice($a, 0, $maxItems - $pos, true);
+                            $a = \array_slice($a, 0, $maxItems - $pos);
                             if ($stub->cut >= 0) {
                                 $stub->cut += $pos - $maxItems;
                             }

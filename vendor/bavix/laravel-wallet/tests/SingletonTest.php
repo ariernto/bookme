@@ -20,6 +20,7 @@ use Bavix\Wallet\Test\Common\Models\Wallet;
 
 class SingletonTest extends TestCase
 {
+
     /**
      * @param string $object
      * @return string
@@ -148,4 +149,5 @@ class SingletonTest extends TestCase
     {
         self::assertEquals($this->getRefId(LockService::class), $this->getRefId(LockService::class));
     }
+
 }

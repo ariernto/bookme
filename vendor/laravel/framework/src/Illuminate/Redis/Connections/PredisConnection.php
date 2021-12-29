@@ -42,7 +42,7 @@ class PredisConnection extends Connection implements ConnectionContract
     {
         $loop = $this->pubSubLoop();
 
-        $loop->{$method}(...array_values((array) $channels));
+        call_user_func_array([$loop, $method], (array) $channels);
 
         foreach ($loop as $message) {
             if ($message->kind === 'message' || $message->kind === 'pmessage') {

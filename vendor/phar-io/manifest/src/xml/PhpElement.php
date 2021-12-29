@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php
 /*
  * This file is part of PharIo\Manifest.
  *
@@ -7,18 +7,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace PharIo\Manifest;
 
 class PhpElement extends ManifestElement {
-    public function getVersion(): string {
+    public function getVersion() {
         return $this->getAttributeValue('version');
     }
 
-    public function hasExtElements(): bool {
+    public function hasExtElements() {
         return $this->hasChild('ext');
     }
 
-    public function getExtElements(): ExtElementCollection {
+    public function getExtElements() {
         return new ExtElementCollection(
             $this->getChildrenByName('ext')
         );

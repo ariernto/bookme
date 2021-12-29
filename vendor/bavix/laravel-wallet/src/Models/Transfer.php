@@ -2,17 +2,16 @@
 
 namespace Bavix\Wallet\Models;
 
-use function array_merge;
-use function config;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use function config;
 
 /**
- * Class Transfer.
+ * Class Transfer
+ * @package Bavix\Wallet\Models
  *
  * @property string $status
- * @property int $discount
  * @property int $deposit_id
  * @property int $withdraw_id
  * @property string $from_type
@@ -21,12 +20,14 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @property int $to_id
  * @property string $uuid
  * @property int $fee
+ * @property int $discount
  *
  * @property Transaction $deposit
  * @property Transaction $withdraw
  */
 class Transfer extends Model
 {
+
     public const STATUS_EXCHANGE = 'exchange';
     public const STATUS_TRANSFER = 'transfer';
     public const STATUS_PAID = 'paid';
@@ -58,14 +59,16 @@ class Transfer extends Model
     ];
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function getCasts(): array
     {
-        return array_merge(
-            parent::getCasts(),
+        $this->casts = array_merge(
+            $this->casts,
             config('wallet.transfer.casts', [])
         );
+
+        return parent::getCasts();
     }
 
     /**
@@ -73,7 +76,7 @@ class Transfer extends Model
      */
     public function getTable(): string
     {
-        if (! $this->table) {
+        if (!$this->table) {
             $this->table = config('wallet.transfer.table', 'transfers');
         }
 
@@ -111,4 +114,5 @@ class Transfer extends Model
     {
         return $this->belongsTo(Transaction::class, 'withdraw_id');
     }
+
 }

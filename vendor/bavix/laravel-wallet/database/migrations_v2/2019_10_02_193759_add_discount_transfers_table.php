@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Schema;
 
 class AddDiscountTransfersTable extends Migration
 {
+
     /**
      * @return string
      */
@@ -36,4 +37,5 @@ class AddDiscountTransfersTable extends Migration
             $table->dropColumn('discount');
         });
     }
+
 }

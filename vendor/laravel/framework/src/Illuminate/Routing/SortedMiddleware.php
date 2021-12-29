@@ -61,7 +61,7 @@ class SortedMiddleware extends Collection
             }
         }
 
-        return Router::uniqueMiddleware($middlewares);
+        return array_values(array_unique($middlewares, SORT_REGULAR));
     }
 
     /**
